@@ -27,12 +27,12 @@ class SignUp extends Component {
             password: this.state.password,
             address: this.state.address
         }
-        console.log(data);
+        
         axios.post("http://localhost:5000/signup", data)
             .then()
             .catch(
                 (err) => {
-                    console.log(err)
+                    console.log("signup error"+err)
                }
             )
 
