@@ -16,15 +16,23 @@ class UserProfile extends Component {
     config: {
       headers: { authorization: `Bearer ${localStorage.getItem('token')}` },
     },
+    user: JSON.parse(localStorage.getItem('user')) || [],
   };
 
   componentDidMount() {
-    const userName = user.username;
+    const userName = this.state.user.username;
     axios
       .get(`http://localhost:5000/user/${userName}`)
       .then((response) => {
-        setUserDetailsPic(response.data.data);
-        console.log('use profile', userDetails);
+        this.setState({
+          fname: response.data.fname,
+          lname: response.data.lname,
+          username: response.data.username,
+          email: response.data.email,
+          profilepic: response.data.profilepic,
+          mobile: response.data.mobile,
+          address: response.data.address,
+        });
       })
       .catch((err) => {
         console.log('PROF ERROR', err);
