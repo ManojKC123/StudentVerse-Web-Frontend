@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, registerUser} from 'react'
 import axios from 'axios';
 class SignUp extends Component {
     state = {
@@ -10,8 +10,14 @@ class SignUp extends Component {
         password: "",
         address: ""
     }
+    registerUser = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
     sendUserData = (e) => {
         e.preventDefault();
+        console.log("this is state"+this.state);
         const data = {
             fname: this.state.fname,
             lname: this.state.lname,
@@ -21,9 +27,14 @@ class SignUp extends Component {
             password: this.state.password,
             address: this.state.address
         }
+        
         axios.post("http://localhost:5000/signup", data)
             .then()
-            .catch()
+            .catch(
+                (err) => {
+                    console.log("signup error"+err)
+               }
+            )
 
     }
     render() {
@@ -73,7 +84,7 @@ class SignUp extends Component {
                                             <input type="text"  name="txtEmpPhone" className="form-control" value={this.state.mobile}
                                         onChange={(event) => { this.setState({ mobile: event.target.value }) }} placeholder="Mobile"/>
                                         </div>
-                                        <button type="submit"  className="btnRegister" value="send">SignUp</button>
+                                        <button type="submit"  className="btnRegister" value="send" onClick={this.sendUserData}>SignUp</button>
                                         <div className="d-flex justify-content-center links">
                                             <a href="/">Already Have Account? <b>Go To Login</b> </a>
                                         </div>
