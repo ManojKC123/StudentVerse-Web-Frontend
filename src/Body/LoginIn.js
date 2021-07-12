@@ -21,9 +21,12 @@ class LoginIn extends Component {
       .post('http://localhost:5000/login', this.state)
       .then((response) => {
         console.log(response);
-        this.setState({
+        var user = {
+          username: this.state.username,
+          token: this.state.token,
           checklogin: true,
-        });
+        };
+        localStorage.setItem('user', JSON.stringify(user));
         localStorage.setItem('token', response.data.token);
       })
       .catch((err) => {
