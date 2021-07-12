@@ -5,12 +5,15 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import { BrowserRouter } from "react-router-dom";
 import "./css/style.css";
 import Body from "./Body/Body";
+import Login from "./Body/LoginIn";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Body></Body>
+        <h1>Hello app!</h1>
+        <Body />
+        <Login />
       </div>
     </BrowserRouter>
   );
