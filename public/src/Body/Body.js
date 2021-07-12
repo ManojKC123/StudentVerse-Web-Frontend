@@ -7,7 +7,6 @@ class Body extends Component {
   render() {
     return (
       <div>
-        <h1>lskjdf</h1>
         <Route path="/signup" exact component={SignUp} />
         <Route path="/profile" exact component={UserProfile} />
         <Route path="/login" exact component={LoginIn} />
