@@ -5,7 +5,7 @@ import userprofile from "../media/user.png";
 
 class UserProfile extends Component {
   state = {
-    id: localStorage.getItem("userId"),
+    id: "",
     fname: "",
     lname: "",
     username: "",
@@ -20,18 +20,17 @@ class UserProfile extends Component {
   };
 
   componentDidMount() {
-    const userName = this.state.user.username;
     axios
-      .get(`http://localhost:5000/user/${userName}`)
+      .get("https://student-verse.herokuapp.com/profile", this.state.config)
       .then((response) => {
         this.setState({
-          fname: response.data.fname,
-          lname: response.data.lname,
-          username: response.data.username,
-          email: response.data.email,
-          profilepic: response.data.profilepic,
-          mobile: response.data.mobile,
-          address: response.data.address,
+          fname: response.data.data.fname,
+          lname: response.data.data.lname,
+          username: response.data.data.username,
+          email: response.data.data.email,
+          profilepic: response.data.data.profilepic,
+          mobile: response.data.data.mobile,
+          address: response.data.data.address,
         });
       })
       .catch((err) => {
@@ -68,12 +67,6 @@ class UserProfile extends Component {
         <Row>
           <Col className="user-updated-details">
             <Table striped bordered hover variant="dark">
-              {/* <thead>
-                <tr>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                </tr>
-              </thead> */}
               <tbody>
                 <tr>
                   <td>Address</td>
