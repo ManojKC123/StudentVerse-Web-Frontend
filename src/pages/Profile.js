@@ -32,7 +32,6 @@ class UserProfile extends Component {
           mobile: response.data.data.mobile,
           address: response.data.data.address,
         });
-        console.log("profile", response.data.data);
       })
       .catch((err) => {
         console.log("PROF ERROR", err);
@@ -45,7 +44,6 @@ class UserProfile extends Component {
           <Col md={4} sm={4} xs={12}>
             <Card style={{ width: "18rem" }}>
               <Card.Img variant="top" src={userprofile} />
-              
             </Card>
           </Col>
           <Col md={8} sm={4} xs={12}>
@@ -69,12 +67,6 @@ class UserProfile extends Component {
         <Row>
           <Col className="user-updated-details">
             <Table striped bordered hover variant="dark">
-              {/* <thead>
-                <tr>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                </tr>
-              </thead> */}
               <tbody>
                 <tr>
                   <td>Address</td>
