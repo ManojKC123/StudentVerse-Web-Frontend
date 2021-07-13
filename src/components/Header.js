@@ -17,19 +17,16 @@ const Header = (props) => {
   };
 
   const logoutUser = (e) => {
-    const loginData = {
-      token: user.token,
-    };
-
-    axios
-      .post("https://student-verse.herokuapp.com/logout", loginData)
-      .then((response) => {
-        localStorage.clear();
-        window.location.href = "/";
-      })
-      .catch((err) => {
-        console.log("login error", err);
-      });
+    // axios
+    //   .post("https://student-verse.herokuapp.com/logout", user.token)
+    //   .then((response) => {
+    //     console.log("logout response", response);
+    localStorage.clear();
+    window.location.href = "/";
+    //   })
+    //   .catch((err) => {
+    //     console.log("login error", err);
+    //   });
   };
 
   useEffect(() => {}, [props, user]);
