@@ -146,8 +146,8 @@ class SignUp extends Component {
                       SignUp
                     </button>
                     <div className="d-flex justify-content-center links">
-                      <a href="/">
-                        Already Have Account? <b>Go To Login</b>{" "}
+                      <a href="/login">
+                        Already Have Account? <b>Go To Login</b>
                       </a>
                     </div>
                   </div>

@@ -5,7 +5,8 @@ class LoginIn extends Component {
   state = {
     username: "",
     password: "",
-    checklogin: "",
+    token: "",
+    isLoggedIn: "",
     message: "",
   };
 
@@ -23,8 +24,8 @@ class LoginIn extends Component {
         console.log(response);
         var user = {
           username: this.state.username,
-          token: this.state.token,
-          checklogin: true,
+          token: response.data.token,
+          isLoggedIn: true,
         };
         localStorage.setItem("user", JSON.stringify(user));
         localStorage.setItem("token", response.data.token);
@@ -41,7 +42,7 @@ class LoginIn extends Component {
       var message = this.state.message;
     }
 
-    if (this.state.checklogin === true) {
+    if (this.state.isLoggedIn === true) {
       return (window.location.href = "/");
     }
     return (
@@ -103,7 +104,7 @@ class LoginIn extends Component {
                       Login
                     </button>
                     <div className="d-flex justify-content-center links">
-                      <a href="/">
+                      <a href="/signup">
                         If you don't have account? <b>Go To SignUp</b>{" "}
                       </a>
                     </div>
