@@ -29,7 +29,7 @@ class SignUp extends Component {
     };
 
     axios
-      .post("http://localhost:5000/signup", data)
+      .post("https://student-verse.herokuapp.com/signup", data)
       .then()
       .catch((err) => {
         console.log("signup error" + err);
