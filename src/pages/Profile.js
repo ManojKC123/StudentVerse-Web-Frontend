@@ -45,6 +45,7 @@ class UserProfile extends Component {
           <Col md={4} sm={4} xs={12}>
             <Card style={{ width: "18rem" }}>
               <Card.Img variant="top" src={userprofile} />
+              
             </Card>
           </Col>
           <Col md={8} sm={4} xs={12}>
