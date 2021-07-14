@@ -51,10 +51,10 @@ function Footer() {
 
         <div class="col-md-4 col-sm-6 col-xs-12">
           <ul class="social-icons">
-            <li><a class="facebook" href="#"> <FacebookIcon/></a></li>
-            <li><a class="twitter" href="#"><InstagramIcon/></a></li>
-            <li><a class="dribbble" href="#"><EmailIcon/></a></li>
-            <li><a class="linkedin" href="#"><TwitterIcon/></a></li>
+            <li><a  href="/"> <FacebookIcon/></a></li>
+            <li><a  href="/"><InstagramIcon/></a></li>
+            <li><a  href="/"><EmailIcon/></a></li>
+            <li><a  href="/"><TwitterIcon/></a></li>
           </ul>
         </div>
       </div>
