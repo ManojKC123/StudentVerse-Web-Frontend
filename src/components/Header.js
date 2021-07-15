@@ -55,10 +55,10 @@ const Header = (props) => {
             Questions
           </a>
           <a href="#" className="nav-item nav-link">
-            About
+            Quiz
           </a>
           <a href="#" className="nav-item nav-link">
-            Contact
+            Study Materials
           </a>
         </div>
         <form className="navbar-form form-inline">
@@ -84,7 +84,7 @@ const Header = (props) => {
               </a>
               <a
                 href="/signup"
-                className="btn btn-primary dropdown-toggle sign-up-btn"
+                className="btn btn-primary"
               >
                 Sign up
               </a>
