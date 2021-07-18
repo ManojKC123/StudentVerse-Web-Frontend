@@ -289,6 +289,9 @@ a {
 .questions-btn a {
   width: max-content;
 }
+.posts {
+  display: flex;
+}
 .stats-container {
   min-width: 120px;
   text-align: center;
