@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 
 const Header = (props) => {
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
-  console.log("user data", user);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -82,10 +81,7 @@ const Header = (props) => {
               <a href="/login" className="nav-link">
                 Login
               </a>
-              <a
-                href="/signup"
-                className="btn btn-primary"
-              >
+              <a href="/signup" className="btn btn-primary">
                 Sign up
               </a>
             </>
