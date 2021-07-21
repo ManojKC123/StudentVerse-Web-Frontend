@@ -8,6 +8,7 @@ import LogIn from "./pages/Login";
 import SignUp from "./pages/Signup";
 import UserProfile from "./pages/Profile";
 import Home from "./pages/Home";
+import AskQuestion from "./pages/AskQuestion";
 import Layout from "./Layout/Layout";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route path="/login" component={LogIn} exact />
             <Route path="/signup" component={SignUp} exact />
             <Route path="/profile" component={UserProfile} exact />
+            <Route path="/ask-question" component={AskQuestion} exact />
             <Route path="/" component={Home} exact />
           </Switch>
         </Layout>

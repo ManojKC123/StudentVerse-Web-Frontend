@@ -299,3 +299,33 @@ a {
 .summary {
   padding-left: 20px;
 }
+
+/* ----- Ask question ----- */
+.post-form-container {
+  width: 100%;
+  padding: 0 20px;
+}
+.question-form {
+  background: #f8f8f8;
+  border-radius: 5px;
+  border: 1px solid #333;
+}
+.question-form {
+  padding: 20px;
+}
+.askForm .form-label {
+  font-size: 18px;
+}
+.askForm .form-label p {
+  font-size: 14px;
+}
+.askForm form input,
+.askForm form textarea {
+  display: block;
+  width: 100%;
+}
+.btn-primary.post-form {
+  width: 130px;
+  border-radius: 5px;
+  margin-top: 15px;
+}
