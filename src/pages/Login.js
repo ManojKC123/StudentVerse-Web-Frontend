@@ -43,7 +43,7 @@ class LoginIn extends Component {
     }
 
     if (this.state.isLoggedIn === true) {
-      return (window.location.href = "/");
+      return (window.location.href = "/profile");
     }
     return (
       <div className="container register">
