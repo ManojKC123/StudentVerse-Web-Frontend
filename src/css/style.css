@@ -230,7 +230,7 @@ a {
   margin: 0;
 }
 @media (max-width: 991px) {
-  .site-footer [class^='col-'] {
+  .site-footer {
     margin-bottom: 30px;
   }
 }
@@ -328,9 +328,9 @@ a {
   width: 130px;
   border-radius: 5px;
   margin-top: 15px;
-=======
-/* Profile page */
+}
 
+/* Profile page */
 .user-profile {
   margin-top: 50px;
   margin-bottom: 50px;
