@@ -1,12 +1,12 @@
-import { makeRequest } from './request';
+import { makeRequest } from "./request";
 
-const apiURL = 'https://student-verse.herokuapp.com';
-// const apiURL = "http://localhost:5000";
+// const apiURL = "https://student-verse.herokuapp.com";
+const apiURL = "http://localhost:5000";
 const siteURI = `${window.location.origin}/`;
 
 export function getTopPosts() {
   const request = {
-    method: 'get',
+    method: "get",
     url: `${apiURL}/posts`,
   };
 
@@ -15,8 +15,25 @@ export function getTopPosts() {
 
 export function getSingleQuestion(itemID) {
   const request = {
-    method: 'get',
+    method: "get",
     url: `${apiURL}/post/${itemID}`,
+  };
+
+  return makeRequest(request);
+}
+
+export function addQuestion(formData, token) {
+  const request = {
+    method: "post",
+    url: `${apiURL}/addQuestion`,
+    body: {
+      title: formData.title,
+      body: formData.body,
+      tags: formData.tagname,
+    },
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
   };
 
   return makeRequest(request);

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { getTopPosts } from "../data/api";
-import { Link } from "react-router-dom";
+import { addQuestion } from "../data/api";
 
 function AskForm() {
+  const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
   const [formData, setFormData] = useState({
     title: "",
     body: "",
@@ -16,11 +16,16 @@ function AskForm() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    // addPost({title, body, tagname});
     setFormData({
       title: "",
       body: "",
       tagname: "",
+    });
+
+    addQuestion(formData, user.token).then((response) => {
+      if (response.data) {
+        console.log("question added", response.data);
+      }
     });
   };
 
