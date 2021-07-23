@@ -6,14 +6,14 @@ import { getSingleQuestion, addAnswer } from "../data/api";
 function SingleQuestion(props) {
   const itemID = props.match.params.id;
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
-  const [postDetail, setPost] = useState([]);
+  const [postDetail, setPostDetail] = useState([]);
   const [answer, setAnswer] = useState({
     author: user.username,
+    post: props.match.params.id,
     text: "",
     votes: "",
     comment: "",
     score: "",
-    post: props.match.params.id,
   });
 
   const { text, post, votes, comment, score } = answer;
@@ -23,10 +23,10 @@ function SingleQuestion(props) {
   useEffect(() => {
     getSingleQuestion(itemID).then((response) => {
       if (response.data) {
-        setPost(response.data);
-        console.log("posts", response.data);
-        // const pp = post.createdAt.split(" ");
-        // console.log("posts", pp);
+        setPostDetail(response.data);
+        console.log("posts", response);
+        const postDate = response.data.createdAt.split("T")[0];
+        console.log("posts", postDate);
       }
     });
   }, []);
@@ -45,7 +45,7 @@ function SingleQuestion(props) {
     <div id="home-section" className="homepage">
       <Grid container>
         <Grid item xs={2} md={2} className=""></Grid>
-        <Grid item xs={9} md={9} className="">
+        <Grid item xs={8} md={8} className="">
           <div className="questions-grid">
             <h3 className="questions-headline">Top Questions</h3>
             <div className="questions-btn">
@@ -73,13 +73,13 @@ function SingleQuestion(props) {
             </div>
             <div className="col-9">
               <div className="row">
-                <p>{post.title}</p>
+                <p>{postDetail.title}</p>
                 <p>
-                  Asked on <span>{post.createdAt}</span>
+                  Asked on <span>{postDetail.createdAt}</span>
                 </p>
               </div>
               <div className="row">
-                <p>{post.body}</p>
+                <p>{postDetail.body}</p>
               </div>
               <div className="row">
                 {postDetail.tags &&
@@ -91,98 +91,87 @@ function SingleQuestion(props) {
                     );
                   })}
               </div>
-              <div className="row user-cmt">
-                <h5>Comment</h5>
-              </div>
-              <div className="row">
-                <p>User comment</p>
-              </div>
-              <div className="row">
-                <textarea
-                  className="form-control"
-                  id="exampleFormControlTextarea1"
-                  rows="1"
-                />
-                <button className="btn-cmt" variant="primary" type="submit">
-                  Comment
-                </button>
+              {/* comment section */}
+              <div className="comment-section">
+                <div className="row">
+                  <h5>Comment</h5>
+                  <textarea
+                    className="form-control"
+                    id="exampleFormControlTextarea1"
+                    rows="1"
+                  />
+                  <button
+                    className="btn btn-primary1"
+                    variant="primary"
+                    type="submit"
+                  >
+                    Comment
+                  </button>
+                </div>
               </div>
             </div>
 
-            <div className="answer"></div>
-            <form className="form" onSubmit={(e) => onSubmit(e)}>
-              <div>
-                <h5>
-                  <b>Answers</b>
-                </h5>
-                <h6>
-                  <b>Your Answers</b>
-                </h6>
-                <textarea
-                  name="text"
-                  rows="6"
-                  cols="80"
-                  placeholder="Enter your answers here....."
-                  value={text}
-                  onChange={(e) => onChange(e)}
-                ></textarea>
-              </div>
-              <button class="button" type="submit">
-                Post Your Answer
-              </button>
-            </form>
+            <div className="answer">
+              <form className="form" onSubmit={(e) => onSubmit(e)}>
+                <div>
+                  <h5>
+                    <b>Answers</b>
+                  </h5>
+                  <h6>
+                    <b>Your Answers</b>
+                  </h6>
+                  <textarea
+                    name="text"
+                    rows="6"
+                    cols="80"
+                    placeholder="Enter your answers here....."
+                    value={text}
+                    onChange={(e) => onChange(e)}
+                  ></textarea>
 
-            <div className="row">
-              <textarea
-                className="form-control"
-                id="exampleFormControlTextarea1"
-                placeholder="Comment here....."
-                rows="1"
-              />
-              <button className="btn-cmt" variant="primary" type="submit">
-                Comment
-              </button>
-            </div>
-            <div className="card">
-              <div className="card-header">
-                <b>The Overflow Blog</b>
-              </div>
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item">
-                  Tales from documentation: Write for your clueless user
-                </li>
-                <li className="list-group-item">
-                  Podcast 252: a conversation on diversity
-                </li>
-              </ul>
-              <div className="card-header">
-                <b>Upcoming Events</b>
-              </div>
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item">
-                  2021 Community Moderator Election ends in 7 days
-                </li>
-                <li className="list-group-item">
-                  2021 Community Moderator Election ends in 7 days
-                </li>
-              </ul>
-              <div className="card-header">
-                <b>Features</b>
-              </div>
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item">Login and SignUp</li>
-                <li className="list-group-item">
-                  Ask question and post answer
-                </li>
-                <li className="list-group-item">
-                  Tags, Vote, Users and Comment
-                </li>
-                <li className="list-group-item">Quiz and Study materials</li>
-              </ul>
+                  <button class="btn btn-primary1" type="submit">
+                    Post Answer
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </Grid>
-        <Grid item xs={2} md={2} className=""></Grid>
+        <Grid item xs={2} md={2} className="">
+          <div className="card">
+            <div className="card-header">
+              <b>The Overflow Blog</b>
+            </div>
+            <ul className="list-group list-group-flush">
+              <li className="list-group-item">
+                Tales from documentation: Write for your clueless user
+              </li>
+              <li className="list-group-item">
+                Podcast 252: a conversation on diversity
+              </li>
+            </ul>
+            <div className="card-header">
+              <b>Upcoming Events</b>
+            </div>
+            <ul className="list-group list-group-flush">
+              <li className="list-group-item">
+                2021 Community Moderator Election ends in 7 days
+              </li>
+              <li className="list-group-item">
+                2021 Community Moderator Election ends in 7 days
+              </li>
+            </ul>
+            <div className="card-header">
+              <b>Features</b>
+            </div>
+            <ul className="list-group list-group-flush">
+              <li className="list-group-item">Login and SignUp</li>
+              <li className="list-group-item">Ask question and post answer</li>
+              <li className="list-group-item">Tags, Vote, Users and Comment</li>
+              <li className="list-group-item">Quiz and Study materials</li>
+            </ul>
+          </div>
+        </Grid>
       </Grid>
     </div>
   );
