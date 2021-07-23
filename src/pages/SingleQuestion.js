@@ -6,16 +6,17 @@ import { getSingleQuestion, addAnswer } from "../data/api";
 function SingleQuestion(props) {
   const itemID = props.match.params.id;
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
-  const [post, setPost] = useState([]);
+  const [postDetail, setPost] = useState([]);
   const [answer, setAnswer] = useState({
     author: user.username,
     text: "",
     votes: "",
     comment: "",
     score: "",
+    post: props.match.params.id,
   });
 
-  const { text, votes, comment, score } = answer;
+  const { text, post, votes, comment, score } = answer;
   const onChange = (e) =>
     setAnswer({ ...answer, [e.target.name]: e.target.value });
 
@@ -70,11 +71,11 @@ function SingleQuestion(props) {
             </div>
             <div className="col-9">
               <div className="row">
-                <p>{post.body}</p>
+                <p>{postDetail.body}</p>
               </div>
               <div className="row">
-                {post.tags &&
-                  post.tags.map((tag, index) => {
+                {postDetail.tags &&
+                  postDetail.tags.map((tag, index) => {
                     return (
                       <span className="singleQueTag" key={index}>
                         {tag}

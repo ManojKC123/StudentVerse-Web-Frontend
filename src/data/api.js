@@ -27,7 +27,7 @@ export function addAnswer(answer, token) {
     method: "post",
     url: `${apiURL}/addAnswer`,
     body: {
-      author: answer.author,
+      post: answer.post,
       text: answer.text,
       votes: answer.votes,
       comment: answer.comment,
