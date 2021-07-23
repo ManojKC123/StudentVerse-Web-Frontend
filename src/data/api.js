@@ -1,6 +1,7 @@
 import { makeRequest } from "./request";
 
-//const apiURL = "https://student-verse.herokuapp.com";
+
+// const apiURL = "https://student-verse.herokuapp.com";
 const apiURL = "http://localhost:5000";
 const siteURI = `${window.location.origin}/`;
 
@@ -32,6 +33,17 @@ export function addAnswer(answer, token) {
       votes: answer.votes,
       comment: answer.comment,
       score: answer.score,
+    }
+  }
+  }
+export function addQuestion(formData, token) {
+  const request = {
+    method: "post",
+    url: `${apiURL}/addQuestion`,
+    body: {
+      title: formData.title,
+      body: formData.body,
+      tags: formData.tagname,
     },
     headerParams: {
       authorization: `Bearer ${token}`,
