@@ -6,16 +6,17 @@ import { getSingleQuestion, addAnswer } from "../data/api";
 function SingleQuestion(props) {
   const itemID = props.match.params.id;
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
-  const [post, setPost] = useState([]);
+  const [postDetail, setPost] = useState([]);
   const [answer, setAnswer] = useState({
     author: user.username,
     text: "",
     votes: "",
     comment: "",
     score: "",
+    post: props.match.params.id,
   });
 
-  const { text, votes, comment, score } = answer;
+  const { text, post, votes, comment, score } = answer;
   const onChange = (e) =>
     setAnswer({ ...answer, [e.target.name]: e.target.value });
 
@@ -24,6 +25,8 @@ function SingleQuestion(props) {
       if (response.data) {
         setPost(response.data);
         console.log("posts", response.data);
+        // const pp = post.createdAt.split(" ");
+        // console.log("posts", pp);
       }
     });
   }, []);
@@ -70,11 +73,17 @@ function SingleQuestion(props) {
             </div>
             <div className="col-9">
               <div className="row">
+                <p>{post.title}</p>
+                <p>
+                  Asked on <span>{post.createdAt}</span>
+                </p>
+              </div>
+              <div className="row">
                 <p>{post.body}</p>
               </div>
               <div className="row">
-                {post.tags &&
-                  post.tags.map((tag, index) => {
+                {postDetail.tags &&
+                  postDetail.tags.map((tag, index) => {
                     return (
                       <span className="singleQueTag" key={index}>
                         {tag}
@@ -82,10 +91,25 @@ function SingleQuestion(props) {
                     );
                   })}
               </div>
+              <div className="row user-cmt">
+                <h5>Comment</h5>
+              </div>
+              <div className="row">
+                <p>User comment</p>
+              </div>
+              <div className="row">
+                <textarea
+                  className="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="1"
+                />
+                <button className="btn-cmt" variant="primary" type="submit">
+                  Comment
+                </button>
+              </div>
             </div>
-          </div>
 
-          <div className="answer">
+            <div className="answer"></div>
             <form className="form" onSubmit={(e) => onSubmit(e)}>
               <div>
                 <h5>

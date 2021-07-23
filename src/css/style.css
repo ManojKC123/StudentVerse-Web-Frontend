@@ -238,7 +238,7 @@ a {
   margin: 0;
 }
 @media (max-width: 991px) {
-  .site-footer [class^='col-'] {
+  .site-footer {
     margin-bottom: 30px;
   }
 }
@@ -308,8 +308,37 @@ a {
   padding-left: 20px;
 }
 
-/* Profile page */
+/* ----- Ask question ----- */
+.post-form-container {
+  width: 100%;
+  padding: 0 20px;
+}
+.question-form {
+  background: #f8f8f8;
+  border-radius: 5px;
+  border: 1px solid #333;
+}
+.question-form {
+  padding: 20px;
+}
+.askForm .form-label {
+  font-size: 18px;
+}
+.askForm .form-label p {
+  font-size: 14px;
+}
+.askForm form input,
+.askForm form textarea {
+  display: block;
+  width: 100%;
+}
+.btn-primary.post-form {
+  width: 130px;
+  border-radius: 5px;
+  margin-top: 15px;
+}
 
+/* Profile page */
 .user-profile {
   margin-top: 50px;
   margin-bottom: 50px;
