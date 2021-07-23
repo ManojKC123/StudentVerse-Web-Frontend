@@ -26,6 +26,14 @@
   width: 100px;
   position: relative;
 }
+.btn-primary1{
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  width: 100px;
+  position: relative;
+  right: 170px;
+}
 .input-group > .form-control,
 .input-group > .form-control-plaintext {
   position: relative;
@@ -100,7 +108,7 @@
   float: center;
   margin-top: 10%;
   border: none;
-  margin-left: 10%;
+  margin-left: 26%;
   border-radius: 1.5rem;
   padding: 2%;
   background: #0062cc;
@@ -377,9 +385,90 @@ a {
 }
 
 .btn-cmt {
-  margin-top: 10px;
+ position: relative;
+ top: 95px;
+ font-size: 14px;
+ height: 50px;
+ color: #fff;
+ background-color: #007bff;
+ width: 80px;
+ right: 100px;
+ border-radius: 15px;
 }
-
 .singleQueTag {
   margin-right: 5px;
 }
+
+textarea {
+ margin-top: 80px;
+ margin-right: 30px;
+ width: 845px;
+}
+.button {
+  padding: 15px 25px;
+  font-size: 14px;
+  color: #fff;
+  background-color: #007bff;
+  height: 50px;
+  border-radius: 15px;
+  margin-left: 0px;
+  margin-top: 10px;
+  padding: auto;
+}
+.h6, h6 {
+  font-size: 1.25rem;
+  margin-left: 2px;
+  position:relative; top:1px;
+}
+.h4, h4 {
+  font-size: 1.25rem;
+  margin-left: 1px;
+  position:relative; top:110px;
+}
+.h5, h5 {
+  font-size: 1.25rem;
+  margin-left: 1px;
+  position:relative; top:110px;
+}
+textarea.form-control {
+  height: auto;
+  width: 851px;
+  margin-right: 30px;
+  position: relative;
+  left: 10px;
+  bottom: 50px;
+}
+input[type=text1] {
+  width: 64%;
+  padding: 8px 20px;
+  margin-left: 380px;
+  position: relative;
+  top: 80px;
+}
+hr {
+  width: 66%;
+  position: relative;
+  top: 80px;
+  margin-left: 370px;
+  border-top: 2px solid rgba(0,0,0,.1);
+}
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 3px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+  width: 250px;
+  margin-left: 85%;
+  bottom: 667px;
+  height: 700px;
+}
+.card > .card-header + .list-group {
+  border-top: 0;
+  height: 150px;
+}
+

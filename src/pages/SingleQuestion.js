@@ -1,11 +1,25 @@
 import { Grid } from "@material-ui/core";
-import React, { useState, useEffect, Form } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getSingleQuestion } from "../data/api";
+import { getSingleQuestion, addAnswer } from "../data/api";
 
 function SingleQuestion(props) {
   const itemID = props.match.params.id;
-  const [post, setPost] = useState([]);
+  const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
+  const [postDetail, setPost] = useState([]);
+  const [answer, setAnswer] = useState({
+    author: user.username,
+    text: "",
+    votes: "",
+    comment: "",
+    score: "",
+    post: props.match.params.id,
+  });
+
+  const { text, post, votes, comment, score } = answer;
+  const onChange = (e) =>
+    setAnswer({ ...answer, [e.target.name]: e.target.value });
+
   useEffect(() => {
     getSingleQuestion(itemID).then((response) => {
       if (response.data) {
@@ -17,6 +31,16 @@ function SingleQuestion(props) {
     });
   }, []);
 
+  function onSubmit(e) {
+    e.preventDefault();
+    console.log("answer", answer, user.token);
+    addAnswer(answer, user.token).then((response) => {
+      if (response.data) {
+        console.log("Answer added", response.data);
+      }
+    });
+  }
+
   return (
     <div id="home-section" className="homepage">
       <Grid container>
@@ -25,7 +49,7 @@ function SingleQuestion(props) {
           <div className="questions-grid">
             <h3 className="questions-headline">Top Questions</h3>
             <div className="questions-btn">
-              <Link to="/ask-question" className="btn btn-primary">
+              <Link to="/ask-question" className="btn btn-primary1">
                 Ask Question
               </Link>
             </div>
@@ -58,8 +82,8 @@ function SingleQuestion(props) {
                 <p>{post.body}</p>
               </div>
               <div className="row">
-                {post.tags &&
-                  post.tags.map((tag, index) => {
+                {postDetail.tags &&
+                  postDetail.tags.map((tag, index) => {
                     return (
                       <span className="singleQueTag" key={index}>
                         {tag}
@@ -84,9 +108,79 @@ function SingleQuestion(props) {
                 </button>
               </div>
             </div>
-          </div>
 
-          <div className="answer"></div>
+            <div className="answer"></div>
+            <form className="form" onSubmit={(e) => onSubmit(e)}>
+              <div>
+                <h5>
+                  <b>Answers</b>
+                </h5>
+                <h6>
+                  <b>Your Answers</b>
+                </h6>
+                <textarea
+                  name="text"
+                  rows="6"
+                  cols="80"
+                  placeholder="Enter your answers here....."
+                  value={text}
+                  onChange={(e) => onChange(e)}
+                ></textarea>
+              </div>
+              <button class="button" type="submit">
+                Post Your Answer
+              </button>
+            </form>
+
+            <div className="row">
+              <textarea
+                className="form-control"
+                id="exampleFormControlTextarea1"
+                placeholder="Comment here....."
+                rows="1"
+              />
+              <button className="btn-cmt" variant="primary" type="submit">
+                Comment
+              </button>
+            </div>
+            <div className="card">
+              <div className="card-header">
+                <b>The Overflow Blog</b>
+              </div>
+              <ul className="list-group list-group-flush">
+                <li className="list-group-item">
+                  Tales from documentation: Write for your clueless user
+                </li>
+                <li className="list-group-item">
+                  Podcast 252: a conversation on diversity
+                </li>
+              </ul>
+              <div className="card-header">
+                <b>Upcoming Events</b>
+              </div>
+              <ul className="list-group list-group-flush">
+                <li className="list-group-item">
+                  2021 Community Moderator Election ends in 7 days
+                </li>
+                <li className="list-group-item">
+                  2021 Community Moderator Election ends in 7 days
+                </li>
+              </ul>
+              <div className="card-header">
+                <b>Features</b>
+              </div>
+              <ul className="list-group list-group-flush">
+                <li className="list-group-item">Login and SignUp</li>
+                <li className="list-group-item">
+                  Ask question and post answer
+                </li>
+                <li className="list-group-item">
+                  Tags, Vote, Users and Comment
+                </li>
+                <li className="list-group-item">Quiz and Study materials</li>
+              </ul>
+            </div>
+          </div>
         </Grid>
         <Grid item xs={2} md={2} className=""></Grid>
       </Grid>
