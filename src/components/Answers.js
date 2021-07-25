@@ -54,7 +54,7 @@ function Answers(props) {
             answerDetails.map((answer, index) => {
               return (
                 <div className="answerDetail" key={index}>
-                  <div className="">
+                  <div className="answer-wrap">
                     <div className="answerVotes">
                       <div className="vote-box">
                         <span>
@@ -77,7 +77,9 @@ function Answers(props) {
 
                   <div className="answer-section">
                     <div className="answer-utils">
-                      <a href="/">Edit</a>
+                      <Link to="/" className="btn btn-primary1">
+                        Edit
+                      </Link>
                     </div>
                     <div className="answer-author">
                       <div className="answer-time">answered 5 mins ago</div>

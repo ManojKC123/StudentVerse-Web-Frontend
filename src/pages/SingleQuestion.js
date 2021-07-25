@@ -1,9 +1,6 @@
 import { Grid } from "@material-ui/core";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { getSingleQuestion, addAnswer, getAnswer } from "../data/api";
-import { ExpandLess, ExpandMore } from "@material-ui/icons";
-import pp from "../media/user.png";
 import Answers from "../components/Answers";
 import QuestionDetail from "../components/QuestionDetail";
 
@@ -12,20 +9,22 @@ function SingleQuestion(props) {
   console.log("singlequeston props", props);
 
   return (
-    <div id="home-section" className="homepage">
+    <div id="" className="questions-page">
       <Grid container>
         <Grid item md={2} className=""></Grid>
         <Grid item md={8} className="">
-          <div className="questions-grid">
-            <h3 className="questions-headline">Top Questions</h3>
-            <div className="questions-btn">
-              <Link to="/ask-question" className="btn btn-primary1">
-                Ask Question
-              </Link>
+          <div className="questions-grid-wrap">
+            <div className="questions-grid">
+              <h3 className="questions-headline">Top Questions</h3>
+              <div className="questions-btn">
+                <Link to="/ask-question" className="btn btn-primary1">
+                  Ask Question
+                </Link>
+              </div>
             </div>
+            <QuestionDetail itemID={itemID} />
+            <Answers itemID={itemID} />
           </div>
-          <QuestionDetail itemID={itemID} />
-          <Answers itemID={itemID} />
         </Grid>
         <Grid item xs={2} md={2} className="">
           <div className="card">
