@@ -376,10 +376,40 @@ a {
 }
 
 /* Single Question Answer */
+.stats {
+  text-align: center;
+}
+.stats {
+  text-align: center;
+}
 .singleQueTag {
   margin-right: 5px;
 }
 .card > .card-header + .list-group {
   border-top: 0;
   height: 150px;
+}
+.vote-box {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.answer-section {
+  justify-content: space-between;
+}
+.answer-time {
+  margin-bottom: 5px;
+}
+.answer-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.answer-profile-pp {
+  width: 45px;
+  height: 45px;
+  margin-right: 10px;
+}
+.answer-profile-pp img {
+  width: 100%;
 }
