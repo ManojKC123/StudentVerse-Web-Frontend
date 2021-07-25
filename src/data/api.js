@@ -56,3 +56,12 @@ export function addQuestion(formData, token) {
 
   return makeRequest(request);
 }
+
+export function getAnswer(id) {
+  const request = {
+    method: "get",
+    url: `${apiURL}/answers/${id}`,
+  };
+
+  return makeRequest(request);
+}
