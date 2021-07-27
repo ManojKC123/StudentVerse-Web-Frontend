@@ -10,6 +10,7 @@ function Answers(props) {
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
   const [postDetail, setPostDetail] = useState([]);
   const [answerDetails, setAnswerDetails] = useState([]);
+
   const [answer, setAnswer] = useState({
     author: user.username,
     post: props.itemID,
@@ -93,10 +94,22 @@ function Answers(props) {
                       </div>
                     </div>
                   </div>
+
                   {/* comment section */}
-                  {/* Comments here */}
                   <div className="comment-section">
-                    <div className="">
+                    {comments &&
+                      comments.map((comment, index) => {
+                        return (
+                          <div className="comments">
+                            <p>{comment}</p>
+                            <span>
+                              {comment_author} at {comment_date_time}
+                            </span>
+                          </div>
+                        );
+                      })}
+
+                    <div className="comment-box">
                       <h5>Comment</h5>
                       <textarea
                         className="form-control"
