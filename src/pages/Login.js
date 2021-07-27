@@ -29,6 +29,7 @@ class LoginIn extends Component {
         };
         localStorage.setItem("user", JSON.stringify(user));
         localStorage.setItem("token", response.data.token);
+        window.location.href = "/";
       })
       .catch((err) => {
         console.log(err);

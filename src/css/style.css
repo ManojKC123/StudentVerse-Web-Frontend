@@ -40,6 +40,11 @@
   margin-top: 1px;
   margin-left: 20px;
 }
+.menu-nav
+  .MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded {
+  top: 65px !important;
+  right: 20px;
+}
 /* Register page */
 .register {
   background: -webkit-linear-gradient(left, #1f1c4e, #1391b4);
@@ -296,6 +301,8 @@ a {
 }
 .posts {
   display: flex;
+  border-bottom: 1px solid #d2d2d2;
+  padding: 10px 0;
 }
 .stats-container {
   min-width: 120px;
@@ -440,4 +447,27 @@ a {
 }
 .answer-profile-pp img {
   width: 100%;
+}
+/* vote section in answer */
+.vote-box-inner {
+  position: relative;
+}
+.vote-btns {
+  font-size: 45px !important;
+}
+.vote-btns-ani-wrap .vote-btns:last-child {
+  top: 8px;
+  position: absolute;
+}
+.none {
+  display: none !important;
+}
+.vote-btns-ani-wrap {
+  position: absolute;
+  top: 20px;
+  right: 25%;
+  display: flex;
+  flex-direction: column;
+}
+.btn-vote-trigger {
 }

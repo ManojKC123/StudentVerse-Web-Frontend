@@ -50,15 +50,15 @@ const Header = (props) => {
         className="collapse navbar-collapse justify-content-start"
       >
         <div className="navbar-nav">
-          <a href="#" className="nav-item nav-link">
+          <Link href="#" className="nav-item nav-link">
             Questions
-          </a>
-          <a href="#" className="nav-item nav-link">
+          </Link>
+          <Link href="#" className="nav-item nav-link">
             Quiz
-          </a>
-          <a href="#" className="nav-item nav-link">
+          </Link>
+          <Link href="#" className="nav-item nav-link">
             Study Materials
-          </a>
+          </Link>
         </div>
         <form className="navbar-form form-inline">
           <div className="input-group search-box">
@@ -112,7 +112,6 @@ const Header = (props) => {
 
                 <MenuItem onClick={handleClose} className="nav-menu-item-fdc">
                   <Link to="/logout" onClick={() => logoutUser()}>
-                    <span className="block">{user.username}</span>
                     <span>Logout</span>
                   </Link>
                 </MenuItem>

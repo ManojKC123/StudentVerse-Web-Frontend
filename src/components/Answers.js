@@ -3,13 +3,14 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { addAnswer, getAnswer } from "../data/api";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
+import Button from "@material-ui/core/Button";
 import pp from "../media/user.png";
 
 function Answers(props) {
   const itemID = props.itemID;
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
-  const [postDetail, setPostDetail] = useState([]);
   const [answerDetails, setAnswerDetails] = useState([]);
+  const [voteAnimation, setVoteAnimation] = useState(false);
   const [answer, setAnswer] = useState({
     author: user.username,
     post: props.itemID,
@@ -18,7 +19,7 @@ function Answers(props) {
     comment: "",
     score: "",
   });
-  const { text, post, votes, comment, score } = answer;
+  const { text } = answer;
 
   const onChange = (e) =>
     setAnswer({ ...answer, [e.target.name]: e.target.value });
@@ -43,6 +44,10 @@ function Answers(props) {
       }
     });
   }
+
+  function animateVoteBtn(e) {
+    setVoteAnimation(true);
+  }
   return (
     <div className="answer">
       <form className="form" onSubmit={(e) => onSubmit(e)}>
@@ -57,14 +62,29 @@ function Answers(props) {
                   <div className="answer-wrap">
                     <div className="answerVotes">
                       <div className="vote-box">
-                        <span>
-                          <ExpandLess />
-                        </span>
+                        <div className="vote-box-inner">
+                          <Button
+                            className="btn-vote-trigger"
+                            onClick={animateVoteBtn}
+                          >
+                            <ExpandLess className="vote-btns" />
+                          </Button>
+                          <div
+                            className={
+                              !voteAnimation
+                                ? "vote-btns-ani-wrap none"
+                                : "vote-btns-ani-wrap"
+                            }
+                          >
+                            <ExpandLess className="vote-btns" />
+                            <ExpandLess className="vote-btns" />
+                          </div>
+                        </div>
                         <span>
                           <span>Vote</span>
                         </span>
                         <span>
-                          <ExpandMore />
+                          <ExpandMore className="vote-buttons" />
                         </span>
                       </div>
                     </div>
