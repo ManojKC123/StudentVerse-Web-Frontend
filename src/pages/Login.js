@@ -85,7 +85,7 @@ class LoginIn extends Component {
                       <input
                         type="text"
                         className="form-control"
-                        id="username"
+                        id="password"
                         value={this.state.password}
                         onChange={(event) => {
                           this.setState({
@@ -98,6 +98,7 @@ class LoginIn extends Component {
                     <button
                       type="submit"
                       className="btnRegister"
+                      id="loginBtn"
                       value="send"
                       onClick={this.loginhandler}
                     >

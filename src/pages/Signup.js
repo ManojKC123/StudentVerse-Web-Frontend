@@ -17,7 +17,7 @@ class SignUp extends Component {
   };
   sendUserData = (e) => {
     e.preventDefault();
-    console.log("this is state" + this.state);
+    // console.log("this is state" + this.state);
     const data = {
       fname: this.state.fname,
       lname: this.state.lname,
@@ -29,7 +29,7 @@ class SignUp extends Component {
     };
 
     axios
-      .post("https://student-verse.herokuapp.com/signup", data)
+      .post("http://localhost:5000/signup", data)
       .then()
       .catch((err) => {
         console.log("signup error" + err);
@@ -61,6 +61,7 @@ class SignUp extends Component {
                       <input
                         type="text"
                         className="form-control"
+                        id="firstname"
                         value={this.state.fname}
                         onChange={(event) => {
                           this.setState({ fname: event.target.value });
@@ -72,6 +73,7 @@ class SignUp extends Component {
                       <input
                         type="text"
                         className="form-control"
+                        id="lastname"
                         value={this.state.lname}
                         onChange={(event) => {
                           this.setState({ lname: event.target.value });
@@ -83,6 +85,7 @@ class SignUp extends Component {
                       <input
                         type="text"
                         className="form-control"
+                        id="username"
                         value={this.state.username}
                         onChange={(event) => {
                           this.setState({ username: event.target.value });
@@ -94,6 +97,7 @@ class SignUp extends Component {
                       <input
                         type="password"
                         className="form-control"
+                        id="password"
                         value={this.state.password}
                         onChange={(event) => {
                           this.setState({ password: event.target.value });
@@ -107,6 +111,7 @@ class SignUp extends Component {
                       <input
                         type="email"
                         className="form-control"
+                        id="email"
                         value={this.state.email}
                         onChange={(event) => {
                           this.setState({ email: event.target.value });
@@ -118,6 +123,7 @@ class SignUp extends Component {
                       <input
                         type="text"
                         className="form-control"
+                        id="address"
                         value={this.state.address}
                         onChange={(event) => {
                           this.setState({ address: event.target.value });
@@ -130,6 +136,7 @@ class SignUp extends Component {
                         type="text"
                         name="txtEmpPhone"
                         className="form-control"
+                        id="mobile"
                         value={this.state.mobile}
                         onChange={(event) => {
                           this.setState({ mobile: event.target.value });
@@ -140,6 +147,7 @@ class SignUp extends Component {
                     <button
                       type="submit"
                       className="btnRegister"
+                      id="signupBtn"
                       value="send"
                       onClick={this.sendUserData}
                     >
