@@ -19,7 +19,7 @@ class LoginIn extends Component {
   loginhandler = (e) => {
     e.preventDefault();
     axios
-      .post("https://student-verse.herokuapp.com/login", this.state)
+      .post("http://localhost:5000/login", this.state)
       .then((response) => {
         console.log(response);
         var user = {
@@ -71,7 +71,7 @@ class LoginIn extends Component {
                       <input
                         type="text"
                         className="form-control"
-                        id="username"
+                        id="usernamelogin"
                         value={this.state.username}
                         onChange={(event) => {
                           this.setState({
@@ -85,7 +85,7 @@ class LoginIn extends Component {
                       <input
                         type="text"
                         className="form-control"
-                        id="password"
+                        id="passwordlogin"
                         value={this.state.password}
                         onChange={(event) => {
                           this.setState({

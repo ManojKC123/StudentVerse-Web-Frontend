@@ -9,7 +9,7 @@ function Answers(props) {
   const itemID = props.itemID;
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
   const [postDetail, setPostDetail] = useState([]);
-  const [answerDetails, setAnswerDetails] = useState([]);
+  const [answerDetails, setAnswerDetails, comments] = useState([]);
 
   const [answer, setAnswer] = useState({
     author: user.username,
