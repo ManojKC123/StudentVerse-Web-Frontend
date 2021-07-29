@@ -21,15 +21,16 @@ class LoginIn extends Component {
     axios
       .post("https://student-verse.herokuapp.com/login", this.state)
       .then((response) => {
-        console.log(response);
-        var user = {
-          username: this.state.username,
-          token: response.data.token,
-          isLoggedIn: true,
-        };
-        localStorage.setItem("user", JSON.stringify(user));
-        localStorage.setItem("token", response.data.token);
-        window.location.href = "/";
+        if (response.data.success === true) {
+          var user = {
+            username: this.state.username,
+            token: response.data.token,
+            isLoggedIn: true,
+          };
+          localStorage.setItem("user", JSON.stringify(user));
+          localStorage.setItem("token", response.data.token);
+          window.location.href = "/";
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -44,8 +45,9 @@ class LoginIn extends Component {
     }
 
     if (this.state.isLoggedIn === true) {
-      return (window.location.href = "/profile");
+      return (window.location.href = "/");
     }
+
     return (
       <div className="container register">
         <div className="row">

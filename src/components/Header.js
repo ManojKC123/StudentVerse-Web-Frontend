@@ -32,9 +32,8 @@ const Header = (props) => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <img src="images/logo.png" className="logo" alt=""></img>
       <a href="/" className="navbar-brand">
-        Student<b>Verse</b>
+        <img src="images/logo.png" className="logo" alt="" />
       </a>
       <button
         type="button"
