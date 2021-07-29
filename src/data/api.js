@@ -1,7 +1,7 @@
 import { makeRequest } from "./request";
 
-// const apiURL = "https://student-verse.herokuapp.com";
-const apiURL = "http://localhost:5000";
+const apiURL = "https://student-verse.herokuapp.com";
+// const apiURL = "http://localhost:5000";
 const siteURI = `${window.location.origin}/`;
 
 export function getTopPosts() {
@@ -61,6 +61,37 @@ export function getAnswer(id) {
   const request = {
     method: "get",
     url: `${apiURL}/answers/${id}`,
+  };
+
+  return makeRequest(request);
+}
+
+export function upvote(voteData, token) {
+  const request = {
+    method: "post",
+    url: `${apiURL}/upvote`,
+    body: {
+      post: voteData.post,
+      answer: voteData.answer,
+    },
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+
+  return makeRequest(request);
+}
+export function downvote(voteData, token) {
+  const request = {
+    method: "post",
+    url: `${apiURL}/downvote`,
+    body: {
+      post: voteData.post,
+      answer: voteData.answer,
+    },
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
   };
 
   return makeRequest(request);
