@@ -110,6 +110,7 @@ function Answers(props) {
                   <div className="answer-wrap">
                     <div className="answerVotes">
                       <div className="vote-box">
+                        {/* upvote button */}
                         <div className="vote-box-inner">
                           <Button
                             className="height"
@@ -123,6 +124,7 @@ function Answers(props) {
                         <span>
                           <h2>0</h2>
                         </span>
+                        {/* downvote button */}
                         <div className="vote-box-inner">
                           <Button
                             className="height"
