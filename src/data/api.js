@@ -65,3 +65,34 @@ export function getAnswer(id) {
 
   return makeRequest(request);
 }
+
+export function upvote(voteData, token) {
+  const request = {
+    method: "post",
+    url: `${apiURL}/upvote`,
+    body: {
+      post: voteData.post,
+      answer: voteData.answer,
+    },
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+
+  return makeRequest(request);
+}
+export function downvote(voteData, token) {
+  const request = {
+    method: "post",
+    url: `${apiURL}/downvote`,
+    body: {
+      post: voteData.post,
+      answer: voteData.answer,
+    },
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+
+  return makeRequest(request);
+}

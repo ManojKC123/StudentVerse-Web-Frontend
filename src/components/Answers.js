@@ -5,12 +5,13 @@ import { addAnswer, getAnswer } from "../data/api";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 import Button from "@material-ui/core/Button";
 import pp from "../media/user.png";
+import { upvote, downvote } from "../data/api";
 
 function Answers(props) {
   const itemID = props.itemID;
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
   const [answerDetails, setAnswerDetails] = useState([]);
-  const [voteAnimation, setVoteAnimation] = useState(false);
+  const [clickID, setClickId] = useState(null);
   const [answer, setAnswer] = useState({
     author: user.username,
     post: props.itemID,
@@ -28,7 +29,7 @@ function Answers(props) {
     getAnswer(itemID).then((response) => {
       if (response.data) {
         setAnswerDetails(response.data);
-        console.log("answer-details", response);
+        console.log("answer-details id", response.data);
         // const postDate = response.data.createdAt.split("T")[0];
       }
     });
@@ -45,9 +46,56 @@ function Answers(props) {
     });
   }
 
-  function animateVoteBtn(e) {
-    setVoteAnimation(true);
-  }
+  const renderExpand = ({ type, id }) => {
+    setTimeout(() => {
+      setClickId(null);
+    }, 2000);
+    if (type === 1) {
+      if (clickID && clickID === id) {
+        return (
+          <div className={`vote-btns-ani-wrap-up animation-up`}>
+            <ExpandLess className="vote-btns" />
+            <ExpandLess className="vote-btns" />
+          </div>
+        );
+      } else {
+        return <ExpandLess className="vote-btns" />;
+      }
+    }
+
+    if (type === 0) {
+      if (clickID && clickID === id) {
+        return (
+          <div className={`vote-btns-ani-wrap-down animation-down`}>
+            <ExpandMore className="vote-btns" />
+            <ExpandMore className="vote-btns" />
+          </div>
+        );
+      } else {
+        return <ExpandMore className="vote-btns" />;
+      }
+    }
+  };
+
+  const trigVote = ({ id, direction }) => {
+    setClickId(id + direction);
+    const voteData = {
+      answer: id,
+      post: itemID,
+    };
+    direction === "up"
+      ? upvote(voteData, user.token).then((response) => {
+          if (response.data) {
+            console.log("upvoted", response);
+          }
+        })
+      : downvote(voteData, user.token).then((response) => {
+          if (response.data) {
+            console.log("downVoted", response);
+          }
+        });
+  };
+
   return (
     <div className="answer">
       <form className="form" onSubmit={(e) => onSubmit(e)}>
@@ -64,28 +112,27 @@ function Answers(props) {
                       <div className="vote-box">
                         <div className="vote-box-inner">
                           <Button
-                            className="btn-vote-trigger"
-                            onClick={animateVoteBtn}
+                            className="height"
+                            onClick={(e) => {
+                              trigVote({ id: answer.id, direction: "up" });
+                            }}
                           >
-                            <ExpandLess className="vote-btns" />
+                            {renderExpand({ type: 1, id: answer.id + "up" })}
                           </Button>
-                          <div
-                            className={
-                              !voteAnimation
-                                ? "vote-btns-ani-wrap none"
-                                : "vote-btns-ani-wrap"
-                            }
-                          >
-                            <ExpandLess className="vote-btns" />
-                            <ExpandLess className="vote-btns" />
-                          </div>
                         </div>
                         <span>
-                          <span>Vote</span>
+                          <h2>0</h2>
                         </span>
-                        <span>
-                          <ExpandMore className="vote-buttons" />
-                        </span>
+                        <div className="vote-box-inner">
+                          <Button
+                            className="height"
+                            onClick={(e) => {
+                              trigVote({ id: answer.id, direction: "down" });
+                            }}
+                          >
+                            {renderExpand({ type: 0, id: answer.id + "down" })}
+                          </Button>
+                        </div>
                       </div>
                     </div>
                     <div className="answerMain">
