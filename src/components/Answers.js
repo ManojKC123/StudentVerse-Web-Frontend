@@ -1,30 +1,49 @@
 import { Grid } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { addAnswer, getAnswer } from "../data/api";
+import { addAnswer, addComment, getAnswer, getComment } from "../data/api";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 import Button from "@material-ui/core/Button";
 import pp from "../media/user.png";
 import { upvote, downvote } from "../data/api";
 
 function Answers(props) {
+  console.log("answer props", props);
   const itemID = props.itemID;
+  const questionID = props.itemID;
+  const answerID = props.answerID;
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
-  const [postDetail, setPostDetail] = useState([]);
   const [answerDetails, setAnswerDetails] = useState([]);
+<<<<<<< HEAD
+  const [commentDetails, setCommentDetails] = useState([]);
+
+=======
   const [clickID, setClickId] = useState(null);
+>>>>>>> dev
   const [answer, setAnswer] = useState({
     author: user.username,
     post: props.itemID,
     text: "",
-    votes: "",
-    comment: "",
-    score: "",
   });
+<<<<<<< HEAD
+
+  const [comment, setComment] = useState({
+    textC: "",
+    questionId: "",
+    answerId: "",
+  });
+  const { textC, answerId, questionId } = comment;
+
+  const { text, post } = answer;
+=======
   const { text } = answer;
+>>>>>>> dev
 
   const onChange = (e) =>
     setAnswer({ ...answer, [e.target.name]: e.target.value });
+
+  const getCommentData = (e) =>
+    setComment({ ...comment, [e.target.name]: e.target.value });
 
   useEffect(() => {
     getAnswer(itemID).then((response) => {
@@ -32,21 +51,40 @@ function Answers(props) {
         setAnswerDetails(response.data);
         console.log("answer-details id", response.data);
         // const postDate = response.data.createdAt.split("T")[0];
+        // console.log("after setting ans", answerDetails);
       }
     });
+<<<<<<< HEAD
+  }, []);
+
+  console.log("after setting ans 1", answerDetails);
+  function submitComment(id) {
+    // e.preventDefault();
+    const commentD = { textC, questionID, id };
+    console.log("comment data", commentD);
+    addComment(commentD, user.token).then((response) => {
+      if (response.data) {
+        console.log("coment added", response.data);
+      }
+    });
+  }
+=======
   }, [answerDetails, itemID]);
   console.log("answer-details abcd", answerDetails);
+>>>>>>> dev
 
   function onSubmit(e) {
     e.preventDefault();
     console.log("answer", answer, user.token);
     addAnswer(answer, user.token).then((response) => {
       if (response.data) {
-        console.log("Answer added", response.data);
+        console.log("Answer added", response);
       }
     });
   }
 
+<<<<<<< HEAD
+=======
   const renderExpand = ({ type, id }) => {
     setTimeout(() => {
       setClickId(null);
@@ -97,9 +135,10 @@ function Answers(props) {
         });
   };
 
+>>>>>>> dev
   return (
     <div className="answer">
-      <form className="form" onSubmit={(e) => onSubmit(e)}>
+      <form className="form">
         <div>
           <h5>
             <b>Answers</b>
@@ -156,13 +195,70 @@ function Answers(props) {
                           <img src={pp} alt="" />
                         </span>
                         <span className="answer-profile-name">
-                          Mandeep Maharjan
+                          aaaaMandeep Maharjan
                         </span>
                       </div>
                     </div>
                   </div>
 
                   {/* comment section */}
+<<<<<<< HEAD
+                  <div className="comment-displayed">
+                    <div className="single-comment">
+                      {answer.comment &&
+                        answer.comment.map((coment, i) => {
+                          return (
+                            <>
+                              <div className="coment-text" key={i}>
+                                <p className="texts">{coment.text}</p>
+                                <span className="comment-author">
+                                  {coment.author}-at
+                                  <i className="coment-time">
+                                    {coment.createdAt}
+                                  </i>
+                                </span>
+                              </div>
+                            </>
+                          );
+                        })}
+                    </div>
+                  </div>
+
+                  {/* Comments here */}
+                  <div className="comment-section">
+                    <div className="">
+                      <p>
+                        <a
+                          class="btn btn-primary"
+                          data-toggle="collapse"
+                          href="#collapseExample"
+                          role="button"
+                          aria-expanded="false"
+                          aria-controls="collapseExample"
+                        >
+                          Comment here..
+                        </a>
+                      </p>
+                      <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+                          <textarea
+                            name="textC"
+                            rows="6"
+                            cols="80"
+                            placeholder="Enter your Comments here....."
+                            value={textC}
+                            onChange={(e) => getCommentData(e)}
+                          />
+                          <button
+                            className="btn btn-primary1"
+                            variant="primary"
+                            onClick={() => submitComment(answer.id)}
+                          >
+                            Comment
+                          </button>
+                        </div>
+                      </div>
+=======
                   <div className="comment-section">
                     {/* comements here */}
 
@@ -182,6 +278,7 @@ function Answers(props) {
                       >
                         Comment
                       </button>
+>>>>>>> dev
                     </div>
                   </div>
                 </div>
@@ -196,9 +293,13 @@ function Answers(props) {
             placeholder="Enter your answers here....."
             value={text}
             onChange={(e) => onChange(e)}
-          ></textarea>
+          />
 
+<<<<<<< HEAD
+          <button className="btn btn-primary1" onClick={(e) => onSubmit(e)}>
+=======
           <button className="btn btn-primary1" id="addAnswer" type="submit">
+>>>>>>> dev
             Post Answer
           </button>
         </div>

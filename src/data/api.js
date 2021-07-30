@@ -66,6 +66,22 @@ export function getAnswer(id) {
   return makeRequest(request);
 }
 
+export function addComment(commentD, token) {
+  const request = {
+    method: "post",
+    url: `${apiURL}/addComment`,
+    body: {
+      question: commentD.questionID,
+      text: commentD.textC,
+      answer: commentD.id,
+    },
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+  return makeRequest(request);
+}
+
 export function upvote(voteData, token) {
   const request = {
     method: "post",
