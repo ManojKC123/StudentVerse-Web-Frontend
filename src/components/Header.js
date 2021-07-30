@@ -33,7 +33,7 @@ const Header = (props) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <a href="/" className="navbar-brand">
-        <img src="images/logo.png" className="logo" alt="" />
+        <img src="images/logo.png" className="logo" alt="StudentVerse Logo" />
       </a>
       <button
         type="button"

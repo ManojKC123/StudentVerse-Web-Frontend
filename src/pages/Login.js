@@ -28,7 +28,7 @@ class LoginIn extends Component {
   loginhandler = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/login", this.state)
+      .post("https://student-verse.herokuapp.com/login", this.state)
       .then((response) => {
         if (response.data.success === true) {
           console.log(response);
@@ -113,6 +113,7 @@ class LoginIn extends Component {
                         <input
                           type="submit"
                           className="btnRegister"
+                          id="loginBtn"
                           value="LOGIN"
                           onClick={this.notify}
                         />

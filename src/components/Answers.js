@@ -34,7 +34,7 @@ function Answers(props) {
         // const postDate = response.data.createdAt.split("T")[0];
       }
     });
-  }, []);
+  }, [answerDetails, itemID]);
   console.log("answer-details abcd", answerDetails);
 
   function onSubmit(e) {
@@ -122,7 +122,7 @@ function Answers(props) {
                           </Button>
                         </div>
                         <span>
-                          <h2>0</h2>
+                          <h2>{answer.score}</h2>
                         </span>
                         <div className="vote-box-inner">
                           <Button
@@ -179,7 +179,6 @@ function Answers(props) {
                         className="btn btn-primary1"
                         variant="primary"
                         id="addCommentTest"
-                        type="submit"
                       >
                         Comment
                       </button>
@@ -191,7 +190,7 @@ function Answers(props) {
 
           <textarea
             name="text"
-            id="answers"
+            id="post-answer"
             rows="6"
             cols="80"
             placeholder="Enter your answers here....."
@@ -199,7 +198,7 @@ function Answers(props) {
             onChange={(e) => onChange(e)}
           ></textarea>
 
-          <button className="btn btn-primary1" id="addAnswerTest" type="submit">
+          <button className="btn btn-primary1" id="addAnswer" type="submit">
             Post Answer
           </button>
         </div>
