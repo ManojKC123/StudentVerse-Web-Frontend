@@ -5,7 +5,9 @@ import Posts from "../components/Posts";
 import { getTopPosts } from "../data/api";
 
 const Home = () => {
+  const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
   const [posts, setPosts] = useState([]);
+
   useEffect(() => {
     getTopPosts().then((response) => {
       if (response.data) {
@@ -23,7 +25,10 @@ const Home = () => {
           <div className="questions-grid">
             <h3 className="questions-headline">Top Questions</h3>
             <div className="questions-btn">
-              <Link to="/ask-question" className="btn btn-primary">
+              <Link
+                to={user.token ? "/ask-question" : "/login"}
+                className="btn btn-primary"
+              >
                 Ask Question
               </Link>
             </div>

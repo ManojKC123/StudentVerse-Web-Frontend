@@ -1,5 +1,9 @@
 import React, { Component, state, getUserData } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
 
 class LoginIn extends Component {
   state = {
@@ -8,6 +12,11 @@ class LoginIn extends Component {
     token: "",
     isLoggedIn: "",
     message: "",
+  };
+  notify = () => {
+    toast.error(this.state.message, {
+      position: toast.POSITION.BOTTOM_RIGHT,
+    });
   };
 
   getUserData = (e) => {
@@ -21,14 +30,26 @@ class LoginIn extends Component {
     axios
       .post("http://localhost:5000/login", this.state)
       .then((response) => {
-        console.log(response);
-        var user = {
-          username: this.state.username,
-          token: response.data.token,
-          isLoggedIn: true,
-        };
-        localStorage.setItem("user", JSON.stringify(user));
-        localStorage.setItem("token", response.data.token);
+        if (response.data.success === true) {
+          console.log(response);
+          var user = {
+            username: this.state.username,
+            token: response.data.token,
+            isLoggedIn: true,
+            message: response.data.message,
+          };
+
+          console.log("This is message", response.data.message);
+          localStorage.setItem("user", JSON.stringify(user));
+          localStorage.setItem("token", response.data.token);
+          window.location.href = "/";
+        }
+        if (response.data.success === false) {
+          this.setState({
+            message: response.data.message,
+          });
+        }
+        console.log("thsi is esdfa", this.state.message);
       })
       .catch((err) => {
         console.log(err);
@@ -38,13 +59,10 @@ class LoginIn extends Component {
       });
   };
   render() {
-    if (this.state.message) {
-      var message = this.state.message;
+    if (this.state.isLoggedIn === true) {
+      return (window.location.href = "/");
     }
 
-    if (this.state.isLoggedIn === true) {
-      return (window.location.href = "/profile");
-    }
     return (
       <div className="container register">
         <div className="row">
@@ -65,9 +83,9 @@ class LoginIn extends Component {
                   <b>Login</b>
                 </h3>
                 <div className="row register-form">
-                  <p>{message}</p>
                   <div className="col-md-6 login-form">
                     <div className="form-group">
+<<<<<<< HEAD
                       <input
                         type="text"
                         className="form-control"
@@ -104,6 +122,42 @@ class LoginIn extends Component {
                     >
                       Login
                     </button>
+=======
+                      <form onSubmit={this.loginhandler}>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="username"
+                          value={this.state.username}
+                          onChange={(event) => {
+                            this.setState({
+                              username: event.target.value,
+                            });
+                          }}
+                          placeholder="Username"
+                        />
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="username"
+                          value={this.state.password}
+                          onChange={(event) => {
+                            this.setState({
+                              password: event.target.value,
+                            });
+                          }}
+                          placeholder="Password"
+                        />
+                        <input
+                          type="submit"
+                          className="btnRegister"
+                          value="LOGIN"
+                          onClick={this.notify}
+                        />
+                      </form>
+                    </div>
+
+>>>>>>> dev
                     <div className="d-flex justify-content-center links">
                       <a href="/signup">
                         If you don't have account? <b>Go To SignUp</b>{" "}
