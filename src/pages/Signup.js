@@ -30,7 +30,7 @@ class SignUp extends Component {
   };
   sendUserData = (e) => {
     e.preventDefault();
-    console.log("this is state" + this.state);
+    // console.log("this is state" + this.state);
     const data = {
       fname: this.state.fname,
       lname: this.state.lname,
@@ -90,6 +90,7 @@ class SignUp extends Component {
                         <input
                           type="text"
                           className="form-control"
+                          id="firstnamesignup"
                           value={this.state.fname}
                           onChange={(event) => {
                             this.setState({ fname: event.target.value });
@@ -99,6 +100,7 @@ class SignUp extends Component {
                         <input
                           type="text"
                           className="form-control"
+                          id="lastnamesignup"
                           value={this.state.lname}
                           onChange={(event) => {
                             this.setState({ lname: event.target.value });
@@ -108,7 +110,7 @@ class SignUp extends Component {
                         <input
                           type="text"
                           className="form-control"
-                          value={this.state.username}
+                          id="usernamesignup"
                           onChange={(event) => {
                             this.setState({ username: event.target.value });
                           }}
@@ -117,6 +119,7 @@ class SignUp extends Component {
                         <input
                           type="password"
                           className="form-control"
+                          id="passwordsignup"
                           value={this.state.password}
                           onChange={(event) => {
                             this.setState({ password: event.target.value });
@@ -126,6 +129,7 @@ class SignUp extends Component {
                         <input
                           type="email"
                           className="form-control"
+                          id="emailsignup"
                           value={this.state.email}
                           onChange={(event) => {
                             this.setState({ email: event.target.value });
@@ -135,6 +139,7 @@ class SignUp extends Component {
                         <input
                           type="text"
                           className="form-control"
+                          id="addresssignup"
                           value={this.state.address}
                           onChange={(event) => {
                             this.setState({ address: event.target.value });
@@ -145,15 +150,17 @@ class SignUp extends Component {
                           type="text"
                           name="txtEmpPhone"
                           className="form-control"
+                          id="mobilesignup"
                           value={this.state.mobile}
                           onChange={(event) => {
                             this.setState({ mobile: event.target.value });
                           }}
                           placeholder="Mobile"
                         />
-                        <input
+                        <button
                           type="submit"
                           className="btnRegister"
+                          id="signupBtn"
                           value="send"
                           onClick={this.notify}
                         />

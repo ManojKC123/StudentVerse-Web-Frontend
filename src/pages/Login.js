@@ -85,6 +85,44 @@ class LoginIn extends Component {
                 <div className="row register-form">
                   <div className="col-md-6 login-form">
                     <div className="form-group">
+<<<<<<< HEAD
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="usernamelogin"
+                        value={this.state.username}
+                        onChange={(event) => {
+                          this.setState({
+                            username: event.target.value,
+                          });
+                        }}
+                        placeholder="Username"
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="passwordlogin"
+                        value={this.state.password}
+                        onChange={(event) => {
+                          this.setState({
+                            password: event.target.value,
+                          });
+                        }}
+                        placeholder="Password"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className="btnRegister"
+                      id="loginBtn"
+                      value="send"
+                      onClick={this.loginhandler}
+                    >
+                      Login
+                    </button>
+=======
                       <form onSubmit={this.loginhandler}>
                         <input
                           type="text"
@@ -119,6 +157,7 @@ class LoginIn extends Component {
                       </form>
                     </div>
 
+>>>>>>> dev
                     <div className="d-flex justify-content-center links">
                       <a href="/signup">
                         If you don't have account? <b>Go To SignUp</b>{" "}

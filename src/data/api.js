@@ -1,7 +1,12 @@
 import { makeRequest } from "./request";
 
+<<<<<<< HEAD
+//  const apiURL = "https://student-verse.herokuapp.com";
+ const apiURL = "http://localhost:5000";
+=======
 const apiURL = "https://student-verse.herokuapp.com";
 // const apiURL = "http://localhost:5000";
+>>>>>>> dev
 const siteURI = `${window.location.origin}/`;
 
 export function getTopPosts() {
@@ -66,6 +71,8 @@ export function getAnswer(id) {
   return makeRequest(request);
 }
 
+<<<<<<< HEAD
+=======
 export function upvote(voteData, token) {
   const request = {
     method: "post",
@@ -96,3 +103,4 @@ export function downvote(voteData, token) {
 
   return makeRequest(request);
 }
+>>>>>>> dev

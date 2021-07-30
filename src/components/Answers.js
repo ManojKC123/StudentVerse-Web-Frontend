@@ -10,6 +10,7 @@ import { upvote, downvote } from "../data/api";
 function Answers(props) {
   const itemID = props.itemID;
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
+  const [postDetail, setPostDetail] = useState([]);
   const [answerDetails, setAnswerDetails] = useState([]);
   const [clickID, setClickId] = useState(null);
   const [answer, setAnswer] = useState({
@@ -96,8 +97,6 @@ function Answers(props) {
         });
   };
 
-  const voteCount = () => {};
-
   return (
     <div className="answer">
       <form className="form" onSubmit={(e) => onSubmit(e)}>
@@ -123,7 +122,7 @@ function Answers(props) {
                           </Button>
                         </div>
                         <span>
-                          <h2>{voteCount()}</h2>
+                          <h2>0</h2>
                         </span>
                         <div className="vote-box-inner">
                           <Button
@@ -162,19 +161,24 @@ function Answers(props) {
                       </div>
                     </div>
                   </div>
+
                   {/* comment section */}
-                  {/* Comments here */}
                   <div className="comment-section">
-                    <div className="">
+                    {/* comements here */}
+
+                    <div className="comment-box">
                       <h5>Comment</h5>
                       <textarea
                         className="form-control"
                         id="exampleFormControlTextarea1"
                         rows="1"
+                        name="comment"
+                        placeholder="Leave a comment"
                       />
                       <button
                         className="btn btn-primary1"
                         variant="primary"
+                        id="addCommentTest"
                         type="submit"
                       >
                         Comment
@@ -187,6 +191,7 @@ function Answers(props) {
 
           <textarea
             name="text"
+            id="answers"
             rows="6"
             cols="80"
             placeholder="Enter your answers here....."
@@ -194,7 +199,7 @@ function Answers(props) {
             onChange={(e) => onChange(e)}
           ></textarea>
 
-          <button className="btn btn-primary1" type="submit">
+          <button className="btn btn-primary1" id="addAnswerTest" type="submit">
             Post Answer
           </button>
         </div>
