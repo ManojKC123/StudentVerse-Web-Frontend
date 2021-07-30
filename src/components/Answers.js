@@ -96,6 +96,8 @@ function Answers(props) {
         });
   };
 
+  const voteCount = () => {};
+
   return (
     <div className="answer">
       <form className="form" onSubmit={(e) => onSubmit(e)}>
@@ -121,7 +123,7 @@ function Answers(props) {
                           </Button>
                         </div>
                         <span>
-                          <h2>0</h2>
+                          <h2>{voteCount()}</h2>
                         </span>
                         <div className="vote-box-inner">
                           <Button

@@ -9,6 +9,7 @@ class SignUp extends Component {
     mobile: "",
     password: "",
     address: "",
+    user: JSON.parse(localStorage.getItem("user")) || [],
   };
   registerUser = (e) => {
     this.setState({
@@ -36,6 +37,9 @@ class SignUp extends Component {
       });
   };
   render() {
+    if (this.state.user.isLoggedIn === true) {
+      return (window.location.href = "/");
+    }
     return (
       <div className="container register">
         <div className="row">
