@@ -1,5 +1,10 @@
 import React, { Component, registerUser } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
+
 class SignUp extends Component {
   state = {
     fname: "",
@@ -10,10 +15,17 @@ class SignUp extends Component {
     password: "",
     address: "",
     user: JSON.parse(localStorage.getItem("user")) || [],
+    message: "",
+    UserRegistered: "false",
   };
   registerUser = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
+    });
+  };
+  notify = () => {
+    toast.error(this.state.message, {
+      position: toast.POSITION.BOTTOM_RIGHT,
     });
   };
   sendUserData = (e) => {
@@ -31,9 +43,21 @@ class SignUp extends Component {
 
     axios
       .post("https://student-verse.herokuapp.com/signup", data)
-      .then()
+      .then((response) => {
+        console.log("this is response", response);
+        console.log("this is response", response.data);
+
+        this.setState({
+          UserRegistered: true,
+          message: response.data.message,
+        });
+      })
       .catch((err) => {
         console.log("signup error" + err);
+
+        this.setState({
+          message: "Invalid Data Entered",
+        });
       });
   };
   render() {
@@ -59,96 +83,84 @@ class SignUp extends Component {
                 <h3 className="register-heading">
                   <b>CREATE AN ACCOUNT</b>
                 </h3>
-                <div className="row register-form" onSubmit={this.sendUserData}>
+                <div className="row register-form">
                   <div className="col-md-6">
                     <div className="form-group">
-                      <input
-                        type="text"
-                        className="form-control"
-                        value={this.state.fname}
-                        onChange={(event) => {
-                          this.setState({ fname: event.target.value });
-                        }}
-                        placeholder="First Name"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <input
-                        type="text"
-                        className="form-control"
-                        value={this.state.lname}
-                        onChange={(event) => {
-                          this.setState({ lname: event.target.value });
-                        }}
-                        placeholder="Last Name"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <input
-                        type="text"
-                        className="form-control"
-                        value={this.state.username}
-                        onChange={(event) => {
-                          this.setState({ username: event.target.value });
-                        }}
-                        placeholder="Username"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <input
-                        type="password"
-                        className="form-control"
-                        value={this.state.password}
-                        onChange={(event) => {
-                          this.setState({ password: event.target.value });
-                        }}
-                        placeholder="Password"
-                      />
+                      <form onSubmit={this.sendUserData}>
+                        <input
+                          type="text"
+                          className="form-control"
+                          value={this.state.fname}
+                          onChange={(event) => {
+                            this.setState({ fname: event.target.value });
+                          }}
+                          placeholder="First Name"
+                        />
+                        <input
+                          type="text"
+                          className="form-control"
+                          value={this.state.lname}
+                          onChange={(event) => {
+                            this.setState({ lname: event.target.value });
+                          }}
+                          placeholder="Last Name"
+                        />
+                        <input
+                          type="text"
+                          className="form-control"
+                          value={this.state.username}
+                          onChange={(event) => {
+                            this.setState({ username: event.target.value });
+                          }}
+                          placeholder="Username"
+                        />
+                        <input
+                          type="password"
+                          className="form-control"
+                          value={this.state.password}
+                          onChange={(event) => {
+                            this.setState({ password: event.target.value });
+                          }}
+                          placeholder="Password"
+                        />
+                        <input
+                          type="email"
+                          className="form-control"
+                          value={this.state.email}
+                          onChange={(event) => {
+                            this.setState({ email: event.target.value });
+                          }}
+                          placeholder="Email"
+                        />
+                        <input
+                          type="text"
+                          className="form-control"
+                          value={this.state.address}
+                          onChange={(event) => {
+                            this.setState({ address: event.target.value });
+                          }}
+                          placeholder="Address"
+                        />
+                        <input
+                          type="text"
+                          name="txtEmpPhone"
+                          className="form-control"
+                          value={this.state.mobile}
+                          onChange={(event) => {
+                            this.setState({ mobile: event.target.value });
+                          }}
+                          placeholder="Mobile"
+                        />
+                        <input
+                          type="submit"
+                          className="btnRegister"
+                          value="send"
+                          onClick={this.notify}
+                        />
+                      </form>
                     </div>
                   </div>
                   <div className="col-md-6">
-                    <div className="form-group">
-                      <input
-                        type="email"
-                        className="form-control"
-                        value={this.state.email}
-                        onChange={(event) => {
-                          this.setState({ email: event.target.value });
-                        }}
-                        placeholder="Email"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <input
-                        type="text"
-                        className="form-control"
-                        value={this.state.address}
-                        onChange={(event) => {
-                          this.setState({ address: event.target.value });
-                        }}
-                        placeholder="Address"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <input
-                        type="text"
-                        name="txtEmpPhone"
-                        className="form-control"
-                        value={this.state.mobile}
-                        onChange={(event) => {
-                          this.setState({ mobile: event.target.value });
-                        }}
-                        placeholder="Mobile"
-                      />
-                    </div>
-                    <button
-                      type="submit"
-                      className="btnRegister"
-                      value="send"
-                      onClick={this.sendUserData}
-                    >
-                      SignUp
-                    </button>
                     <div className="d-flex justify-content-center links">
                       <a href="/login">
                         Already Have Account? <b>Go To Login</b>
