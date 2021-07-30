@@ -14,18 +14,12 @@ function Answers(props) {
   const answerID = props.answerID;
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
   const [answerDetails, setAnswerDetails] = useState([]);
-<<<<<<< HEAD
-  const [commentDetails, setCommentDetails] = useState([]);
-
-=======
   const [clickID, setClickId] = useState(null);
->>>>>>> dev
   const [answer, setAnswer] = useState({
     author: user.username,
     post: props.itemID,
     text: "",
   });
-<<<<<<< HEAD
 
   const [comment, setComment] = useState({
     textC: "",
@@ -35,9 +29,6 @@ function Answers(props) {
   const { textC, answerId, questionId } = comment;
 
   const { text, post } = answer;
-=======
-  const { text } = answer;
->>>>>>> dev
 
   const onChange = (e) =>
     setAnswer({ ...answer, [e.target.name]: e.target.value });
@@ -54,8 +45,7 @@ function Answers(props) {
         // console.log("after setting ans", answerDetails);
       }
     });
-<<<<<<< HEAD
-  }, []);
+  }, [answerDetails, itemID]);
 
   console.log("after setting ans 1", answerDetails);
   function submitComment(id) {
@@ -68,10 +58,6 @@ function Answers(props) {
       }
     });
   }
-=======
-  }, [answerDetails, itemID]);
-  console.log("answer-details abcd", answerDetails);
->>>>>>> dev
 
   function onSubmit(e) {
     e.preventDefault();
@@ -83,8 +69,6 @@ function Answers(props) {
     });
   }
 
-<<<<<<< HEAD
-=======
   const renderExpand = ({ type, id }) => {
     setTimeout(() => {
       setClickId(null);
@@ -135,7 +119,6 @@ function Answers(props) {
         });
   };
 
->>>>>>> dev
   return (
     <div className="answer">
       <form className="form">
@@ -202,7 +185,6 @@ function Answers(props) {
                   </div>
 
                   {/* comment section */}
-<<<<<<< HEAD
                   <div className="comment-displayed">
                     <div className="single-comment">
                       {answer.comment &&
@@ -258,27 +240,6 @@ function Answers(props) {
                           </button>
                         </div>
                       </div>
-=======
-                  <div className="comment-section">
-                    {/* comements here */}
-
-                    <div className="comment-box">
-                      <h5>Comment</h5>
-                      <textarea
-                        className="form-control"
-                        id="exampleFormControlTextarea1"
-                        rows="1"
-                        name="comment"
-                        placeholder="Leave a comment"
-                      />
-                      <button
-                        className="btn btn-primary1"
-                        variant="primary"
-                        id="addCommentTest"
-                      >
-                        Comment
-                      </button>
->>>>>>> dev
                     </div>
                   </div>
                 </div>
@@ -295,11 +256,7 @@ function Answers(props) {
             onChange={(e) => onChange(e)}
           />
 
-<<<<<<< HEAD
           <button className="btn btn-primary1" onClick={(e) => onSubmit(e)}>
-=======
-          <button className="btn btn-primary1" id="addAnswer" type="submit">
->>>>>>> dev
             Post Answer
           </button>
         </div>
