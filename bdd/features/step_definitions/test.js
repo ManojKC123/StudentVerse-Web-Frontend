@@ -41,17 +41,23 @@ Given("Test AskQuestion functionality", { timeout: 30000 }, async function () {
 });
 Given("Test PostAnswer functionality", { timeout: 30000 }, async function () {
   let driver = await new Builder().forBrowser("chrome").build();
-  await driver.get("https://studentverse-6e382.web.app/questions/60f681de79b0dd4808c76433");
-  await driver.findElement(By.id("answers")).sendKeys("abcd");
+  await driver.get(
+    "https://studentverse-6e382.web.app/questions/60f6ea683770120e60944e3b"
+  );
+  await driver.findElement(By.id("post-answer")).sendKeys("abcd");
   await driver.sleep(delay);
-  await driver.findElement(By.id("addAnswerTest")).click();
+  await driver.findElement(By.id("addAnswer")).click();
   await driver.quit();
 });
 //Sprint 4
 Given("Test Comment functionality", { timeout: 30000 }, async function () {
   let driver = await new Builder().forBrowser("chrome").build();
-  await driver.get("https://studentverse-6e382.web.app/questions/60f681de79b0dd4808c76433");
-  await driver.findElement(By.id("exampleFormControlTextarea1")).sendKeys("wwww");
+  await driver.get(
+    "https://studentverse-6e382.web.app/questions/60f681de79b0dd4808c76433"
+  );
+  await driver
+    .findElement(By.id("exampleFormControlTextarea1"))
+    .sendKeys("wwww");
   await driver.sleep(delay);
   await driver.findElement(By.id("addCommentTest")).click();
   await driver.quit();
