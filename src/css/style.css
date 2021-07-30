@@ -40,6 +40,11 @@
   margin-top: 1px;
   margin-left: 20px;
 }
+.menu-nav
+  .MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded {
+  top: 80px !important;
+  right: 20px;
+}
 /* Register page */
 .register {
   background: -webkit-linear-gradient(left, #1f1c4e, #1391b4);
@@ -296,6 +301,8 @@ a {
 }
 .posts {
   display: flex;
+  border-bottom: 1px solid #d2d2d2;
+  padding: 10px 0;
 }
 .stats-container {
   min-width: 120px;
@@ -380,14 +387,17 @@ a {
   width: 100%;
   padding: 0 20px;
 }
-.questions-grid-wrap {
-  padding: 0 20px;
-}
-.stats {
-  text-align: center;
-}
-.stats {
-  text-align: center;
+
+.btn-cmt {
+ position: relative;
+ top: 145px;
+ font-size: 14px;
+ height: 50px;
+ color: #fff;
+ background-color: #007bff;
+ width: 80px;
+ right: 100px;
+ border-radius: 15px;
 }
 .singleQueTag {
   margin-right: 5px;
@@ -396,8 +406,10 @@ a {
   border-top: 0;
   height: 150px;
 }
-.answer-wrap {
-  display: flex;
+.h6, h6 {
+  font-size: 1.25rem;
+  margin-left: 2px;
+  position:relative; top:30px;
 }
 .answerVotes {
   width: 90px;
@@ -406,8 +418,14 @@ a {
   justify-content: space-between;
   display: flex;
 }
-.answer-author {
-  margin-right: 20px;
+textarea.form-control {
+  height: auto;
+  width: 851px;
+  margin-right: 30px;
+  position: relative;
+  left: 10px;
+  bottom: 50px;
+  top: 0px;
 }
 .answerDetail .btn.btn-primary1 {
   margin-top: 5px;
@@ -443,4 +461,74 @@ a {
 }
 .answer-profile-pp img {
   width: 100%;
+}
+/* vote section in answer */
+.vote-box-inner {
+  position: relative;
+  height: 45px;
+  overflow: hidden;
+}
+.vote-btns {
+  font-size: 45px !important;
+}
+.vote-btns-ani-wrap-up .vote-btns:last-child {
+  top: 10px;
+  position: absolute;
+}
+.vote-btns-ani-wrap-down .vote-btns:last-child {
+  top: 10px;
+  position: absolute;
+}
+.none {
+  display: none !important;
+}
+.no-opacity-up {
+  opacity: 0;
+}
+.vote-btns-ani-wrap-up {
+  position: absolute;
+  top: 20px;
+  right: 15%;
+  display: flex;
+  flex-direction: column;
+}
+.vote-btns-ani-wrap-down {
+  position: absolute;
+  top: -25px;
+  right: 15%;
+  display: flex;
+  flex-direction: column;
+}
+.height {
+  height: inherit;
+}
+.animation-up {
+  animation: slide 2s;
+}
+@keyframes slide {
+  0% {
+    -webkit-transform: translateY(-20%);
+    -ms-transform: translateY(-20%);
+    transform: translateY(-20%);
+  }
+  100% {
+    -webkit-transform: translateY(-70%);
+    -ms-transform: translateY(-70%);
+    transform: translateY(-70%);
+  }
+}
+.animation-down {
+  animation: slidedown 2s;
+}
+@keyframes slidedown {
+  0% {
+    -webkit-transform: translateY(20%);
+    -ms-transform: translateY(20%);
+    transform: translateY(20%);
+  }
+  100% {
+    -webkit-transform: translateY(70%);
+    -ms-transform: translateY(70%);
+    transform: translateY(70%);
+  }
 }

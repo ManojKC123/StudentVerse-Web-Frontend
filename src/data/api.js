@@ -82,10 +82,32 @@ export function addComment(commentD, token) {
   return makeRequest(request);
 }
 
-export function getComment(id) {
+export function upvote(voteData, token) {
   const request = {
-    method: "get",
-    url: `${apiURL}/comment/${id}`,
+    method: "post",
+    url: `${apiURL}/upvote`,
+    body: {
+      post: voteData.post,
+      answer: voteData.answer,
+    },
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+
+  return makeRequest(request);
+}
+export function downvote(voteData, token) {
+  const request = {
+    method: "post",
+    url: `${apiURL}/downvote`,
+    body: {
+      post: voteData.post,
+      answer: voteData.answer,
+    },
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
   };
 
   return makeRequest(request);

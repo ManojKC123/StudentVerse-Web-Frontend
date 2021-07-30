@@ -4,10 +4,6 @@ import Footer from "../components/Footer";
 import Grid from "@material-ui/core/Grid";
 
 const Layout = (props) => {
-  // const [user] = useState(
-  //   JSON.parse(localStorage.getItem("user")) || { isLoggedin: false }
-  // );
-
   return (
     <div className="main-container">
       <Grid container>
