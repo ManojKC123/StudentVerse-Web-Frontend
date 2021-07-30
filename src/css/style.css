@@ -389,15 +389,15 @@ a {
 }
 
 .btn-cmt {
- position: relative;
- top: 145px;
- font-size: 14px;
- height: 50px;
- color: #fff;
- background-color: #007bff;
- width: 80px;
- right: 100px;
- border-radius: 15px;
+  position: relative;
+  top: 145px;
+  font-size: 14px;
+  height: 50px;
+  color: #fff;
+  background-color: #007bff;
+  width: 80px;
+  right: 100px;
+  border-radius: 15px;
 }
 .singleQueTag {
   margin-right: 5px;
@@ -406,10 +406,12 @@ a {
   border-top: 0;
   height: 150px;
 }
-.h6, h6 {
+.h6,
+h6 {
   font-size: 1.25rem;
   margin-left: 2px;
-  position:relative; top:30px;
+  position: relative;
+  top: 30px;
 }
 .answerVotes {
   width: 90px;
@@ -462,6 +464,17 @@ textarea.form-control {
 .answer-profile-pp img {
   width: 100%;
 }
+
+/* Comment section */
+.comment-displayed {
+  padding-left: 20px;
+  background: #f4f4f4;
+  margin-right: 10px;
+}
+.answer {
+  margin-right: 15px;
+}
+
 /* vote section in answer */
 .vote-box-inner {
   position: relative;

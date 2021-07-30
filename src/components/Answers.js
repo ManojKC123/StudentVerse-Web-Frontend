@@ -45,7 +45,7 @@ function Answers(props) {
         // console.log("after setting ans", answerDetails);
       }
     });
-  }, [answerDetails, itemID]);
+  }, [answerDetails]);
 
   console.log("after setting ans 1", answerDetails);
   function submitComment(id) {
@@ -167,18 +167,18 @@ function Answers(props) {
 
                   <div className="answer-section">
                     <div className="answer-utils">
-                      <Link to="/" className="btn btn-primary1">
-                        Edit
-                      </Link>
+                      {/* <Link to="/" className="btn btn-primary1"> */}
+                      <h3>Edit</h3>
+                      {/* </Link> */}
                     </div>
                     <div className="answer-author">
-                      <div className="answer-time">answered 5 mins ago</div>
+                      <div className="answer-time">{answer.createdAt}</div>
                       <div className="answer-profile">
                         <span className="answer-profile-pp">
                           <img src={pp} alt="" />
                         </span>
                         <span className="answer-profile-name">
-                          aaaaMandeep Maharjan
+                          {answer.author} Constant Ans Author
                         </span>
                       </div>
                     </div>
@@ -193,12 +193,12 @@ function Answers(props) {
                             <>
                               <div className="coment-text" key={i}>
                                 <p className="texts">{coment.text}</p>
-                                <span className="comment-author">
-                                  {coment.author}-at
+                                <p className="comment-author">
+                                  {coment.author}Constant Coment author -at
                                   <i className="coment-time">
                                     {coment.createdAt}
                                   </i>
-                                </span>
+                                </p>
                               </div>
                             </>
                           );
@@ -213,15 +213,15 @@ function Answers(props) {
                         <a
                           class="btn btn-primary"
                           data-toggle="collapse"
-                          href="#collapseExample"
+                          href={`#commentID${answer.id}`}
                           role="button"
-                          aria-expanded="false"
+                          aria-expanded="true"
                           aria-controls="collapseExample"
                         >
                           Comment here..
                         </a>
                       </p>
-                      <div class="collapse" id="collapseExample">
+                      <div class="collapse" id={`commentID${answer.id}`}>
                         <div class="card card-body">
                           <textarea
                             name="textC"

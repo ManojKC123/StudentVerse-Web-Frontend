@@ -2,6 +2,7 @@ import React, { Component, state, getUserData } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { cssNumber } from "jquery";
 
 toast.configure();
 
@@ -43,15 +44,17 @@ class LoginIn extends Component {
           window.location.href = "/";
         }
         if (response.data.success === false) {
+          console.log("error login1", response.data.message);
           this.setState({
             message: response.data.message,
           });
         }
       })
       .catch((err) => {
+        console.log("errorlogin2", err.response.data.message);
         console.log(err);
         this.setState({
-          message: err.response.data.message,
+          message: "Invalid Credentials",
         });
       });
   };
