@@ -4,6 +4,48 @@ import { makeRequest } from "./request";
 const apiURL = "http://localhost:5000";
 const siteURI = `${window.location.origin}/`;
 
+export function login(loginData) {
+  const request = {
+    method: "post",
+    url: `${apiURL}/login`,
+    body: {
+      username: loginData.username,
+      password: loginData.password,
+    },
+  };
+
+  return makeRequest(request);
+}
+
+export function signup(signupData) {
+  const request = {
+    method: "post",
+    url: `${apiURL}/signup`,
+    body: {
+      fname: signupData.fname,
+      lname: signupData.lname,
+      email: signupData.email,
+      mobile: signupData.mobile,
+      password: signupData.password,
+      address: signupData.address,
+    },
+  };
+
+  return makeRequest(request);
+}
+
+export function getProfile(token) {
+  const request = {
+    method: "get",
+    url: `${apiURL}/profile`,
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+
+  return makeRequest(request);
+}
+
 export function getTopPosts() {
   const request = {
     method: "get",

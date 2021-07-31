@@ -1,10 +1,9 @@
-import React, { Component, state, getUserData } from "react";
-import axios from "axios";
+import React, { Component } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { login } from "../data/api";
 
 toast.configure();
-
 class LoginIn extends Component {
   state = {
     username: "",
@@ -12,6 +11,7 @@ class LoginIn extends Component {
     token: "",
     isLoggedIn: "",
     message: "",
+    user: JSON.parse(localStorage.getItem("user")) || [],
   };
   notify = () => {
     toast.error(this.state.message, {
@@ -27,38 +27,36 @@ class LoginIn extends Component {
 
   loginhandler = (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:5000/login", this.state)
+
+    login(this.state)
       .then((response) => {
-        if (response.data.success === true) {
-          console.log(response);
+        if (response.success === true) {
           var user = {
             username: this.state.username,
-            token: response.data.token,
+            token: response.token,
             isLoggedIn: true,
             message: "Login Success",
           };
-
-          console.log("This is message", response.data.message);
           localStorage.setItem("user", JSON.stringify(user));
-          localStorage.setItem("token", response.data.token);
+          localStorage.setItem("token", response.token);
           window.location.href = "/";
+          this.setState({ isLoggedIn: true });
         }
-        if (response.data.success === false) {
+        if (response.success === false) {
           this.setState({
-            message: response.data.message,
+            message: response.message,
           });
         }
       })
       .catch((err) => {
-        console.log(err);
         this.setState({
-          message: err.response.data.message,
+          message: err.response.message,
         });
       });
   };
+
   render() {
-    if (this.state.isLoggedIn === true) {
+    if (this.state.user.isLoggedIn === true) {
       return (window.location.href = "/");
     }
 

@@ -42,13 +42,10 @@ function Answers(props) {
       }
     });
   }, [answerDetails]);
-  useEffect(() => {}, [answerDetails]);
 
-  console.log("after setting ans 1", answerDetails);
   function submitComment(id) {
     // e.preventDefault();
     const commentD = { textC, questionID, id };
-    console.log("comment data", commentD);
     addComment(commentD, user.token).then((response) => {
       if (response.data) {
         console.log("coment added", response.data);
