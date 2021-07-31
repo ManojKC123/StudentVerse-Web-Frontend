@@ -105,19 +105,16 @@
 .register .register-form {
   padding: 10%;
   margin-top: 10%;
+  text-align: center;
 }
 .btnRegister {
-  float: center;
-  margin-top: 10%;
-  border: none;
-  margin-left: 26%;
-  border-radius: 1.5rem;
+  border-radius: 8px;
   padding: 2%;
   background: #0062cc;
   color: #fff;
   font-weight: 600;
+  border: none;
   width: 50%;
-  cursor: pointer;
 }
 .register .nav-tabs {
   margin-top: 3%;
@@ -158,7 +155,17 @@ a {
   margin-left: 11%;
   margin-top: 3%;
 }
-
+.form-half:last-child {
+  margin-left: 1%;
+  width: 49% !important;
+}
+.form-half:first-child {
+  margin-right: 1%;
+  width: 49% !important;
+}
+.form-half {
+  display: inline-block;
+}
 /* Login page */
 .login-form {
   margin: 0 auto;
@@ -416,10 +423,6 @@ h6 {
 .answerVotes {
   width: 90px;
 }
-.answer-section {
-  justify-content: space-between;
-  display: flex;
-}
 textarea.form-control {
   height: auto;
   width: 851px;
@@ -444,9 +447,13 @@ textarea.form-control {
 }
 .answer-section {
   justify-content: space-between;
+  display: flex;
   border-bottom: 1px solid #999;
   padding-bottom: 10px;
   margin-bottom: 10px;
+}
+.answer-wrap {
+  display: flex;
 }
 .answer-time {
   margin-bottom: 5px;

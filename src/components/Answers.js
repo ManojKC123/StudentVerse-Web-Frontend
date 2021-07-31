@@ -1,7 +1,6 @@
-import { Grid } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { addAnswer, addComment, getAnswer, getComment } from "../data/api";
+import { addAnswer, addComment, getAnswer } from "../data/api";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 import Button from "@material-ui/core/Button";
 import pp from "../media/user.png";
@@ -11,7 +10,6 @@ function Answers(props) {
   console.log("answer props", props);
   const itemID = props.itemID;
   const questionID = props.itemID;
-  const answerID = props.answerID;
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
   const [answerDetails, setAnswerDetails] = useState([]);
   const [clickID, setClickId] = useState(null);
@@ -26,9 +24,9 @@ function Answers(props) {
     questionId: "",
     answerId: "",
   });
-  const { textC, answerId, questionId } = comment;
+  const { textC } = comment;
 
-  const { text, post } = answer;
+  const { text } = answer;
 
   const onChange = (e) =>
     setAnswer({ ...answer, [e.target.name]: e.target.value });
@@ -39,10 +37,9 @@ function Answers(props) {
   useEffect(() => {
     getAnswer(itemID).then((response) => {
       if (response.data) {
+        const postDate = response.data.createdAt.split("T")[0];
+        console.log(postDate);
         setAnswerDetails(response.data);
-        console.log("answer-details id", response.data);
-        // const postDate = response.data.createdAt.split("T")[0];
-        // console.log("after setting ans", answerDetails);
       }
     });
   }, [answerDetails]);
@@ -194,9 +191,9 @@ function Answers(props) {
                               <div className="coment-text" key={i}>
                                 <p className="texts">{coment.text}</p>
                                 <p className="comment-author">
-                                  {coment.author}Constant Coment author -at
+                                  -{coment.author}Constant Coment author at
                                   <i className="coment-time">
-                                    {coment.createdAt}
+                                    {`  ${coment.createdAt}`}
                                   </i>
                                 </p>
                               </div>

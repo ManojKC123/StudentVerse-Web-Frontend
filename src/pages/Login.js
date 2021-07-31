@@ -2,7 +2,6 @@ import React, { Component, state, getUserData } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { cssNumber } from "jquery";
 
 toast.configure();
 
@@ -29,7 +28,7 @@ class LoginIn extends Component {
   loginhandler = (e) => {
     e.preventDefault();
     axios
-      .post("https://student-verse.herokuapp.com/login", this.state)
+      .post("http://localhost:5000/login", this.state)
       .then((response) => {
         if (response.data.success === true) {
           console.log(response);
@@ -39,22 +38,22 @@ class LoginIn extends Component {
             isLoggedIn: true,
             message: "Login Success",
           };
+
+          console.log("This is message", response.data.message);
           localStorage.setItem("user", JSON.stringify(user));
           localStorage.setItem("token", response.data.token);
           window.location.href = "/";
         }
         if (response.data.success === false) {
-          console.log("error login1", response.data.message);
           this.setState({
             message: response.data.message,
           });
         }
       })
       .catch((err) => {
-        console.log("errorlogin2", err.response.data.message);
         console.log(err);
         this.setState({
-          message: "Invalid Credentials",
+          message: err.response.data.message,
         });
       });
   };
@@ -83,9 +82,9 @@ class LoginIn extends Component {
                   <b>Login</b>
                 </h3>
                 <div className="row register-form">
-                  <div className="col-md-6 login-form">
-                    <div className="form-group">
-                      <form onSubmit={this.loginhandler}>
+                  <div className="col-md-7 login-form">
+                    <form onSubmit={this.loginhandler}>
+                      <div className="form-group">
                         <input
                           type="text"
                           className="form-control"
@@ -98,6 +97,8 @@ class LoginIn extends Component {
                           }}
                           placeholder="Username"
                         />
+                      </div>
+                      <div className="form-group">
                         <input
                           type="text"
                           className="form-control"
@@ -110,15 +111,15 @@ class LoginIn extends Component {
                           }}
                           placeholder="Password"
                         />
-                        <input
-                          type="submit"
-                          className="btnRegister"
-                          id="loginBtn"
-                          value="LOGIN"
-                          onClick={this.notify}
-                        />
-                      </form>
-                    </div>
+                      </div>
+                      <input
+                        type="submit"
+                        className="btnRegister"
+                        id="loginBtn"
+                        value="Login"
+                        onClick={this.notify}
+                      />
+                    </form>
 
                     <div className="d-flex justify-content-center links">
                       <a href="/signup">

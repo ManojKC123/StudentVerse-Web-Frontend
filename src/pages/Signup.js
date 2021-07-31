@@ -83,13 +83,13 @@ class SignUp extends Component {
                 <h3 className="register-heading">
                   <b>CREATE AN ACCOUNT</b>
                 </h3>
-                <div className="row register-form">
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <form onSubmit={this.sendUserData}>
+                <div className="row justify-content-md-center register-form">
+                  <div className="col-md-9">
+                    <form onSubmit={this.sendUserData}>
+                      <div className="form-group">
                         <input
                           type="text"
-                          className="form-control"
+                          className="form-control form-half"
                           id="firstnamesignup"
                           value={this.state.fname}
                           onChange={(event) => {
@@ -99,7 +99,7 @@ class SignUp extends Component {
                         />
                         <input
                           type="text"
-                          className="form-control"
+                          className="form-control form-half"
                           id="lastnamesignup"
                           value={this.state.lname}
                           onChange={(event) => {
@@ -107,25 +107,8 @@ class SignUp extends Component {
                           }}
                           placeholder="Last Name"
                         />
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="usernamesignup"
-                          onChange={(event) => {
-                            this.setState({ username: event.target.value });
-                          }}
-                          placeholder="Username"
-                        />
-                        <input
-                          type="password"
-                          className="form-control"
-                          id="passwordsignup"
-                          value={this.state.password}
-                          onChange={(event) => {
-                            this.setState({ password: event.target.value });
-                          }}
-                          placeholder="Password"
-                        />
+                      </div>
+                      <div className="form-group">
                         <input
                           type="email"
                           className="form-control"
@@ -136,6 +119,8 @@ class SignUp extends Component {
                           }}
                           placeholder="Email"
                         />
+                      </div>
+                      <div className="form-group">
                         <input
                           type="text"
                           className="form-control"
@@ -146,6 +131,20 @@ class SignUp extends Component {
                           }}
                           placeholder="Address"
                         />
+                      </div>
+                      <div className="form-group">
+                        <input
+                          type="password"
+                          className="form-control"
+                          id="passwordsignup"
+                          value={this.state.password}
+                          onChange={(event) => {
+                            this.setState({ password: event.target.value });
+                          }}
+                          placeholder="Password"
+                        />
+                      </div>
+                      <div className="form-group">
                         <input
                           type="text"
                           name="txtEmpPhone"
@@ -157,22 +156,20 @@ class SignUp extends Component {
                           }}
                           placeholder="Mobile"
                         />
-                        <button
-                          type="submit"
-                          className="btnRegister"
-                          id="signupBtn"
-                          value="send"
-                          onClick={this.notify}
-                        />
-                      </form>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="d-flex justify-content-center links">
-                      <a href="/login">
-                        Already Have Account? <b>Go To Login</b>
-                      </a>
-                    </div>
+                      </div>
+                      <button
+                        type="submit"
+                        className="btnRegister"
+                        id="signupBtn"
+                        value="Register"
+                        onClick={this.notify}
+                      >
+                        Register
+                      </button>
+                    </form>
+                    <a href="/login">
+                      Already Have Account? <b>Go To Login</b>
+                    </a>
                   </div>
                 </div>
               </div>
