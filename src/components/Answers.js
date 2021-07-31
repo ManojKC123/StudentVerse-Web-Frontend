@@ -37,12 +37,12 @@ function Answers(props) {
   useEffect(() => {
     getAnswer(itemID).then((response) => {
       if (response.data) {
-        const postDate = response.data.createdAt.split("T")[0];
-        console.log(postDate);
         setAnswerDetails(response.data);
+        console.log("answer details", response.data);
       }
     });
   }, [answerDetails]);
+  useEffect(() => {}, [answerDetails]);
 
   console.log("after setting ans 1", answerDetails);
   function submitComment(id) {
@@ -165,11 +165,16 @@ function Answers(props) {
                   <div className="answer-section">
                     <div className="answer-utils">
                       {/* <Link to="/" className="btn btn-primary1"> */}
-                      <h3>Edit</h3>
+                      {/* Edit */}
                       {/* </Link> */}
                     </div>
                     <div className="answer-author">
-                      <div className="answer-time">{answer.createdAt}</div>
+                      <div className="answer-time">
+                        {`${
+                          answer.createdAt.substring(0, 19).split("T")[0]
+                        }  / `}
+                        {answer.createdAt.substring(0, 19).split("T")[1]}
+                      </div>
                       <div className="answer-profile">
                         <span className="answer-profile-pp">
                           <img src={pp} alt="" />
@@ -191,9 +196,18 @@ function Answers(props) {
                               <div className="coment-text" key={i}>
                                 <p className="texts">{coment.text}</p>
                                 <p className="comment-author">
-                                  -{coment.author}Constant Coment author at
+                                  -{`${coment.author}ConstantComentAuthor at `}
                                   <i className="coment-time">
-                                    {`  ${coment.createdAt}`}
+                                    {`${
+                                      coment.createdAt
+                                        .substring(0, 19)
+                                        .split("T")[0]
+                                    }  / `}
+                                    {
+                                      coment.createdAt
+                                        .substring(0, 19)
+                                        .split("T")[1]
+                                    }
                                   </i>
                                 </p>
                               </div>
