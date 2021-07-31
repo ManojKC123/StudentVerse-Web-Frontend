@@ -4,16 +4,18 @@ import { getSingleQuestion } from "../data/api";
 
 function QuestionDetail(props) {
   const itemID = props.itemID;
-  const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
   const [postDetail, setPostDetail] = useState([]);
+  const [postDetdate, setPostDetDate] = useState("");
 
   useEffect(() => {
     getSingleQuestion(itemID).then((response) => {
       if (response.data) {
         setPostDetail(response.data);
-        console.log("posts", response);
-        const postDate = response.data.createdAt.split("T")[0];
-        console.log("posts", postDate);
+        const postDet =
+          response.data.createdAt.substring(0, 19).split("T")[0] +
+          " / " +
+          response.data.createdAt.substring(0, 19).split("T")[1];
+        setPostDetDate(postDet);
       }
     });
   }, []);
@@ -40,7 +42,11 @@ function QuestionDetail(props) {
             <div className="">
               <p>{postDetail.title}</p>
               <p>
-                Asked on <span>{postDetail.createdAt}</span>
+                Asked on {postDetdate}
+                {/* {postDetail.createdAt} */}
+                {/* {postDetail.createdAt.substring(0, 19)} */}
+                {/* {`${postDetail.createdAt.substring(0, 19).split("T")[0]}  / `}
+                  {postDetail.createdAt.substring(0, 19).split("T")[1]} */}
               </p>
             </div>
             <div className="">

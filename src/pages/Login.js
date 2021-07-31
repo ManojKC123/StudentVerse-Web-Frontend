@@ -1,6 +1,9 @@
-import React, { Component, state, getUserData } from "react";
-import axios from "axios";
+import React, { Component } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { login } from "../data/api";
 
+toast.configure();
 class LoginIn extends Component {
   state = {
     username: "",
@@ -8,6 +11,12 @@ class LoginIn extends Component {
     token: "",
     isLoggedIn: "",
     message: "",
+    user: JSON.parse(localStorage.getItem("user")) || [],
+  };
+  notify = () => {
+    toast.error(this.state.message, {
+      position: toast.POSITION.BOTTOM_RIGHT,
+    });
   };
 
   getUserData = (e) => {
@@ -18,33 +27,39 @@ class LoginIn extends Component {
 
   loginhandler = (e) => {
     e.preventDefault();
-    axios
-      .post("https://student-verse.herokuapp.com/login", this.state)
+
+    login(this.state)
       .then((response) => {
-        console.log(response);
-        var user = {
-          username: this.state.username,
-          token: response.data.token,
-          isLoggedIn: true,
-        };
-        localStorage.setItem("user", JSON.stringify(user));
-        localStorage.setItem("token", response.data.token);
+        if (response.success === true) {
+          var user = {
+            username: this.state.username,
+            token: response.token,
+            isLoggedIn: true,
+            message: "Login Success",
+          };
+          localStorage.setItem("user", JSON.stringify(user));
+          localStorage.setItem("token", response.token);
+          window.location.href = "/";
+          this.setState({ isLoggedIn: true });
+        }
+        if (response.success === false) {
+          this.setState({
+            message: response.message,
+          });
+        }
       })
       .catch((err) => {
-        console.log(err);
         this.setState({
-          message: err.response.data.message,
+          message: err.response.message,
         });
       });
   };
+
   render() {
-    if (this.state.message) {
-      var message = this.state.message;
+    if (this.state.user.isLoggedIn === true) {
+      return (window.location.href = "/");
     }
 
-    if (this.state.isLoggedIn === true) {
-      return (window.location.href = "/profile");
-    }
     return (
       <div className="container register">
         <div className="row">
@@ -65,44 +80,45 @@ class LoginIn extends Component {
                   <b>Login</b>
                 </h3>
                 <div className="row register-form">
-                  <p>{message}</p>
-                  <div className="col-md-6 login-form">
-                    <div className="form-group">
+                  <div className="col-md-7 login-form">
+                    <form onSubmit={this.loginhandler}>
+                      <div className="form-group">
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="usernamelogin"
+                          value={this.state.username}
+                          onChange={(event) => {
+                            this.setState({
+                              username: event.target.value,
+                            });
+                          }}
+                          placeholder="Username"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="passwordlogin"
+                          value={this.state.password}
+                          onChange={(event) => {
+                            this.setState({
+                              password: event.target.value,
+                            });
+                          }}
+                          placeholder="Password"
+                        />
+                      </div>
                       <input
-                        type="text"
-                        className="form-control"
-                        id="username"
-                        value={this.state.username}
-                        onChange={(event) => {
-                          this.setState({
-                            username: event.target.value,
-                          });
-                        }}
-                        placeholder="Username"
+                        type="submit"
+                        className="btnRegister"
+                        id="loginBtn"
+                        value="Login"
+                        onClick={this.notify}
                       />
-                    </div>
-                    <div className="form-group">
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="username"
-                        value={this.state.password}
-                        onChange={(event) => {
-                          this.setState({
-                            password: event.target.value,
-                          });
-                        }}
-                        placeholder="Password"
-                      />
-                    </div>
-                    <button
-                      type="submit"
-                      className="btnRegister"
-                      value="send"
-                      onClick={this.loginhandler}
-                    >
-                      Login
-                    </button>
+                    </form>
+
                     <div className="d-flex justify-content-center links">
                       <a href="/signup">
                         If you don't have account? <b>Go To SignUp</b>{" "}

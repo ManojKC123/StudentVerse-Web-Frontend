@@ -6,7 +6,6 @@ import QuestionDetail from "../components/QuestionDetail";
 
 function SingleQuestion(props) {
   const itemID = props.match.params.id;
-  console.log("singlequeston props", props);
 
   return (
     <div id="" className="questions-page">

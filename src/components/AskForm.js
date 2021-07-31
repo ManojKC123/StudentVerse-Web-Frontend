@@ -16,16 +16,15 @@ function AskForm() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    addQuestion(formData, user.token).then((response) => {
+      if (response.data) {
+      }
+    });
+
     setFormData({
       title: "",
       body: "",
       tagname: "",
-    });
-
-    addQuestion(formData, user.token).then((response) => {
-      if (response.data) {
-        console.log("question added", response.data);
-      }
     });
   };
 
