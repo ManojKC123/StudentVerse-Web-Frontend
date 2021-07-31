@@ -37,7 +37,10 @@ function Answers(props) {
   useEffect(() => {
     getAnswer(itemID).then((response) => {
       if (response.data) {
+        console.log("answer det", response.data);
+
         setAnswerDetails(response.data);
+        console.log("answer det", answerDetails);
       }
     });
   }, [voteDependency]);
@@ -260,7 +263,11 @@ function Answers(props) {
             onChange={(e) => onChange(e)}
           />
 
-          <button className="btn btn-primary1" onClick={(e) => onSubmit(e)}>
+          <button
+            id="addAnswer"
+            className="btn btn-primary1"
+            onClick={(e) => onSubmit(e)}
+          >
             Post Answer
           </button>
         </div>

@@ -1,7 +1,5 @@
 import React, { Component, state } from "react";
-import { Col, Container, Row, Card, Table } from "react-bootstrap";
-import axios from "axios";
-import userprofile from "../media/user.png";
+import { Container } from "react-bootstrap";
 import { getProfile } from "../data/api";
 class UserProfile extends Component {
   state = {
