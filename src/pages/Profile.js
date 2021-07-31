@@ -46,7 +46,7 @@ class UserProfile extends Component {
                   alt="student dp"
                 />
                 <h3>{this.state.username}</h3>
-                <a href={"/profileUpdate/" + this.state.user.username}>
+                <a href="/update-profile/">
                   <p>Update your profile</p>
                 </a>
               </div>
