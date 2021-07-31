@@ -42,9 +42,6 @@ class SignUp extends Component {
 
     signup(data)
       .then((response) => {
-        console.log("this is response", response);
-        console.log("this is response", response.data);
-
         this.setState({
           UserRegistered: true,
           message: response.data.message,

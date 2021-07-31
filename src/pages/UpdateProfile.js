@@ -46,7 +46,6 @@ class UpdateProfile extends Component {
         this.state.config
       )
       .then((response) => {
-        console.log(response);
         this.setState({
           checkupdate: true,
         });

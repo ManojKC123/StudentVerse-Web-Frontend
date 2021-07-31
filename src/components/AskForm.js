@@ -18,7 +18,6 @@ function AskForm() {
     e.preventDefault();
     addQuestion(formData, user.token).then((response) => {
       if (response.data) {
-        console.log("question added", response.data);
       }
     });
 

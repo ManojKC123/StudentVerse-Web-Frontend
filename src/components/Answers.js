@@ -7,12 +7,13 @@ import pp from "../media/user.png";
 import { upvote, downvote } from "../data/api";
 
 function Answers(props) {
-  console.log("answer props", props);
   const itemID = props.itemID;
   const questionID = props.itemID;
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
   const [answerDetails, setAnswerDetails] = useState([]);
   const [clickID, setClickId] = useState(null);
+  const [voteDependency, setVoteDependency] = useState("voteNull");
+
   const [answer, setAnswer] = useState({
     author: user.username,
     post: props.itemID,
@@ -33,32 +34,27 @@ function Answers(props) {
 
   const getCommentData = (e) =>
     setComment({ ...comment, [e.target.name]: e.target.value });
-
   useEffect(() => {
     getAnswer(itemID).then((response) => {
       if (response.data) {
         setAnswerDetails(response.data);
-        console.log("answer details", response.data);
       }
     });
-  }, [answerDetails]);
+  }, [voteDependency]);
 
   function submitComment(id) {
     // e.preventDefault();
     const commentD = { textC, questionID, id };
     addComment(commentD, user.token).then((response) => {
       if (response.data) {
-        console.log("coment added", response.data);
       }
     });
   }
 
   function onSubmit(e) {
     e.preventDefault();
-    console.log("answer", answer, user.token);
     addAnswer(answer, user.token).then((response) => {
       if (response.data) {
-        console.log("Answer added", response);
       }
     });
   }
@@ -103,12 +99,12 @@ function Answers(props) {
     direction === "up"
       ? upvote(voteData, user.token).then((response) => {
           if (response.data) {
-            console.log("upvoted", response);
+            setVoteDependency("VoteUp");
           }
         })
       : downvote(voteData, user.token).then((response) => {
           if (response.data) {
-            console.log("downVoted", response);
+            setVoteDependency("voteDown");
           }
         });
   };
