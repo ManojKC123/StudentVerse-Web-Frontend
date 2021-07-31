@@ -7,12 +7,13 @@ import pp from "../media/user.png";
 import { upvote, downvote } from "../data/api";
 
 function Answers(props) {
-  console.log("answer props", props);
   const itemID = props.itemID;
   const questionID = props.itemID;
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
   const [answerDetails, setAnswerDetails] = useState([]);
   const [clickID, setClickId] = useState(null);
+  const [voteDependency, setVoteDependency] = useState("voteNull");
+
   const [answer, setAnswer] = useState({
     author: user.username,
     post: props.itemID,
@@ -33,35 +34,27 @@ function Answers(props) {
 
   const getCommentData = (e) =>
     setComment({ ...comment, [e.target.name]: e.target.value });
-
   useEffect(() => {
     getAnswer(itemID).then((response) => {
       if (response.data) {
-        const postDate = response.data.createdAt.split("T")[0];
-        console.log(postDate);
         setAnswerDetails(response.data);
       }
     });
-  }, [answerDetails]);
+  }, [voteDependency]);
 
-  console.log("after setting ans 1", answerDetails);
   function submitComment(id) {
     // e.preventDefault();
     const commentD = { textC, questionID, id };
-    console.log("comment data", commentD);
     addComment(commentD, user.token).then((response) => {
       if (response.data) {
-        console.log("coment added", response.data);
       }
     });
   }
 
   function onSubmit(e) {
     e.preventDefault();
-    console.log("answer", answer, user.token);
     addAnswer(answer, user.token).then((response) => {
       if (response.data) {
-        console.log("Answer added", response);
       }
     });
   }
@@ -106,12 +99,12 @@ function Answers(props) {
     direction === "up"
       ? upvote(voteData, user.token).then((response) => {
           if (response.data) {
-            console.log("upvoted", response);
+            setVoteDependency("VoteUp");
           }
         })
       : downvote(voteData, user.token).then((response) => {
           if (response.data) {
-            console.log("downVoted", response);
+            setVoteDependency("voteDown");
           }
         });
   };
@@ -165,11 +158,16 @@ function Answers(props) {
                   <div className="answer-section">
                     <div className="answer-utils">
                       {/* <Link to="/" className="btn btn-primary1"> */}
-                      <h3>Edit</h3>
+                      {/* Edit */}
                       {/* </Link> */}
                     </div>
                     <div className="answer-author">
-                      <div className="answer-time">{answer.createdAt}</div>
+                      <div className="answer-time">
+                        {`${
+                          answer.createdAt.substring(0, 19).split("T")[0]
+                        }  / `}
+                        {answer.createdAt.substring(0, 19).split("T")[1]}
+                      </div>
                       <div className="answer-profile">
                         <span className="answer-profile-pp">
                           <img src={pp} alt="" />
@@ -191,9 +189,18 @@ function Answers(props) {
                               <div className="coment-text" key={i}>
                                 <p className="texts">{coment.text}</p>
                                 <p className="comment-author">
-                                  -{coment.author}Constant Coment author at
+                                  -{`${coment.author}ConstantComentAuthor at `}
                                   <i className="coment-time">
-                                    {`  ${coment.createdAt}`}
+                                    {`${
+                                      coment.createdAt
+                                        .substring(0, 19)
+                                        .split("T")[0]
+                                    }  / `}
+                                    {
+                                      coment.createdAt
+                                        .substring(0, 19)
+                                        .split("T")[1]
+                                    }
                                   </i>
                                 </p>
                               </div>

@@ -2,7 +2,7 @@ import React, { Component, state } from "react";
 import { Col, Container, Row, Card, Table } from "react-bootstrap";
 import axios from "axios";
 import userprofile from "../media/user.png";
-
+import { getProfile } from "../data/api";
 class UserProfile extends Component {
   state = {
     id: "",
@@ -13,28 +13,26 @@ class UserProfile extends Component {
     mobile: "",
     email: "",
     profilepic: "",
-    config: {
-      headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
-    },
     user: JSON.parse(localStorage.getItem("user")) || [],
   };
 
   componentDidMount() {
-    axios
-      .get("https://student-verse.herokuapp.com/profile", this.state.config)
+    getProfile(this.state.user.token)
       .then((response) => {
-        this.setState({
-          fname: response.data.data.fname,
-          lname: response.data.data.lname,
-          username: response.data.data.username,
-          email: response.data.data.email,
-          profilepic: response.data.data.profilepic,
-          mobile: response.data.data.mobile,
-          address: response.data.data.address,
-        });
+        if (response.success === true) {
+          this.setState({
+            fname: response.data.fname,
+            lname: response.data.lname,
+            username: response.data.username,
+            email: response.data.email,
+            profilepic: response.data.profilepic,
+            mobile: response.data.mobile,
+            address: response.data.address,
+          });
+        }
       })
       .catch((err) => {
-        console.log("PROF ERROR", err);
+        console.log("Profile Error", err);
       });
   }
   render() {

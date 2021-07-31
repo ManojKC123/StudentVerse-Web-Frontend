@@ -1,16 +1,14 @@
-import React, { Component, registerUser } from "react";
-import axios from "axios";
+import React, { Component } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { signup } from "../data/api";
 
 toast.configure();
-
 class SignUp extends Component {
   state = {
     fname: "",
     lname: "",
     email: "",
-    username: "",
     mobile: "",
     password: "",
     address: "",
@@ -18,52 +16,50 @@ class SignUp extends Component {
     message: "",
     UserRegistered: "false",
   };
+
   registerUser = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
     });
   };
+
   notify = () => {
     toast.error(this.state.message, {
       position: toast.POSITION.BOTTOM_RIGHT,
     });
   };
+
   sendUserData = (e) => {
     e.preventDefault();
-    // console.log("this is state" + this.state);
     const data = {
       fname: this.state.fname,
       lname: this.state.lname,
       email: this.state.email,
-      username: this.state.username,
       mobile: this.state.mobile,
       password: this.state.password,
       address: this.state.address,
     };
 
-    axios
-      .post("https://student-verse.herokuapp.com/signup", data)
+    signup(data)
       .then((response) => {
-        console.log("this is response", response);
-        console.log("this is response", response.data);
-
         this.setState({
           UserRegistered: true,
           message: response.data.message,
         });
       })
       .catch((err) => {
-        console.log("signup error" + err);
-
+        console.log("signup Error " + err);
         this.setState({
           message: "Invalid Data Entered",
         });
       });
   };
+
   render() {
     if (this.state.user.isLoggedIn === true) {
       return (window.location.href = "/");
     }
+
     return (
       <div className="container register">
         <div className="row">

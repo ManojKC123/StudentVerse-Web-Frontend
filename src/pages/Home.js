@@ -12,7 +12,6 @@ const Home = () => {
     getTopPosts().then((response) => {
       if (response.data) {
         setPosts(response.data);
-        console.log("posts", response.data);
       }
     });
   }, []);

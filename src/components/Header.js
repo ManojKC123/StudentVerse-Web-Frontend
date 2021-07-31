@@ -49,13 +49,13 @@ const Header = (props) => {
         className="collapse navbar-collapse justify-content-start"
       >
         <div className="navbar-nav">
-          <Link href="#" className="nav-item nav-link">
+          <Link to="/" className="nav-item nav-link">
             Questions
           </Link>
-          <Link href="#" className="nav-item nav-link">
+          <Link to="/" className="nav-item nav-link">
             Quiz
           </Link>
-          <Link href="#" className="nav-item nav-link">
+          <Link to="/" className="nav-item nav-link">
             Study Materials
           </Link>
         </div>
