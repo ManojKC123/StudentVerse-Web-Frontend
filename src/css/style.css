@@ -389,6 +389,13 @@ a {
   margin-top: 20px;
 }
 
+/* Update profile */
+.btnupProfile {
+  background-color: blue;
+  color: white;
+  margin: 16px;
+}
+
 /* Single Question Answer */
 .questions-page {
   width: 100%;

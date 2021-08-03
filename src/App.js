@@ -25,7 +25,7 @@ function App() {
             <Route path="/ask-question" component={AskQuestion} exact />
             <Route path="/" component={Home} exact />
             <Route path="/questions/:id" component={SingleQuestion} exact />
-            <Route path="/update-profile" component={UpdateProfile} exact />
+            <Route path="/user/update" component={UpdateProfile} exact />
           </Switch>
         </Layout>
       </Router>

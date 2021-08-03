@@ -39,6 +39,7 @@ class LoginIn extends Component {
           };
           localStorage.setItem("user", JSON.stringify(user));
           localStorage.setItem("token", response.token);
+          localStorage.setItem("userId", response.data.user);
           window.location.href = "/";
           this.setState({ isLoggedIn: true });
         }

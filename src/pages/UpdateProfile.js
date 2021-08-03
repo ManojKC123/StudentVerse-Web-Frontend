@@ -1,5 +1,6 @@
 import React, { Component, Container } from "react";
 import axios from "axios";
+import { upProfile } from "../data/api";
 
 class UpdateProfile extends Component {
   state = {
@@ -19,33 +20,31 @@ class UpdateProfile extends Component {
   };
 
   componentDidMount() {
-    // axios
-    //   .get("https://student-verse.herokuapp.com/profile", this.state.config)
-    //   .then((response) => {
-    //     this.setState({
-    //       fname: response.data.data.fname,
-    //       lname: response.data.data.lname,
-    //       username: response.data.data.username,
-    //       email: response.data.data.email,
-    //       profilepic: response.data.data.profilepic,
-    //       mobile: response.data.data.mobile,
-    //       address: response.data.data.address,
-    //     });
-    //   })
-    //   .catch((err) => {
-    //     console.log("PROF ERROR", err);
-    //   });
+    axios
+      .get("https://student-verse.herokuapp.com/profile", this.state.config)
+      .then((response) => {
+        this.setState({
+          fname: response.data.data.fname,
+          lname: response.data.data.lname,
+          username: response.data.data.username,
+          email: response.data.data.email,
+          profilepic: response.data.data.profilepic,
+          mobile: response.data.data.mobile,
+          address: response.data.data.address,
+        });
+      })
+      .catch((err) => {
+        console.log("PROF ERROR", err);
+      });
   }
 
   updateUserData = (e) => {
     e.preventDefault();
-    axios
-      .put(
-        "https://student-verse.herokuapp.com/profileUpdate",
-        this.state,
-        this.state.config
-      )
+    console.log("update click");
+    console.log(this.state);
+    upProfile(this.state, this.state.user.token)
       .then((response) => {
+        console.log(response);
         this.setState({
           checkupdate: true,
         });
@@ -56,7 +55,7 @@ class UpdateProfile extends Component {
   };
   render() {
     return (
-      <div className="conainer">
+      <div className="container">
         <div class="row user-profile">
           <div class="col-lg-4">
             <div class="card shadow-sm">
@@ -119,6 +118,74 @@ class UpdateProfile extends Component {
                 <h3 class="mb-0">
                   <i class="far fa-clone pr-1"></i>General Information
                 </h3>
+              </div>
+              <div class="card-body pt-0">
+                <table class="table table-bordered">
+                  <tr>
+                    <th width="30%">Email</th>
+                    <td width="2%">:</td>
+                    <td>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="updateEmail"
+                        value={this.state.email}
+                        onChange={(event) => {
+                          this.setState({
+                            email: event.target.value,
+                          });
+                        }}
+                        placeholder="E-mail"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th width="30%">Address </th>
+                    <td width="2%">:</td>
+                    <td>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="updateAddress"
+                        value={this.state.address}
+                        onChange={(event) => {
+                          this.setState({
+                            address: event.target.value,
+                          });
+                        }}
+                        placeholder="Address"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th width="30%">Mobile</th>
+                    <td width="2%">:</td>
+                    <td>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="updateMobile"
+                        value={this.state.mobile}
+                        onChange={(event) => {
+                          this.setState({
+                            mobile: event.target.value,
+                          });
+                        }}
+                        placeholder="Mobile"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <input
+                      type="submit"
+                      className="btnupProfile"
+                      id="upProfileBtn"
+                      value="Submit"
+                      onClick={this.notify}
+                      onSubmit={this.updateUserData}
+                    />
+                  </tr>
+                </table>
               </div>
             </div>
             <div class="card shadow-sm update-info">
