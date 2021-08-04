@@ -31,7 +31,7 @@ const Header = (props) => {
   useEffect(() => {}, [props, user]);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <a href="/" className="navbar-brand">
         <img src="images/logo.png" className="logo" alt="StudentVerse Logo" />
       </a>
@@ -123,3 +123,5 @@ const Header = (props) => {
   );
 };
 export default Header;
+
+
