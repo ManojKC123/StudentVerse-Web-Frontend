@@ -51,7 +51,6 @@ function Answers(props) {
     const commentD = { textC, questionID, id };
     addComment(commentD, user.token).then((response) => {
       if (response.data) {
-        console.log(response);
         toast.success(response.message, {
           position: toast.POSITION.BOTTOM_RIGHT,
         });
@@ -63,7 +62,6 @@ function Answers(props) {
     e.preventDefault();
     addAnswer(answer, user.token).then((response) => {
       if (response.data) {
-        console.log(response);
         toast.success(response.message, {
           position: toast.POSITION.BOTTOM_RIGHT,
         });

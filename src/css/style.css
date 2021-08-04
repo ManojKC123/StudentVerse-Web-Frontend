@@ -554,15 +554,14 @@ textarea.form-control {
 }
 
 /* Card Section for Study Materials */
-/* .cards-list {
+.cards-list {
   z-index: 0;
   width: 100%;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-} */
-/* 
-.card {
+}
+.card-studymaterials {
   margin: 30px auto;
   width: 500px;
   height: 300px;
@@ -573,20 +572,20 @@ textarea.form-control {
   transition: 0.4s;
 }
 
-.card .card_image {
+.card-studymaterials .card_image {
   width: inherit;
   height: inherit;
   border-radius: 40px;
 }
 
-.card .card_image img {
+.card-studymaterials .card_image img {
   width: inherit;
   height: inherit;
   border-radius: 40px;
   object-fit: cover;
 }
 
-.card .card_title {
+.card-studymaterials .card_title {
   text-align: center;
   border-radius: 0px 0px 40px 40px;
   font-family: sans-serif;
@@ -596,7 +595,7 @@ textarea.form-control {
   height: 40px;
 }
 
-.card:hover {
+.card-studymaterials:hover {
   transform: scale(0.9, 0.9);
   box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25),
     -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
@@ -612,22 +611,8 @@ textarea.form-control {
 
 @media all and (max-width: 500px) {
   .card-list {
-    /* On small screens, we are no longer using row direction but column */
-/* flex-direction: column;
+    flex-direction: column;
   }
-} */
+}
 
 /* End of Card Section */
-
-/* Start Chapter */
-/* .my-card {
-  position: absolute;
-  left: 40%;
-  top: -20px;
-  border-radius: 50%;
-}
-.card {
-  width: 442px;
-  height: 300px; */
-/* } */
-/* End of Chapter */
