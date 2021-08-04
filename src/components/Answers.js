@@ -225,7 +225,7 @@ function Answers(props) {
                           aria-expanded="true"
                           aria-controls="collapseExample"
                         >
-                          Comment here..
+                          <b>Comment here</b>
                         </a>
                       </p>
                       <div class="collapse" id={`commentID${answer.id}`}>
@@ -243,7 +243,7 @@ function Answers(props) {
                             variant="primary"
                             onClick={() => submitComment(answer.id)}
                           >
-                            Comment
+                            <b>Comment</b>
                           </button>
                         </div>
                       </div>
@@ -268,7 +268,7 @@ function Answers(props) {
             className="btn btn-primary1"
             onClick={(e) => onSubmit(e)}
           >
-            Post Answer
+            <b>Post Answer</b>
           </button>
         </div>
       </form>

@@ -28,7 +28,7 @@ const Home = () => {
                 to={user.token ? "/ask-question" : "/login"}
                 className="btn btn-primary"
               >
-                Ask Question
+               <b> Ask Question</b>
               </Link>
             </div>
           </div>
