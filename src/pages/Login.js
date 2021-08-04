@@ -13,11 +13,7 @@ class LoginIn extends Component {
     message: "",
     user: JSON.parse(localStorage.getItem("user")) || [],
   };
-  notify = () => {
-    toast.error(this.state.message, {
-      position: toast.POSITION.BOTTOM_RIGHT,
-    });
-  };
+  notify = () => {};
 
   getUserData = (e) => {
     this.setState({
@@ -35,22 +31,31 @@ class LoginIn extends Component {
             username: this.state.username,
             token: response.token,
             isLoggedIn: true,
-            message: "Login Success",
+            message: "Login Successfull !!!",
           };
           localStorage.setItem("user", JSON.stringify(user));
           localStorage.setItem("token", response.token);
           window.location.href = "/";
           this.setState({ isLoggedIn: true });
+          toast.success("Login Successfull", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
         }
         if (response.success === false) {
           this.setState({
             message: response.message,
+          });
+          toast.error(response.message, {
+            position: toast.POSITION.BOTTOM_RIGHT,
           });
         }
       })
       .catch((err) => {
         this.setState({
           message: err.response.message,
+        });
+        toast.error(err.response.message, {
+          position: toast.POSITION.BOTTOM_RIGHT,
         });
       });
   };
