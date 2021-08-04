@@ -4,6 +4,10 @@ import SearchIcon from "@material-ui/icons/Search";
 import { IconButton, Menu, MenuItem } from "@material-ui/core";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
 
 const Header = (props) => {
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
@@ -22,6 +26,9 @@ const Header = (props) => {
     //     console.log("logout response", response);
     localStorage.clear();
     window.location.href = "/";
+    toast.error("Logout Succesfull !!!", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+    });
     //   })
     //   .catch((err) => {
     //     console.log("login error", err);
@@ -55,7 +62,7 @@ const Header = (props) => {
           <Link to="/" className="nav-item nav-link">
             Quiz
           </Link>
-          <Link to="/" className="nav-item nav-link">
+          <Link to="/study-materials" className="nav-item nav-link">
             Study Materials
           </Link>
         </div>

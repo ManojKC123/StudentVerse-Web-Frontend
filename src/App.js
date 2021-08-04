@@ -12,6 +12,8 @@ import AskQuestion from "./pages/AskQuestion";
 import Layout from "./Layout/Layout";
 import SingleQuestion from "./pages/SingleQuestion";
 import UpdateProfile from "./pages/UpdateProfile";
+import StudyMaterials from "./pages/StudyMaterials";
+import Chapter from "./pages/Chapter";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
             <Route path="/" component={Home} exact />
             <Route path="/questions/:id" component={SingleQuestion} exact />
             <Route path="/update-profile" component={UpdateProfile} exact />
+            <Route path="/study-materials" component={StudyMaterials} exact />
+            <Route path="/chapter" component={Chapter} exact />
           </Switch>
         </Layout>
       </Router>

@@ -3,6 +3,7 @@ import { Col, Container, Row, Card, Table } from "react-bootstrap";
 import axios from "axios";
 import userprofile from "../media/user.png";
 import { getProfile } from "../data/api";
+
 class UserProfile extends Component {
   state = {
     id: "",

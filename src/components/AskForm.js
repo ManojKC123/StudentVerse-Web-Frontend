@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { addQuestion } from "../data/api";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
 
 function AskForm() {
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
@@ -18,6 +22,10 @@ function AskForm() {
     e.preventDefault();
     addQuestion(formData, user.token).then((response) => {
       if (response.data) {
+        console.log(response);
+        toast.success(response.message, {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
       }
     });
 
