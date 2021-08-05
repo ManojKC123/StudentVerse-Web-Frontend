@@ -23,14 +23,12 @@ const Home = () => {
         <Grid item xs={9} md={9} className="">
           <div className="questions-grid">
             <h3 className="questions-headline">Top Questions</h3>
-            <div className="questions-btn">
-              <Link
-                to={user.token ? "/ask-question" : "/login"}
-                className="btn btn-primary"
-              >
-               <b> Ask Question</b>
-              </Link>
-            </div>
+            <Link
+              to={user.token ? "/ask-question" : "/login"}
+              className="btn btn-primary"
+            >
+              Ask Question
+            </Link>
           </div>
           <div className="questions">
             {posts.map((post) => (

@@ -185,13 +185,6 @@
   margin-bottom: -15%;
   color: black;
 }
-a {
-  color: #007bff;
-  text-decoration: none;
-  background-color: transparent;
-  margin-left: 11%;
-  margin-top: 3%;
-}
 .form-half:last-child {
   margin-left: 1%;
   width: 49% !important;
@@ -221,16 +214,8 @@ a {
   border-top-color: black;
   opacity: 0.5;
 }
-copyright-text {
+.copyright-text {
   margin: 0;
-  margin-left: 5px;
-}
-a {
-  color: #007bff;
-  text-decoration: none;
-  background-color: transparent;
-  margin-left: 11%;
-  margin-top: 3%;
   margin-left: 5px;
 }
 .site-footer hr.small {
@@ -334,7 +319,7 @@ a {
 /* ----- Home Page ----- */
 .homepage {
   width: 100%;
-  margin-top: 100px;
+  margin-top: 25px;
   font-size: 18px;
   font-family: "Arial Narrow";
 }
@@ -342,12 +327,6 @@ a {
   display: inline-block;
   font-weight: bolder;
   color: black;
-}
-.questions-btn {
-  display: inline-block;
-}
-.questions-btn a {
-  width: max-content;
 }
 .posts {
   display: flex;
@@ -369,6 +348,10 @@ a {
   margin-top: 100px;
   font-size: 18px;
   font-family: "Arial Narrow";
+}
+.questions-grid {
+  display: flex;
+  justify-content: space-between;
 }
 .question-form {
   background: #f8f8f8;
@@ -616,44 +599,6 @@ textarea.form-control {
 
 /* Admin post study materials */
 
-.study-materials {
-  display: flex;
-  width: 100%;
-}
-
-.post-topic {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border-bottom: 1px solid black;
-  padding: 10px 0;
-}
-
-.post-subject-form {
-  width: 300px;
-}
-
-.btnadd-chapter {
-  justify-content: center;
-  display: flex;
-}
-
-.btnaddChapter {
-  background: #6057f0;
-  border-radius: 50%;
-  padding: 16px;
-}
-
-.sub-inputwrap {
-  height: 100px !important;
-}
-.sub-inputwrap input {
-  margin-bottom: 5px;
-}
-
-.sub-addbtnwrap {
-  height: 60px !important;
-}
-
 /* Card Section for Study Materials */
 .cards-list {
   z-index: 0;
@@ -733,19 +678,42 @@ textarea.form-control {
   top: 65px;
   min-width: 200px;
   overflow-y: scroll;
+  background: #fff;
+  opacity: 1;
+  z-index: 100;
 }
 .sidebar-inner {
   width: 100%;
 }
-.sidebar-inner ul {
+.sidebar-inner > ul {
   list-style: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 10px;
 }
+.sidebar-list {
+  margin: 15px 0;
+}
+.subject-name {
+  padding-bottom: 15px;
+}
+.sidebar-list .drop-icon,
+.sidebar-list .pull-icon {
+  float: right;
+}
+.sidebar-list > li,
+.sidebar-list > a {
+  text-decoration: none;
+  color: #677388;
+  cursor: pointer;
+  margin: 0;
+}
+.sidebar-list input {
+  margin-bottom: 5px;
+}
 .sidebar li {
-  padding: 5px;
+  padding: 10px;
 }
 .sidebar li:hover {
   background: #f2f2f2;
@@ -753,14 +721,28 @@ textarea.form-control {
 .sidebar li .sidebar-icons {
   margin-right: 5px;
 }
-.sidebar a {
-  text-decoration: none;
-  color: #677388;
+.subject-lists.toggle {
+  height: 0;
+  opacity: 0;
+  transition: all 400ms ease-in-out;
+}
+.subject-lists {
+  transition: all 400ms ease-in-out;
+  height: 100%;
+  padding-left: 15px;
 }
 .side-admin-padding {
-  padding-left: 200px;
+  padding-left: 255px;
 }
-
+.drop-icon {
+  transition: all 200ms ease-in-out;
+  transition-duration: 200ms;
+  transform: rotate(0deg);
+}
+.drop-icon.toggle {
+  transform: rotate(180deg);
+  transition: all 200ms ease-in-out;
+}
 /* Admin Dashboard */
 .adm-base-style {
   padding-left: 200px;
