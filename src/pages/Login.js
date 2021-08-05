@@ -16,12 +16,6 @@ class LoginIn extends Component {
   };
   notify = () => {};
 
-  getUserData = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-  };
-
   loginhandler = (e) => {
     e.preventDefault();
 

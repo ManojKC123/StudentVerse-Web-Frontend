@@ -12,8 +12,7 @@ import AskQuestion from "./pages/AskQuestion";
 import Layout from "./Layout/Layout";
 import SingleQuestion from "./pages/SingleQuestion";
 import UpdateProfile from "./pages/UpdateProfile";
-import StudyMaterials from "./pages/StudyMaterials";
-import Chapter from "./pages/Chapter";
+import PostStudyMaterials from "./pages/PostStudyMaterials";
 import AdminDash from "./pages/admin/AdminDash";
 import Quiz from "./pages/admin/Quiz";
 import NotFound from "./pages/NotFound";
@@ -31,19 +30,19 @@ function App() {
             <Route path="/ask-question" component={AskQuestion} exact />
             <Route path="/" component={Home} exact />
             <Route path="/questions/:id" component={SingleQuestion} exact />
+            <Route path="/user/update" component={UpdateProfile} exact />
+            <Route
+              path="/post-studymaterials"
+              component={PostStudyMaterials}
+              exact
+            />
+            <Route path="/add-chapter" component={Chapter} exact />
             <Route path="/update-profile" component={UpdateProfile} exact />
             {/* <Route path="*" component={NotFound} /> */}
 
             {/* Admin Routes */}
             <Route path="/admin" component={AdminDash} exact />
-            <Route
-              path="/admin/study-materials"
-              component={StudyMaterials}
-              exact
-            />
             <Route path="/admin/quiz" component={Quiz} exact />
-
-            <Route path="/admin/chapter" component={Chapter} exact />
           </Switch>
         </Layout>
       </Router>

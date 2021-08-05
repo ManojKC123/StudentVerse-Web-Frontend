@@ -46,6 +46,26 @@ export function getProfile(token) {
   return makeRequest(request);
 }
 
+export function upProfile(updaProfile, token) {
+  const request = {
+    method: "post",
+    url: `${apiURL}/user/update`,
+    body: {
+      fname: updaProfile.fname,
+      lname: updaProfile.lname,
+      email: updaProfile.email,
+      mobile: updaProfile.mobile,
+      password: updaProfile.password,
+      address: updaProfile.address,
+    },
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+
+  return makeRequest(request);
+}
+
 export function getTopPosts() {
   const request = {
     method: "get",

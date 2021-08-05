@@ -4,7 +4,7 @@ import { getProfile } from "../data/api";
 
 class UserProfile extends Component {
   state = {
-    id: "",
+    id: localStorage.getItem("userId"),
     fname: "",
     lname: "",
     username: "",
@@ -47,7 +47,7 @@ class UserProfile extends Component {
                   alt="student dp"
                 />
                 <h3>{this.state.username}</h3>
-                <a href="/update-profile/">
+                <a href="/user/update">
                   <p>Update your profile</p>
                 </a>
               </div>
