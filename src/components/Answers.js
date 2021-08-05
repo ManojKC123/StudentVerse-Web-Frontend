@@ -41,7 +41,10 @@ function Answers(props) {
   useEffect(() => {
     getAnswer(itemID).then((response) => {
       if (response.data) {
+        console.log("answer det", response.data);
+
         setAnswerDetails(response.data);
+        console.log("answer det", answerDetails);
       }
     });
   }, [voteDependency]);
@@ -238,7 +241,7 @@ function Answers(props) {
                           aria-expanded="true"
                           aria-controls="collapseExample"
                         >
-                          Comment here..
+                          <b>Comment here</b>
                         </a>
                       </p>
                       <div class="collapse" id={`commentID${answer.id}`}>
@@ -256,7 +259,7 @@ function Answers(props) {
                             variant="primary"
                             onClick={() => submitComment(answer.id)}
                           >
-                            Comment
+                            <b>Comment</b>
                           </button>
                         </div>
                       </div>
@@ -276,8 +279,12 @@ function Answers(props) {
             onChange={(e) => onChange(e)}
           />
 
-          <button className="btn btn-primary1" onClick={(e) => onSubmit(e)}>
-            Post Answer
+          <button
+            id="addAnswer"
+            className="btn btn-primary1"
+            onClick={(e) => onSubmit(e)}
+          >
+            <b>Post Answer</b>
           </button>
         </div>
       </form>

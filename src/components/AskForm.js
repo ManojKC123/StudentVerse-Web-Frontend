@@ -64,7 +64,7 @@ function AskForm() {
           <div className="question-layout">
             <div className="title-grid">
               <label className="form-label s-label">
-                Title
+                <b>Title</b>
                 <p className="title-desc fw-normal fs-caption">
                   Be specific and imagine you’re asking a question to another
                   person
@@ -83,7 +83,7 @@ function AskForm() {
             </div>
             <div className="body-grid">
               <label className="form-label s-label fc-black-800">
-                Body
+                <b>Body</b>
                 <p className="body-desc fw-normal fs-caption fc-black-800">
                   Include all the information someone would need to answer your
                   question
@@ -105,7 +105,7 @@ function AskForm() {
 
             <div className="tag-grid">
               <label className="form-label s-label">
-                Tag Name
+                <b>Tag Name</b>
                 <p className="tag-desc fw-normal fs-caption">
                   Add up to 5 tags to describe what your question is about
                 </p>
@@ -164,7 +164,7 @@ function AskForm() {
             name="submit-button"
             type="submit"
           >
-            Ask question
+            <b>Ask question</b>
           </button>
         </div>
       </form>

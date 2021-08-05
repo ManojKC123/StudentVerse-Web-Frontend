@@ -6,16 +6,29 @@
   height: 65px;
 }
 .navbar-light .navbar-nav .nav-link {
-  color: rgba(0, 0, 0, 0.5);
+  color: black;
   margin-left: 10px;
+  font-size: 18px;
+  font-family: "Arial Narrow";
 }
 .navbar-brand {
   display: inline-block;
   line-height: inherit;
   margin: 0;
 }
+.navbar {
+  box-shadow: -2px 2px 3px 2px rgba(0, 0, 0, 0.43);
+  -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: -2px 2px 3px 2px rgba(0, 0, 0, 0.43);
+  background-color: rgba(211, 211, 211, 0.719);
+
+  height: 70px;
+}
 .btn:not(:disabled):not(.disabled) {
   margin-right: 10px;
+  margin-top: 3px;
+  font-size: 18px;
+  font-family: "Arial Narrow";
 }
 .btn-primary {
   color: #fff;
@@ -33,10 +46,18 @@
 .input-group > .form-control-plaintext {
   position: relative;
   flex: 1 1 auto;
-  width: 335px;
   min-width: 0;
-  margin-top: 1px;
-  margin-left: 20px;
+  width: 350px;
+  margin-top: 2px;
+  margin-left: -4px;
+  font-size: 18px;
+  font-family: "Arial Narrow";
+}
+.navbar-nav {
+  list-style: none;
+  margin-right: 30px;
+  font-size: 18px;
+  font-family: "Arial Narrow";
 }
 .menu-nav
   .MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded {
@@ -59,14 +80,16 @@
 /* Register page */
 .register {
   background: -webkit-linear-gradient(left, #1f1c4e, #1391b4);
-  margin-top: 7%;
+  margin-top: 175px;
   margin-bottom: 7%;
   padding: 3%;
+  font-size: 18px;
+  font-family: "Arial Narrow";
 }
 .register-left {
   text-align: center;
   color: #fff;
-  margin-top: 4%;
+  margin-top: 2%;
 }
 .register-left input {
   border: none;
@@ -157,7 +180,7 @@
   text-align: center;
   margin-top: 8%;
   margin-bottom: -15%;
-  color: #495057;
+  color: black;
 }
 a {
   color: #007bff;
@@ -183,14 +206,16 @@ a {
 }
 /* Footer */
 .site-footer {
-  background-color: #f8f9fa !important;
+  background-color: rgba(211, 211, 211, 0.473);
   padding: 45px 0 20px;
-  font-size: 15px;
+  font-size: 18px;
   line-height: 24px;
-  color: #737373;
+  color: black;
+  margin-top: 50px;
+  font-family: "Arial Narrow";
 }
 .site-footer hr {
-  border-top-color: #bbb;
+  border-top-color: black;
   opacity: 0.5;
 }
 copyright-text {
@@ -216,7 +241,7 @@ a {
   letter-spacing: 2px;
 }
 .site-footer a {
-  color: #737373;
+  color: black;
   margin-right: 20px;
 }
 .site-footer a:hover {
@@ -231,7 +256,7 @@ a {
   display: block;
 }
 .footer-links a {
-  color: #737373;
+  color: black;
 }
 .footer-links a:active,
 .footer-links a:focus,
@@ -252,10 +277,10 @@ a {
   margin-left: 16px;
   margin-right: 0;
   border-radius: 100%;
-  background-color: #33353d;
+  background-color: black;
 }
 .copyright-text {
-  margin: 0;
+  margin-top: 20px;
 }
 @media (max-width: 991px) {
   .site-footer {
@@ -289,14 +314,14 @@ a {
 }
 .social-icons a {
   background-color: #eceeef;
-  color: #818a91;
+  color: white;
   font-size: 16px;
   display: inline-block;
   line-height: 44px;
   width: 44px;
   height: 44px;
   text-align: center;
-  margin-right: 8px;
+  margin-right: 10px;
   border-radius: 100%;
   -webkit-transition: all 0.2s linear;
   -o-transition: all 0.2s linear;
@@ -306,9 +331,14 @@ a {
 /* ----- Home Page ----- */
 .homepage {
   width: 100%;
+  margin-top: 100px;
+  font-size: 18px;
+  font-family: "Arial Narrow";
 }
 .questions-headline {
   display: inline-block;
+  font-weight: bolder;
+  color: black;
 }
 .questions-btn {
   display: inline-block;
@@ -334,6 +364,9 @@ a {
 .post-form-container {
   width: 100%;
   padding: 0 20px;
+  margin-top: 100px;
+  font-size: 18px;
+  font-family: "Arial Narrow";
 }
 .question-form {
   background: #f8f8f8;
@@ -345,7 +378,7 @@ a {
   font-size: 18px;
 }
 .askForm .form-label p {
-  font-size: 14px;
+  font-size: 18px;
 }
 .askForm form input,
 .askForm form textarea {
@@ -360,8 +393,10 @@ a {
 
 /* Profile page */
 .user-profile {
-  margin-top: 50px;
+  margin-top: 150px;
   margin-bottom: 50px;
+  font-size: 18px;
+  font-family: "Arial Narrow";
 }
 
 .user-profile .card {
@@ -379,21 +414,23 @@ a {
 
 .user-profile .card h3 {
   font-size: 20px;
+  font-family: "Arial Narrow";
   font-weight: 700;
 }
 
 .user-profile .card p {
-  font-size: 16px;
+  font-size: 18px;
+  font-family: "Arial Narrow";
   color: #000;
 }
 
 .user-profile .table th,
 .user-profile .table td {
-  font-size: 14px;
+  font-size: 18px;
+  font-family: "Arial Narrow";
   padding: 5px 10px;
   color: #000;
 }
-
 .update-info {
   margin-top: 20px;
 }
@@ -402,6 +439,9 @@ a {
 .questions-page {
   width: 100%;
   padding: 0 20px;
+  margin-top: 100px;
+  font-size: 18px;
+  font-family: "Arial Narrow";
 }
 
 .btn-cmt {
@@ -420,7 +460,10 @@ a {
 }
 .card > .card-header + .list-group {
   border-top: 0;
-  height: 150px;
+  height: 200px;
+}
+.card {
+  height: 820px;
 }
 .h6,
 h6 {

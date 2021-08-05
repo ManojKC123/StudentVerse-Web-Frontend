@@ -38,7 +38,7 @@ const Header = (props) => {
   useEffect(() => {}, [props, user]);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light fixed-top">
       <a href="/" className="navbar-brand">
         <img src="images/logo.png" className="logo" alt="StudentVerse Logo" />
       </a>
@@ -56,11 +56,11 @@ const Header = (props) => {
         className="collapse navbar-collapse justify-content-start"
       >
         <div className="navbar-nav">
-          <Link to="/" className="nav-item nav-link">
-            Quiz
-          </Link>
           <Link to="/study-materials" className="nav-item nav-link">
             Study Materials
+          </Link>
+          <Link to="/quiz" className="nav-item nav-link">
+            <b>Quiz</b>
           </Link>
         </div>
         <form className="navbar-form form-inline">
@@ -82,10 +82,10 @@ const Header = (props) => {
           {!user.token ? (
             <>
               <a href="/login" className="nav-link">
-                Login
+                <b>Login</b>
               </a>
               <a href="/signup" className="btn btn-primary">
-                Sign up
+                <b>Sign up</b>
               </a>
             </>
           ) : (

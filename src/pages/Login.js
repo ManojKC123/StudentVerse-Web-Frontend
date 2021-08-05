@@ -91,7 +91,7 @@ class LoginIn extends Component {
                 aria-labelledby="home-tab"
               >
                 <h3 className="register-heading">
-                  <b>Login</b>
+                  <b>LOGIN</b>
                 </h3>
                 <div className="row register-form">
                   <div className="col-md-7 login-form">
