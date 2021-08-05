@@ -14,6 +14,9 @@ import SingleQuestion from "./pages/SingleQuestion";
 import UpdateProfile from "./pages/UpdateProfile";
 import StudyMaterials from "./pages/StudyMaterials";
 import Chapter from "./pages/Chapter";
+import AdminDash from "./pages/admin/AdminDash";
+import Quiz from "./pages/admin/Quiz";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -21,6 +24,7 @@ function App() {
       <Router>
         <Layout>
           <Switch>
+            {/* User Routes */}
             <Route path="/login" component={LogIn} exact />
             <Route path="/signup" component={SignUp} exact />
             <Route path="/profile" component={UserProfile} exact />
@@ -28,8 +32,18 @@ function App() {
             <Route path="/" component={Home} exact />
             <Route path="/questions/:id" component={SingleQuestion} exact />
             <Route path="/update-profile" component={UpdateProfile} exact />
-            <Route path="/study-materials" component={StudyMaterials} exact />
-            <Route path="/chapter" component={Chapter} exact />
+            {/* <Route path="*" component={NotFound} /> */}
+
+            {/* Admin Routes */}
+            <Route path="/admin" component={AdminDash} exact />
+            <Route
+              path="/admin/study-materials"
+              component={StudyMaterials}
+              exact
+            />
+            <Route path="/admin/quiz" component={Quiz} exact />
+
+            <Route path="/admin/chapter" component={Chapter} exact />
           </Switch>
         </Layout>
       </Router>

@@ -57,9 +57,6 @@ const Header = (props) => {
       >
         <div className="navbar-nav">
           <Link to="/" className="nav-item nav-link">
-            Questions
-          </Link>
-          <Link to="/" className="nav-item nav-link">
             Quiz
           </Link>
           <Link to="/study-materials" className="nav-item nav-link">
@@ -102,7 +99,14 @@ const Header = (props) => {
                 >
                   <AccountCircleIcon className="account-icon" />
                 </IconButton>
-                <span className="block">{user.username}</span>
+                <div className="account-name">
+                  <span className="block">{user.username}</span>
+                  {user.admin === "token" ? (
+                    <span className="admin-wrap">Admin Login</span>
+                  ) : (
+                    <></>
+                  )}
+                </div>
               </div>
               <Menu
                 className="menu-nav"
