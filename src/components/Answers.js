@@ -5,6 +5,10 @@ import { ExpandLess, ExpandMore } from "@material-ui/icons";
 import Button from "@material-ui/core/Button";
 import pp from "../media/user.png";
 import { upvote, downvote } from "../data/api";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
 
 function Answers(props) {
   const itemID = props.itemID;
@@ -37,7 +41,10 @@ function Answers(props) {
   useEffect(() => {
     getAnswer(itemID).then((response) => {
       if (response.data) {
+        console.log("answer det", response.data);
+
         setAnswerDetails(response.data);
+        console.log("answer det", answerDetails);
       }
     });
   }, [voteDependency]);
@@ -47,6 +54,9 @@ function Answers(props) {
     const commentD = { textC, questionID, id };
     addComment(commentD, user.token).then((response) => {
       if (response.data) {
+        toast.success(response.message, {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
       }
     });
   }
@@ -55,6 +65,9 @@ function Answers(props) {
     e.preventDefault();
     addAnswer(answer, user.token).then((response) => {
       if (response.data) {
+        toast.success(response.message, {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
       }
     });
   }
@@ -100,11 +113,17 @@ function Answers(props) {
       ? upvote(voteData, user.token).then((response) => {
           if (response.data) {
             setVoteDependency("VoteUp");
+            toast.success("Answer Upvoted !!!", {
+              position: toast.POSITION.BOTTOM_RIGHT,
+            });
           }
         })
       : downvote(voteData, user.token).then((response) => {
           if (response.data) {
             setVoteDependency("voteDown");
+            toast.error("Answer DownVoted !!!", {
+              position: toast.POSITION.BOTTOM_RIGHT,
+            });
           }
         });
   };
@@ -222,7 +241,7 @@ function Answers(props) {
                           aria-expanded="true"
                           aria-controls="collapseExample"
                         >
-                          Comment here..
+                          <b>Comment here</b>
                         </a>
                       </p>
                       <div class="collapse" id={`commentID${answer.id}`}>
@@ -240,7 +259,7 @@ function Answers(props) {
                             variant="primary"
                             onClick={() => submitComment(answer.id)}
                           >
-                            Comment
+                            <b>Comment</b>
                           </button>
                         </div>
                       </div>
@@ -260,8 +279,12 @@ function Answers(props) {
             onChange={(e) => onChange(e)}
           />
 
-          <button className="btn btn-primary1" onClick={(e) => onSubmit(e)}>
-            Post Answer
+          <button
+            id="addAnswer"
+            className="btn btn-primary1"
+            onClick={(e) => onSubmit(e)}
+          >
+            <b>Post Answer</b>
           </button>
         </div>
       </form>

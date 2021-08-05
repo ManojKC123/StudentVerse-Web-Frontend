@@ -23,7 +23,7 @@ export function makeRequest({
   })
     .then((res) => res.data)
     .catch((error) => {
-      return false;
+      return error;
       //throw error.response
     });
 }

@@ -9,7 +9,6 @@ Given("Test signup functionality", { timeout: 30000 }, async function () {
   await driver.get("http://localhost:3000/signup");
   await driver.findElement(By.id("firstnamesignup")).sendKeys("mandeep");
   await driver.findElement(By.id("lastnamesignup")).sendKeys("maharzan");
-  await driver.findElement(By.id("usernamesignup")).sendKeys("mandeep");
   await driver.findElement(By.id("passwordsignup")).sendKeys("mandeep");
   await driver.findElement(By.id("emailsignup")).sendKeys("mandeep@gmail.com");
   await driver.findElement(By.id("addresssignup")).sendKeys("kathmandu");

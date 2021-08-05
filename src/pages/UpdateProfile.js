@@ -1,6 +1,8 @@
 import React, { Component, Container } from "react";
 import axios from "axios";
 import { upProfile } from "../data/api";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 class UpdateProfile extends Component {
   state = {
@@ -17,6 +19,11 @@ class UpdateProfile extends Component {
       headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
     },
     user: JSON.parse(localStorage.getItem("user")) || [],
+  };
+  notify = () => {
+    toast.error(this.state.message, {
+      position: toast.POSITION.BOTTOM_RIGHT,
+    });
   };
 
   componentDidMount() {
