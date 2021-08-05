@@ -11,13 +11,10 @@ class LoginIn extends Component {
     token: "",
     isLoggedIn: "",
     message: "",
+    admin: "",
     user: JSON.parse(localStorage.getItem("user")) || [],
   };
-  notify = () => {
-    toast.error(this.state.message, {
-      position: toast.POSITION.BOTTOM_RIGHT,
-    });
-  };
+  notify = () => {};
 
   getUserData = (e) => {
     this.setState({
@@ -31,26 +28,43 @@ class LoginIn extends Component {
     login(this.state)
       .then((response) => {
         if (response.success === true) {
+          this.state.username === "admin" && this.state.password === "admin"
+            ? this.setState({ admin: "token" })
+            : this.setState({ admin: null });
+
           var user = {
             username: this.state.username,
             token: response.token,
             isLoggedIn: true,
-            message: "Login Success",
+            message: "Login Successfull !!!",
+            admin: this.state.admin,
           };
+
           localStorage.setItem("user", JSON.stringify(user));
           localStorage.setItem("token", response.token);
-          window.location.href = "/";
           this.setState({ isLoggedIn: true });
+          toast.success("Logged In Successfull", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
+          setTimeout(function () {
+            window.location.href = "/";
+          }, 2000);
         }
         if (response.success === false) {
           this.setState({
             message: response.message,
+          });
+          toast.error(response.message, {
+            position: toast.POSITION.BOTTOM_RIGHT,
           });
         }
       })
       .catch((err) => {
         this.setState({
           message: err.response.message,
+        });
+        toast.error(err.response.message, {
+          position: toast.POSITION.BOTTOM_RIGHT,
         });
       });
   };

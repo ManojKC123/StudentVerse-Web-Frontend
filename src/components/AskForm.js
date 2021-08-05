@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { addQuestion } from "../data/api";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
 
 function AskForm() {
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
   const [formData, setFormData] = useState({
     title: "",
     body: "",
-    tagname: "",
+    tagname: [],
   });
+  const [currentTagText, setCurrentTagText] = useState("");
+  const [tags, setTags] = useState([]);
 
   const { title, body, tagname } = formData;
 
@@ -16,16 +22,39 @@ function AskForm() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    addQuestion(formData, user.token).then((response) => {
-      if (response.data) {
-      }
-    });
 
-    setFormData({
-      title: "",
-      body: "",
-      tagname: "",
-    });
+    console.log("tags", tags);
+
+    // addQuestion(formData, user.token).then((response) => {
+    //   if (response.data) {
+    //     console.log(response);
+    //     toast.success(response.message, {
+    //       position: toast.POSITION.BOTTOM_RIGHT,
+    //     });
+    //   }
+    // });
+
+    // setFormData({
+    //   title: "",
+    //   body: "",
+    //   tagname: "",
+    // });
+  };
+
+  const handleTag = (e) => {
+    setCurrentTagText(e.target.value);
+    if (e.keyCode == 13 && currentTagText) {
+      setTags((prevTags) => [...prevTags, currentTagText]);
+      setCurrentTagText("");
+    } else if (e.keyCode == 32 && currentTagText) {
+      setTags((prevTags) => [...prevTags, currentTagText]);
+      setCurrentTagText("");
+    }
+  };
+  const removeTag = (index) => {
+    const newTagArray = tags;
+    newTagArray.splice(index, 1);
+    setTags([...newTagArray]);
   };
 
   return (
@@ -73,6 +102,7 @@ function AskForm() {
                 required
               />
             </div>
+
             <div className="tag-grid">
               <label className="form-label s-label">
                 <b>Tag Name</b>
@@ -80,6 +110,40 @@ function AskForm() {
                   Add up to 5 tags to describe what your question is about
                 </p>
               </label>
+
+              <div className="masterStackDiv">
+                <div
+                  className="stackTags"
+                  style={{ display: tags.length > 0 ? "flex" : "none" }}
+                >
+                  {tags.map((tag, index) => {
+                    return (
+                      <div className="stackTag">
+                        <button
+                          onClick={() => removeTag(index)}
+                          className="tagCloseBtn"
+                        >
+                          x
+                        </button>
+                        #{tag}
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="stackInput">
+                  <input
+                    type="text"
+                    className="tag-input"
+                    onKeyDown={handleTag}
+                    onChange={handleTag}
+                    value={currentTagText}
+                    id="tagname"
+                    placeholder="e.g. (ajax django string)"
+                    required
+                  />
+                </div>
+              </div>
+
               <input
                 className="tag-input s-input"
                 type="text"
@@ -98,6 +162,7 @@ function AskForm() {
             className="btn-primary post-form"
             id="submit-button"
             name="submit-button"
+            type="submit"
           >
             <b>Ask question</b>
           </button>

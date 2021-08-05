@@ -1,6 +1,7 @@
 import React, { Component, state } from "react";
 import { Container } from "react-bootstrap";
 import { getProfile } from "../data/api";
+
 class UserProfile extends Component {
   state = {
     id: "",
