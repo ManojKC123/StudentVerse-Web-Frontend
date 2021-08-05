@@ -11,6 +11,7 @@ class LoginIn extends Component {
     token: "",
     isLoggedIn: "",
     message: "",
+    admin: "",
     user: JSON.parse(localStorage.getItem("user")) || [],
   };
   notify = () => {};
@@ -27,19 +28,27 @@ class LoginIn extends Component {
     login(this.state)
       .then((response) => {
         if (response.success === true) {
+          this.state.username === "admin" && this.state.password === "admin"
+            ? this.setState({ admin: "token" })
+            : this.setState({ admin: null });
+
           var user = {
             username: this.state.username,
             token: response.token,
             isLoggedIn: true,
             message: "Login Successfull !!!",
+            admin: this.state.admin,
           };
+
           localStorage.setItem("user", JSON.stringify(user));
           localStorage.setItem("token", response.token);
-          window.location.href = "/";
           this.setState({ isLoggedIn: true });
-          toast.success("Login Successfull", {
+          toast.success("Logged In Successfull", {
             position: toast.POSITION.BOTTOM_RIGHT,
           });
+          setTimeout(function () {
+            window.location.href = "/";
+          }, 2000);
         }
         if (response.success === false) {
           this.setState({

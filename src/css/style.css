@@ -1,6 +1,9 @@
 /* Header */
 .logo {
-  height: 55px;
+  height: 40px;
+}
+.base-nav-height {
+  height: 65px;
 }
 .navbar-light .navbar-nav .nav-link {
   color: rgba(0, 0, 0, 0.5);
@@ -8,13 +11,8 @@
 }
 .navbar-brand {
   display: inline-block;
-  padding-top: 0.3125rem;
-  padding-bottom: 0.3125rem;
-  margin-left: 1rem;
-  font-size: 1.25rem;
   line-height: inherit;
-  white-space: nowrap;
-  margin-top: 10px;
+  margin: 0;
 }
 .btn:not(:disabled):not(.disabled) {
   margin-right: 10px;
@@ -45,6 +43,19 @@
   top: 70px !important;
   right: 20px;
 }
+
+.account-wrap {
+  display: flex;
+}
+.account-name {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.account-wrap .admin-wrap {
+  font-size: 10px;
+}
+
 /* Register page */
 .register {
   background: -webkit-linear-gradient(left, #1f1c4e, #1391b4);
@@ -327,9 +338,7 @@ a {
 .question-form {
   background: #f8f8f8;
   border-radius: 5px;
-  border: 1px solid #333;
-}
-.question-form {
+  box-shadow: 0 2px 5px 0 #000;
   padding: 20px;
 }
 .askForm .form-label {
@@ -616,3 +625,51 @@ textarea.form-control {
 }
 
 /* End of Card Section */
+
+/* NOt found page */
+.not-found-container {
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* Admin Sidebar */
+.sidebar {
+  position: fixed;
+  display: flex;
+  left: 0;
+  height: 100%;
+  top: 65px;
+  min-width: 200px;
+  overflow-y: scroll;
+}
+.sidebar-inner {
+  width: 100%;
+}
+.sidebar-inner ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+}
+.sidebar li {
+  padding: 5px;
+}
+.sidebar li:hover {
+  background: #f2f2f2;
+}
+.sidebar li .sidebar-icons {
+  margin-right: 5px;
+}
+.sidebar a {
+  text-decoration: none;
+  color: #677388;
+}
+.side-admin-padding {
+  padding-left: 200px;
+}
+
+/* Admin Dashboard */
+.adm-dash {
+  padding-left: 200px;
+}
