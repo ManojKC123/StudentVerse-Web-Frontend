@@ -13,13 +13,13 @@ function AdminDashSidebar() {
               Dashboard
             </li>
           </Link>
-          <Link to="/admin/study-materials">
+          <Link to="/admin/studymaterials">
             <li>
               <MenuBook className="sidebar-icons" />
               Study Materials
             </li>
           </Link>
-          <Link to="admin/quiz">
+          <Link to="/admin/quiz">
             <li>
               <Category className="sidebar-icons" />
               Quiz

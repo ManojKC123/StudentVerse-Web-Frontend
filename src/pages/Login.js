@@ -42,6 +42,17 @@ class LoginIn extends Component {
           });
           setTimeout(function () {
             window.location.href = "/";
+            // if (
+            //   this.state.isLoggedIn === true &&
+            //   this.state.admin === "token"
+            // ) {
+            //   return (window.location.href = "/admin");
+            // } else if (
+            //   this.state.isLoggedIn === true &&
+            //   this.state.admin === null
+            // ) {
+            //   return (window.location.href = "/");
+            // }
           }, 2000);
         }
         if (response.success === false) {
