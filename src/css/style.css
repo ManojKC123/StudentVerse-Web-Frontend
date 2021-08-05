@@ -16,9 +16,9 @@
   white-space: nowrap;
   margin-top: 10px;
 }
-.btn:not(:disabled):not(.disabled) {
+/* .btn:not(:disabled):not(.disabled) {
   margin-right: 10px;
-}
+} */
 .btn-primary {
   color: #fff;
   background-color: #007bff;
@@ -558,4 +558,44 @@ textarea.form-control {
     -ms-transform: translateY(70%);
     transform: translateY(70%);
   }
+}
+
+/* Admin post study materials */
+
+.study-materials {
+  display: flex;
+  width: 100%;
+}
+
+.post-topic {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid black;
+  padding: 10px 0;
+}
+
+.post-subject-form {
+  width: 300px;
+}
+
+.btnadd-chapter {
+  justify-content: center;
+  display: flex;
+}
+
+.btnaddChapter {
+  background: #6057f0;
+  border-radius: 50%;
+  padding: 16px;
+}
+
+.sub-inputwrap {
+  height: 100px !important;
+}
+.sub-inputwrap input {
+  margin-bottom: 5px;
+}
+
+.sub-addbtnwrap {
+  height: 60px !important;
 }
