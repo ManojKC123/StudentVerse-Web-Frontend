@@ -698,10 +698,6 @@ textarea.form-control {
 .subject-name {
   padding-bottom: 15px;
 }
-.sidebar-list .drop-icon,
-.sidebar-list .pull-icon {
-  float: right;
-}
 .sidebar-list > li,
 .sidebar-list > a {
   text-decoration: none;
@@ -738,6 +734,7 @@ textarea.form-control {
   transition: all 200ms ease-in-out;
   transition-duration: 200ms;
   transform: rotate(0deg);
+  float: right;
 }
 .drop-icon.toggle {
   transform: rotate(180deg);
@@ -746,4 +743,45 @@ textarea.form-control {
 /* Admin Dashboard */
 .adm-base-style {
   padding-left: 200px;
+}
+
+/* Admin add topic */
+
+.topic-title {
+  padding-bottom: 10px;
+}
+
+.topic-section {
+  padding-left: 250px;
+  margin-top: 15px;
+}
+
+.topic-listwrap {
+  margin-left: 10px;
+  background: #eee;
+  padding: 15px;
+}
+
+ul.topic-lists {
+  list-style: none;
+  padding: 0px !important;
+}
+
+.input-topic {
+  margin-top: 12px;
+  margin-bottom: 10px;
+}
+
+.subtopic-lists.toggle {
+  height: 0;
+  opacity: 0;
+  transition: all 400ms ease-in-out;
+}
+.subtopic-lists {
+  transition: all 400ms ease-in-out;
+  height: 100%;
+  padding-left: 15px;
+}
+.topic-name {
+  cursor: pointer;
 }
