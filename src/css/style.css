@@ -375,6 +375,39 @@
   border-radius: 5px;
   margin-top: 15px;
 }
+.stackInput-wrap {
+  position: relative;
+}
+.stackTags {
+  display: inline-block !important;
+  position: absolute;
+  left: 10px;
+  top: 5px;
+}
+.stackTag {
+  display: inline-block;
+  margin-right: 5px;
+  background: #eee;
+  padding: 0 5px;
+  border-radius: 15px;
+}
+.tagCloseBtn {
+  border-radius: 50%;
+  padding: 0px 3px;
+  line-height: 15px;
+  margin-left: 3px;
+  border: 0;
+}
+.tagCloseBtn:hover {
+  background: red;
+  color: #fff;
+}
+.askForm form input,
+.askForm form textarea {
+  display: block;
+  width: 100%;
+  padding: 5px;
+}
 
 /* Profile page */
 .user-profile {
