@@ -1,5 +1,4 @@
-import React, { Component, state } from "react";
-import { Container } from "react-bootstrap";
+import React, { Component, state, Container } from "react";
 import { getProfile } from "../data/api";
 
 class UserProfile extends Component {

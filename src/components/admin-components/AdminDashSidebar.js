@@ -48,7 +48,7 @@ const AdminDashSidebar = () => {
             {subject &&
               subject.map((sub, index) => {
                 return (
-                  <Link to="/admin">
+                  <Link to="/admin/topic">
                     <div className="subject-name" key={index}>
                       {sub}
                     </div>

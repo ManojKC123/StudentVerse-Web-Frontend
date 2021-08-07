@@ -1,6 +1,5 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.min.js";
 import "./css/style.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import React from "react";
@@ -19,6 +18,7 @@ import StudyMaterials from "./pages/StudyMaterials";
 import PostStudyMaterials from "./pages/admin/PostStudyMaterials";
 import AdminDash from "./pages/admin/AdminDash";
 import Quiz from "./pages/admin/Quiz";
+import AddTopics from "./pages/admin/AddTopics";
 
 function App() {
   return (
@@ -45,6 +45,7 @@ function App() {
               exact
             />
             <Route path="/admin/quiz" component={Quiz} exact />
+            <Route path="/admin/topic" component={AddTopics} exact />
           </Switch>
         </Layout>
       </Router>
