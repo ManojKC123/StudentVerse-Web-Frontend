@@ -109,7 +109,7 @@ export function addQuestion(formData, token) {
     body: {
       title: formData.title,
       body: formData.body,
-      tags: formData.tagname,
+      tags: formData.tags,
     },
     headerParams: {
       authorization: `Bearer ${token}`,

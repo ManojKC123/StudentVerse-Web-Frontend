@@ -10,7 +10,7 @@ function AskForm() {
   const [formData, setFormData] = useState({
     title: "",
     body: "",
-    tags: ["tag1", "tag2"],
+    tags: [],
   });
   const [tags, setTags] = useState([]);
   const [currentTagText, setCurrentTagText] = useState("");
@@ -71,19 +71,21 @@ function AskForm() {
     tags.map((tag, index) => formData.tags.push(tags[index].trim()));
     console.log("createqst formdata", formData);
 
-    // addQuestion(formData, user.token).then((response) => {
-    //   if (response.data) {
-    //     console.log(response);
-    //     toast.success(response.message, {
-    //       position: toast.POSITION.BOTTOM_RIGHT,
-    //     });
-    //   }
-    // });
-    // setFormData({
-    //   title: "",
-    //   body: "",
-    //   tags: [],
-    // });
+    addQuestion(formData, user.token).then((response) => {
+      if (response.success === true) {
+        console.log(response);
+        toast.success(response.message, {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
+      }
+
+      setFormData({
+        title: "",
+        body: "",
+        tags: [],
+      });
+      setTags([]);
+    });
   };
 
   return (
