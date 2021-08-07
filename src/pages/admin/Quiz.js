@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Quiz() {
+function Quiz(props) {
+  const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
+
   return (
     <>
-      <div className="adm-base-style">Quiz page</div>
+      <div
+        className={
+          user.admin === "token" ? "page-content quiz-page" : "quiz-page"
+        }
+      >
+        Quiz page
+      </div>
     </>
   );
 }

@@ -1,7 +1,7 @@
 import { makeRequest } from "./request";
 
-const apiURL = "https://student-verse.herokuapp.com";
-// const apiURL = "http://localhost:5000";
+// const apiURL = "https://student-verse.herokuapp.com";
+const apiURL = "http://localhost:5000";
 const siteURI = `${window.location.origin}/`;
 
 export function login(loginData) {
@@ -172,5 +172,35 @@ export function downvote(voteData, token) {
     },
   };
 
+  return makeRequest(request);
+}
+
+// admin section
+
+export function createSubjectD(subject, token) {
+  console.log("subjectApiEnter", subject);
+  const request = {
+    method: "post",
+    url: `${apiURL}/subject`,
+    body: {
+      name: subject.name,
+      description: subject.description,
+      picture: subject.picture,
+    },
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+  return makeRequest(request);
+}
+
+export function getSubject(token) {
+  const request = {
+    method: "get",
+    url: `${apiURL}/subject`,
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
+  };
   return makeRequest(request);
 }

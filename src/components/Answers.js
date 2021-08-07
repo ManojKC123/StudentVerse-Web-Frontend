@@ -23,14 +23,12 @@ function Answers(props) {
     post: props.itemID,
     text: "",
   });
-
   const [comment, setComment] = useState({
     textC: "",
     questionId: "",
     answerId: "",
   });
   const { textC } = comment;
-
   const { text } = answer;
 
   const onChange = (e) =>
@@ -38,13 +36,11 @@ function Answers(props) {
 
   const getCommentData = (e) =>
     setComment({ ...comment, [e.target.name]: e.target.value });
+
   useEffect(() => {
     getAnswer(itemID).then((response) => {
       if (response.data) {
-        console.log("answer det", response.data);
-
         setAnswerDetails(response.data);
-        console.log("answer det", answerDetails);
       }
     });
   }, [voteDependency]);
@@ -88,7 +84,6 @@ function Answers(props) {
         return <ExpandLess className="vote-btns" />;
       }
     }
-
     if (type === 0) {
       if (clickID && clickID === id) {
         return (
@@ -234,7 +229,7 @@ function Answers(props) {
                     <div className="">
                       <p>
                         <a
-                          class="btn btn-primary"
+                          className="btn btn-primary"
                           data-toggle="collapse"
                           href={`#commentID${answer.id}`}
                           role="button"
@@ -244,8 +239,8 @@ function Answers(props) {
                           <b>Comment here</b>
                         </a>
                       </p>
-                      <div class="collapse" id={`commentID${answer.id}`}>
-                        <div class="card card-body">
+                      <div className="collapse" id={`commentID${answer.id}`}>
+                        <div className="card card-body">
                           <textarea
                             name="textC"
                             rows="6"

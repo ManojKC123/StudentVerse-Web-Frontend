@@ -63,12 +63,12 @@ class UpdateProfile extends Component {
   render() {
     return (
       <div className="container">
-        <div class="row user-profile">
-          <div class="col-lg-4">
-            <div class="card shadow-sm">
-              <div class="card-header bg-transparent text-center">
+        <div className="row user-profile">
+          <div className="col-lg-4">
+            <div className="card shadow-sm">
+              <div className="card-header bg-transparent text-center">
                 <img
-                  class="profile_img"
+                  className="profile_img"
                   src="https://source.unsplash.com/600x300/?student"
                   alt="student dp"
                 />
@@ -85,9 +85,9 @@ class UpdateProfile extends Component {
                   placeholder="Username"
                 />
               </div>
-              <div class="card-body">
-                <p class="mb-0">
-                  <strong class="pr-1">First-Name:</strong>
+              <div className="card-body">
+                <p className="mb-0">
+                  <strong className="pr-1">First-Name:</strong>
                   <input
                     type="text"
                     className="form-control"
@@ -101,8 +101,8 @@ class UpdateProfile extends Component {
                     placeholder="First-name"
                   />
                 </p>
-                <p class="mb-0">
-                  <strong class="pr-1">Last-Name:</strong>
+                <p className="mb-0">
+                  <strong className="pr-1">Last-Name:</strong>
                   <input
                     type="text"
                     className="form-control"
@@ -119,15 +119,15 @@ class UpdateProfile extends Component {
               </div>
             </div>
           </div>
-          <div class="col-lg-8">
-            <div class="card shadow-sm">
-              <div class="card-header bg-transparent border-0">
-                <h3 class="mb-0">
-                  <i class="far fa-clone pr-1"></i>General Information
+          <div className="col-lg-8">
+            <div className="card shadow-sm">
+              <div className="card-header bg-transparent border-0">
+                <h3 className="mb-0">
+                  <i className="far fa-clone pr-1"></i>General Information
                 </h3>
               </div>
-              <div class="card-body pt-0">
-                <table class="table table-bordered">
+              <div className="card-body pt-0">
+                <table className="table table-bordered">
                   <tr>
                     <th width="30%">Email</th>
                     <td width="2%">:</td>
@@ -195,13 +195,13 @@ class UpdateProfile extends Component {
                 </table>
               </div>
             </div>
-            <div class="card shadow-sm update-info">
-              <div class="card-header bg-transparent border-0">
-                <h3 class="mb-0">
-                  <i class="far fa-clone pr-1">Other Incormation</i>
+            <div className="card shadow-sm update-info">
+              <div className="card-header bg-transparent border-0">
+                <h3 className="mb-0">
+                  <i className="far fa-clone pr-1">Other Incormation</i>
                 </h3>
               </div>
-              <div class="card-body pt-0">
+              <div className="card-body pt-0">
                 <p>Update information..</p>
               </div>
             </div>

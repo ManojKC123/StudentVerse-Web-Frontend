@@ -25,10 +25,12 @@ const Header = (props) => {
     //   .then((response) => {
     //     console.log("logout response", response);
     localStorage.clear();
-    window.location.href = "/";
     toast.error("Logout Succesfull !!!", {
       position: toast.POSITION.BOTTOM_RIGHT,
     });
+    setTimeout(function () {
+      window.location.href = "/";
+    }, 1000);
     //   })
     //   .catch((err) => {
     //     console.log("login error", err);
@@ -116,11 +118,11 @@ const Header = (props) => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={handleClose} className="nav-acc-menu-list">
                   <Link to="/profile">Account</Link>
                 </MenuItem>
 
-                <MenuItem onClick={handleClose} className="nav-menu-item-fdc">
+                <MenuItem onClick={handleClose} className="nav-acc-menu-list">
                   <Link to="/logout" onClick={() => logoutUser()}>
                     <span>Logout</span>
                   </Link>

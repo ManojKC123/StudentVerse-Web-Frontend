@@ -29,7 +29,7 @@ const AddTopics = () => {
   };
 
   return (
-    <div className="topic-section">
+    <div className="page-content topic-section">
       <div className="container-fluid">
         <div className="topic-listwrap">
           <h3 className="topic-title">Topics:</h3>
@@ -66,7 +66,7 @@ const AddTopics = () => {
                             </Link>
                           );
                         })}
-                      <div class="">
+                      <div className="">
                         <input
                           type="text"
                           className="form-control"
@@ -86,7 +86,7 @@ const AddTopics = () => {
                           onClick={(e) => {
                             createSubTopic(e);
                           }}
-                          class="btn btn-primary"
+                          className="btn btn-primary"
                         >
                           Create Sub-Topic
                         </button>
@@ -95,7 +95,7 @@ const AddTopics = () => {
                   </>
                 );
               })}
-            <div class="">
+            <div className="">
               <input
                 type="text"
                 className="form-control input-topic"
@@ -112,7 +112,7 @@ const AddTopics = () => {
                 onClick={(e) => {
                   createTopic(e);
                 }}
-                class="btn btn-primary"
+                className="btn btn-primary"
               >
                 Create Topic
               </button>

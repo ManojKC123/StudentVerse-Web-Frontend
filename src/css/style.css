@@ -58,7 +58,21 @@
   top: 70px !important;
   right: 20px;
 }
-
+.nav-acc-menu-list {
+  padding: 0 0 0 15px !important;
+  height: 100%;
+  line-height: 15px !important;
+}
+.nav-acc-menu-list {
+  padding: 0 0 0 15px !important;
+  height: 100%;
+  line-height: 35px !important;
+  width: 100% !important;
+  display: block !important;
+}
+.nav-acc-menu-list a {
+  display: block;
+}
 .account-wrap {
   display: flex;
 }
@@ -335,10 +349,12 @@
 /* ----- Ask question ----- */
 .post-form-container {
   width: 100%;
-  padding: 0 20px;
   margin-top: 25px;
   font-size: 18px;
   font-family: "Arial Narrow";
+}
+.post-form-content {
+  padding: 0 30px;
 }
 .questions-grid {
   display: flex;
@@ -700,7 +716,7 @@ textarea.form-control {
   left: 0;
   height: 100%;
   top: 65px;
-  min-width: 200px;
+  max-width: 310px;
   overflow-y: scroll;
   background: #fff;
   opacity: 1;
@@ -728,6 +744,10 @@ textarea.form-control {
   color: #677388;
   cursor: pointer;
   margin: 0;
+  z-index: 20;
+}
+.create-list-button {
+  margin-top: 10px;
 }
 .sidebar-list input {
   margin-bottom: 5px;
@@ -749,7 +769,7 @@ textarea.form-control {
 .subject-lists {
   transition: all 400ms ease-in-out;
   height: 100%;
-  padding-left: 15px;
+  padding-left: 20px;
 }
 .side-admin-padding {
   padding-left: 255px;
@@ -765,18 +785,18 @@ textarea.form-control {
   transition: all 200ms ease-in-out;
 }
 /* Admin Dashboard */
-.adm-base-style {
-  padding-left: 200px;
+
+.adm-dash {
+  padding-top: 20px;
 }
-
 /* Admin add topic */
-
+.page-content {
+  padding-left: 310px;
+}
 .topic-title {
   padding-bottom: 10px;
 }
-
 .topic-section {
-  padding-left: 250px;
   margin-top: 15px;
 }
 

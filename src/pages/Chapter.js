@@ -10,38 +10,37 @@ toast.configure();
 class Chapter extends Component {
   render() {
     return (
-      <div class="cards-list">
-        <div class="card-studymaterials">
-          <div class="card_image">
-            {" "}
-            <img src={english} />{" "}
+      <div className="cards-list">
+        <div className="card-studymaterials">
+          <div className="card_image">
+            <img src={english} alt="" />
           </div>
 
-          <div class="card_title title">
+          <div className="card_title title">
             <p>Card Title</p>
           </div>
         </div>
-        <div class="card-studymaterials">
-          <div class="card_image">
-            <img src={maths} href="/chapter" />
+        <div className="card-studymaterials">
+          <div className="card_image">
+            <img src={maths} href="/chapter" alt="" />
           </div>
-          <div class="card_title title-white">
+          <div className="card_title title-white">
             <p>Card Title</p>
           </div>
         </div>
-        <div class="card-studymaterials">
-          <div class="card_image">
-            <img src={science} />
+        <div className="card-studymaterials">
+          <div className="card_image">
+            <img src={science} alt="" />
           </div>
-          <div class="card_title">
+          <div className="card_title">
             <p>Card Title</p>
           </div>
         </div>
-        <div class="card-studymaterials">
-          <div class="card_image">
-            <img src={computer} />
+        <div className="card-studymaterials">
+          <div className="card_image">
+            <img src={computer} alt="" />
           </div>
-          <div class="card_title title-white">
+          <div className="card_title title-white">
             <p>Card Title</p>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { createSubjectD, getSubject } from "../../data/api";
 import {
   Dashboard,
   MenuBook,
@@ -8,19 +9,47 @@ import {
 } from "@material-ui/icons/";
 
 const AdminDashSidebar = () => {
-  const [currentSub, setCurrentSub] = useState("");
-  const [subject, setSubject] = useState(["Science", "EPH"]);
+  const [subName, setCurrentSub] = useState("");
+  const [description, setCurSubDesc] = useState("");
+  const [picture, setCurSubFile] = useState(null);
+  const [subject, setSubject] = useState([]);
   const [studymaterial, setStudyMaterial] = useState(false);
+  const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
 
-  const createSubject = (e) => {
-    e.preventDefault();
-    setSubject([...subject, currentSub]);
-    setCurrentSub("");
-  };
   const toggleGroup = (e) => {
     setStudyMaterial(!studymaterial);
-    console.log(studymaterial);
   };
+  const createSubject = () => {
+    function titleCase(str) {
+      return str.toLowerCase().replace(/\b(\w)/g, (s) => s.toUpperCase());
+    }
+    const name = titleCase(subName);
+    const subjectArg = { name, description, picture };
+    console.log("subject arg", subjectArg);
+
+    createSubjectD(subjectArg, user.token).then((response) => {
+      console.log("create subject response", response);
+      console.log("create subject response", response.data);
+
+      if (response.success === true && response.data) {
+        setSubject([...subject, response.data]);
+        setCurrentSub("");
+        setCurSubDesc("");
+        setCurSubFile(null);
+      }
+    });
+  };
+
+  useEffect(() => {
+    getSubject(user.token).then((response) => {
+      if (response.success === true) {
+        setSubject(response.data);
+        console.log("sublists", response.data);
+        console.log("sublists", subject);
+      }
+    });
+  }, []);
+  console.log("sublists", subject);
 
   return (
     <div className="sidebar">
@@ -50,29 +79,51 @@ const AdminDashSidebar = () => {
                 return (
                   <Link to="/admin/topic">
                     <div className="subject-name" key={index}>
-                      {sub}
+                      {sub.name}
                     </div>
                   </Link>
                 );
               })}
-            <div class="">
+
+            <div className="create-list-button">
               <input
                 type="text"
                 className="form-control"
                 id="subjectInput"
-                value={currentSub}
+                value={subName}
                 onChange={(event) => {
                   setCurrentSub(event.target.value);
-                  console.log("onchange currentsub", currentSub);
+                  console.log("onchange name", subName);
                 }}
                 placeholder="New Subject"
+              />
+              <input
+                type="text"
+                className="form-control"
+                id="subjectDescriptionInput"
+                value={description}
+                onChange={(event) => {
+                  setCurSubDesc(event.target.value);
+                  console.log("onchange currentdesc", description);
+                }}
+                placeholder="New Subject"
+              />
+              <input
+                type="file"
+                className="form-control"
+                id="subjecFileInput"
+                defaultValue={picture}
+                onChange={(e) => {
+                  setCurSubFile(e.target.files[0]);
+                  console.log(e.target.files[0]);
+                }}
               />
               <button
                 type="button"
                 onClick={(e) => {
                   createSubject(e);
                 }}
-                class="btn btn-primary"
+                className="btn btn-primary"
               >
                 Create subject
               </button>
