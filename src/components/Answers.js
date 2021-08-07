@@ -5,6 +5,10 @@ import { ExpandLess, ExpandMore } from "@material-ui/icons";
 import Button from "@material-ui/core/Button";
 import pp from "../media/user.png";
 import { upvote, downvote } from "../data/api";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
 
 function Answers(props) {
   const itemID = props.itemID;
@@ -19,14 +23,12 @@ function Answers(props) {
     post: props.itemID,
     text: "",
   });
-
   const [comment, setComment] = useState({
     textC: "",
     questionId: "",
     answerId: "",
   });
   const { textC } = comment;
-
   const { text } = answer;
 
   const onChange = (e) =>
@@ -34,13 +36,11 @@ function Answers(props) {
 
   const getCommentData = (e) =>
     setComment({ ...comment, [e.target.name]: e.target.value });
+
   useEffect(() => {
     getAnswer(itemID).then((response) => {
       if (response.data) {
-        console.log("answer det", response.data);
-
         setAnswerDetails(response.data);
-        console.log("answer det", answerDetails);
       }
     });
   }, [voteDependency]);
@@ -50,6 +50,9 @@ function Answers(props) {
     const commentD = { textC, questionID, id };
     addComment(commentD, user.token).then((response) => {
       if (response.data) {
+        toast.success(response.message, {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
       }
     });
   }
@@ -58,6 +61,9 @@ function Answers(props) {
     e.preventDefault();
     addAnswer(answer, user.token).then((response) => {
       if (response.data) {
+        toast.success(response.message, {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
       }
     });
   }
@@ -78,7 +84,6 @@ function Answers(props) {
         return <ExpandLess className="vote-btns" />;
       }
     }
-
     if (type === 0) {
       if (clickID && clickID === id) {
         return (
@@ -103,11 +108,17 @@ function Answers(props) {
       ? upvote(voteData, user.token).then((response) => {
           if (response.data) {
             setVoteDependency("VoteUp");
+            toast.success("Answer Upvoted !!!", {
+              position: toast.POSITION.BOTTOM_RIGHT,
+            });
           }
         })
       : downvote(voteData, user.token).then((response) => {
           if (response.data) {
             setVoteDependency("voteDown");
+            toast.error("Answer DownVoted !!!", {
+              position: toast.POSITION.BOTTOM_RIGHT,
+            });
           }
         });
   };
@@ -218,18 +229,18 @@ function Answers(props) {
                     <div className="">
                       <p>
                         <a
-                          class="btn btn-primary"
+                          className="btn btn-primary"
                           data-toggle="collapse"
                           href={`#commentID${answer.id}`}
                           role="button"
                           aria-expanded="true"
                           aria-controls="collapseExample"
                         >
-                          Comment here..
+                          <b>Comment here</b>
                         </a>
                       </p>
-                      <div class="collapse" id={`commentID${answer.id}`}>
-                        <div class="card card-body">
+                      <div className="collapse" id={`commentID${answer.id}`}>
+                        <div className="card card-body">
                           <textarea
                             name="textC"
                             rows="6"
@@ -243,7 +254,7 @@ function Answers(props) {
                             variant="primary"
                             onClick={() => submitComment(answer.id)}
                           >
-                            Comment
+                            <b>Comment</b>
                           </button>
                         </div>
                       </div>
@@ -268,7 +279,7 @@ function Answers(props) {
             className="btn btn-primary1"
             onClick={(e) => onSubmit(e)}
           >
-            Post Answer
+            <b>Post Answer</b>
           </button>
         </div>
       </form>

@@ -4,6 +4,10 @@ import SearchIcon from "@material-ui/icons/Search";
 import { IconButton, Menu, MenuItem } from "@material-ui/core";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
 
 const Header = (props) => {
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
@@ -21,7 +25,12 @@ const Header = (props) => {
     //   .then((response) => {
     //     console.log("logout response", response);
     localStorage.clear();
-    window.location.href = "/";
+    toast.error("Logout Succesfull !!!", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+    });
+    setTimeout(function () {
+      window.location.href = "/";
+    }, 1000);
     //   })
     //   .catch((err) => {
     //     console.log("login error", err);
@@ -31,7 +40,7 @@ const Header = (props) => {
   useEffect(() => {}, [props, user]);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light fixed-top">
       <a href="/" className="navbar-brand">
         <img src="images/logo.png" className="logo" alt="StudentVerse Logo" />
       </a>
@@ -49,14 +58,11 @@ const Header = (props) => {
         className="collapse navbar-collapse justify-content-start"
       >
         <div className="navbar-nav">
-          <Link to="/" className="nav-item nav-link">
-            Questions
-          </Link>
-          <Link to="/" className="nav-item nav-link">
-            Quiz
-          </Link>
-          <Link to="/" className="nav-item nav-link">
+          <Link to="/study-materials" className="nav-item nav-link">
             Study Materials
+          </Link>
+          <Link to="/quiz" className="nav-item nav-link">
+            <b>Quiz</b>
           </Link>
         </div>
         <form className="navbar-form form-inline">
@@ -78,10 +84,10 @@ const Header = (props) => {
           {!user.token ? (
             <>
               <a href="/login" className="nav-link">
-                Login
+                <b>Login</b>
               </a>
               <a href="/signup" className="btn btn-primary">
-                Sign up
+                <b>Sign up</b>
               </a>
             </>
           ) : (
@@ -95,7 +101,14 @@ const Header = (props) => {
                 >
                   <AccountCircleIcon className="account-icon" />
                 </IconButton>
-                <span className="block">{user.username}</span>
+                <div className="account-name">
+                  <span className="block">{user.username}</span>
+                  {user.admin === "token" ? (
+                    <span className="admin-wrap">Admin Login</span>
+                  ) : (
+                    <></>
+                  )}
+                </div>
               </div>
               <Menu
                 className="menu-nav"
@@ -105,11 +118,11 @@ const Header = (props) => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={handleClose} className="nav-acc-menu-list">
                   <Link to="/profile">Account</Link>
                 </MenuItem>
 
-                <MenuItem onClick={handleClose} className="nav-menu-item-fdc">
+                <MenuItem onClick={handleClose} className="nav-acc-menu-list">
                   <Link to="/logout" onClick={() => logoutUser()}>
                     <span>Logout</span>
                   </Link>

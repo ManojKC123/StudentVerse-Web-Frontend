@@ -33,7 +33,7 @@ Given("Test AskQuestion functionality", { timeout: 30000 }, async function () {
   await driver.get("http://localhost:3000/ask-question");
   await driver.findElement(By.id("title")).sendKeys("test");
   await driver.findElement(By.id("body")).sendKeys("test");
-  await driver.findElement(By.id("tagname")).sendKeys("test");
+  await driver.findElement(By.id("tag-input")).sendKeys("test");
   await driver.sleep(delay);
   await driver.findElement(By.id("submit-button")).click();
   await driver.quit();

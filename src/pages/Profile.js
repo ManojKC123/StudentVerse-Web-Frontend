@@ -1,9 +1,9 @@
-import React, { Component, state } from "react";
-import { Container } from "react-bootstrap";
+import React, { Component, state, Container } from "react";
 import { getProfile } from "../data/api";
+
 class UserProfile extends Component {
   state = {
-    id: "",
+    id: localStorage.getItem("userId"),
     fname: "",
     lname: "",
     username: "",
@@ -36,41 +36,41 @@ class UserProfile extends Component {
   render() {
     return (
       <Container>
-        <div class="row user-profile">
-          <div class="col-lg-4">
-            <div class="card shadow-sm">
-              <div class="card-header bg-transparent text-center">
+        <div className="row user-profile">
+          <div className="col-lg-4">
+            <div className="card shadow-sm">
+              <div className="card-header bg-transparent text-center">
                 <img
-                  class="profile_img"
+                  className="profile_img"
                   src="https://source.unsplash.com/600x300/?student"
                   alt="student dp"
                 />
                 <h3>{this.state.username}</h3>
-                <a href="/update-profile/">
+                <a href="/user/update">
                   <p>Update your profile</p>
                 </a>
               </div>
-              <div class="card-body">
-                <p class="mb-0">
-                  <strong class="pr-1">First-Name:</strong>
+              <div className="card-body">
+                <p className="mb-0">
+                  <strong className="pr-1">First-Name:</strong>
                   {this.state.fname}
                 </p>
-                <p class="mb-0">
-                  <strong class="pr-1">Last-Name:</strong>
+                <p className="mb-0">
+                  <strong className="pr-1">Last-Name:</strong>
                   {this.state.lname}
                 </p>
               </div>
             </div>
           </div>
-          <div class="col-lg-8">
-            <div class="card shadow-sm">
-              <div class="card-header bg-transparent border-0">
-                <h3 class="mb-0">
-                  <i class="far fa-clone pr-1"></i>General Information
+          <div className="col-lg-8">
+            <div className="card shadow-sm">
+              <div className="card-header bg-transparent border-0">
+                <h3 className="mb-0">
+                  <i className="far fa-clone pr-1"></i>General Information
                 </h3>
               </div>
-              <div class="card-body pt-0">
-                <table class="table table-bordered">
+              <div className="card-body pt-0">
+                <table className="table table-bordered">
                   <tr>
                     <th width="30%">Email</th>
                     <td width="2%">:</td>
@@ -89,13 +89,13 @@ class UserProfile extends Component {
                 </table>
               </div>
             </div>
-            <div class="card shadow-sm update-info">
-              <div class="card-header bg-transparent border-0">
-                <h3 class="mb-0">
-                  <i class="far fa-clone pr-1"></i>Other Information
+            <div className="card shadow-sm update-info">
+              <div className="card-header bg-transparent border-0">
+                <h3 className="mb-0">
+                  <i className="far fa-clone pr-1"></i>Other Information
                 </h3>
               </div>
-              <div class="card-body pt-0">
+              <div className="card-body pt-0">
                 <p>Update information..</p>
               </div>
             </div>

@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import AskForm from "../components/AskForm";
 
 function AskQuestion() {
+  const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
+
   return (
-    <div className="post-form-container">
+    <div
+      className={
+        user.admin === "token"
+          ? "page-content post-form-container"
+          : "post-form-container"
+      }
+    >
       <div className="post-form-content">
         <div className="post-form-header">
           <div className="post-form-headline">

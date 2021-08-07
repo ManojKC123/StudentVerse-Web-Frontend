@@ -17,7 +17,7 @@ function SingleQuestion(props) {
               <h3 className="questions-headline">Top Questions</h3>
               <div className="questions-btn">
                 <Link to="/ask-question" className="btn btn-primary1">
-                  Ask Question
+                  <b>Ask Question</b>
                 </Link>
               </div>
             </div>

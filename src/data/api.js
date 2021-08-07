@@ -1,7 +1,7 @@
 import { makeRequest } from "./request";
 
-const apiURL = "https://student-verse.herokuapp.com";
-// const apiURL = "http://localhost:5000";
+// const apiURL = "https://student-verse.herokuapp.com";
+const apiURL = "http://localhost:5000";
 const siteURI = `${window.location.origin}/`;
 
 export function login(loginData) {
@@ -38,6 +38,26 @@ export function getProfile(token) {
   const request = {
     method: "get",
     url: `${apiURL}/profile`,
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+
+  return makeRequest(request);
+}
+
+export function upProfile(updaProfile, token) {
+  const request = {
+    method: "post",
+    url: `${apiURL}/user/update`,
+    body: {
+      fname: updaProfile.fname,
+      lname: updaProfile.lname,
+      email: updaProfile.email,
+      mobile: updaProfile.mobile,
+      password: updaProfile.password,
+      address: updaProfile.address,
+    },
     headerParams: {
       authorization: `Bearer ${token}`,
     },
@@ -89,7 +109,7 @@ export function addQuestion(formData, token) {
     body: {
       title: formData.title,
       body: formData.body,
-      tags: formData.tagname,
+      tags: formData.tags,
     },
     headerParams: {
       authorization: `Bearer ${token}`,
@@ -152,5 +172,35 @@ export function downvote(voteData, token) {
     },
   };
 
+  return makeRequest(request);
+}
+
+// admin section
+
+export function createSubjectD(subject, token) {
+  console.log("subjectApiEnter", subject);
+  const request = {
+    method: "post",
+    url: `${apiURL}/subject`,
+    body: {
+      name: subject.name,
+      description: subject.description,
+      picture: subject.picture,
+    },
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+  return makeRequest(request);
+}
+
+export function getSubject(token) {
+  const request = {
+    method: "get",
+    url: `${apiURL}/subject`,
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
+  };
   return makeRequest(request);
 }
