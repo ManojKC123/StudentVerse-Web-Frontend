@@ -20,18 +20,9 @@
   box-shadow: -2px 2px 3px 2px rgba(0, 0, 0, 0.43);
   -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: -2px 2px 3px 2px rgba(0, 0, 0, 0.43);
-  background-color: rgba(211, 211, 211, 0.719);
-
+  background-color: rgb(238, 238, 238);
   height: 70px;
 }
-/* .btn:not(:disabled):not(.disabled) {
-  margin-right: 10px;
-} */
-
-/* margin-top: 3px;
-  font-size: 18px;
-  font-family: "Arial Narrow";
-} */
 
 .btn-primary {
   color: #fff;
@@ -345,7 +336,7 @@
 .post-form-container {
   width: 100%;
   padding: 0 20px;
-  margin-top: 100px;
+  margin-top: 25px;
   font-size: 18px;
   font-family: "Arial Narrow";
 }
@@ -374,6 +365,39 @@
   width: 130px;
   border-radius: 5px;
   margin-top: 15px;
+}
+.stackInput-wrap {
+  position: relative;
+}
+.stackTags {
+  display: inline-block !important;
+  position: absolute;
+  left: 10px;
+  top: 5px;
+}
+.stackTag {
+  display: inline-block;
+  margin-right: 5px;
+  background: #eee;
+  padding: 0 5px;
+  border-radius: 15px;
+}
+.tagCloseBtn {
+  border-radius: 50%;
+  padding: 0px 3px;
+  line-height: 15px;
+  margin-left: 3px;
+  border: 0;
+}
+.tagCloseBtn:hover {
+  background: red;
+  color: #fff;
+}
+.askForm form input,
+.askForm form textarea {
+  display: block;
+  width: 100%;
+  padding: 5px;
 }
 
 /* Profile page */

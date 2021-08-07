@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { addQuestion } from "../data/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,51 +10,82 @@ function AskForm() {
   const [formData, setFormData] = useState({
     title: "",
     body: "",
-    tagname: [],
+    tags: [],
   });
-  const [currentTagText, setCurrentTagText] = useState("");
   const [tags, setTags] = useState([]);
+  const [currentTagText, setCurrentTagText] = useState("");
+  const inputRef = useRef(null);
 
-  const { title, body, tagname } = formData;
+  const { title, body } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const handleTag = (e) => {
+    setCurrentTagText(e.target.value);
+
+    console.log("formData", formData);
+    if (e.keyCode === 13 && currentTagText) {
+      setTags((prevTags) => [...prevTags, currentTagText]);
+      setCurrentTagText("");
+    } else if (e.keyCode === 32 && currentTagText) {
+      console.log("inside 32", e.target.value);
+      setTags((prevTags) => [...prevTags, currentTagText]);
+
+      setCurrentTagText("");
+
+      e.target.value = null;
+    }
+
+    let box = document.querySelector(".stackTags");
+    let width = box.clientWidth;
+    const addedWidth = width + 10;
+    console.log("added", addedWidth);
+    document.getElementById("tag-input").style.paddingLeft = `${addedWidth}px`;
+    console.log("tag added", tags);
+  };
+
+  const removeTag = (index) => {
+    const newTagArray = tags;
+    newTagArray.splice(index, 1);
+    setTags([...newTagArray]);
+
+    let box = document.querySelector(".stackTags");
+    let width = box.clientWidth;
+    const addedWidth = width + 10;
+    console.log("removetag", addedWidth);
+    document.getElementById("tag-input").style.paddingLeft = `${addedWidth}px`;
+    console.log("tag removed", tags);
+    inputRef.current.focus();
+  };
+
+  useEffect(() => {}, [tags]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
 
     console.log("tags", tags);
+    // setFormData((formData) => [...formData, tags]);
 
-    // addQuestion(formData, user.token).then((response) => {
-    //   if (response.data) {
-    //     console.log(response);
-    //     toast.success(response.message, {
-    //       position: toast.POSITION.BOTTOM_RIGHT,
-    //     });
-    //   }
-    // });
+    console.log("createqst formdata", formData);
+    tags.map((tag, index) => formData.tags.push(tags[index].trim()));
+    console.log("createqst formdata", formData);
 
-    // setFormData({
-    //   title: "",
-    //   body: "",
-    //   tagname: "",
-    // });
-  };
+    addQuestion(formData, user.token).then((response) => {
+      if (response.success === true) {
+        console.log(response);
+        toast.success(response.message, {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
+      }
 
-  const handleTag = (e) => {
-    setCurrentTagText(e.target.value);
-    if (e.keyCode == 13 && currentTagText) {
-      setTags((prevTags) => [...prevTags, currentTagText]);
-      setCurrentTagText("");
-    } else if (e.keyCode == 32 && currentTagText) {
-      setTags((prevTags) => [...prevTags, currentTagText]);
-      setCurrentTagText("");
-    }
-  };
-  const removeTag = (index) => {
-    const newTagArray = tags;
-    newTagArray.splice(index, 1);
-    setTags([...newTagArray]);
+      setFormData({
+        title: "",
+        body: "",
+        tags: [],
+      });
+      setTags([]);
+    });
   };
 
   return (
@@ -112,48 +143,38 @@ function AskForm() {
               </label>
 
               <div className="masterStackDiv">
-                <div
-                  className="stackTags"
-                  style={{ display: tags.length > 0 ? "flex" : "none" }}
-                >
-                  {tags.map((tag, index) => {
-                    return (
-                      <div className="stackTag">
-                        <button
-                          onClick={() => removeTag(index)}
-                          className="tagCloseBtn"
-                        >
-                          x
-                        </button>
-                        #{tag}
-                      </div>
-                    );
-                  })}
-                </div>
-                <div className="stackInput">
+                <div className="stackInput-wrap">
+                  <div
+                    className="stackTags"
+                    style={{ display: tags.length > 0 ? "flex" : "none" }}
+                  >
+                    {tags.map((tag, index) => {
+                      return (
+                        <div className="stackTag">
+                          {tag}
+                          <button
+                            onClick={() => removeTag(index)}
+                            className="tagCloseBtn"
+                          >
+                            {/* <Clear /> */} &times;
+                          </button>
+                        </div>
+                      );
+                    })}
+                  </div>
                   <input
                     type="text"
                     className="tag-input"
                     onKeyDown={handleTag}
                     onChange={handleTag}
                     value={currentTagText}
-                    id="tagname"
+                    id="tag-input"
                     placeholder="e.g. (ajax django string)"
                     required
+                    ref={inputRef}
                   />
                 </div>
               </div>
-
-              <input
-                className="tag-input s-input"
-                type="text"
-                name="tagname"
-                value={tagname}
-                onChange={(e) => onChange(e)}
-                id="tagname"
-                placeholder="e.g. (ajax django string)"
-                required
-              />
             </div>
           </div>
         </div>
