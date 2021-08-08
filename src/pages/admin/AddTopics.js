@@ -12,8 +12,6 @@ const AddTopics = () => {
   const [subject, setSubject] = useState([]);
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
 
-  // const [studysubtopic, setStudySubTopic] = useState(false);
-
   const createTopic = (e) => {
     e.preventDefault();
     setTopic([...topic, currentTopic]);
@@ -35,7 +33,7 @@ const AddTopics = () => {
     getSubject(user.token).then((response) => {
       if (response.success === true) {
         setSubject(response.data);
-        console.log("sublists topics", response.data);
+        console.log("sublists topics addtopics", response.data);
       }
     });
   }, []);
@@ -46,8 +44,8 @@ const AddTopics = () => {
         <div className="topic-listwrap">
           <h3 className="topic-title">Topics:</h3>
           <ul className="topic-lists" id="study-topic">
-            {topic &&
-              topic.map((sub, index) => {
+            {subject &&
+              subject.map((sub, index) => {
                 return (
                   <>
                     <div
@@ -55,7 +53,7 @@ const AddTopics = () => {
                       key={index}
                       onClick={() => toggleGroup("study-material")}
                     >
-                      {sub}topics
+                      {sub.name}
                       <KeyboardArrowDown
                         className={
                           studytopic ? "drop-icon toggle" : "drop-icon"
@@ -68,12 +66,12 @@ const AddTopics = () => {
                       }
                       id="subtopic"
                     >
-                      {subtopic &&
-                        subtopic.map((sub, index) => {
+                      {sub.topic &&
+                        sub.topic.map((topic, index) => {
                           return (
                             <Link to="/admin/topic/subtopic">
                               <div className="subtopic-name" key={index}>
-                                {sub}sub
+                                {topic.name}
                               </div>
                             </Link>
                           );

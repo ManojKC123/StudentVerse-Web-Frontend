@@ -1,7 +1,7 @@
 import { makeRequest } from "./request";
 
-const apiURL = "https://student-verse.herokuapp.com";
-// const apiURL = "http://localhost:5000";
+// const apiURL = "https://student-verse.herokuapp.com";
+const apiURL = "http://localhost:5000";
 const siteURI = `${window.location.origin}/`;
 
 export function login(loginData) {
@@ -182,15 +182,12 @@ export function createSubjectD(subject, token) {
   const request = {
     method: "post",
     url: `${apiURL}/subject`,
-    body: {
-      name: subject.name,
-      description: subject.description,
-      picture: subject.picture,
-    },
+    body: subject,
     headerParams: {
       authorization: `Bearer ${token}`,
     },
   };
+
   return makeRequest(request);
 }
 
