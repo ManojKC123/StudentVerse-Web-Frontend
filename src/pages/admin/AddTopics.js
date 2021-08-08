@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { KeyboardArrowDown } from "@material-ui/icons/";
+import { getSubject } from "../../data/api";
 
 const AddTopics = () => {
   const [currentTopic, setCurrentTopic] = useState("");
@@ -8,6 +9,8 @@ const AddTopics = () => {
   const [topic, setTopic] = useState(["Physics", "Chemistry"]);
   const [subtopic, setSubTopic] = useState(["Measurement", "Kinematics"]);
   const [studytopic, setStudyTopic] = useState(false);
+  const [subject, setSubject] = useState([]);
+  const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
 
   // const [studysubtopic, setStudySubTopic] = useState(false);
 
@@ -27,6 +30,15 @@ const AddTopics = () => {
     setStudyTopic(!studytopic);
     console.log(studytopic);
   };
+
+  useEffect(() => {
+    getSubject(user.token).then((response) => {
+      if (response.success === true) {
+        setSubject(response.data);
+        console.log("sublists topics", response.data);
+      }
+    });
+  }, []);
 
   return (
     <div className="page-content topic-section">
