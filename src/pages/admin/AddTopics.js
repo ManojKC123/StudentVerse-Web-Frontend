@@ -1,25 +1,53 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { KeyboardArrowDown } from "@material-ui/icons/";
-import { getSubject } from "../../data/api";
+import {
+  getSubject,
+  createTopicD,
+  getTopicD,
+  createSubTopic,
+  getSubTopic,
+} from "../../data/api";
 
 const AddTopics = () => {
   const [currentTopic, setCurrentTopic] = useState("");
   const [currentSubTopic, setCurrentSubTopic] = useState("");
+
   const [topic, setTopic] = useState(["Physics", "Chemistry"]);
   const [subtopic, setSubTopic] = useState(["Measurement", "Kinematics"]);
   const [studytopic, setStudyTopic] = useState(false);
+
   const [subject, setSubject] = useState([]);
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
 
   const createTopic = (e) => {
     e.preventDefault();
+    function titleCase(str) {
+      return str.toLowerCase().replace(/\b(\w)/g, (s) => s.toUpperCase());
+    }
+    const name = titleCase(currentTopic);
+    createTopicD(name, user.token).then((response) => {
+      if (response.success === true && response.data) {
+        console.log("topic created", response.data);
+        setCurrentTopic("");
+      }
+    });
     setTopic([...topic, currentTopic]);
     setCurrentTopic("");
   };
 
   const createSubTopic = (e) => {
     e.preventDefault();
+    function titleCase(str) {
+      return str.toLowerCase().replace(/\b(\w)/g, (s) => s.toUpperCase());
+    }
+    const name = titleCase(currentSubTopic);
+    createSubTopic(name, user.token).then((response) => {
+      if (response.success === true && response.data) {
+        console.log("sub topic created", response.data);
+        setCurrentTopic("");
+      }
+    });
     setSubTopic([...subtopic, currentSubTopic]);
     setCurrentSubTopic("");
   };
@@ -46,6 +74,7 @@ const AddTopics = () => {
           <ul className="topic-lists" id="study-topic">
             {subject &&
               subject.map((sub, index) => {
+                console.log("submap", sub);
                 return (
                   <>
                     <div

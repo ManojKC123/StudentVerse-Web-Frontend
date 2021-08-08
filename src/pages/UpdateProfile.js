@@ -1,11 +1,19 @@
 import React, { Component, Container } from "react";
 import axios from "axios";
-import { upProfile } from "../data/api";
+import { updateProfile } from "../data/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import Alert from "@material-ui/lab/Alert";
+import Collapse from "@material-ui/core/Collapse";
+import { IconButton } from "@material-ui/core";
+
+import { Close } from "@material-ui/icons/";
+
 class UpdateProfile extends Component {
   state = {
+    incorectAlert: false,
+    incorrectMessage: "",
     fname: "",
     lname: "",
     username: "",
@@ -13,6 +21,8 @@ class UpdateProfile extends Component {
     mobile: "",
     email: "",
     profilepic: "",
+    password: "",
+    newPassword: "",
     checkupdate: false,
     id: this.props.match.params.id,
     config: {
@@ -47,166 +57,209 @@ class UpdateProfile extends Component {
 
   updateUserData = (e) => {
     e.preventDefault();
-    console.log("update click");
-    console.log(this.state);
-    upProfile(this.state, this.state.user.token)
+    console.log("update data", this.state);
+
+    updateProfile(this.state, this.state.user.token)
       .then((response) => {
-        console.log(response);
+        if (response.success === false) {
+          this.setState({ incorectAlert: true });
+          this.setState({ incorrectMessage: response.message });
+        }
+        console.log("update result", response);
         this.setState({
           checkupdate: true,
         });
       })
       .catch((err) => {
-        console.log(err.response);
+        this.setState({ incorectAlert: true });
+        this.setState({ incorrectMessage: err.message });
+        console.log("Profile Update", err.response, err);
       });
   };
+
   render() {
     return (
       <div className="container">
-        <div className="row user-profile">
-          <div className="col-lg-4">
-            <div className="card shadow-sm">
-              <div className="card-header bg-transparent text-center">
-                <img
-                  className="profile_img"
-                  src="https://source.unsplash.com/600x300/?student"
-                  alt="student dp"
-                />
-                <input
-                  type="text"
-                  className="form-control"
-                  id="updateUsername"
-                  value={this.state.username}
-                  onChange={(event) => {
-                    this.setState({
-                      username: event.target.value,
-                    });
-                  }}
-                  placeholder="Username"
-                />
-              </div>
-              <div className="card-body">
-                <p className="mb-0">
-                  <strong className="pr-1">First-Name:</strong>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="updateFnmae"
-                    value={this.state.fname}
-                    onChange={(event) => {
-                      this.setState({
-                        fname: event.target.value,
-                      });
-                    }}
-                    placeholder="First-name"
+        <form onSubmit={this.updateUserData}>
+          <div className="row user-profile">
+            <div className="col-lg-4">
+              <div className="card shadow-sm">
+                <div className="card-header bg-transparent text-center">
+                  <img
+                    className="profile_img"
+                    src="https://source.unsplash.com/600x300/?student"
+                    alt="student dp"
                   />
-                </p>
-                <p className="mb-0">
-                  <strong className="pr-1">Last-Name:</strong>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="updateLname"
-                    value={this.state.lname}
-                    onChange={(event) => {
-                      this.setState({
-                        lname: event.target.value,
-                      });
-                    }}
-                    placeholder="Last-name"
-                  />
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-8">
-            <div className="card shadow-sm">
-              <div className="card-header bg-transparent border-0">
-                <h3 className="mb-0">
-                  <i className="far fa-clone pr-1"></i>General Information
-                </h3>
-              </div>
-              <div className="card-body pt-0">
-                <table className="table table-bordered">
-                  <tr>
-                    <th width="30%">Email</th>
-                    <td width="2%">:</td>
-                    <td>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="updateEmail"
-                        value={this.state.email}
-                        onChange={(event) => {
-                          this.setState({
-                            email: event.target.value,
-                          });
-                        }}
-                        placeholder="E-mail"
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th width="30%">Address </th>
-                    <td width="2%">:</td>
-                    <td>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="updateAddress"
-                        value={this.state.address}
-                        onChange={(event) => {
-                          this.setState({
-                            address: event.target.value,
-                          });
-                        }}
-                        placeholder="Address"
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th width="30%">Mobile</th>
-                    <td width="2%">:</td>
-                    <td>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="updateMobile"
-                        value={this.state.mobile}
-                        onChange={(event) => {
-                          this.setState({
-                            mobile: event.target.value,
-                          });
-                        }}
-                        placeholder="Mobile"
-                      />
-                    </td>
-                  </tr>
-                  <tr>
+                  <h2>{this.state.username}</h2>
+                </div>
+                <div className="card-body">
+                  <p className="mb-0">
+                    <strong className="pr-1">First-Name:</strong>
                     <input
-                      type="submit"
-                      className="btnupProfile"
-                      id="upProfileBtn"
-                      value="Submit"
-                      onClick={this.notify}
-                      onSubmit={this.updateUserData}
+                      type="text"
+                      className="form-control"
+                      id="updateFnmae"
+                      value={this.state.fname}
+                      onChange={(event) => {
+                        this.setState({
+                          fname: event.target.value,
+                        });
+                      }}
+                      placeholder="First-name"
                     />
-                  </tr>
-                </table>
+                  </p>
+                  <p className="mb-0">
+                    <strong className="pr-1">Last-Name:</strong>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="updateLname"
+                      value={this.state.lname}
+                      onChange={(event) => {
+                        this.setState({
+                          lname: event.target.value,
+                        });
+                      }}
+                      placeholder="Last-name"
+                    />
+                  </p>
+                </div>
               </div>
             </div>
-            <div className="card shadow-sm update-info">
-              <div className="card-header bg-transparent border-0">
-                <h3 className="mb-0">
-                  <i className="far fa-clone pr-1">Other Incormation</i>
-                </h3>
+            <div className="col-lg-8">
+              <div className="card shadow-sm">
+                <div className="card-header bg-transparent border-0">
+                  <h3 className="mb-0">
+                    <i className="far fa-clone pr-1"></i>General Information
+                  </h3>
+                </div>
+                <div className="card-body pt-0">
+                  <table className="table">
+                    <tr>
+                      <th width="30%">Email:</th>
+                      <td>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="update-email"
+                          defaultValue={this.state.email}
+                          onChange={(event) => {
+                            this.setState({
+                              email: event.target.value,
+                            });
+                          }}
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th width="30%">Address: </th>
+                      <td>
+                        <input
+                          defaultValue={this.state.address}
+                          onChange={(event) => {
+                            this.setState({
+                              address: event.target.value,
+                            });
+                          }}
+                          type="text"
+                          className="form-control"
+                          id="update-address"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th width="30%">Mobile:</th>
+                      <td>
+                        <input
+                          defaultValue={this.state.mobile}
+                          onChange={(event) => {
+                            this.setState({
+                              mobile: event.target.value,
+                            });
+                          }}
+                          type="text"
+                          className="form-control"
+                          id="update-mobile"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th width="30%">Current Password:</th>
+                      <td>
+                        <input
+                          onChange={(event) => {
+                            this.setState({
+                              password: event.target.value,
+                            });
+                            if (this.state.incorectAlert) {
+                              this.setState({ incorectAlert: false });
+                            }
+                          }}
+                          type="text"
+                          className="form-control"
+                          id="update-curentpasword"
+                        />
+                        <Collapse in={this.state.incorectAlert}>
+                          <Alert
+                            action={
+                              <IconButton
+                                aria-label="close"
+                                color="inherit"
+                                size="small"
+                                onClick={() => {
+                                  this.setState({ incorectAlert: true });
+                                }}
+                              >
+                                <Close fontSize="inherit" />
+                              </IconButton>
+                            }
+                          >
+                            InvalidC {this.state.incorrectMessage}
+                          </Alert>
+                        </Collapse>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th width="30%">New Password:</th>
+                      <td>
+                        <input
+                          defaultValue={this.state.newPassword}
+                          onChange={(event) => {
+                            this.setState({
+                              newPassword: event.target.value,
+                            });
+                          }}
+                          type="text"
+                          className="form-control"
+                          id="update-newpassword"
+                        />
+                      </td>
+                    </tr>
+                    <div>
+                      <input
+                        type="submit"
+                        className="btn btn-primary center"
+                        id="upProfileBtn"
+                        value="Update Profile"
+                        onClick={this.notify}
+                      />
+                    </div>
+                  </table>
+                </div>
               </div>
-              <div className="card-body pt-0">
-                <p>Update information..</p>
+              <div className="card shadow-sm update-info">
+                <div className="card-header bg-transparent border-0">
+                  <h3 className="mb-0">
+                    <i className="far fa-clone pr-1">Other Incormation</i>
+                  </h3>
+                </div>
+                <div className="card-body pt-0">
+                  <p>Update information..</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     );
   }

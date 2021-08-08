@@ -1,7 +1,7 @@
 import { makeRequest } from "./request";
 
-// const apiURL = "https://student-verse.herokuapp.com";
-const apiURL = "http://localhost:5000";
+const apiURL = "https://student-verse.herokuapp.com";
+// const apiURL = "http://localhost:5000";
 const siteURI = `${window.location.origin}/`;
 
 export function login(loginData) {
@@ -46,17 +46,18 @@ export function getProfile(token) {
   return makeRequest(request);
 }
 
-export function upProfile(updaProfile, token) {
+export function updateProfile(uProfile, token) {
   const request = {
-    method: "post",
-    url: `${apiURL}/user/update`,
+    method: "put",
+    url: `${apiURL}/profile/update`,
     body: {
-      fname: updaProfile.fname,
-      lname: updaProfile.lname,
-      email: updaProfile.email,
-      mobile: updaProfile.mobile,
-      password: updaProfile.password,
-      address: updaProfile.address,
+      fname: uProfile.fname,
+      lname: uProfile.lname,
+      email: uProfile.email,
+      mobile: uProfile.mobile,
+      password: uProfile.password,
+      newPassword: uProfile.newPassword,
+      address: uProfile.address,
     },
     headerParams: {
       authorization: `Bearer ${token}`,
@@ -176,9 +177,7 @@ export function downvote(voteData, token) {
 }
 
 // admin section
-
 export function createSubjectD(subject, token) {
-  console.log("subjectApiEnter", subject);
   const request = {
     method: "post",
     url: `${apiURL}/subject`,
@@ -190,11 +189,52 @@ export function createSubjectD(subject, token) {
 
   return makeRequest(request);
 }
-
 export function getSubject(token) {
   const request = {
     method: "get",
     url: `${apiURL}/subject`,
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+  return makeRequest(request);
+}
+export function createTopicD(name, token) {
+  const request = {
+    method: "post",
+    url: `${apiURL}/topic`,
+    body: name,
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+  return makeRequest(request);
+}
+export function getTopicD(token) {
+  const request = {
+    method: "get",
+    url: `${apiURL}/topic`,
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+  return makeRequest(request);
+}
+export function createSubTopic(name, token) {
+  const request = {
+    method: "post",
+    url: `${apiURL}/chapter`,
+    body: name,
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+  return makeRequest(request);
+}
+export function getSubTopic(token) {
+  const request = {
+    method: "get",
+    url: `${apiURL}/chapter`,
     headerParams: {
       authorization: `Bearer ${token}`,
     },

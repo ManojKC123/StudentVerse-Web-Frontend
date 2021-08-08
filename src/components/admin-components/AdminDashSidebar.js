@@ -89,7 +89,6 @@ const AdminDashSidebar = () => {
                 value={subName}
                 onChange={(event) => {
                   setCurrentSub(event.target.value);
-                  console.log("onchange name", subName);
                 }}
                 placeholder="New Subject"
               />
@@ -100,7 +99,6 @@ const AdminDashSidebar = () => {
                 value={description}
                 onChange={(event) => {
                   setCurSubDesc(event.target.value);
-                  console.log("onchange currentdesc", description);
                 }}
                 placeholder="New Subject"
               />
@@ -111,7 +109,6 @@ const AdminDashSidebar = () => {
                 defaultValue={picture}
                 onChange={(e) => {
                   setCurSubFile(e.target.files[0]);
-                  console.log(e.target.files[0]);
                 }}
               />
               <button
