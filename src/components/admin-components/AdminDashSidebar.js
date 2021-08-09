@@ -24,13 +24,12 @@ const AdminDashSidebar = () => {
       return str.toLowerCase().replace(/\b(\w)/g, (s) => s.toUpperCase());
     }
     const name = titleCase(subName);
-    const subjectArg = { name, description, picture };
-    console.log("subject arg", subjectArg);
+    const subjectArg = new FormData();
+    subjectArg.append("name", name);
+    subjectArg.append("description", description);
+    subjectArg.append("picture", picture);
 
     createSubjectD(subjectArg, user.token).then((response) => {
-      console.log("create subject response", response);
-      console.log("create subject response", response.data);
-
       if (response.success === true && response.data) {
         setSubject([...subject, response.data]);
         setCurrentSub("");
@@ -44,12 +43,9 @@ const AdminDashSidebar = () => {
     getSubject(user.token).then((response) => {
       if (response.success === true) {
         setSubject(response.data);
-        console.log("sublists", response.data);
-        console.log("sublists", subject);
       }
     });
   }, []);
-  console.log("sublists", subject);
 
   return (
     <div className="sidebar">
@@ -77,7 +73,12 @@ const AdminDashSidebar = () => {
             {subject &&
               subject.map((sub, index) => {
                 return (
-                  <Link to="/admin/topic">
+                  <Link
+                    to={{
+                      pathname: `/admin/${sub.name}`,
+                      propsParam: { id: sub._id },
+                    }}
+                  >
                     <div className="subject-name" key={index}>
                       {sub.name}
                     </div>
@@ -93,7 +94,6 @@ const AdminDashSidebar = () => {
                 value={subName}
                 onChange={(event) => {
                   setCurrentSub(event.target.value);
-                  console.log("onchange name", subName);
                 }}
                 placeholder="New Subject"
               />
@@ -104,9 +104,8 @@ const AdminDashSidebar = () => {
                 value={description}
                 onChange={(event) => {
                   setCurSubDesc(event.target.value);
-                  console.log("onchange currentdesc", description);
                 }}
-                placeholder="New Subject"
+                placeholder="Short Description"
               />
               <input
                 type="file"
@@ -115,7 +114,6 @@ const AdminDashSidebar = () => {
                 defaultValue={picture}
                 onChange={(e) => {
                   setCurSubFile(e.target.files[0]);
-                  console.log(e.target.files[0]);
                 }}
               />
               <button

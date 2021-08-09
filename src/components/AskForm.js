@@ -23,13 +23,10 @@ function AskForm() {
 
   const handleTag = (e) => {
     setCurrentTagText(e.target.value);
-
-    console.log("formData", formData);
     if (e.keyCode === 13 && currentTagText) {
       setTags((prevTags) => [...prevTags, currentTagText]);
       setCurrentTagText("");
     } else if (e.keyCode === 32 && currentTagText) {
-      console.log("inside 32", e.target.value);
       setTags((prevTags) => [...prevTags, currentTagText]);
 
       setCurrentTagText("");
@@ -40,9 +37,7 @@ function AskForm() {
     let box = document.querySelector(".stackTags");
     let width = box.clientWidth;
     const addedWidth = width + 10;
-    console.log("added", addedWidth);
     document.getElementById("tag-input").style.paddingLeft = `${addedWidth}px`;
-    console.log("tag added", tags);
   };
 
   const removeTag = (index) => {
@@ -53,9 +48,7 @@ function AskForm() {
     let box = document.querySelector(".stackTags");
     let width = box.clientWidth;
     const addedWidth = width + 10;
-    console.log("removetag", addedWidth);
     document.getElementById("tag-input").style.paddingLeft = `${addedWidth}px`;
-    console.log("tag removed", tags);
     inputRef.current.focus();
   };
 
@@ -64,16 +57,10 @@ function AskForm() {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("tags", tags);
-    // setFormData((formData) => [...formData, tags]);
-
-    console.log("createqst formdata", formData);
     tags.map((tag, index) => formData.tags.push(tags[index].trim()));
-    console.log("createqst formdata", formData);
 
     addQuestion(formData, user.token).then((response) => {
       if (response.success === true) {
-        console.log(response);
         toast.success(response.message, {
           position: toast.POSITION.BOTTOM_RIGHT,
         });

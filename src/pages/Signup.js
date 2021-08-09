@@ -23,12 +23,6 @@ class SignUp extends Component {
     });
   };
 
-  notify = () => {
-    toast.error(this.state.message, {
-      position: toast.POSITION.BOTTOM_RIGHT,
-    });
-  };
-
   sendUserData = (e) => {
     e.preventDefault();
     const data = {
@@ -42,15 +36,49 @@ class SignUp extends Component {
 
     signup(data)
       .then((response) => {
-        this.setState({
-          UserRegistered: true,
-          message: response.data.message,
-        });
+        console.log("signup resp", response);
+        if ((response = "Error: Request failed with status code 400")) {
+          toast.warn("Try with different Email", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
+        }
+
+        if (response.success === true) {
+          console.log("signup resp2", response.data, response);
+          this.setState({
+            UserRegistered: true,
+            message: response.data.message,
+          });
+          const uNameE = data.email.substring(0, data.email.indexOf("@"));
+          toast.info("Your username is " + uNameE, {
+            position: "top-center",
+            autoClose: 4000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: 1,
+          });
+          toast.success("SignUp Succesfull !!!", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
+          setTimeout(function () {
+            window.location.href = "/login";
+          }, 4000);
+        }
+        if (response.success === false) {
+          toast.error("Signup ERROR!!!", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
+        }
       })
       .catch((err) => {
         console.log("signup Error " + err);
         this.setState({
           message: "Invalid Data Entered",
+        });
+        toast.error("Signup ERROR!!!", {
+          position: toast.POSITION.BOTTOM_RIGHT,
         });
       });
   };
@@ -158,7 +186,6 @@ class SignUp extends Component {
                         className="btnRegister"
                         id="signupBtn"
                         value="Register"
-                        onClick={this.notify}
                       >
                         Register
                       </button>
