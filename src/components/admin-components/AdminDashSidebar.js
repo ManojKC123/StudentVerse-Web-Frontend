@@ -73,7 +73,12 @@ const AdminDashSidebar = () => {
             {subject &&
               subject.map((sub, index) => {
                 return (
-                  <Link to="/admin/topic">
+                  <Link
+                    to={{
+                      pathname: `/admin/${sub.name}`,
+                      propsParam: { id: sub._id },
+                    }}
+                  >
                     <div className="subject-name" key={index}>
                       {sub.name}
                     </div>
@@ -100,7 +105,7 @@ const AdminDashSidebar = () => {
                 onChange={(event) => {
                   setCurSubDesc(event.target.value);
                 }}
-                placeholder="New Subject"
+                placeholder="Short Description"
               />
               <input
                 type="file"

@@ -25,7 +25,7 @@ const Header = (props) => {
     //   .then((response) => {
     //     console.log("logout response", response);
     localStorage.clear();
-    toast.error("Logout Succesfull !!!", {
+    toast.success("Logout Succesfull !!!", {
       position: toast.POSITION.BOTTOM_RIGHT,
     });
     setTimeout(function () {

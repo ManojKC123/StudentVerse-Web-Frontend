@@ -199,32 +199,37 @@ export function getSubject(token) {
   };
   return makeRequest(request);
 }
-export function createTopicD(name, token) {
+export function createTopicD(topicData, token) {
   const request = {
     method: "post",
     url: `${apiURL}/topic`,
-    body: name,
+    body: { subject: topicData.subject, name: topicData.name },
     headerParams: {
       authorization: `Bearer ${token}`,
     },
   };
   return makeRequest(request);
 }
-export function getTopicD(token) {
+export function getTopicD(subjectId, token) {
   const request = {
     method: "get",
-    url: `${apiURL}/topic`,
+    url: `${apiURL}/topic?subjectID=${subjectId}`,
+    // body: {
+    //   subject: subjectId,
+    // },
     headerParams: {
       authorization: `Bearer ${token}`,
+      test: "asdads",
     },
   };
+  console.log("req", request);
   return makeRequest(request);
 }
-export function createSubTopic(name, token) {
+export function createSubTopicD(subTopicArg, token) {
   const request = {
     method: "post",
     url: `${apiURL}/chapter`,
-    body: name,
+    body: subTopicArg,
     headerParams: {
       authorization: `Bearer ${token}`,
     },

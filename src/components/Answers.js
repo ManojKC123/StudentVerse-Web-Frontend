@@ -13,7 +13,9 @@ toast.configure();
 function Answers(props) {
   const itemID = props.itemID;
   const questionID = props.itemID;
-  const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
+  const [user] = useState(
+    JSON.parse(localStorage.getItem("user")) || { user: false }
+  );
   const [answerDetails, setAnswerDetails] = useState([]);
   const [clickID, setClickId] = useState(null);
   const [voteDependency, setVoteDependency] = useState("voteNull");
@@ -47,25 +49,46 @@ function Answers(props) {
 
   function submitComment(id) {
     // e.preventDefault();
+    !user.token ??
+      setTimeout(function () {
+        window.location.href = "/login";
+      }, 1000);
     const commentD = { textC, questionID, id };
-    addComment(commentD, user.token).then((response) => {
-      if (response.data) {
-        toast.success(response.message, {
-          position: toast.POSITION.BOTTOM_RIGHT,
-        });
-      }
-    });
+    addComment(commentD, user.token)
+      .then((response) => {
+        console.log("asnwerresp", response);
+        if (response.data) {
+          toast.success(response.message, {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
+        }
+      })
+      .catch((err) => {
+        console.log("asnwerresp", err);
+        console.log("asnwerresp");
+      });
   }
 
   function onSubmit(e) {
     e.preventDefault();
-    addAnswer(answer, user.token).then((response) => {
-      if (response.data) {
-        toast.success(response.message, {
-          position: toast.POSITION.BOTTOM_RIGHT,
-        });
-      }
-    });
+    addAnswer(answer, user.token)
+      .then((response) => {
+        console.log("asnwer resp", response);
+        if ((response = "Error: Request failed with status code 401")) {
+          window.location.href = "/login";
+        }
+        if (response.success === true && response.data) {
+          toast.success(response.message, {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
+        }
+      })
+      .catch((err) => {
+        console.log("Add answer error", err.response.status);
+        if (!user.user === false) {
+          window.location.href = "/login";
+        }
+      });
   }
 
   const renderExpand = ({ type, id }) => {
@@ -227,18 +250,16 @@ function Answers(props) {
                   {/* Comments here */}
                   <div className="comment-section">
                     <div className="">
-                      <p>
-                        <a
-                          className="btn btn-primary"
-                          data-toggle="collapse"
-                          href={`#commentID${answer.id}`}
-                          role="button"
-                          aria-expanded="true"
-                          aria-controls="collapseExample"
-                        >
-                          <b>Comment here</b>
-                        </a>
-                      </p>
+                      <a
+                        className="btn btn-primary"
+                        data-toggle="collapse"
+                        href={`#commentID${answer.id}`}
+                        role="button"
+                        aria-expanded="true"
+                        aria-controls="collapseExample"
+                      >
+                        Comment here
+                      </a>
                       <div className="collapse" id={`commentID${answer.id}`}>
                         <div className="card card-body">
                           <textarea
@@ -279,7 +300,7 @@ function Answers(props) {
             className="btn btn-primary1"
             onClick={(e) => onSubmit(e)}
           >
-            <b>Post Answer</b>
+            Post Answer
           </button>
         </div>
       </form>

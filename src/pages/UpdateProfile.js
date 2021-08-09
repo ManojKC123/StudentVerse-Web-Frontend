@@ -3,12 +3,13 @@ import axios from "axios";
 import { updateProfile } from "../data/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import Alert from "@material-ui/lab/Alert";
 import Collapse from "@material-ui/core/Collapse";
 import { IconButton } from "@material-ui/core";
 
 import { Close } from "@material-ui/icons/";
+
+toast.configure();
 
 class UpdateProfile extends Component {
   state = {
@@ -61,19 +62,32 @@ class UpdateProfile extends Component {
 
     updateProfile(this.state, this.state.user.token)
       .then((response) => {
+        console.log("update profile", response);
+
         if (response.success === false) {
           this.setState({ incorectAlert: true });
           this.setState({ incorrectMessage: response.message });
+          toast.error("Profile Update Error !!!", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
         }
-        console.log("update result", response);
-        this.setState({
-          checkupdate: true,
-        });
+        if (response.success === true) {
+          console.log("update result", response);
+          this.setState({
+            checkupdate: true,
+          });
+          toast.success("Profile Updated Successfully!!!", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
+        }
       })
       .catch((err) => {
         this.setState({ incorectAlert: true });
         this.setState({ incorrectMessage: err.message });
         console.log("Profile Update", err.response, err);
+        toast.error("Profile Update Error!", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
       });
   };
 
