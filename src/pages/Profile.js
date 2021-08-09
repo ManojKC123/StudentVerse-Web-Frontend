@@ -1,9 +1,8 @@
-import React, { Component, state, Container } from "react";
+import React, { Component, Container } from "react";
 import { getProfile } from "../data/api";
 
 class UserProfile extends Component {
   state = {
-    id: localStorage.getItem("userId"),
     fname: "",
     lname: "",
     username: "",
@@ -33,9 +32,10 @@ class UserProfile extends Component {
         console.log("Profile Error", err);
       });
   }
+
   render() {
     return (
-      <Container>
+      <div className="container">
         <div className="row user-profile">
           <div className="col-lg-4">
             <div className="card shadow-sm">
@@ -46,7 +46,7 @@ class UserProfile extends Component {
                   alt="student dp"
                 />
                 <h3>{this.state.username}</h3>
-                <a href="/user/update">
+                <a href="/profile/update">
                   <p>Update your profile</p>
                 </a>
               </div>
@@ -101,7 +101,7 @@ class UserProfile extends Component {
             </div>
           </div>
         </div>
-      </Container>
+      </div>
     );
   }
 }

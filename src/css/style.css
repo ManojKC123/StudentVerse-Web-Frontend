@@ -418,7 +418,7 @@
 
 /* Profile page */
 .user-profile {
-  margin-top: 150px;
+  margin-top: 30px;
   margin-bottom: 50px;
   font-size: 18px;
   font-family: "Arial Narrow";
@@ -471,7 +471,7 @@
 .questions-page {
   width: 100%;
   padding: 0 20px;
-  margin-top: 100px;
+  margin-top: 25px;
   font-size: 18px;
   font-family: "Arial Narrow";
 }
@@ -493,9 +493,6 @@
 .card > .card-header + .list-group {
   border-top: 0;
   height: 200px;
-}
-.card {
-  height: 820px;
 }
 .h6,
 h6 {
@@ -558,7 +555,7 @@ textarea.form-control {
 
 /* Comment section */
 .comment-displayed {
-  padding-left: 20px;
+  padding-left: 40px;
   background: #f4f4f4;
   margin-right: 10px;
 }
@@ -814,17 +811,23 @@ ul.topic-lists {
 .input-topic {
   margin-top: 12px;
   margin-bottom: 10px;
+  z-index: 20;
+  position: relative;
 }
 
 .subtopic-lists.toggle {
   height: 0;
   opacity: 0;
   transition: all 400ms ease-in-out;
+  z-index: -1;
+  position: relative;
 }
 .subtopic-lists {
   transition: all 400ms ease-in-out;
   height: 100%;
   padding-left: 15px;
+  z-index: 50;
+  position: relative;
 }
 .topic-name {
   cursor: pointer;
