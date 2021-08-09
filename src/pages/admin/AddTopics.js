@@ -1,67 +1,124 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { KeyboardArrowDown } from "@material-ui/icons/";
+import { createTopicD, getTopicD, createSubTopicD } from "../../data/api";
 
-const AddTopics = () => {
+const AddTopics = (props) => {
+  const location = useLocation();
   const [currentTopic, setCurrentTopic] = useState("");
   const [currentSubTopic, setCurrentSubTopic] = useState("");
-  const [topic, setTopic] = useState(["Physics", "Chemistry"]);
-  const [subtopic, setSubTopic] = useState(["Measurement", "Kinematics"]);
-  const [studytopic, setStudyTopic] = useState(false);
+  const [currentSubTopicContent, setCurrentSubTopicContent] = useState("");
+  const [subTopicPicture, setCurSubTopicFile] = useState(null);
+  const [subjectArg, setSubjectArg] = useState({}); // name, id
+  const [topics, setTopics] = useState([]);
 
-  // const [studysubtopic, setStudySubTopic] = useState(false);
+  const [studytopic, setStudyTopic] = useState();
+  const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
+
+  useEffect(() => {
+    setSubjectArg({
+      name: props.match.params.subname,
+      id: location.propsParam?.id,
+    });
+
+    location.propsParam?.id &&
+      getTopicD(location.propsParam?.id, user.token).then((response) => {
+        if (response.success === true) {
+          setTopics(response.data);
+        }
+      });
+  }, [props]);
 
   const createTopic = (e) => {
-    e.preventDefault();
-    setTopic([...topic, currentTopic]);
-    setCurrentTopic("");
+    function titleCase(str) {
+      return str.toLowerCase().replace(/\b(\w)/g, (s) => s.toUpperCase());
+    }
+    const name = titleCase(currentTopic);
+    const subject = location.propsParam?.id;
+    const topicData = { name, subject };
+    createTopicD(topicData, user.token).then((response) => {
+      if (response.success === true && response.data) {
+        setTopics(response.data.topic);
+        setCurrentTopic("");
+      }
+    });
   };
 
-  const createSubTopic = (e) => {
-    e.preventDefault();
-    setSubTopic([...subtopic, currentSubTopic]);
-    setCurrentSubTopic("");
+  const createSubTopic = (topicID) => {
+    function titleCase(str) {
+      return str.toLowerCase().replace(/\b(\w)/g, (s) => s.toUpperCase());
+    }
+    const subject = location.propsParam?.id;
+    const name = titleCase(currentSubTopic);
+    const topic = topicID;
+    const content = currentSubTopicContent;
+    const picture = subTopicPicture;
+
+    const subTopicArg = new FormData();
+    subTopicArg.append("subject", subject);
+    subTopicArg.append("topic", topic);
+    subTopicArg.append("name", name);
+    subTopicArg.append("content", content);
+    subTopicArg.append("picture", picture);
+
+    createSubTopicD(subTopicArg, user.token).then((response) => {
+      if (response.success === true && response.data) {
+        console.log("sub topic created", response.data.topic);
+        setTopics(response.data.topic);
+        setCurrentSubTopic("");
+        setCurrentSubTopicContent("");
+        setCurSubTopicFile(null);
+      }
+    });
   };
 
-  const toggleGroup = (e) => {
-    setStudyTopic(!studytopic);
-    console.log(studytopic);
+  const toggleItem = (id) => {
+    if (id === studytopic) {
+      setStudyTopic();
+    } else {
+      setStudyTopic(id);
+    }
   };
 
   return (
     <div className="page-content topic-section">
       <div className="container-fluid">
         <div className="topic-listwrap">
-          <h3 className="topic-title">Topics:</h3>
+          <h3 className="topic-title">{subjectArg.name}</h3>
           <ul className="topic-lists" id="study-topic">
-            {topic &&
-              topic.map((sub, index) => {
+            {topics &&
+              topics.map((topic, index) => {
                 return (
                   <>
                     <div
                       className="topic-name"
                       key={index}
-                      onClick={() => toggleGroup("study-material")}
+                      onClick={() => toggleItem(topic._id)}
                     >
-                      {sub}topics
+                      {topic.name}
                       <KeyboardArrowDown
                         className={
-                          studytopic ? "drop-icon toggle" : "drop-icon"
+                          studytopic === topic._id
+                            ? "drop-icon toggle"
+                            : "drop-icon"
                         }
                       />
                     </div>
+
                     <div
                       className={
-                        !studytopic ? "subtopic-lists toggle" : "subtopic-lists"
+                        studytopic === topic._id
+                          ? "subtopic-lists"
+                          : "subtopic-lists toggle"
                       }
-                      id="subtopic"
+                      id={topic._id}
                     >
-                      {subtopic &&
-                        subtopic.map((sub, index) => {
+                      {topic.chapter &&
+                        topic.chapter.map((subtopic, index) => {
                           return (
                             <Link to="/admin/topic/subtopic">
                               <div className="subtopic-name" key={index}>
-                                {sub}sub
+                                {subtopic.name}
                               </div>
                             </Link>
                           );
@@ -70,21 +127,35 @@ const AddTopics = () => {
                         <input
                           type="text"
                           className="form-control"
-                          id="subTopicInput"
                           value={currentSubTopic}
                           onChange={(event) => {
                             setCurrentSubTopic(event.target.value);
-                            console.log(
-                              "onchange currentsubtopic",
-                              currentSubTopic
-                            );
                           }}
                           placeholder="New Sub-Topic"
                         />
+                        <input
+                          type="text"
+                          className="form-control"
+                          value={currentSubTopicContent}
+                          onChange={(event) => {
+                            setCurrentSubTopicContent(event.target.value);
+                          }}
+                          placeholder="New Sub-Topic Content"
+                        />
+                        <input
+                          type="file"
+                          className="form-control"
+                          id="subjecFileInput"
+                          defaultValue={subTopicPicture}
+                          onChange={(e) => {
+                            setCurSubTopicFile(e.target.files[0]);
+                          }}
+                        />
+
                         <button
                           type="button"
-                          onClick={(e) => {
-                            createSubTopic(e);
+                          onClick={() => {
+                            createSubTopic(topic._id);
                           }}
                           className="btn btn-primary"
                         >
@@ -99,11 +170,10 @@ const AddTopics = () => {
               <input
                 type="text"
                 className="form-control input-topic"
-                id="topicInput"
+                id="input-topic"
                 value={currentTopic}
                 onChange={(event) => {
                   setCurrentTopic(event.target.value);
-                  console.log("onchange currenttopic", currentTopic);
                 }}
                 placeholder="New Topic"
               />

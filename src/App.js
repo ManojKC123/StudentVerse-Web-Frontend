@@ -45,7 +45,7 @@ function App() {
               exact
             />
             <Route path="/admin/quiz" component={Quiz} exact />
-            <Route path="/admin/topic" component={AddTopics} exact />
+            <Route path="/admin/:subname" component={AddTopics} exact />
           </Switch>
         </Layout>
       </Router>

@@ -25,7 +25,7 @@ const Header = (props) => {
     //   .then((response) => {
     //     console.log("logout response", response);
     localStorage.clear();
-    toast.error("Logout Succesfull !!!", {
+    toast.success("Logout Succesfull !!!", {
       position: toast.POSITION.BOTTOM_RIGHT,
     });
     setTimeout(function () {
@@ -42,7 +42,7 @@ const Header = (props) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light fixed-top">
       <a href="/" className="navbar-brand">
-        <img src="images/logo.png" className="logo" alt="StudentVerse Logo" />
+        <img src="images/logo.png" className="logo" alt="Logo" />
       </a>
       <button
         type="button"
