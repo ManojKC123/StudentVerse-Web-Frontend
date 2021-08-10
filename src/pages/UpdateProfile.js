@@ -3,7 +3,7 @@ import axios from "axios";
 import { updateProfile } from "../data/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Alert from "@material-ui/lab/Alert";
+import { Alert } from "@material-ui/lab";
 import Collapse from "@material-ui/core/Collapse";
 import { IconButton } from "@material-ui/core";
 

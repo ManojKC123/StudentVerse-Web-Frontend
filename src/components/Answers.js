@@ -250,17 +250,17 @@ function Answers(props) {
                   {/* Comments here */}
                   <div className="comment-section">
                     <div className="">
-                      <a
+                      {/* <a
                         className="btn btn-primary"
-                        data-toggle="collapse"
+                        data-bs-toggle="collapse"
                         href={`#commentID${answer.id}`}
                         role="button"
-                        aria-expanded="true"
+                        aria-expanded="false"
                         aria-controls="collapseExample"
                       >
                         Comment here
-                      </a>
-                      <div className="collapse" id={`commentID${answer.id}`}>
+                      </a> */}
+                      <div className="" id={`commentID${answer.id}`}>
                         <div className="card card-body">
                           <textarea
                             name="textC"
