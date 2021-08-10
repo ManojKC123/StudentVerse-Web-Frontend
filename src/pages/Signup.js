@@ -37,11 +37,6 @@ class SignUp extends Component {
     signup(data)
       .then((response) => {
         console.log("signup resp", response);
-        if ((response = "Error: Request failed with status code 400")) {
-          toast.warn("Try with different Email", {
-            position: toast.POSITION.BOTTOM_RIGHT,
-          });
-        }
 
         if (response.success === true) {
           console.log("signup resp2", response.data, response);
@@ -65,6 +60,10 @@ class SignUp extends Component {
           setTimeout(function () {
             window.location.href = "/login";
           }, 4000);
+        } else if ((response = "Error: Request failed with status code 400")) {
+          toast.warn("Try with different Email", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
         }
         if (response.success === false) {
           toast.error("Signup ERROR!!!", {
