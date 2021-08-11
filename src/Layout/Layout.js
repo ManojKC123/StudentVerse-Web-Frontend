@@ -14,7 +14,7 @@ const Layout = (props) => {
         <Grid item xs={12} className="base-nav-height">
           <Header {...props} />
         </Grid>
-        {user.admin === "token" ? (
+        {user.userType === "Admin" ? (
           <AdminDashSidebar />
         ) : (
           <>
