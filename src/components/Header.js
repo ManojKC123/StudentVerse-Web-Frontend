@@ -103,7 +103,7 @@ const Header = (props) => {
                 </IconButton>
                 <div className="account-name">
                   <span className="block">{user.username}</span>
-                  {user.admin === "token" ? (
+                  {user.userType === "Admin" ? (
                     <span className="admin-wrap">Admin Login</span>
                   ) : (
                     <></>

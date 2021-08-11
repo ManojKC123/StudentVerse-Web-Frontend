@@ -13,12 +13,12 @@ const Layout = (props) => {
         <Grid item xs={12} className="base-nav-height">
           <Header {...props} />
         </Grid>
-        {user.admin === "token" ? <AdminDashSidebar /> : <></>}
+        {user.userType === "Admin" ? <AdminDashSidebar /> : <></>}
         {props?.children}
         <Grid
           item
           xs={12}
-          className={user.admin === "token" ? "side-admin-padding" : ""}
+          className={user.userType === "Admin" ? "side-admin-padding" : ""}
         >
           <Footer />
         </Grid>

@@ -7,7 +7,7 @@ function Quiz(props) {
     <>
       <div
         className={
-          user.admin === "token" ? "page-content quiz-page" : "quiz-page"
+          user.userType === "Admin" ? "page-content quiz-page" : "quiz-page"
         }
       >
         Quiz page

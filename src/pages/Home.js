@@ -19,11 +19,13 @@ const Home = () => {
   return (
     <div
       id="home-section"
-      className={user.admin === "token" ? "homepage page-content" : "homepage"}
+      className={
+        user.userType === "Admin" ? "homepage page-content" : "homepage"
+      }
     >
-      {user.admin}
+      {user.userType}
       <Grid container>
-        {user.admin === "token" && user.token ? (
+        {user.userType === "Admin" && user.token ? (
           ""
         ) : (
           <Grid item xs={2} md={2} className=""></Grid>
