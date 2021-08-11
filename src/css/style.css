@@ -9,7 +9,7 @@
   color: black;
   margin-left: 10px;
   font-size: 18px;
-  font-family: "Arial Narrow";
+  font-family: 'Arial Narrow';
 }
 .navbar-brand {
   display: inline-block;
@@ -45,13 +45,13 @@
   margin-top: 2px;
   margin-left: -4px;
   font-size: 18px;
-  font-family: "Arial Narrow";
+  font-family: 'Arial Narrow';
 }
 .navbar-nav {
   list-style: none;
   margin-right: 30px;
   font-size: 18px;
-  font-family: "Arial Narrow";
+  font-family: 'Arial Narrow';
 }
 .menu-nav
   .MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded {
@@ -92,7 +92,7 @@
   margin-bottom: 7%;
   padding: 3%;
   font-size: 18px;
-  font-family: "Arial Narrow";
+  font-family: 'Arial Narrow';
 }
 .register-left {
   text-align: center;
@@ -213,7 +213,7 @@
   line-height: 24px;
   color: black;
   margin-top: 50px;
-  font-family: "Arial Narrow";
+  font-family: 'Arial Narrow';
 }
 .site-footer hr {
   border-top-color: black;
@@ -326,7 +326,7 @@
   width: 100%;
   margin-top: 25px;
   font-size: 18px;
-  font-family: "Arial Narrow";
+  font-family: 'Arial Narrow';
 }
 .questions-headline {
   display: inline-block;
@@ -351,7 +351,7 @@
   width: 100%;
   margin-top: 25px;
   font-size: 18px;
-  font-family: "Arial Narrow";
+  font-family: 'Arial Narrow';
 }
 .post-form-content {
   padding: 0 30px;
@@ -421,7 +421,7 @@
   margin-top: 30px;
   margin-bottom: 50px;
   font-size: 18px;
-  font-family: "Arial Narrow";
+  font-family: 'Arial Narrow';
 }
 
 .user-profile .card {
@@ -439,20 +439,20 @@
 
 .user-profile .card h3 {
   font-size: 20px;
-  font-family: "Arial Narrow";
+  font-family: 'Arial Narrow';
   font-weight: 700;
 }
 
 .user-profile .card p {
   font-size: 18px;
-  font-family: "Arial Narrow";
+  font-family: 'Arial Narrow';
   color: #000;
 }
 
 .user-profile .table th,
 .user-profile .table td {
   font-size: 18px;
-  font-family: "Arial Narrow";
+  font-family: 'Arial Narrow';
   padding: 5px 10px;
   color: #000;
 }
@@ -473,7 +473,7 @@
   padding: 0 20px;
   margin-top: 25px;
   font-size: 18px;
-  font-family: "Arial Narrow";
+  font-family: 'Arial Narrow';
 }
 
 .btn-cmt {
@@ -831,4 +831,31 @@ ul.topic-lists {
 }
 .topic-name {
   cursor: pointer;
+}
+.sidebar-user {
+  position: fixed;
+  display: flex;
+  left: 0;
+  height: 100%;
+  top: 65px;
+  font-size: 15px;
+  font-family: 'Courier New', Courier, monospace;
+  max-width: 310px;
+  overflow-y: scroll;
+  background: #fff;
+  opacity: 1;
+  z-index: 100;
+}
+.sidebar-user a {
+  color: #343a40;
+  text-decoration: none;
+}
+
+.MuiTab-wrapper {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    font-size: smaller;
 }

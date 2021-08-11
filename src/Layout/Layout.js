@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import AdminDashSidebar from "../components/admin-components/AdminDashSidebar";
 import Grid from "@material-ui/core/Grid";
+import HomeDashSidebar from "../components/HomeDashSidebar";
 
 const Layout = (props) => {
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
@@ -13,14 +14,20 @@ const Layout = (props) => {
         <Grid item xs={12} className="base-nav-height">
           <Header {...props} />
         </Grid>
-        {user.userType === "Admin" ? <AdminDashSidebar /> : <></>}
+        {user.userType === "Admin" ? (
+          <AdminDashSidebar />
+        ) : (
+          <>
+            <HomeDashSidebar className="col-md-2" />
+          </>
+        )}
         {props?.children}
         <Grid
           item
           xs={12}
           className={user.userType === "Admin" ? "side-admin-padding" : ""}
         >
-          <Footer />
+          <Footer className="col-md-10" />
         </Grid>
       </Grid>
     </div>
