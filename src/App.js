@@ -7,6 +7,7 @@ import Layout from "./Layout/Layout";
 import LogIn from "./pages/Login";
 import SignUp from "./pages/Signup";
 import NotFound from "./pages/NotFound";
+import UserSearch from "./pages/UserSearch";
 // user imports
 import Home from "./pages/Home";
 import UserProfile from "./pages/Profile";
@@ -32,6 +33,7 @@ function App() {
             <Route path="/signup" component={SignUp} exact />
             <Route path="/profile" component={UserProfile} exact />
             <Route path="/ask-question" component={AskQuestion} exact />
+            <Route path="/user-search" component={UserSearch} exact />
             <Route path="/questions/:id" component={SingleQuestion} exact />
             <Route path="/profile/update" component={UpdateProfile} exact />
             <Route path="/study-materials" component={StudyMaterials} exact />
