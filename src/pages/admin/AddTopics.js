@@ -179,6 +179,7 @@ const AddTopics = (props) => {
               />
               <button
                 type="button"
+                id="create-button"
                 onClick={(e) => {
                   createTopic(e);
                 }}
