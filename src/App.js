@@ -20,6 +20,7 @@ import PostStudyMaterials from "./pages/admin/PostStudyMaterials";
 import AdminDash from "./pages/admin/AdminDash";
 import Quiz from "./pages/admin/Quiz";
 import AddTopics from "./pages/admin/AddTopics";
+import TagSearch from "./pages/TagSearch";
 
 function App() {
   return (
@@ -38,7 +39,6 @@ function App() {
             <Route path="/profile/update" component={UpdateProfile} exact />
             <Route path="/study-materials" component={StudyMaterials} exact />
             {/* <Route path="*" component={NotFound} /> */}
-
             {/* Admin Routes */}
             <Route path="/admin" component={AdminDash} exact />
             <Route
@@ -48,6 +48,7 @@ function App() {
             />
             <Route path="/admin/quiz" component={Quiz} exact />
             <Route path="/admin/:subname" component={AddTopics} exact />
+            <Route path="/tag-search" component={TagSearch} exact />
           </Switch>
         </Layout>
       </Router>

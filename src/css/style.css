@@ -876,3 +876,28 @@ ul.topic-lists {
   justify-content: center;
   font-size: smaller;
 }
+
+/* Search tags */
+.view-tag {
+  margin-top: 10px;
+}
+.search-tag {
+  width: 100%;
+  margin-left: 14%;
+}
+.tag-heading h3 {
+  margin-top: 30px;
+}
+.tag-que {
+  margin-top: 18px;
+}
+.tag-ans {
+  font-size: 13px;
+}
+
+.taginput-search {
+  width: 170px;
+}
+.btn-tag {
+  margin-left: 5px;
+}

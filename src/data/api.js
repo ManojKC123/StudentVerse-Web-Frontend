@@ -1,7 +1,7 @@
 import { makeRequest } from "./request";
 
 const apiURL = "https://student-verse.herokuapp.com";
-// const apiURL = "http://localhost:5000";
+//const apiURL = "http://localhost:5000";
 const siteURI = `${window.location.origin}/`;
 
 export function login(loginData) {
@@ -244,5 +244,16 @@ export function getSubTopic(token) {
       authorization: `Bearer ${token}`,
     },
   };
+  return makeRequest(request);
+}
+
+// Search tags
+
+export function getTag(tags) {
+  const request = {
+    method: "get",
+    url: `${apiURL}/searchTag?tags=${tags}`,
+  };
+
   return makeRequest(request);
 }
