@@ -76,6 +76,23 @@
 .account-wrap {
   display: flex;
 }
+.account-wrap .img-wrap {
+  height: 40px;
+  width: 40px;
+  background: #5d3fd3;
+  border-radius: 50%;
+  line-height: 40px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+}
+.account-wrap .img-wrap img {
+  width: 100%;
+}
+.account-icon-button {
+  padding: 7px !important;
+  margin-right: 5px !important;
+}
 .account-name {
   display: flex;
   justify-content: center;
