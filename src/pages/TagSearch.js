@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from "react";
-import "font-awesome/css/font-awesome.min.css";
+import React, { useState, useEffect } from "react";
 
 function TagSearch() {
   const [searchtext, setSearchText] = useState("");
@@ -26,7 +25,7 @@ function TagSearch() {
               setSearchText({
                 searchtext: event.target.value,
               });
-              console.log("searchTag",searchtext)
+              console.log("searchTag", searchtext);
             }}
           />
           <button className="btn btn-outline-success btn-tag" type="submit">
