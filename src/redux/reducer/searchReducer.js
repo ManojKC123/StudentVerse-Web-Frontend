@@ -1,44 +1,15 @@
 const initialSate = {
-  searchResults: [],
+  searchTags: [],
 };
 
-const Reducer = function (state = initialSate, action) {
-  if (action.type === "setSearchResults") {
+const searchReducer = function (state = initialSate, action) {
+  if (action.type === "setSearchTags") {
     return {
       ...state,
-      searchResults: action.payload,
+      searchTags: action.payload,
     };
   }
-};
-// -------------
-const initialState = {
-  loading: false,
-  searchResult: [],
-  error: "",
+  return state;
 };
 
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "FETCH_USERS_REQUEST":
-      return {
-        ...state,
-        loading: true,
-      };
-    case "FETCH_USERS_SUCCESS":
-      return {
-        loading: false,
-        users: action.payload,
-        error: "",
-      };
-    case "FETCH_USERS_FAILURE":
-      return {
-        loading: false,
-        users: [],
-        error: action.payload,
-      };
-    default:
-      return state;
-  }
-};
-
-export default reducer;
+export default searchReducer;

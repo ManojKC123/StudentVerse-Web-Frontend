@@ -894,10 +894,23 @@ ul.topic-lists {
 .tag-ans {
   font-size: 13px;
 }
-
+.tagsearch-section {
+  display: flex;
+}
 .taginput-search {
   width: 170px;
 }
 .btn-tag {
   margin-left: 5px;
+}
+.view-tag .card p {
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+.view-tag .card {
+  width: 19%;
+  margin-bottom: 10px;
+  float: left;
+  margin-right: 7px;
 }
