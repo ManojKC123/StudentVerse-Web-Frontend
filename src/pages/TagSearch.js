@@ -1,7 +1,35 @@
 import React, { useState, useEffect } from "react";
+import { fetchSearchTags } from "../data/api";
+import { connect } from "react-redux";
+import { setSearchTags } from "../redux/actions/searchActions";
+import { RepeatOneSharp } from "@material-ui/icons";
 
-function TagSearch() {
-  const [searchtext, setSearchText] = useState("");
+function TagSearch(props) {
+  const [tags, setTags] = useState("");
+  const [tagsStore, setTagStore] = useState([]);
+
+  useEffect(() => {
+    if (tagsStore) {
+    }
+  }, [tagsStore, props]);
+
+  const searchTags = (tags) => {
+    fetchSearchTags(tags.tags)
+      .then((response) => {
+        if (response.length > 0) {
+          setTagStore(response);
+          props.setSearchTags(response);
+        }
+        if (response.length === 0) {
+          console.log("response nul", response);
+        }
+      })
+      .catch((err) => {
+        console.log("fetch error search-tags", err);
+        // notification for search tags
+      });
+  };
+
   return (
     <div className="search-tag">
       <div className="tag-heading">
@@ -15,39 +43,65 @@ function TagSearch() {
       </div>
 
       <div className="tagsearch-section">
-        <form class="d-flex">
-          <input
-            className="form-control me-2 taginput-search"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-            onChange={(event) => {
-              setSearchText({
-                searchtext: event.target.value,
-              });
-              console.log("searchTag", searchtext);
-            }}
-          />
-          <button className="btn btn-outline-success btn-tag" type="submit">
-            Search
-          </button>
-        </form>
+        <input
+          className="form-control me-2 taginput-search"
+          type="text"
+          placeholder="Enter Search Tags"
+          onChange={(event) => {
+            setTags({
+              tags: event.target.value,
+            });
+            console.log("search text", tags);
+          }}
+        />
+        <button
+          onClick={() => searchTags(tags)}
+          className="btn btn-outline-success btn-tag"
+        >
+          Search
+        </button>
       </div>
+
       <div className="view-tag">
-        <div className="row">
-          <div className="col-2">
-            <div class="card" style={{ width: "18rem;" }}>
-              <div class="card-body">
-                <h5 class="card-title">Javascript</h5>
-                <a href="/" class="btn btn-primary">
-                  See More..
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+        {tagsStore &&
+          tagsStore.map((tagm, index) => {
+            return (
+              <>
+                {/* <span>{tags[0]}</span> */}
+                {tagm.tags &&
+                  tagm.tags.map((tagEach, index) =>
+                    // return console.log(tagEach.includes(tags));
+                    tagEach.includes(tags) ? (
+                      ""
+                    ) : (
+                      <div class="card" style={{ width: "18rem;" }}>
+                        <div class="card-body">
+                          <a href="/" class="btn btn-primary">
+                            <span class="card-title">{tagEach}</span>
+                          </a>
+                          <p> 30 questions asked on this tag</p>
+                        </div>
+                      </div>
+                    )
+                  )}
+              </>
+            );
+          })}
       </div>
     </div>
   );
 }
-export default TagSearch;
+
+const mapDispatchToProps = {
+  setSearchTags,
+};
+
+const mapStateTOProps = (state) => {
+  console.log("mapstatetoprops", state);
+  return {
+    tagsStore: state.searchReducer.searchTags,
+  };
+};
+
+export default connect(mapStateTOProps, mapDispatchToProps)(TagSearch);
+// export default TagSearch;
