@@ -35,6 +35,7 @@ function App() {
             <Route path="/questions/:id" component={SingleQuestion} exact />
             <Route path="/profile/update" component={UpdateProfile} exact />
             <Route path="/study-materials" component={StudyMaterials} exact />
+            <Route path="/study-materials/:" component={StudyMaterials} exact />
             {/* <Route path="*" component={NotFound} /> */}
 
             {/* Admin Routes */}
