@@ -919,6 +919,13 @@ ul.topic-lists {
   padding-bottom: 15px;
   margin-bottom: 10px;
 }
+.results-head-top {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #000;
+  padding-bottom: 15px;
+  margin-bottom: 10px;
+}
 .results-head-bottom {
   display: flex;
   justify-content: space-between;
