@@ -41,7 +41,7 @@ function App() {
             <Route path="/profile/update" component={UpdateProfile} exact />
             <Route path="/study-materials" component={StudyMaterials} exact />
             <Route
-              path="/search-results?title="
+              path="/search-results/:title"
               component={SearchResults}
               exact
             />

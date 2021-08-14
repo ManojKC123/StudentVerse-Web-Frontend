@@ -93,7 +93,6 @@ const mapDispatchToProps = {
 };
 
 const mapStateTOProps = (state) => {
-  console.log("mapstatetoprops", state);
   return {
     tagsStore: state.searchReducer.searchTags,
   };
