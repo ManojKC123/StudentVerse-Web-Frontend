@@ -7,9 +7,10 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import userImage from "../media/user.png";
-import { getProfile } from "../data/api";
+import { fetchSearchPosts, getProfile } from "../data/api";
 import { responseInterceptor } from "http-proxy-middleware";
 import { div } from "prelude-ls";
+import { setSearchPosts } from "../redux/actions/searchActions";
 
 toast.configure();
 
@@ -18,6 +19,7 @@ const Header = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [initials, setInitials] = useState("");
   const [userPP, setUserPP] = useState();
+  const [searchText, setSearchText] = useState();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -62,6 +64,11 @@ const Header = (props) => {
       });
   }, [props, user]);
 
+  const searchPosts = () => {
+    window.location.href = `/search-results?title=${searchText.searchText}`;
+    console.log("results ", searchText);
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light fixed-top">
       <a href="/" className="navbar-brand">
@@ -92,13 +99,22 @@ const Header = (props) => {
           <div className="input-group search-box">
             <input
               type="text"
-              id="search"
+              id="search-posts"
               className="form-control"
-              placeholder="Search here..."
+              placeholder="Search questions here..."
+              onChange={(event) => {
+                setSearchText({
+                  searchText: event.target.value,
+                });
+                console.log("headsearch", searchText);
+              }}
             />
             <div className="input-group-append">
               <span className="input-group-text">
-                <SearchIcon className="" />
+                <SearchIcon
+                  onClick={() => searchPosts(searchText)}
+                  className=""
+                />
               </span>
             </div>
           </div>

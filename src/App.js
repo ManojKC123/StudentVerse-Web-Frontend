@@ -16,6 +16,7 @@ import UpdateProfile from "./pages/UpdateProfile";
 import AskQuestion from "./pages/AskQuestion";
 import SingleQuestion from "./pages/SingleQuestion";
 import StudyMaterials from "./pages/StudyMaterials";
+import SearchResults from "./pages/SearchResults";
 // admin imports
 import PostStudyMaterials from "./pages/admin/PostStudyMaterials";
 import AdminDash from "./pages/admin/AdminDash";
@@ -39,6 +40,11 @@ function App() {
             <Route path="/questions/:id" component={SingleQuestion} exact />
             <Route path="/profile/update" component={UpdateProfile} exact />
             <Route path="/study-materials" component={StudyMaterials} exact />
+            <Route
+              path="/search-results?title="
+              component={SearchResults}
+              exact
+            />
             {/* <Route path="*" component={NotFound} /> */}
             {/* Admin Routes */}
             <Route path="/admin" component={AdminDash} exact />

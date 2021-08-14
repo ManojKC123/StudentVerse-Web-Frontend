@@ -28,9 +28,9 @@ const Home = () => {
         {user.userType === "Admin" && user.token ? (
           ""
         ) : (
-          <Grid item xs={2} md={2} className=""></Grid>
+          <Grid item xs={1} md={1} className=""></Grid>
         )}
-        <Grid item xs={9} md={9} className="">
+        <Grid item xs={10} md={10} className="">
           <div className="questions-grid">
             <h3 className="questions-headline">Top Questions</h3>
             <Link
@@ -46,7 +46,7 @@ const Home = () => {
             ))}
           </div>
         </Grid>
-        <Grid item xs={2} md={2} className=""></Grid>
+        <Grid item xs={1} md={1} className=""></Grid>
       </Grid>
     </div>
   );

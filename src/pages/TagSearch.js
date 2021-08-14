@@ -8,10 +8,7 @@ function TagSearch(props) {
   const [tags, setTags] = useState("");
   const [tagsStore, setTagStore] = useState([]);
 
-  useEffect(() => {
-    if (tagsStore) {
-    }
-  }, [tagsStore, props]);
+  useEffect(() => {}, []);
 
   const searchTags = (tags) => {
     fetchSearchTags(tags.tags)
@@ -51,7 +48,6 @@ function TagSearch(props) {
             setTags({
               tags: event.target.value,
             });
-            console.log("search text", tags);
           }}
         />
         <button

@@ -10,8 +10,7 @@ function SingleQuestion(props) {
   return (
     <div id="" className="questions-page">
       <Grid container>
-        <Grid item md={2} className=""></Grid>
-        <Grid item md={8} className="">
+        <Grid item md={9} className="">
           <div className="questions-grid-wrap">
             <div className="questions-grid">
               <h3 className="questions-headline">Top Questions</h3>
@@ -25,7 +24,7 @@ function SingleQuestion(props) {
             <Answers itemID={itemID} />
           </div>
         </Grid>
-        <Grid item xs={2} md={2} className="">
+        <Grid item xs={2} md={3} className="">
           <div className="card">
             <div className="card-header">
               <b>The Overflow Blog</b>
