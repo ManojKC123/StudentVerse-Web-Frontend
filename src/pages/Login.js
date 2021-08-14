@@ -36,7 +36,7 @@ class LoginIn extends Component {
             position: toast.POSITION.BOTTOM_RIGHT,
           });
           setTimeout(function () {
-            window.location.href = "/";
+            // window.location.href = "/";
             // if (
             //   this.state.isLoggedIn === true &&
             //   this.state.admin === "token"
