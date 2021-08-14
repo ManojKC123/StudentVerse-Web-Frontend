@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid";
 
 const Layout = (props) => {
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
+  console.log("user", user);
 
   return (
     <div className="main-container">
