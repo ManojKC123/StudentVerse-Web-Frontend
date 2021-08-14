@@ -80,7 +80,9 @@ export default function VerticalTabs() {
         <Link to="/user-search">
           <Tab label="Users" {...a11yProps(3)} />
         </Link>
-        <Tab label="Quiz" {...a11yProps(4)} />
+        <Link to="/user-search">
+          <Tab label="Quiz" {...a11yProps(4)} />{" "}
+        </Link>
       </Tabs>
     </div>
   );

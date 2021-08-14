@@ -249,11 +249,18 @@ export function getSubTopic(token) {
 
 // Search tags
 
-export function fetchSearchTags(searchtext) {
-  const tags = searchtext;
+export function fetchSearchTags(tags) {
   const request = {
     method: "get",
     url: `${apiURL}/searchTag?tags=${tags}`,
+  };
+
+  return makeRequest(request);
+}
+export function fetchSearchPosts(title) {
+  const request = {
+    method: "get",
+    url: `${apiURL}/searchPost?title=${title}`,
   };
 
   return makeRequest(request);

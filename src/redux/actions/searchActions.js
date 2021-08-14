@@ -4,3 +4,10 @@ export const setSearchTags = (searchTags) => (dispatch) => {
     payload: searchTags,
   });
 };
+
+export const setSearchPosts = (searchPosts) => (dispatch) => {
+  return dispatch({
+    type: "setSearchPosts",
+    payload: searchPosts,
+  });
+};
