@@ -26,7 +26,7 @@ class LoginIn extends Component {
             token: response.token,
             isLoggedIn: true,
             message: "Login Successfull !!!",
-            uesrtype: response.usertype,
+            userType: response.usertype,
           };
 
           localStorage.setItem("user", JSON.stringify(user));

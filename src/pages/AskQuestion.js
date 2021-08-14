@@ -7,7 +7,7 @@ function AskQuestion() {
   return (
     <div
       className={
-        user.admin === "token"
+        user.userType === "Admin"
           ? "page-content post-form-container"
           : "post-form-container"
       }

@@ -19,16 +19,17 @@ const Home = () => {
   return (
     <div
       id="home-section"
-      className={user.admin === "token" ? "homepage page-content" : "homepage"}
+      className={
+        user.userType === "Admin" ? "homepage page-content" : "homepage"
+      }
     >
-      {user.admin}
       <Grid container>
-        {user.admin === "token" && user.token ? (
+        {user.userType === "Admin" && user.token ? (
           ""
         ) : (
-          <Grid item xs={2} md={2} className=""></Grid>
+          <Grid item xs={1} md={1} className=""></Grid>
         )}
-        <Grid item xs={9} md={9} className="">
+        <Grid item xs={10} md={10} className="">
           <div className="questions-grid">
             <h3 className="questions-headline">Top Questions</h3>
             <Link
@@ -44,7 +45,7 @@ const Home = () => {
             ))}
           </div>
         </Grid>
-        <Grid item xs={2} md={2} className=""></Grid>
+        <Grid item xs={1} md={1} className=""></Grid>
       </Grid>
     </div>
   );

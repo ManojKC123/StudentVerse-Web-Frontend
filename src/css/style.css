@@ -76,6 +76,23 @@
 .account-wrap {
   display: flex;
 }
+.account-wrap .img-wrap {
+  height: 40px;
+  width: 40px;
+  background: #5d3fd3;
+  border-radius: 50%;
+  line-height: 40px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+}
+.account-wrap .img-wrap img {
+  width: 100%;
+}
+.account-icon-button {
+  padding: 7px !important;
+  margin-right: 5px !important;
+}
 .account-name {
   display: flex;
   justify-content: center;
@@ -208,11 +225,10 @@
 /* Footer */
 .site-footer {
   background-color: rgba(211, 211, 211, 0.473);
-  padding: 45px 0 20px;
+  padding: 30px 0 20px;
   font-size: 18px;
   line-height: 24px;
   color: black;
-  margin-top: 50px;
   font-family: "Arial Narrow";
 }
 .site-footer hr {
@@ -831,4 +847,103 @@ ul.topic-lists {
 }
 .topic-name {
   cursor: pointer;
+}
+.sidebar-user {
+  font-size: 15px;
+  font-family: "Courier New", Courier, monospace;
+  overflow-y: scroll;
+  background: #fff;
+  padding-top: 25px;
+}
+.sidebar-user a {
+  color: #343a40;
+  text-decoration: none;
+}
+
+.MuiTab-wrapper {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  font-size: smaller;
+}
+
+/* Search tags */
+.view-tag {
+  margin-top: 10px;
+}
+.search-tag {
+  width: 100%;
+  margin-left: 30px;
+}
+.tag-heading h3 {
+  margin-top: 30px;
+}
+.tag-que {
+  margin-top: 18px;
+}
+.tag-ans {
+  font-size: 13px;
+}
+.tagsearch-section {
+  display: flex;
+}
+.taginput-search {
+  width: 170px;
+}
+.btn-tag {
+  margin-left: 5px;
+}
+.view-tag .card p {
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+.view-tag .card {
+  width: 19%;
+  margin-bottom: 10px;
+  float: left;
+  margin-right: 7px;
+}
+/* Search Posts Page */
+.search-results-page {
+  margin: 40px 30px;
+}
+.search-results-header {
+  justify-content: space-between;
+  flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #000;
+  padding-bottom: 15px;
+  margin-bottom: 10px;
+}
+.results-head-top {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #000;
+  padding-bottom: 15px;
+  margin-bottom: 10px;
+}
+.results-head-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+.results-sort-wrap .button-style {
+  background: #007bff;
+  color: #fff;
+  border-radius: 6px;
+  padding: 0 10px 3px 10px;
+  margin-left: 5px;
+}
+.results-not-found {
+  text-align: center;
+  margin-top: 20px;
+}
+.not-found-text {
+  margin-bottom: 15px;
+}
+.yellow {
+  color: yellow;
 }

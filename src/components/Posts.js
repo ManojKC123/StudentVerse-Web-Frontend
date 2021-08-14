@@ -4,6 +4,17 @@ import TagListing from "./TagListing";
 
 const Posts = (props) => {
   let post = props.post;
+  const [color, setColor] = useState(props.color);
+
+  useEffect(() => {
+    setColor("yellow");
+    console.log("yellow set");
+    setTimeout(() => {
+      setColor("");
+      console.log("yellow null");
+    }, 3000);
+  }, []);
+  console.log("color", props.color);
 
   return (
     <div className="posts">

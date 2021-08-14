@@ -1,17 +1,25 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import SearchIcon from "@material-ui/icons/Search";
 import { IconButton, Menu, MenuItem } from "@material-ui/core";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import userImage from "../media/user.png";
+import { fetchSearchPosts, getProfile } from "../data/api";
+import { responseInterceptor } from "http-proxy-middleware";
+import { div } from "prelude-ls";
+import { setSearchPosts } from "../redux/actions/searchActions";
 
 toast.configure();
 
 const Header = (props) => {
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [initials, setInitials] = useState("");
+  const [userPP, setUserPP] = useState();
+  const [searchText, setSearchText] = useState("");
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -23,7 +31,6 @@ const Header = (props) => {
     // axios
     //   .post("https://student-verse.herokuapp.com/logout", user.token)
     //   .then((response) => {
-    //     console.log("logout response", response);
     localStorage.clear();
     toast.success("Logout Succesfull !!!", {
       position: toast.POSITION.BOTTOM_RIGHT,
@@ -33,11 +40,35 @@ const Header = (props) => {
     }, 1000);
     //   })
     //   .catch((err) => {
-    //     console.log("login error", err);
+    //     console.log("Logout Error", err);
     //   });
   };
 
-  useEffect(() => {}, [props, user]);
+  useEffect(() => {
+    getProfile(user.token)
+      .then((response) => {
+        console.log("userresp", response);
+        if (response.success === true && response.data.userPP) {
+          setUserPP();
+        }
+        if (response.success === true) {
+          setInitials(
+            response.data.fname.charAt(0).toUpperCase() +
+              response.data.lname.charAt(0).toUpperCase()
+          );
+        }
+      })
+      .catch((err) => {
+        console.log("Profile Error", err);
+      });
+  }, [props, user]);
+
+  const searchPosts = (searchText) => {
+    if (searchText === "") {
+      return;
+    }
+    window.location.href = `/search-results/${searchText.searchText}`;
+  };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light fixed-top">
@@ -69,13 +100,21 @@ const Header = (props) => {
           <div className="input-group search-box">
             <input
               type="text"
-              id="search"
+              id="search-posts"
               className="form-control"
-              placeholder="Search here..."
+              placeholder="Search questions here..."
+              onChange={(event) => {
+                setSearchText({
+                  searchText: event.target.value,
+                });
+              }}
             />
             <div className="input-group-append">
               <span className="input-group-text">
-                <SearchIcon className="" />
+                <SearchIcon
+                  onClick={() => searchPosts(searchText)}
+                  className=""
+                />
               </span>
             </div>
           </div>
@@ -99,12 +138,19 @@ const Header = (props) => {
                   aria-haspopup="true"
                   onClick={handleClick}
                 >
-                  <AccountCircleIcon className="account-icon" />
+                  {/* <AccountCircleIcon className="account-icon" /> */}
+                  <div className="img-wrap">
+                    {userPP ? (
+                      <img src={userImage} alt="" />
+                    ) : (
+                      <span className="initials-wrap">{initials}</span>
+                    )}
+                  </div>
                 </IconButton>
                 <div className="account-name">
                   <span className="block">{user.username}</span>
-                  {user.admin === "token" ? (
-                    <span className="admin-wrap">Admin Login</span>
+                  {user.userType === "Admin" ? (
+                    <span className="admin-wrap">Admin Login </span>
                   ) : (
                     <></>
                   )}

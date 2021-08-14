@@ -246,3 +246,23 @@ export function getSubTopic(token) {
   };
   return makeRequest(request);
 }
+
+// Search tags
+
+export function fetchSearchTags(tags) {
+  console.log("api hit", tags);
+  const request = {
+    method: "get",
+    url: `${apiURL}/searchTag?tags=${tags}`,
+  };
+
+  return makeRequest(request);
+}
+export function fetchSearchPosts(question) {
+  const request = {
+    method: "get",
+    url: `${apiURL}/searchPost?question=${question}`,
+  };
+
+  return makeRequest(request);
+}
