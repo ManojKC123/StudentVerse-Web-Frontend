@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { fetchSearchTags } from "../data/api";
 import { connect } from "react-redux";
 import { setSearchTags } from "../redux/actions/searchActions";
-import { RepeatOneSharp } from "@material-ui/icons";
 
 function TagSearch(props) {
   const [tags, setTags] = useState("");
@@ -13,11 +12,12 @@ function TagSearch(props) {
   const searchTags = (tags) => {
     fetchSearchTags(tags.tags)
       .then((response) => {
-        if (response.length > 0) {
-          setTagStore(response);
-          props.setSearchTags(response);
+        console.log("tagsres", response);
+        if (response.success === true && response.data.length > 0) {
+          setTagStore(response.data);
+          props.setSearchTags(response.data);
         }
-        if (response.length === 0) {
+        if (response.data.length > 0) {
           console.log("response nul", response);
         }
       })
@@ -68,14 +68,14 @@ function TagSearch(props) {
                   tagm.tags.map((tagEach, index) =>
                     // return console.log(tagEach.includes(tags));
                     tagEach.includes(tags) ? (
-                      ""
+                      " "
                     ) : (
                       <div class="card" style={{ width: "18rem;" }}>
                         <div class="card-body">
                           <a href="/" class="btn btn-primary">
                             <span class="card-title">{tagEach}</span>
                           </a>
-                          <p> 30 questions asked on this tag</p>
+                          <p> 30 questions asked on this tag </p>
                         </div>
                       </div>
                     )

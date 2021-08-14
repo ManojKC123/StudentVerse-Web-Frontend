@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import SearchIcon from "@material-ui/icons/Search";
 import { IconButton, Menu, MenuItem } from "@material-ui/core";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
@@ -19,7 +18,7 @@ const Header = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [initials, setInitials] = useState("");
   const [userPP, setUserPP] = useState();
-  const [searchText, setSearchText] = useState();
+  const [searchText, setSearchText] = useState("");
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -64,9 +63,11 @@ const Header = (props) => {
       });
   }, [props, user]);
 
-  const searchPosts = () => {
-    window.location.href = `/search-results?title=${searchText.searchText}`;
-    console.log("results ", searchText);
+  const searchPosts = (searchText) => {
+    if (searchText === "") {
+      return;
+    }
+    window.location.href = `/search-results/${searchText.searchText}`;
   };
 
   return (
@@ -106,7 +107,6 @@ const Header = (props) => {
                 setSearchText({
                   searchText: event.target.value,
                 });
-                console.log("headsearch", searchText);
               }}
             />
             <div className="input-group-append">

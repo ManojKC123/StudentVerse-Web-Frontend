@@ -23,7 +23,6 @@ const Home = () => {
         user.userType === "Admin" ? "homepage page-content" : "homepage"
       }
     >
-      {user.userType}
       <Grid container>
         {user.userType === "Admin" && user.token ? (
           ""

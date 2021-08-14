@@ -11,7 +11,7 @@ const TagListing = ({ tag_names, size, display, float, link, href }) => {
           key={index}
           to={link ? link : `/tags/${tag_name}`}
         >
-          {tag_name}
+          {` ${tag_name} `}
         </Link>
       ))}
     </div>
