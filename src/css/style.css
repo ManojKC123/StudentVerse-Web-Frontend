@@ -907,13 +907,17 @@ ul.topic-lists {
   margin-right: 7px;
 }
 /* Search Posts Page */
-.search-results-header {
-  display: flex;
-  justify-content: space-between;
+.search-results-page {
+  margin: 40px 30px;
 }
 .search-results-header {
+  justify-content: space-between;
+  flex-direction: column;
   display: flex;
   flex-direction: column;
+  border-bottom: 1px solid #000;
+  padding-bottom: 15px;
+  margin-bottom: 10px;
 }
 .results-head-top {
   display: flex;
@@ -922,4 +926,21 @@ ul.topic-lists {
 .results-head-bottom {
   display: flex;
   justify-content: space-between;
+}
+.results-sort-wrap .button-style {
+  background: #007bff;
+  color: #fff;
+  border-radius: 6px;
+  padding: 0 10px 3px 10px;
+  margin-left: 5px;
+}
+.results-not-found {
+  text-align: center;
+  margin-top: 20px;
+}
+.not-found-text {
+  margin-bottom: 15px;
+}
+.yellow {
+  color: yellow;
 }

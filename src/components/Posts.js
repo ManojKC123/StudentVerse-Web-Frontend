@@ -3,8 +3,19 @@ import { Link } from "react-router-dom";
 import TagListing from "./TagListing";
 
 const Posts = (props) => {
-  let post = props.post;
+  const [color, setColor] = useState(props.color);
 
+  useEffect(() => {
+    setColor("yellow");
+    console.log("yellow set");
+    setTimeout(() => {
+      setColor("");
+      console.log("yellow null");
+    }, 3000);
+  }, []);
+
+  let post = props.post;
+  console.log("color", props.color);
   return (
     <div className="posts">
       <div className="stats-container fc-black-500">
