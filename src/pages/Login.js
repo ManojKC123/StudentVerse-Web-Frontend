@@ -22,7 +22,6 @@ class LoginIn extends Component {
     login(this.state)
       .then((response) => {
         if (response.success === true) {
-          console.log("usertype", response);
           this.state.username === "admin" && this.state.password === "admin"
             ? this.setState({ admin: "token" })
             : this.setState({ admin: null });
@@ -33,7 +32,6 @@ class LoginIn extends Component {
             isLoggedIn: true,
             message: "Login Successfull !!!",
             admin: this.state.admin,
-            userType: "",
           };
 
           localStorage.setItem("user", JSON.stringify(user));
@@ -43,7 +41,7 @@ class LoginIn extends Component {
             position: toast.POSITION.BOTTOM_RIGHT,
           });
           setTimeout(function () {
-            // window.location.href = "/";
+            window.location.href = "/";
             // if (
             //   this.state.isLoggedIn === true &&
             //   this.state.admin === "token"

@@ -7,7 +7,6 @@ import pp from "../media/user.png";
 import { upvote, downvote } from "../data/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Skeleton } from "@material-ui/lab";
 
 toast.configure();
 
@@ -21,7 +20,6 @@ function Answers(props) {
   const [clickID, setClickId] = useState(null);
   const [voteDependency, setVoteDependency] = useState("voteNull");
 
-  const [loading, setLoading] = useState(true);
   const [answer, setAnswer] = useState({
     author: user.username,
     post: props.itemID,
@@ -45,7 +43,6 @@ function Answers(props) {
     getAnswer(itemID).then((response) => {
       if (response.data) {
         setAnswerDetails(response.data);
-        setLoading(false);
       }
     });
   }, [voteDependency]);
@@ -174,16 +171,7 @@ function Answers(props) {
                           </Button>
                         </div>
                         <span>
-                          {loading ? (
-                            <h2>{answer.score}</h2>
-                          ) : (
-                            <Skeleton
-                              animation="wave"
-                              variant="rect"
-                              width={500}
-                              height={118}
-                            />
-                          )}
+                          <h2>{answer.score}</h2>
                         </span>
                         <div className="vote-box-inner">
                           <Button
@@ -199,13 +187,7 @@ function Answers(props) {
                     </div>
                     <div className="answerMain">
                       <div className="answerDetails">
-                        {loading ? (
-                          <Skeleton variant="rect" width={210} height={118} />
-                        ) : (
-                          <h2>
-                            <p>{answer.text}</p>
-                          </h2>
-                        )}
+                        <p>{answer.text}</p>
                       </div>
                     </div>
                   </div>
