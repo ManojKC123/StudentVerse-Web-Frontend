@@ -906,6 +906,36 @@ ul.topic-lists {
   float: left;
   margin-right: 7px;
 }
+
+/* User Study-Materials */
+.topic-lists .topic-name {
+  font-size: 25px;
+  font-weight: 700;
+}
+.topic-lists .subtopic-name {
+  font-size: 20px;
+  color: #7d7575;
+  font-weight: 600;
+}
+.study-chapter {
+  padding: 20px 50px;
+}
+.contents {
+  display: flex;
+  justify-content: center;
+}
+.inner-contents > header {
+  width: 500px;
+  margin: 0 auto;
+}
+.study-chapter .subject-name h1 {
+  text-align: center;
+}
+.inner-contents {
+  width: 100%;
+}
+/*End of User Study Materials  */
+
 /* Search Posts Page */
 .search-results-page {
   margin: 40px 30px;

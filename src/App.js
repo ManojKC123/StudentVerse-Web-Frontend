@@ -17,6 +17,7 @@ import AskQuestion from "./pages/AskQuestion";
 import SingleQuestion from "./pages/SingleQuestion";
 import StudyMaterials from "./pages/StudyMaterials";
 import SearchResults from "./pages/SearchResults";
+import StudyChapters from "./pages/StudyChapters";
 // admin imports
 import PostStudyMaterials from "./pages/admin/PostStudyMaterials";
 import AdminDash from "./pages/admin/AdminDash";
@@ -40,6 +41,11 @@ function App() {
             <Route path="/questions/:id" component={SingleQuestion} exact />
             <Route path="/profile/update" component={UpdateProfile} exact />
             <Route path="/study-materials" component={StudyMaterials} exact />
+            <Route
+              path="/study-materials/:subname"
+              component={StudyChapters}
+              exact
+            />
             <Route
               path="/search-results/:title"
               component={SearchResults}
