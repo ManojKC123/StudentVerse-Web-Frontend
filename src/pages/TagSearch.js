@@ -67,9 +67,7 @@ function TagSearch(props) {
                 {tagm.tags &&
                   tagm.tags.map((tagEach, index) =>
                     // return console.log(tagEach.includes(tags));
-                    tagEach.includes(tags) ? (
-                      " "
-                    ) : (
+                    tagEach.includes(tags.tags) ? (
                       <div class="card" style={{ width: "18rem;" }}>
                         <div class="card-body">
                           <a href="/" class="btn btn-primary">
@@ -78,6 +76,8 @@ function TagSearch(props) {
                           <p> 30 questions asked on this tag </p>
                         </div>
                       </div>
+                    ) : (
+                      " "
                     )
                   )}
               </>
