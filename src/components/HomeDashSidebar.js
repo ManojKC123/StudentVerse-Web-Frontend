@@ -62,7 +62,7 @@ export default function VerticalTabs() {
   };
 
   return (
-    <div className="sidebar-user">
+    <div className="sidebar">
       <Tabs
         orientation="vertical"
         variant="scrollable"

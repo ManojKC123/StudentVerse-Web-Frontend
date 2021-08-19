@@ -81,7 +81,7 @@ const AddTopics = (props) => {
   };
 
   return (
-    <div className="page-content topic-section">
+    <div className="topic-section">
       <div className="container-fluid">
         <div className="topic-listwrap">
           <h3 className="topic-title">{subjectArg.name}</h3>

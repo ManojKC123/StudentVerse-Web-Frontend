@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import { IconButton, Menu, MenuItem } from "@material-ui/core";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import userImage from "../media/user.png";
-import { fetchSearchPosts, getProfile } from "../data/api";
-import { responseInterceptor } from "http-proxy-middleware";
+import { getProfile } from "../data/api";
 import { div } from "prelude-ls";
-import { setSearchPosts } from "../redux/actions/searchActions";
 
 toast.configure();
 
@@ -75,6 +72,29 @@ const Header = (props) => {
       <a href="/" className="navbar-brand">
         <img src="images/logo.png" className="logo" alt="Logo" />
       </a>
+      <form className="navbar-form resp-show form-inline">
+        <div className="input-group search-box">
+          <input
+            type="text"
+            id="search-posts"
+            className="form-control"
+            placeholder="Search questions here..."
+            onChange={(event) => {
+              setSearchText({
+                searchText: event.target.value,
+              });
+            }}
+          />
+          <div className="input-group-append">
+            <span className="input-group-text">
+              <SearchIcon
+                onClick={() => searchPosts(searchText)}
+                className=""
+              />
+            </span>
+          </div>
+        </div>
+      </form>
       <button
         type="button"
         className="navbar-toggler"
@@ -96,7 +116,7 @@ const Header = (props) => {
             <b>Quiz</b>
           </Link>
         </div>
-        <form className="navbar-form form-inline">
+        <form className="navbar-form resp-hide form-inline">
           <div className="input-group search-box">
             <input
               type="text"
