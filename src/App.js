@@ -1,5 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.min.js";
 import "font-awesome/css/font-awesome.min.css";
 import "./css/style.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -17,6 +18,7 @@ import AskQuestion from "./pages/AskQuestion";
 import SingleQuestion from "./pages/SingleQuestion";
 import StudyMaterials from "./pages/StudyMaterials";
 import SearchResults from "./pages/SearchResults";
+import StudyChapters from "./pages/StudyChapters";
 // admin imports
 import PostStudyMaterials from "./pages/admin/PostStudyMaterials";
 import AdminDash from "./pages/admin/AdminDash";
@@ -40,6 +42,11 @@ function App() {
             <Route path="/questions/:id" component={SingleQuestion} exact />
             <Route path="/profile/update" component={UpdateProfile} exact />
             <Route path="/study-materials" component={StudyMaterials} exact />
+            <Route
+              path="/study-materials/:subname"
+              component={StudyChapters}
+              exact
+            />
             <Route
               path="/search-results/:title"
               component={SearchResults}
