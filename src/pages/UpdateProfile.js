@@ -6,6 +6,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Alert from "@material-ui/lab/Alert";
 import Collapse from "@material-ui/core/Collapse";
 import { IconButton } from "@material-ui/core";
+import InfoIcon from '@material-ui/icons/Info';
+
 
 import { Close } from "@material-ui/icons/";
 
@@ -144,7 +146,7 @@ class UpdateProfile extends Component {
               <div className="card shadow-sm">
                 <div className="card-header bg-transparent border-0">
                   <h3 className="mb-0">
-                    <i className="far fa-clone pr-1"></i>General Information
+                    <InfoIcon/>General Information
                   </h3>
                 </div>
                 <div className="card-body pt-0">
@@ -252,7 +254,7 @@ class UpdateProfile extends Component {
                     <div>
                       <input
                         type="submit"
-                        className="btn btn-primary center"
+                        className="btn btn-primary center btnUpdate"
                         id="upProfileBtn"
                         value="Update Profile"
                         onClick={this.notify}
@@ -264,7 +266,7 @@ class UpdateProfile extends Component {
               <div className="card shadow-sm update-info">
                 <div className="card-header bg-transparent border-0">
                   <h3 className="mb-0">
-                    <i className="far fa-clone pr-1">Other Incormation</i>
+                    <InfoIcon/> Other Incormation
                   </h3>
                 </div>
                 <div className="card-body pt-0">
