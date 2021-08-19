@@ -23,7 +23,54 @@
   background-color: rgb(238, 238, 238);
   height: 70px;
 }
-
+.navbar-collapse .navbar-form .search-box input {
+  margin-top: 0;
+}
+.navbar-collapse form.navbar-form.resp-hide {
+  width: 55%;
+  margin: 0 auto;
+}
+.navbar-collapse.collapse.show {
+  background: #ffffffe3;
+  height: 100vh;
+  margin-top: 15px;
+}
+@media screen and (max-width: 991px) {
+  form.navbar-form.resp-hide {
+    display: none;
+  }
+  .navbar-collapse .navbar-nav .btn-primary {
+    width: 70% !important;
+    margin: 0 auto;
+    padding-left: 0 !important;
+  }
+}
+form.navbar-form.resp-show {
+  color: red;
+}
+@media screen and (min-width: 992px) {
+  form.navbar-form.resp-show {
+    display: none;
+  }
+}
+.navbar-form .search-box {
+  width: 100%;
+}
+.navbar-form.resp-show .search-box input {
+  width: 80%;
+  margin-top: 0;
+}
+.navbar-form.resp-show {
+  width: calc(90% - 120px);
+}
+.navbar-collapse.collapse.show .navbar-nav a {
+  padding-left: 70px;
+  width: 90%;
+}
+.navbar-collapse.collapse.show .navbar-nav a:hover {
+  background: #5d3fd3;
+  color: #f1f1f1;
+}
 .btn-primary {
   color: #fff;
   background-color: #007bff;
@@ -50,7 +97,6 @@
 }
 .navbar-nav {
   list-style: none;
-  margin-right: 30px;
   font-size: 18px;
   font-family: "Arial Narrow";
 }
@@ -740,18 +786,6 @@ textarea.form-control {
 }
 
 /* Admin Sidebar */
-.sidebar {
-  position: fixed;
-  display: flex;
-  left: 0;
-  height: 100%;
-  top: 65px;
-  max-width: 310px;
-  overflow-y: scroll;
-  background: #fff;
-  opacity: 1;
-  z-index: 100;
-}
 .sidebar-inner {
   width: 100%;
 }
@@ -801,9 +835,6 @@ textarea.form-control {
   height: 100%;
   padding-left: 20px;
 }
-.side-admin-padding {
-  padding-left: 255px;
-}
 .drop-icon {
   transition: all 200ms ease-in-out;
   transition-duration: 200ms;
@@ -820,9 +851,6 @@ textarea.form-control {
   padding-top: 20px;
 }
 /* Admin add topic */
-.page-content {
-  padding-left: 310px;
-}
 .topic-title {
   padding-bottom: 10px;
 }
@@ -865,12 +893,19 @@ ul.topic-lists {
 .topic-name {
   cursor: pointer;
 }
-.sidebar-user {
-  font-size: 15px;
-  font-family: "Courier New", Courier, monospace;
+.page-container {
+  display: flex;
+}
+.sidebar {
   overflow-y: scroll;
   background: #fff;
-  padding-top: 25px;
+  padding-top: 20px;
+  position: sticky;
+  top: 70px;
+  padding-bottom: 10px;
+  max-height: calc(100vh);
+  min-height: 100vh;
+  width: 280px;
 }
 .sidebar-user a {
   color: #343a40;
@@ -923,6 +958,36 @@ ul.topic-lists {
   float: left;
   margin-right: 7px;
 }
+
+/* User Study-Materials */
+.topic-lists .topic-name {
+  font-size: 25px;
+  font-weight: 700;
+}
+.topic-lists .subtopic-name {
+  font-size: 20px;
+  color: #7d7575;
+  font-weight: 600;
+}
+.study-chapter {
+  padding: 20px 50px;
+}
+.contents {
+  display: flex;
+  justify-content: center;
+}
+.inner-contents > header {
+  width: 500px;
+  margin: 0 auto;
+}
+.study-chapter .subject-name h1 {
+  text-align: center;
+}
+.inner-contents {
+  width: 100%;
+}
+/*End of User Study Materials  */
+
 /* Search Posts Page */
 .search-results-page {
   margin: 40px 30px;

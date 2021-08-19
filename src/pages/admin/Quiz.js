@@ -5,13 +5,7 @@ function Quiz(props) {
 
   return (
     <>
-      <div
-        className={
-          user.userType === "Admin" ? "page-content quiz-page" : "quiz-page"
-        }
-      >
-        Quiz page
-      </div>
+      <div className="quiz-page">Quiz page</div>
     </>
   );
 }
