@@ -1,12 +1,12 @@
-import { makeRequest } from "./request";
+import { makeRequest } from './request';
 
-const apiURL = "https://student-verse.herokuapp.com";
+const apiURL = 'https://student-verse.herokuapp.com';
 // const apiURL = "http://localhost:5000";
 const siteURI = `${window.location.origin}/`;
 
 export function login(loginData) {
   const request = {
-    method: "post",
+    method: 'post',
     url: `${apiURL}/login`,
     body: {
       username: loginData.username,
@@ -19,7 +19,7 @@ export function login(loginData) {
 
 export function signup(signupData) {
   const request = {
-    method: "post",
+    method: 'post',
     url: `${apiURL}/signup`,
     body: {
       fname: signupData.fname,
@@ -36,7 +36,7 @@ export function signup(signupData) {
 
 export function getProfile(token) {
   const request = {
-    method: "get",
+    method: 'get',
     url: `${apiURL}/profile`,
     headerParams: {
       authorization: `Bearer ${token}`,
@@ -48,7 +48,7 @@ export function getProfile(token) {
 
 export function updateProfile(uProfile, token) {
   const request = {
-    method: "put",
+    method: 'put',
     url: `${apiURL}/profile/update`,
     body: {
       fname: uProfile.fname,
@@ -69,7 +69,7 @@ export function updateProfile(uProfile, token) {
 
 export function getTopPosts() {
   const request = {
-    method: "get",
+    method: 'get',
     url: `${apiURL}/posts`,
   };
 
@@ -78,7 +78,7 @@ export function getTopPosts() {
 
 export function getSingleQuestion(itemID) {
   const request = {
-    method: "get",
+    method: 'get',
     url: `${apiURL}/post/${itemID}`,
   };
 
@@ -87,7 +87,7 @@ export function getSingleQuestion(itemID) {
 
 export function addAnswer(answer, token) {
   const request = {
-    method: "post",
+    method: 'post',
     url: `${apiURL}/addAnswer`,
     body: {
       post: answer.post,
@@ -105,7 +105,7 @@ export function addAnswer(answer, token) {
 
 export function addQuestion(formData, token) {
   const request = {
-    method: "post",
+    method: 'post',
     url: `${apiURL}/addQuestion`,
     body: {
       title: formData.title,
@@ -122,7 +122,7 @@ export function addQuestion(formData, token) {
 
 export function getAnswer(id) {
   const request = {
-    method: "get",
+    method: 'get',
     url: `${apiURL}/answers/${id}`,
   };
 
@@ -131,7 +131,7 @@ export function getAnswer(id) {
 
 export function addComment(commentD, token) {
   const request = {
-    method: "post",
+    method: 'post',
     url: `${apiURL}/addComment`,
     body: {
       question: commentD.questionID,
@@ -147,7 +147,7 @@ export function addComment(commentD, token) {
 
 export function upvote(voteData, token) {
   const request = {
-    method: "post",
+    method: 'post',
     url: `${apiURL}/upvote`,
     body: {
       post: voteData.post,
@@ -162,7 +162,7 @@ export function upvote(voteData, token) {
 }
 export function downvote(voteData, token) {
   const request = {
-    method: "post",
+    method: 'post',
     url: `${apiURL}/downvote`,
     body: {
       post: voteData.post,
@@ -179,7 +179,7 @@ export function downvote(voteData, token) {
 // admin section
 export function createSubjectD(subject, token) {
   const request = {
-    method: "post",
+    method: 'post',
     url: `${apiURL}/subject`,
     body: subject,
     headerParams: {
@@ -191,7 +191,7 @@ export function createSubjectD(subject, token) {
 }
 export function getSubject(token) {
   const request = {
-    method: "get",
+    method: 'get',
     url: `${apiURL}/subject`,
     headerParams: {
       authorization: `Bearer ${token}`,
@@ -201,7 +201,7 @@ export function getSubject(token) {
 }
 export function createTopicD(topicData, token) {
   const request = {
-    method: "post",
+    method: 'post',
     url: `${apiURL}/topic`,
     body: { subject: topicData.subject, name: topicData.name },
     headerParams: {
@@ -212,22 +212,22 @@ export function createTopicD(topicData, token) {
 }
 export function getTopicD(subjectId, token) {
   const request = {
-    method: "get",
+    method: 'get',
     url: `${apiURL}/topic?subjectID=${subjectId}`,
     // body: {
     //   subject: subjectId,
     // },
     headerParams: {
       authorization: `Bearer ${token}`,
-      test: "asdads",
+      test: 'asdads',
     },
   };
-  console.log("req", request);
+  console.log('req', request);
   return makeRequest(request);
 }
 export function createSubTopicD(subTopicArg, token) {
   const request = {
-    method: "post",
+    method: 'post',
     url: `${apiURL}/chapter`,
     body: subTopicArg,
     headerParams: {
@@ -238,7 +238,7 @@ export function createSubTopicD(subTopicArg, token) {
 }
 export function getSubTopic(token) {
   const request = {
-    method: "get",
+    method: 'get',
     url: `${apiURL}/chapter`,
     headerParams: {
       authorization: `Bearer ${token}`,
@@ -250,9 +250,9 @@ export function getSubTopic(token) {
 // Search tags
 
 export function fetchSearchTags(tags) {
-  console.log("api hit", tags);
+  console.log('api hit', tags);
   const request = {
-    method: "get",
+    method: 'get',
     url: `${apiURL}/searchTag?tags=${tags}`,
   };
 
@@ -260,8 +260,20 @@ export function fetchSearchTags(tags) {
 }
 export function fetchSearchPosts(question) {
   const request = {
-    method: "get",
+    method: 'get',
     url: `${apiURL}/searchPost?question=${question}`,
+  };
+
+  return makeRequest(request);
+}
+
+// Search users
+
+export function fetchSearchUsers(name) {
+  console.log('api hit', name);
+  const request = {
+    method: 'get',
+    url: `${apiURL}/searchUser?name=${name}`,
   };
 
   return makeRequest(request);

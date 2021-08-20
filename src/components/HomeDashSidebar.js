@@ -72,10 +72,10 @@ export default function VerticalTabs() {
         className={classes.tabs}
       >
         <Link to="/">
-          <Tab label="Home" {...a11yProps(0)} />
+          <Tab label="Home"/>
         </Link>
         <Link to="/tag-search">
-          <Tab label="Tags" {...a11yProps(2)} />
+          <Tab label="Tags"/>
         </Link>
         <Link to="/user-search">
           <Tab label="Users" {...a11yProps(3)} />

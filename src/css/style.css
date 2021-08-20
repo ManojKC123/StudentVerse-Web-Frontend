@@ -848,7 +848,7 @@ ul.topic-lists {
 .topic-name {
   cursor: pointer;
 }
-.sidebar-user {
+/* .sidebar-user {
   font-size: 15px;
   font-family: "Courier New", Courier, monospace;
   overflow-y: scroll;
@@ -858,6 +858,17 @@ ul.topic-lists {
 .sidebar-user a {
   color: #343a40;
   text-decoration: none;
+} */
+
+.sidebar-user {
+  font-size: 15px;
+  font-family: "Courier New", Courier, monospace;
+  padding-top: 25px;
+  background: #fff;
+}
+.sidebar-user a {
+  text-decoration: none;
+  color: #000;
 }
 
 .MuiTab-wrapper {
@@ -906,6 +917,45 @@ ul.topic-lists {
   float: left;
   margin-right: 7px;
 }
+
+/* Search tags */
+.view-user {
+  margin-top: 10px;
+}
+.search-user {
+  width: 100%;
+  margin-left: 30px;
+}
+.user-heading h3 {
+  margin-top: 30px;
+}
+.user-que {
+  margin-top: 18px;
+}
+.user-ans {
+  font-size: 13px;
+}
+.usersearch-section {
+  display: flex;
+}
+.userinput-search {
+  width: 170px;
+}
+.btn-user {
+  margin-left: 5px;
+}
+.view-user .card p {
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+.view-user .card {
+  width: 19%;
+  margin-bottom: 10px;
+  float: left;
+  margin-right: 7px;
+}
+
 /* Search Posts Page */
 .search-results-page {
   margin: 40px 30px;
