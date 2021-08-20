@@ -27,6 +27,20 @@ Given("Test login functionality", { timeout: 30000 }, async function () {
   await driver.findElement(By.id("loginBtn")).click();
   await driver.quit();
 });
+Given("Test profile functionality", { timeout: 30000 }, async function () {
+  let driver = await new Builder().forBrowser("chrome").build();
+  await driver.get("http://localhost:3000/profile/update");
+  await driver.findElement(By.id("updateFnmae")).sendKeys("test1");
+  await driver.findElement(By.id("updateLname")).sendKeys("test1");
+  await driver.findElement(By.id("update-email")).sendKeys("test1@gmail.com");
+  await driver.findElement(By.id("update-address")).sendKeys("test10");
+  await driver.findElement(By.id("update-mobile")).sendKeys("22222222");
+  await driver.findElement(By.id("update-curentpasword")).sendKeys("test1");
+  await driver.findElement(By.id("update-newpassword")).sendKeys("test1");
+  await driver.sleep(delay);
+  await driver.findElement(By.id("upProfileBtn")).click();
+  await driver.quit();
+});
 //Sprint 3
 Given("Test AskQuestion functionality", { timeout: 30000 }, async function () {
   let driver = await new Builder().forBrowser("chrome").build();
