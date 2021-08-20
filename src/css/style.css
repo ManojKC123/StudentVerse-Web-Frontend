@@ -502,11 +502,10 @@ form.navbar-form.resp-show {
   border: 10px solid #ccc;
   border-radius: 50%;
   color: white;
-  
 }
 
 .card-header {
-  padding: .75rem 1.25rem;
+  padding: 0.75rem 1.25rem;
   margin-bottom: 0;
   border-color: #f0e3e3;
   background-color: #5d3fd3e0;
@@ -543,7 +542,7 @@ form.navbar-form.resp-show {
   color: white;
   margin: 16px;
 }
-.btnUpdate{
+.btnUpdate {
   margin-top: 25px;
 }
 /* Single Question Answer */
@@ -1028,4 +1027,18 @@ ul.topic-lists {
 }
 .yellow {
   color: yellow;
+}
+
+/* Admin quiz page */
+.editor-page-inner {
+  display: flex;
+  justify-content: space-between;
+}
+.editor-page {
+  width: 100%;
+}
+.editor-page-inner {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 30px;
 }

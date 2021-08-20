@@ -5,7 +5,7 @@ function AdminQuiz(props) {
 
   return (
     <>
-      <div className="quiz-page"> admin Quiz page</div>
+      <div className="quiz-page"></div>
     </>
   );
 }

@@ -24,7 +24,7 @@ import AdminQuiz from "./pages/admin/AdminQuiz";
 import PostStudyMaterials from "./pages/admin/PostStudyMaterials";
 import AdminDash from "./pages/admin/AdminDash";
 import UserQuiz from "./pages/UserQuiz";
-import AddTopics from "./pages/admin/AddTopics";
+import AdminCreate from "./pages/admin/AdminCreate";
 import TagSearch from "./pages/TagSearch";
 
 function App() {
@@ -63,7 +63,7 @@ function App() {
               exact
             />
             <Route path="/admin/quiz" component={AdminQuiz} exact />
-            <Route path="/admin/:subname" component={AddTopics} exact />
+            <Route path="/admin/:subname" component={AdminCreate} exact />
             <Route path="/tag-search" component={TagSearch} exact />
           </Switch>
         </Layout>
