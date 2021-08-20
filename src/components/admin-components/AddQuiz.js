@@ -36,14 +36,14 @@ function AddQuiz() {
       <h3>Start the quiz</h3>
         <form className = "form-quiz">
                 <div class="row g-3 align-items-center">
-                    <div class="col-auto quiz-question">
-                        <label for="inputPassword6" class="col-form-label">question</label>
-                    </div>
+                    
                 </div>
                 <Grid container className={classes.root} spacing={2}>
+                  
                     <Grid item xs={12}>
                         <Paper className={classes.control}>
-
+                        
+                        1. <input type="text" id="add-question" placeholder="Add question here...." className="form-control10"/>
                             <RadioGroup
                                 name="spacing"
                                 aria-label="spacing"
