@@ -545,6 +545,32 @@ form.navbar-form.resp-show {
 .btnUpdate {
   margin-top: 25px;
 }
+.update-pass-input {
+  margin-bottom: 5px;
+}
+.btn-update-password {
+  background: #fff;
+  color: #7156d8;
+  font-weight: 700;
+  border-radius: 35px;
+  box-shadow: none;
+  margin-bottom: 10px;
+  border: 0;
+  padding: 5px 20px;
+  cursor: pointer;
+}
+.update-password-inputs {
+  transition: all 1s ease-in-out;
+  transform: translateY(-130px);
+  z-index: -14;
+  opacity: 0;
+  position: relative;
+}
+.update-password-inputs.show {
+  transform: translateY(10px);
+  z-index: 1;
+  opacity: 1;
+}
 /* Single Question Answer */
 .questions-page {
   width: 100%;
