@@ -16,14 +16,14 @@ const Layout = (props) => {
         </Grid>
         <Grid item md={12}>
           <div className="page-container">
-            <div className="">
+            <>
               {user.userType === "Admin" ? (
                 <AdminDashSidebar />
               ) : (
                 <HomeDashSidebar />
               )}
-            </div>
-            <div className="">{props?.children}</div>
+            </>
+            <>{props?.children}</>
           </div>
         </Grid>
         <Grid item xs={12} className="">

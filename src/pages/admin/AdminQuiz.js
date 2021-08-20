@@ -1,11 +1,15 @@
 import React, { useState } from "react";
+import AddQuiz from '../../components/admin-components/AddQuiz';
 
 function AdminQuiz(props) {
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
 
   return (
     <>
-      <div className="quiz-page"> admin Quiz page</div>
+      <div className="quiz-page"> 
+      <AddQuiz/>
+      
+      </div>
     </>
   );
 }

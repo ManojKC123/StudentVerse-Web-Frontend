@@ -1029,3 +1029,17 @@ ul.topic-lists {
 .yellow {
   color: yellow;
 }
+/* Quiz Admin */
+.quiz-page {
+	width: 100%;
+}
+.form-quiz {
+	width: 500px;
+	margin: 0 auto;
+}
+.quiz-page .quiz-radiowrap {
+	flex-direction: column;
+}
+.btnquiz{
+  margin-top: 20px;
+}
