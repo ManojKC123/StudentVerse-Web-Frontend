@@ -340,7 +340,7 @@
 /* ----- Home Page ----- */
 .homepage {
   width: 100%;
-  margin-top: 25px;
+  margin-top: 30px;
   font-size: 18px;
   font-family: "Arial Narrow";
 }
@@ -353,6 +353,9 @@
   display: flex;
   border-bottom: 1px solid #d2d2d2;
   padding: 10px 0;
+  background-color: #f2f2f2;
+  margin-bottom: 15px;
+  border-radius: 5px;
 }
 .stats-container {
   min-width: 120px;
@@ -484,6 +487,10 @@
 }
 
 /* Single Question Answer */
+.questions {
+  margin-top: 20px;
+}
+
 .questions-page {
   width: 100%;
   padding: 0 20px;
