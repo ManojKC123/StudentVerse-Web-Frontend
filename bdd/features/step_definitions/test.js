@@ -7,10 +7,10 @@ const { delay } = require("../utils/delay");
 Given("Test signup functionality", { timeout: 30000 }, async function () {
   let driver = await new Builder().forBrowser("chrome").build();
   await driver.get("http://localhost:3000/signup");
-  await driver.findElement(By.id("firstnamesignup")).sendKeys("mandeep");
-  await driver.findElement(By.id("lastnamesignup")).sendKeys("maharzan");
-  await driver.findElement(By.id("passwordsignup")).sendKeys("mandeep");
-  await driver.findElement(By.id("emailsignup")).sendKeys("mandeep@gmail.com");
+  await driver.findElement(By.id("firstnamesignup")).sendKeys("test");
+  await driver.findElement(By.id("lastnamesignup")).sendKeys("test");
+  await driver.findElement(By.id("passwordsignup")).sendKeys("test");
+  await driver.findElement(By.id("emailsignup")).sendKeys("test@gmail.com");
   await driver.findElement(By.id("addresssignup")).sendKeys("kathmandu");
   await driver.findElement(By.id("mobilesignup")).sendKeys("1234567");
   await driver.sleep(delay);
@@ -21,8 +21,8 @@ Given("Test signup functionality", { timeout: 30000 }, async function () {
 Given("Test login functionality", { timeout: 30000 }, async function () {
   let driver = await new Builder().forBrowser("chrome").build();
   await driver.get("http://localhost:3000/login");
-  await driver.findElement(By.id("usernamelogin")).sendKeys("mandeep");
-  await driver.findElement(By.id("passwordlogin")).sendKeys("mandeep");
+  await driver.findElement(By.id("usernamelogin")).sendKeys("test");
+  await driver.findElement(By.id("passwordlogin")).sendKeys("test");
   await driver.sleep(delay);
   await driver.findElement(By.id("loginBtn")).click();
   await driver.quit();
@@ -30,7 +30,7 @@ Given("Test login functionality", { timeout: 30000 }, async function () {
 //Sprint 3
 Given("Test AskQuestion functionality", { timeout: 30000 }, async function () {
   let driver = await new Builder().forBrowser("chrome").build();
-  await driver.get("http://localhost:3000/ask-question");
+  await driver.get("https://studentverse-6e382.web.app/ask-question");
   await driver.findElement(By.id("title")).sendKeys("test");
   await driver.findElement(By.id("body")).sendKeys("test");
   await driver.findElement(By.id("tag-input")).sendKeys("test");
@@ -57,5 +57,23 @@ Given("Test Comment functionality", { timeout: 30000 }, async function () {
     .sendKeys("wwww");
   await driver.sleep(delay);
   await driver.findElement(By.id("addCommentTest")).click();
+  await driver.quit();
+});
+//Sprint 5
+Given("Test subject functionality", { timeout: 30000 }, async function () {
+  let driver = await new Builder().forBrowser("chrome").build();
+  await driver.get("http://localhost:3000/admin/Computer");
+  await driver.findElement(By.id("input-topic")).sendKeys("operating system");
+  await driver.sleep(delay);
+  await driver.findElement(By.id("create-button")).click();
+  await driver.quit();
+});
+//Sprint 6
+Given("Test Posts functionality", { timeout: 30000 }, async function () {
+  let driver = await new Builder().forBrowser("chrome").build();
+  await driver.get("http://localhost:3000/tag-search");
+  await driver.findElement(By.id("tag")).sendKeys("science");
+  await driver.sleep(delay);
+  await driver.findElement(By.id("tag-button")).click();
   await driver.quit();
 });
