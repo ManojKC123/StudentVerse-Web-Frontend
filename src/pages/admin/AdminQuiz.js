@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Quiz(props) {
+function AdminQuiz(props) {
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
 
   return (
@@ -10,4 +10,4 @@ function Quiz(props) {
   );
 }
 
-export default Quiz;
+export default AdminQuiz;
