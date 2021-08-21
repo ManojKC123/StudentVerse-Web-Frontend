@@ -565,11 +565,14 @@ form.navbar-form.resp-show {
   z-index: -14;
   opacity: 0;
   position: relative;
+  display: none;
 }
 .update-password-inputs.show {
+  display: flex;
   transform: translateY(10px);
   z-index: 1;
   opacity: 1;
+  flex-direction: column;
 }
 /* Single Question Answer */
 .questions-page {

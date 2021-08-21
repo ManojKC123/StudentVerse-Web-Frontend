@@ -143,61 +143,61 @@ class UpdateProfile extends Component {
   render() {
     return (
       <div className="container">
-        <form onSubmit={this.updateUserData}>
-          <div className="row user-profile">
-            <div className="col-lg-4">
-              <div className="card shadow-sm">
-                <div className="card-header bg-transparent text-center">
-                  <img
-                    className="profile_img"
-                    src="https://source.unsplash.com/600x300/?student"
-                    alt="student dp"
+        <div className="row user-profile">
+          <div className="col-lg-4">
+            <div className="card shadow-sm">
+              <div className="card-header bg-transparent text-center">
+                <img
+                  className="profile_img"
+                  src="https://source.unsplash.com/600x300/?student"
+                  alt="student dp"
+                />
+                <h2>{this.state.username}</h2>
+              </div>
+              <div className="card-body">
+                <p className="mb-0">
+                  <strong className="pr-1">First-Name:</strong>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="updateFnmae"
+                    value={this.state.fname}
+                    onChange={(event) => {
+                      this.setState({
+                        fname: event.target.value,
+                      });
+                    }}
+                    placeholder="First-name"
                   />
-                  <h2>{this.state.username}</h2>
-                </div>
-                <div className="card-body">
-                  <p className="mb-0">
-                    <strong className="pr-1">First-Name:</strong>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="updateFnmae"
-                      value={this.state.fname}
-                      onChange={(event) => {
-                        this.setState({
-                          fname: event.target.value,
-                        });
-                      }}
-                      placeholder="First-name"
-                    />
-                  </p>
-                  <p className="mb-0">
-                    <strong className="pr-1">Last-Name:</strong>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="updateLname"
-                      value={this.state.lname}
-                      onChange={(event) => {
-                        this.setState({
-                          lname: event.target.value,
-                        });
-                      }}
-                      placeholder="Last-name"
-                    />
-                  </p>
-                </div>
+                </p>
+                <p className="mb-0">
+                  <strong className="pr-1">Last-Name:</strong>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="updateLname"
+                    value={this.state.lname}
+                    onChange={(event) => {
+                      this.setState({
+                        lname: event.target.value,
+                      });
+                    }}
+                    placeholder="Last-name"
+                  />
+                </p>
               </div>
             </div>
-            <div className="col-lg-8">
-              <div className="card shadow-sm">
-                <div className="card-header bg-transparent border-0">
-                  <h3 className="mb-0">
-                    <InfoIcon />
-                    General Information
-                  </h3>
-                </div>
-                <div className="card-body pt-0">
+          </div>
+          <div className="col-lg-8">
+            <div className="card shadow-sm">
+              <div className="card-header bg-transparent border-0">
+                <h3 className="mb-0">
+                  <InfoIcon />
+                  General Information
+                </h3>
+              </div>
+              <div className="card-body pt-0">
+                <form onSubmit={this.updateUserData}>
                   <table className="table">
                     <tr>
                       <th width="30%">Email:</th>
@@ -294,101 +294,101 @@ class UpdateProfile extends Component {
                       />
                     </div>
                   </table>
-                  <div className="update-password-section">
-                    <span
-                      className="btn-update-password"
-                      onClick={this.dropUpdatePassword}
+                </form>
+                <div className="update-password-section">
+                  <button
+                    className="btn-update-password"
+                    onClick={this.dropUpdatePassword}
+                  >
+                    Update Password
+                  </button>
+                  <div
+                    className={
+                      this.state.updateDrop
+                        ? "update-password-inputs show"
+                        : "update-password-inputs"
+                    }
+                  >
+                    <input
+                      placeholder="Current Password"
+                      value={this.state.upCurrentpassword}
+                      onChange={(event) => {
+                        this.setState({
+                          upCurrentpassword: event.target.value,
+                        });
+                        console.log("up", this.state.upCurrentpassword);
+                      }}
+                      type="text"
+                      className="form-control update-pass-input"
+                      id="update-mobile"
+                    />
+                    <Collapse in={this.state.incorectCPAlert}>
+                      <Alert
+                        action={
+                          <IconButton
+                            aria-label="close"
+                            color="inherit"
+                            size="small"
+                            onClick={() => {
+                              this.setState({ incorectCPAlert: false });
+                            }}
+                          >
+                            <Close fontSize="inherit" />
+                          </IconButton>
+                        }
+                      >
+                        {this.state.incorrectMessage}
+                      </Alert>
+                    </Collapse>
+                    <input
+                      placeholder="New Password"
+                      value={this.state.newPassword}
+                      onChange={(event) => {
+                        this.setState({
+                          newPassword: event.target.value,
+                        });
+                        console.log("up", this.state.newPassword);
+                      }}
+                      type="text"
+                      className="form-control update-pass-input"
+                      id="update-mobile"
+                    />
+                    <input
+                      placeholder="Confirm New Password"
+                      value={this.state.confirmNewPassword}
+                      onChange={(event) => {
+                        this.setState({
+                          confirmNewPassword: event.target.value,
+                        });
+                        console.log("up", this.state.confirmNewPassword);
+                      }}
+                      type="text"
+                      className="form-control update-pass-input"
+                      id="update-mobile"
+                    />
+                    <button
+                      className="btn btn-primary"
+                      id="upPasswordBtn"
+                      onClick={this.updateProfilePassword}
                     >
                       Update Password
-                    </span>
-                    <div
-                      className={
-                        this.state.updateDrop
-                          ? "update-password-inputs show"
-                          : "update-password-inputs"
-                      }
-                    >
-                      <input
-                        placeholder="Current Password"
-                        value={this.state.upCurrentpassword}
-                        onChange={(event) => {
-                          this.setState({
-                            upCurrentpassword: event.target.value,
-                          });
-                          console.log("up", this.state.upCurrentpassword);
-                        }}
-                        type="text"
-                        className="form-control update-pass-input"
-                        id="update-mobile"
-                      />
-                      <Collapse in={this.state.incorectCPAlert}>
-                        <Alert
-                          action={
-                            <IconButton
-                              aria-label="close"
-                              color="inherit"
-                              size="small"
-                              onClick={() => {
-                                this.setState({ incorectCPAlert: false });
-                              }}
-                            >
-                              <Close fontSize="inherit" />
-                            </IconButton>
-                          }
-                        >
-                          {this.state.incorrectMessage}
-                        </Alert>
-                      </Collapse>
-                      <input
-                        placeholder="New Password"
-                        value={this.state.newPassword}
-                        onChange={(event) => {
-                          this.setState({
-                            newPassword: event.target.value,
-                          });
-                          console.log("up", this.state.newPassword);
-                        }}
-                        type="text"
-                        className="form-control update-pass-input"
-                        id="update-mobile"
-                      />
-                      <input
-                        placeholder="Confirm New Password"
-                        value={this.state.confirmNewPassword}
-                        onChange={(event) => {
-                          this.setState({
-                            confirmNewPassword: event.target.value,
-                          });
-                          console.log("up", this.state.confirmNewPassword);
-                        }}
-                        type="text"
-                        className="form-control update-pass-input"
-                        id="update-mobile"
-                      />
-                      <button
-                        className="btn btn-primary"
-                        id="upPasswordBtn"
-                        onClick={this.updateProfilePassword}
-                      >
-                        Update Password
-                      </button>
-                    </div>
+                    </button>
                   </div>
                 </div>
               </div>
-              <div className="card shadow-sm update-info">
-                <div className="card-header bg-transparent border-0">
-                  <h3 className="mb-0">
-                    <InfoIcon /> Other Incormation
-                  </h3>
-                </div>
-                <div className="card-body pt-0">
-                  <p>Update information..</p>
-                </div>
+            </div>
+            <div className="card shadow-sm update-info">
+              <div className="card-header bg-transparent border-0">
+                <h3 className="mb-0">
+                  <InfoIcon /> Other Incormation
+                </h3>
+              </div>
+              <div className="card-body pt-0">
+                <p>Update information..</p>
               </div>
             </div>
           </div>
-        </form>
+        </div>
       </div>
     );
   }
