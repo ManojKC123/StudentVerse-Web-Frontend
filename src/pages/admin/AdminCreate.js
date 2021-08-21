@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { KeyboardArrowDown } from "@material-ui/icons/";
-import { createTopicD, getTopicD, createSubTopicD } from "../../data/api";
+import {
+  createTopicD,
+  getTopicD,
+  createSubTopicD,
+  URL_CONFIG,
+} from "../../data/api";
 import Grid from "@material-ui/core/Grid";
-
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
-// import QuizPanel from "../components/QuizPanel";
+import AdminQuiz from "../../components/admin-components/AdminQuiz";
 // import StudyContentPanel from "../components/StudyContentPanel";
 // import PastPapersPanel from "../components/PastPapersPanel";
 import AppBar from "@material-ui/core/AppBar";
@@ -135,6 +139,12 @@ const AdminCreate = (props) => {
     }
   };
 
+  const subTopicClick = (a, b, c) => {
+    console.log("clicked", a, b, c);
+    var url = URL_CONFIG.adminUrl + `/${a}/${b}/${c}`;
+    window.location.href = url;
+  };
+
   return (
     <div className="editor-page">
       <div className="editor-page-inner">
@@ -146,7 +156,7 @@ const AdminCreate = (props) => {
                   <h1>{subjectArg.name}</h1>
                 </div>
               </Grid>
-              <Grid item md={10} className="">
+              <Grid item md={12} className="">
                 <div className="contents">
                   <div className="inner-contents bread-crumb-wrap">
                     <Breadcrumbs
@@ -185,7 +195,7 @@ const AdminCreate = (props) => {
                       StudyMaterialsPanel
                     </TabPanel>
                     <TabPanel value={value} index={1}>
-                      {/* <QuizPanel /> */}
+                      <AdminQuiz />
                       Quiz panel{" "}
                     </TabPanel>
                     <TabPanel value={value} index={2}>
@@ -231,11 +241,27 @@ const AdminCreate = (props) => {
                       {topic.chapter &&
                         topic.chapter.map((subtopic, index) => {
                           return (
-                            <Link to="/admin/topic/subtopic">
-                              <div className="subtopic-name" key={index}>
-                                {subtopic.name}
-                              </div>
-                            </Link>
+                            // <Link
+                            //   to={{
+                            //     pathname: `/admin/${subjectArg.name}/${topic.name}/${subtopic.name}`,
+                            //     propsParam: { id: subtopic._id },
+                            //   }}
+                            // >
+                            //   <div className="subtopic-name" key={index}>
+                            //     {subtopic.name}
+                            //   </div>
+                            // </Link>
+                            <button
+                              onClick={() => {
+                                subTopicClick(
+                                  subjectArg.name,
+                                  topic.name,
+                                  subtopic._id
+                                );
+                              }}
+                            >
+                              {subtopic.name}
+                            </button>
                           );
                         })}
                       <div className="">

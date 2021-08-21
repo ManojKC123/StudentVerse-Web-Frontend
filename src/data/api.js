@@ -1,8 +1,13 @@
 import { makeRequest } from "./request";
 
-// const apiURL = "https://student-verse.herokuapp.com";
-const apiURL = "http://localhost:5000";
-const siteURI = `${window.location.origin}/`;
+const apiURL = "https://student-verse.herokuapp.com";
+// const apiURL = "http://localhost:5000";
+const siteURI = `${window.location.origin}`;
+
+export const URL_CONFIG = {
+  siteUrl: `${siteURI}`,
+  adminUrl: `${siteURI}/admin`,
+};
 
 export function login(loginData) {
   const request = {
@@ -238,7 +243,6 @@ export function getTopicD(subjectId, token) {
       test: "asdads",
     },
   };
-  console.log("req", request);
   return makeRequest(request);
 }
 export function createSubTopicD(subTopicArg, token) {
@@ -280,5 +284,21 @@ export function fetchSearchPosts(question) {
     url: `${apiURL}/searchPost?question=${question}`,
   };
 
+  return makeRequest(request);
+}
+// Quiz
+export function createQuiz(quizData, token) {
+  const request = {
+    method: "post",
+    url: `${apiURL}/quiz/${quizData.chapter}`,
+    body: {
+      question: quizData.question,
+      option: quizData.option,
+      answer: quizData.answer,
+    },
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
+  };
   return makeRequest(request);
 }

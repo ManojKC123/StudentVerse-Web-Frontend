@@ -64,6 +64,11 @@ function App() {
             />
             <Route path="/admin/quiz" component={AdminQuiz} exact />
             <Route path="/admin/:subname" component={AdminCreate} exact />
+            <Route
+              path="/admin/:subname/:topic/:subtopic"
+              component={AdminCreate}
+              exact
+            />
             <Route path="/tag-search" component={TagSearch} exact />
           </Switch>
         </Layout>
