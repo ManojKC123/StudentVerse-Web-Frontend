@@ -31,7 +31,7 @@ function TagSearch(props) {
     <div className="search-tag">
       <div className="tag-heading">
         <h3>Tags</h3>
-        <p className="tag-que">What is tag?</p>
+        
         <p className="tag-ans">
           A tag is a keyword or label that categorizes your question with other,
           similar questions. Using the right tags <br /> makes it easier for
