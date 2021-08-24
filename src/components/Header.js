@@ -87,6 +87,7 @@ const Header = (props) => {
           <div className="input-group-append">
             <span className="input-group-text">
               <SearchIcon
+              id="search-button"
                 onClick={() => searchPosts(searchText)}
                 className=""
               />

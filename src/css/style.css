@@ -1082,3 +1082,20 @@ ul.topic-lists {
 .quiz-radiowrap label {
   margin-bottom: 0;
 }
+/* Quiz Admin */
+.quiz-page {
+	width: 100%;
+}
+.form-quiz {
+	width: 500px;
+	margin: 0 auto;
+}
+.quiz-page .quiz-radiowrap {
+	flex-direction: column;
+}
+.btnquiz{
+  margin-top: 20px;
+}
+.form-control10{
+  width: 450px;
+}
