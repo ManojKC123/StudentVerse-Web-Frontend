@@ -33,13 +33,6 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired,
 };
 
-function a11yProps(index) {
-  return {
-    id: `vertical-tab-${index}`,
-    "aria-controls": `vertical-tabpanel-${index}`,
-  };
-}
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 0,
@@ -68,20 +61,20 @@ export default function VerticalTabs() {
         variant="scrollable"
         value={value}
         onChange={handleChange}
-        aria-label="Vertical tabs example"
+        aria-label="Vertical tabs"
         className={classes.tabs}
       >
         <Link to="/">
-          <Tab label="Home" {...a11yProps(0)} />
+          <Tab label="Home" />
         </Link>
         <Link to="/tag-search">
-          <Tab label="Tags" {...a11yProps(2)} />
+          <Tab label="Tags" />
         </Link>
         <Link to="/user-search">
-          <Tab label="Users" {...a11yProps(3)} />
+          <Tab label="Users" />
         </Link>
         <Link to="/quiz">
-          <Tab label="Quiz" {...a11yProps(4)} />
+          <Tab label="Quiz" />
         </Link>
       </Tabs>
     </div>

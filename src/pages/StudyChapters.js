@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { KeyboardArrowDown } from "@material-ui/icons/";
-import { getTopicD } from "../data/api";
+import { getTopicD, URL_CONFIG } from "../data/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Grid from "@material-ui/core/Grid";
@@ -93,6 +93,15 @@ const StudyChapters = (props) => {
     console.info("You clicked a breadcrumb.");
   }
 
+  const subTopicClick = (a, b, c) => {
+    console.log("clicked", a, b, c);
+    var url = URL_CONFIG.siteUrl + `/study-materials/${a}/${b}/${c}`;
+    window.location.href = url;
+    var site = {
+      chapter: c,
+    };
+    localStorage.setItem("site", JSON.stringify(site));
+  };
   return (
     <div className="study-chapter">
       <Grid container>
@@ -141,7 +150,6 @@ const StudyChapters = (props) => {
               </TabPanel>
               <TabPanel value={value} index={1}>
                 <QuizPanel />
-                Quiz panel{" "}
               </TabPanel>
               <TabPanel value={value} index={2}>
                 <PastPapersPanel />
@@ -183,11 +191,22 @@ const StudyChapters = (props) => {
                         {topic.chapter &&
                           topic.chapter.map((subtopic, index) => {
                             return (
-                              <Link to="/admin/topic/subtopic">
-                                <div className="subtopic-name" key={index}>
-                                  {subtopic.name}
-                                </div>
-                              </Link>
+                              // <Link to="/admin/topic/subtopic">
+                              //   <div className="subtopic-name" key={index}>
+                              //     {subtopic.name}
+                              //   </div>
+                              // </Link>
+                              <button
+                                onClick={() => {
+                                  subTopicClick(
+                                    subjectArg.name,
+                                    topic.name,
+                                    subtopic._id
+                                  );
+                                }}
+                              >
+                                {subtopic.name}
+                              </button>
                             );
                           })}
                       </div>
