@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import userImage from "../media/user.png";
 import { getProfile } from "../data/api";
 import { div } from "prelude-ls";
-import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
+import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
 
 toast.configure();
 
@@ -17,6 +17,7 @@ const Header = (props) => {
   const [initials, setInitials] = useState("");
   const [userPP, setUserPP] = useState();
   const [searchText, setSearchText] = useState("");
+  const [notifDrop, setNotifDrop] = useState(false);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -67,6 +68,10 @@ const Header = (props) => {
     window.location.href = `/search-results/${searchText.searchText}`;
   };
 
+  const dropNotification = (e) => {
+    setNotifDrop(!notifDrop);
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light fixed-top">
       <a href="/" className="navbar-brand">
@@ -88,7 +93,7 @@ const Header = (props) => {
           <div className="input-group-append">
             <span className="input-group-text">
               <SearchIcon
-              id="search-button"
+                id="search-button"
                 onClick={() => searchPosts(searchText)}
                 className=""
               />
@@ -141,18 +146,25 @@ const Header = (props) => {
           </div>
         </form>
         <div className="navbar-nav ml-auto action-buttons">
-          <NotificationsActiveIcon/>
-          <div className="notification-panel">
-            <ul>
-              <li>notication for quiz 1</li>
-              <li>notication for quiz 2</li>
-              <li>notication for quiz 3</li>
-
-            </ul>
+          <div className="notification-icon-wrap">
+            <button className="btn-update-password" onClick={dropNotification}>
+              <NotificationsActiveIcon />
+            </button>
+            <div
+              className={
+                notifDrop ? "notification-icon show" : "notification-icon"
+              }
+            >
+              <div>
+                <span>notification 1</span>
+                <span>notification 2</span>
+                <span>notification 3</span>
+                <span>notification 4</span>
+              </div>
+            </div>
           </div>
           {!user.token ? (
             <>
-
               <a href="/login" className="nav-link">
                 <b>Login</b>
               </a>

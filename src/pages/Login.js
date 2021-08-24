@@ -1,3 +1,5 @@
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import React, { Component } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -12,7 +14,9 @@ class LoginIn extends Component {
     isLoggedIn: "",
     message: "",
     user: JSON.parse(localStorage.getItem("user")) || [],
+    pass: false,
   };
+
   notify = () => {};
 
   loginhandler = (e) => {
@@ -68,6 +72,9 @@ class LoginIn extends Component {
         });
       });
   };
+  seePass = (e) => {
+    this.setState({ pass: !this.state.pass });
+  };
 
   render() {
     if (this.state.user.isLoggedIn === true) {
@@ -112,7 +119,8 @@ class LoginIn extends Component {
                       </div>
                       <div className="form-group">
                         <input
-                          type="text"
+                          
+                          type={this.state.pass ? "text" : "password"}
                           className="form-control"
                           id="passwordlogin"
                           value={this.state.password}
@@ -123,6 +131,21 @@ class LoginIn extends Component {
                           }}
                           placeholder="Password"
                         />
+                        <div className="vision-class">
+                         {this.state.pass ? (
+                          <Visibility
+                            onClick={() => {
+                              this.seePass();
+                            }}
+                          />
+                        ) : (
+                          <VisibilityOffIcon
+                            onClick={() => {
+                              this.seePass();
+                            }}
+                          />
+                          )}
+                          </div>
                       </div>
                       <input
                         type="submit"

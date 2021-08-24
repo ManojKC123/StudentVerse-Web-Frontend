@@ -10,6 +10,7 @@
   margin-left: 10px;
   font-size: 18px;
   font-family: "Arial Narrow";
+  margin-top: 15px;
 }
 .navbar-brand {
   display: inline-block;
@@ -75,6 +76,8 @@ form.navbar-form.resp-show {
   color: #fff;
   background-color: #007bff;
   border-color: #007bff;
+  height: 40px;
+  margin-top: 15px;
 }
 .btn-primary1 {
   color: #fff;
@@ -1081,6 +1084,36 @@ ul.topic-lists {
   display: flex;
   justify-content: space-between;
   padding: 20px 30px;
+}
+.notification-icon-wrap {
+  position: relative;
+  top: 5px;
+  padding: 10px;
+}
+.notification-icon {
+  transition: all 1s ease-in-out;
+  position: absolute;
+  width: 300px;
+  top: 0;
+  right: 0;
+  background: #fff;
+  opacity: 0;
+  display: none;
+  opacity: 1;
+}
+.notification-icon.show {
+  display: flex;
+  position: absolute;
+  top: 55px;
+  background: #fff;
+  margin: 0;
+  width: 300px;
+  padding: 20px;
+}
+.vision-class {
+  position: absolute;
+  top: 60px;
+  left: 310px;
 }
 .editor-section {
   width: 100%;
