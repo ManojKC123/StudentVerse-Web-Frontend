@@ -19,9 +19,6 @@ import StudyContentPanel from "../components/StudyContentPanel";
 
 import PastPapersPanel from "../components/PastPapersPanel";
 
-import { makeStyles } from "@material-ui/core/styles";
-import StudyMaterials from "./StudyMaterials";
-
 toast.configure();
 
 const StudyChapters = (props) => {

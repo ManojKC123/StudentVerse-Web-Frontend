@@ -548,6 +548,35 @@ form.navbar-form.resp-show {
 .btnUpdate {
   margin-top: 25px;
 }
+.update-pass-input {
+  margin-bottom: 5px;
+}
+.btn-update-password {
+  background: #fff;
+  color: #7156d8;
+  font-weight: 700;
+  border-radius: 35px;
+  box-shadow: none;
+  margin-bottom: 10px;
+  border: 0;
+  padding: 5px 20px;
+  cursor: pointer;
+}
+.update-password-inputs {
+  transition: all 1s ease-in-out;
+  transform: translateY(-130px);
+  z-index: -14;
+  opacity: 0;
+  position: relative;
+  display: none;
+}
+.update-password-inputs.show {
+  display: flex;
+  transform: translateY(10px);
+  z-index: 1;
+  opacity: 1;
+  flex-direction: column;
+}
 /* Single Question Answer */
 .questions-page {
   width: 100%;
@@ -859,13 +888,12 @@ textarea.form-control {
 .topic-section {
   margin-top: 15px;
 }
-
 .topic-listwrap {
   margin-left: 10px;
   background: #eee;
   padding: 15px;
+  width: 400px;
 }
-
 ul.topic-lists {
   list-style: none;
   padding: 0px !important;
@@ -1032,6 +1060,32 @@ ul.topic-lists {
 }
 .yellow {
   color: yellow;
+}
+
+/* Admin quiz page */
+.editor-page-inner {
+  display: flex;
+  justify-content: space-between;
+}
+.editor-page {
+  width: 100%;
+}
+.editor-page-inner {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 30px;
+}
+.editor-section {
+  width: 100%;
+}
+.form-quiz input.form-control {
+  margin-top: 10px;
+}
+.quiz-radiowrap span {
+  line-height: 40px;
+}
+.quiz-radiowrap label {
+  margin-bottom: 0;
 }
 /* Quiz Admin */
 .quiz-page {
