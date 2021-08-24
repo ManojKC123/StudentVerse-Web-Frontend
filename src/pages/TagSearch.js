@@ -43,6 +43,7 @@ function TagSearch(props) {
         <input
           className="form-control me-2 taginput-search"
           type="text"
+          id="tag"
           placeholder="Enter Search Tags"
           onChange={(event) => {
             setTags({
@@ -51,6 +52,7 @@ function TagSearch(props) {
           }}
         />
         <button
+        id="tag-button"
           onClick={() => searchTags(tags)}
           className="btn btn-outline-success btn-tag"
         >

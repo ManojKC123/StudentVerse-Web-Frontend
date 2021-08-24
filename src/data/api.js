@@ -2,7 +2,12 @@ import { makeRequest } from "./request";
 
 // const apiURL = "https://student-verse.herokuapp.com";
 const apiURL = "http://localhost:5000";
-const siteURI = `${window.location.origin}/`;
+const siteURI = `${window.location.origin}`;
+
+export const URL_CONFIG = {
+  siteUrl: `${siteURI}`,
+  adminUrl: `${siteURI}/admin`,
+};
 
 export function login(loginData) {
   const request = {
@@ -238,7 +243,6 @@ export function getTopicD(subjectId, token) {
       test: "asdads",
     },
   };
-  console.log("req", request);
   return makeRequest(request);
 }
 export function createSubTopicD(subTopicArg, token) {
@@ -280,5 +284,30 @@ export function fetchSearchPosts(question) {
     url: `${apiURL}/searchPost?question=${question}`,
   };
 
+  return makeRequest(request);
+}
+
+// Quiz
+export function loadQuiz(chapter) {
+  const request = {
+    method: "get",
+    url: `${apiURL}/quiz/${chapter}`,
+  };
+
+  return makeRequest(request);
+}
+
+export function createQuiz(quizData, chapter) {
+  console.log("quizData", quizData);
+  const request = {
+    method: "post",
+    url: `${apiURL}/quiz/${chapter}`,
+    body: {
+      question: quizData.question,
+      options: quizData.options,
+      answer: quizData.answer,
+      name: quizData.name,
+    },
+  };
   return makeRequest(request);
 }

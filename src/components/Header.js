@@ -45,7 +45,6 @@ const Header = (props) => {
   useEffect(() => {
     getProfile(user.token)
       .then((response) => {
-        console.log("userresp", response);
         if (response.success === true && response.data.userPP) {
           setUserPP();
         }
@@ -89,6 +88,7 @@ const Header = (props) => {
           <div className="input-group-append">
             <span className="input-group-text">
               <SearchIcon
+              id="search-button"
                 onClick={() => searchPosts(searchText)}
                 className=""
               />
