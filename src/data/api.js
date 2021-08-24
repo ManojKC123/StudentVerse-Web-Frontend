@@ -1,8 +1,13 @@
 import { makeRequest } from "./request";
 
-const apiURL = "https://student-verse.herokuapp.com";
-// const apiURL = "http://localhost:5000";
-const siteURI = `${window.location.origin}/`;
+// const apiURL = "https://student-verse.herokuapp.com";
+const apiURL = "http://localhost:5000";
+const siteURI = `${window.location.origin}`;
+
+export const URL_CONFIG = {
+  siteUrl: `${siteURI}`,
+  adminUrl: `${siteURI}/admin`,
+};
 
 export function login(loginData) {
   const request = {
@@ -262,6 +267,16 @@ export function fetchSearchPosts(question) {
   const request = {
     method: "get",
     url: `${apiURL}/searchPost?question=${question}`,
+  };
+
+  return makeRequest(request);
+}
+
+// Quiz
+export function loadQuiz(chapter) {
+  const request = {
+    method: "get",
+    url: `${apiURL}/quiz/${chapter}`,
   };
 
   return makeRequest(request);
