@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
-function Quiz(props) {
+function AdminQuiz(props) {
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
 
   return (
     <>
-      <div className="quiz-page">Quiz page</div>
+      <div className="quiz-page"></div>
     </>
   );
 }
 
-export default Quiz;
+export default AdminQuiz;

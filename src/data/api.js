@@ -1,7 +1,7 @@
 import { makeRequest } from "./request";
 
-const apiURL = "https://student-verse.herokuapp.com";
-// const apiURL = "http://localhost:5000";
+// const apiURL = "https://student-verse.herokuapp.com";
+const apiURL = "http://localhost:5000";
 const siteURI = `${window.location.origin}/`;
 
 export function login(loginData) {
@@ -58,6 +58,22 @@ export function updateProfile(uProfile, token) {
       password: uProfile.password,
       newPassword: uProfile.newPassword,
       address: uProfile.address,
+    },
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+
+  return makeRequest(request);
+}
+
+export function updatePassword(updPass, token) {
+  const request = {
+    method: "put",
+    url: `${apiURL}/profile/updatePassword`,
+    body: {
+      password: updPass.upCurrentpassword,
+      newPassword: updPass.newPassword,
     },
     headerParams: {
       authorization: `Bearer ${token}`,

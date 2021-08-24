@@ -9,7 +9,6 @@ import Layout from "./Layout/Layout";
 import LogIn from "./pages/Login";
 import SignUp from "./pages/Signup";
 import NotFound from "./pages/NotFound";
-import UserSearch from "./pages/UserSearch";
 // user imports
 import Home from "./pages/Home";
 import UserProfile from "./pages/Profile";
@@ -18,12 +17,14 @@ import AskQuestion from "./pages/AskQuestion";
 import SingleQuestion from "./pages/SingleQuestion";
 import StudyMaterials from "./pages/StudyMaterials";
 import SearchResults from "./pages/SearchResults";
+import UserSearch from "./pages/UserSearch";
 import StudyChapters from "./pages/StudyChapters";
+import AdminQuiz from "./pages/admin/AdminQuiz";
 // admin imports
 import PostStudyMaterials from "./pages/admin/PostStudyMaterials";
 import AdminDash from "./pages/admin/AdminDash";
-import Quiz from "./pages/admin/Quiz";
-import AddTopics from "./pages/admin/AddTopics";
+import UserQuiz from "./pages/UserQuiz";
+import AdminCreate from "./pages/admin/AdminCreate";
 import TagSearch from "./pages/TagSearch";
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
               component={SearchResults}
               exact
             />
+            <Route path="/quiz" component={UserQuiz} exact />
             {/* <Route path="*" component={NotFound} /> */}
             {/* Admin Routes */}
             <Route path="/admin" component={AdminDash} exact />
@@ -60,8 +62,8 @@ function App() {
               component={PostStudyMaterials}
               exact
             />
-            <Route path="/admin/quiz" component={Quiz} exact />
-            <Route path="/admin/:subname" component={AddTopics} exact />
+            <Route path="/admin/quiz" component={AdminQuiz} exact />
+            <Route path="/admin/:subname" component={AdminCreate} exact />
             <Route path="/tag-search" component={TagSearch} exact />
           </Switch>
         </Layout>

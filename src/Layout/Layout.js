@@ -23,7 +23,7 @@ const Layout = (props) => {
                 <HomeDashSidebar />
               )}
             </div>
-            <div className="">{props?.children}</div>
+            <>{props?.children}</>
           </div>
         </Grid>
         <Grid item xs={12} className="">
