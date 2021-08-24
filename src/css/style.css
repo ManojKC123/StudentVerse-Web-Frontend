@@ -1071,3 +1071,28 @@ ul.topic-lists {
   justify-content: space-between;
   padding: 20px 30px;
 }
+.notification-icon-wrap {
+  position: relative;
+  top: 5px;
+  padding: 10px;
+}
+.notification-icon {
+  transition: all 1s ease-in-out;
+  position: absolute;
+  width: 300px;
+  top: 0;
+  right: 0;
+  background: #fff;
+  opacity: 0;
+  display: none;
+  opacity: 1;
+}
+.notification-icon.show {
+  display: flex;
+  position: absolute;
+  top: 55px;
+  background: #fff;
+  margin: 0;
+  width: 300px;
+  padding: 20px;
+}
