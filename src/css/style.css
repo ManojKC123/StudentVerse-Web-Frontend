@@ -885,13 +885,12 @@ textarea.form-control {
 .topic-section {
   margin-top: 15px;
 }
-
 .topic-listwrap {
   margin-left: 10px;
   background: #eee;
   padding: 15px;
+  width: 400px;
 }
-
 ul.topic-lists {
   list-style: none;
   padding: 0px !important;
@@ -1070,4 +1069,33 @@ ul.topic-lists {
   display: flex;
   justify-content: space-between;
   padding: 20px 30px;
+}
+.editor-section {
+  width: 100%;
+}
+.form-quiz input.form-control {
+  margin-top: 10px;
+}
+.quiz-radiowrap span {
+  line-height: 40px;
+}
+.quiz-radiowrap label {
+  margin-bottom: 0;
+}
+/* Quiz Admin */
+.quiz-page {
+	width: 100%;
+}
+.form-quiz {
+	width: 500px;
+	margin: 0 auto;
+}
+.quiz-page .quiz-radiowrap {
+	flex-direction: column;
+}
+.btnquiz{
+  margin-top: 20px;
+}
+.form-control10{
+  width: 450px;
 }
