@@ -1,9 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { KeyboardArrowDown } from "@material-ui/icons/";
-import { createTopicD, getTopicD, createSubTopicD } from "../../data/api";
+import {
+  createTopicD,
+  getTopicD,
+  createSubTopicD,
+  URL_CONFIG,
+} from "../../data/api";
+import Grid from "@material-ui/core/Grid";
+import Breadcrumbs from "@material-ui/core/Breadcrumbs";
+import NavigateNextIcon from "@material-ui/icons/NavigateNext";
+import AdminQuiz from "../../components/admin-components/AdminQuiz";
+// import StudyContentPanel from "../components/StudyContentPanel";
+// import PastPapersPanel from "../components/PastPapersPanel";
+import AppBar from "@material-ui/core/AppBar";
+import Typography from "@material-ui/core/Typography";
+import Tab from "@material-ui/core/Tab";
+import Tabs from "@material-ui/core/Tabs";
+import PropTypes from "prop-types";
+import Box from "@material-ui/core/Box";
 
-const AddTopics = (props) => {
+const AdminCreate = (props) => {
   const location = useLocation();
   const [currentTopic, setCurrentTopic] = useState("");
   const [currentSubTopic, setCurrentSubTopic] = useState("");
@@ -14,6 +31,7 @@ const AddTopics = (props) => {
 
   const [studytopic, setStudyTopic] = useState();
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
+  const [value, setValue] = useState(0);
 
   useEffect(() => {
     setSubjectArg({
@@ -72,6 +90,47 @@ const AddTopics = (props) => {
     });
   };
 
+  function breadCrumbClick(event) {
+    event.preventDefault();
+    console.info("You clicked a breadcrumb.");
+  }
+
+  function TabPanel(props) {
+    const { children, value, index, ...other } = props;
+
+    return (
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`scrollable-auto-tabpanel-${index}`}
+        aria-labelledby={`scrollable-auto-tab-${index}`}
+        {...other}
+      >
+        {value === index && (
+          <Box p={3}>
+            <Typography>{children}</Typography>
+          </Box>
+        )}
+      </div>
+    );
+  }
+
+  TabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.any.isRequired,
+    value: PropTypes.any.isRequired,
+  };
+
+  function a11yProps(index) {
+    return {
+      id: `scrollable-auto-tab-${index}`,
+      "aria-controls": `scrollable-auto-tabpanel-${index}`,
+    };
+  }
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   const toggleItem = (id) => {
     if (id === studytopic) {
       setStudyTopic();
@@ -80,9 +139,82 @@ const AddTopics = (props) => {
     }
   };
 
+  const subTopicClick = (a, b, c, d) => {
+    console.log("clicked", a, b, c);
+    var url = URL_CONFIG.adminUrl + `/${a}/${b}/${c}`;
+    window.location.href = url;
+    var site = {
+      subject: a,
+      topic: b,
+      subTopicID: c,
+      subTopicName: d,
+    };
+
+    localStorage.setItem("site", JSON.stringify(site));
+  };
+
   return (
-    <div className="page-content topic-section">
-      <div className="container-fluid">
+    <div className="editor-page">
+      <div className="editor-page-inner">
+        <div className="editor-section">
+          <div className="editor-section-inner">
+            <Grid container>
+              <Grid item md={12} className="">
+                <div className="subject-name">
+                  <h1>{subjectArg.name}</h1>
+                </div>
+              </Grid>
+              <Grid item md={12} className="">
+                <div className="contents">
+                  <div className="inner-contents bread-crumb-wrap">
+                    <Breadcrumbs
+                      separator={<NavigateNextIcon fontSize="small" />}
+                      aria-label="breadcrumb"
+                    >
+                      <Link color="inherit" href="/" onClick={breadCrumbClick}>
+                        Math
+                      </Link>
+                      <Link
+                        color="inherit"
+                        href="/getting-started/installation/"
+                        onClick={breadCrumbClick}
+                      >
+                        Algebra
+                      </Link>
+                      <Typography color="textPrimary">RealNumber</Typography>
+                    </Breadcrumbs>
+                    <AppBar position="static" color="default">
+                      <Tabs
+                        value={value}
+                        onChange={handleChange}
+                        indicatorColor="primary"
+                        textColor="primary"
+                        variant="scrollable"
+                        scrollButtons="auto"
+                        aria-label="scrollable auto tabs example"
+                      >
+                        <Tab label="Study Materials" {...a11yProps(0)} />
+                        <Tab label="Quiz" {...a11yProps(1)} />
+                        <Tab label="Past Papers" {...a11yProps(2)} />
+                      </Tabs>
+                    </AppBar>
+                    <TabPanel value={value} index={0}>
+                      {/* <StudyContentPanel /> */}
+                      StudyMaterialsPanel
+                    </TabPanel>
+                    <TabPanel value={value} index={1}>
+                      <AdminQuiz />
+                    </TabPanel>
+                    <TabPanel value={value} index={2}>
+                      {/* <PastPapersPanel /> */}
+                      Past Papers panel
+                    </TabPanel>
+                  </div>
+                </div>
+              </Grid>
+            </Grid>
+          </div>
+        </div>
         <div className="topic-listwrap">
           <h3 className="topic-title">{subjectArg.name}</h3>
           <ul className="topic-lists" id="study-topic">
@@ -116,11 +248,28 @@ const AddTopics = (props) => {
                       {topic.chapter &&
                         topic.chapter.map((subtopic, index) => {
                           return (
-                            <Link to="/admin/topic/subtopic">
-                              <div className="subtopic-name" key={index}>
-                                {subtopic.name}
-                              </div>
-                            </Link>
+                            // <Link
+                            //   to={{
+                            //     pathname: `/admin/${subjectArg.name}/${topic.name}/${subtopic.name}`,
+                            //     propsParam: { id: subtopic._id },
+                            //   }}
+                            // >
+                            //   <div className="subtopic-name" key={index}>
+                            //     {subtopic.name}
+                            //   </div>
+                            // </Link>
+                            <button
+                              onClick={() => {
+                                subTopicClick(
+                                  subjectArg.name,
+                                  topic.name,
+                                  subtopic._id,
+                                  subtopic.name
+                                );
+                              }}
+                            >
+                              {subtopic.name}
+                            </button>
                           );
                         })}
                       <div className="">
@@ -179,6 +328,7 @@ const AddTopics = (props) => {
               />
               <button
                 type="button"
+                id="create-button"
                 onClick={(e) => {
                   createTopic(e);
                 }}
@@ -193,4 +343,5 @@ const AddTopics = (props) => {
     </div>
   );
 };
-export default AddTopics;
+
+export default AdminCreate;

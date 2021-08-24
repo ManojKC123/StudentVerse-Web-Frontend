@@ -9,7 +9,7 @@
   color: black;
   margin-left: 10px;
   font-size: 18px;
-  font-family: 'Arial Narrow';
+  font-family: "Arial Narrow";
 }
 .navbar-brand {
   display: inline-block;
@@ -23,7 +23,54 @@
   background-color: rgb(238, 238, 238);
   height: 70px;
 }
-
+.navbar-collapse .navbar-form .search-box input {
+  margin-top: 0;
+}
+.navbar-collapse form.navbar-form.resp-hide {
+  width: 55%;
+  margin: 0 auto;
+}
+.navbar-collapse.collapse.show {
+  background: #ffffffe3;
+  height: 100vh;
+  margin-top: 15px;
+}
+@media screen and (max-width: 991px) {
+  form.navbar-form.resp-hide {
+    display: none;
+  }
+  .navbar-collapse .navbar-nav .btn-primary {
+    width: 70% !important;
+    margin: 0 auto;
+    padding-left: 0 !important;
+  }
+}
+form.navbar-form.resp-show {
+  color: red;
+}
+@media screen and (min-width: 992px) {
+  form.navbar-form.resp-show {
+    display: none;
+  }
+}
+.navbar-form .search-box {
+  width: 100%;
+}
+.navbar-form.resp-show .search-box input {
+  width: 80%;
+  margin-top: 0;
+}
+.navbar-form.resp-show {
+  width: calc(90% - 120px);
+}
+.navbar-collapse.collapse.show .navbar-nav a {
+  padding-left: 70px;
+  width: 90%;
+}
+.navbar-collapse.collapse.show .navbar-nav a:hover {
+  background: #5d3fd3;
+  color: #f1f1f1;
+}
 .btn-primary {
   color: #fff;
   background-color: #007bff;
@@ -35,6 +82,7 @@
   border-color: #007bff;
   width: max-content;
   display: flex;
+  margin-right: 10px;
 }
 .input-group > .form-control,
 .input-group > .form-control-plaintext {
@@ -45,13 +93,12 @@
   margin-top: 2px;
   margin-left: -4px;
   font-size: 18px;
-  font-family: 'Arial Narrow';
+  font-family: "Arial Narrow";
 }
 .navbar-nav {
   list-style: none;
-  margin-right: 30px;
   font-size: 18px;
-  font-family: 'Arial Narrow';
+  font-family: "Arial Narrow";
 }
 .menu-nav
   .MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded {
@@ -105,11 +152,11 @@
 /* Register page */
 .register {
   background: -webkit-linear-gradient(left, #1f1c4e, #1391b4);
-  margin-top: 175px;
+  margin-top: 80px;
   margin-bottom: 7%;
   padding: 3%;
   font-size: 18px;
-  font-family: 'Arial Narrow';
+  font-family: "Arial Narrow";
 }
 .register-left {
   text-align: center;
@@ -224,12 +271,13 @@
 }
 /* Footer */
 .site-footer {
-  background-color: rgba(211, 211, 211, 0.473);
+  background-color: #242729;
   padding: 30px 0 20px;
   font-size: 18px;
   line-height: 24px;
-  color: black;
-  font-family: 'Arial Narrow';
+  color: rgba(255, 255, 255, 0.856);
+  font-family: "Arial Narrow";
+  margin-top: 50px;
 }
 .site-footer hr {
   border-top-color: black;
@@ -243,14 +291,14 @@
   margin: 20px 0;
 }
 .site-footer h6 {
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.856);
   font-size: 16px;
   text-transform: uppercase;
   margin-top: 5px;
   letter-spacing: 2px;
 }
 .site-footer a {
-  color: black;
+  color: rgba(255, 255, 255, 0.856);
   margin-right: 20px;
 }
 .site-footer a:hover {
@@ -265,7 +313,7 @@
   display: block;
 }
 .footer-links a {
-  color: black;
+  color: rgba(255, 255, 255, 0.856);
 }
 .footer-links a:active,
 .footer-links a:focus,
@@ -323,7 +371,7 @@
 }
 .social-icons a {
   background-color: #eceeef;
-  color: white;
+  color: rgba(255, 255, 255, 0.856);
   font-size: 16px;
   display: inline-block;
   line-height: 44px;
@@ -342,7 +390,7 @@
   width: 100%;
   margin-top: 25px;
   font-size: 18px;
-  font-family: 'Arial Narrow';
+  font-family: "Arial Narrow";
 }
 .questions-headline {
   display: inline-block;
@@ -363,21 +411,31 @@
 }
 
 /* ----- Ask question ----- */
+.askForm {
+  width: 100%;
+}
 .post-form-container {
   width: 100%;
   margin-top: 25px;
   font-size: 18px;
-  font-family: 'Arial Narrow';
+  font-family: "Arial Narrow";
 }
 .post-form-content {
   padding: 0 30px;
+  width: 100%;
+}
+.h1,
+h1 {
+  font-size: 2.5rem;
+  margin-top: 25px;
 }
 .questions-grid {
   display: flex;
   justify-content: space-between;
 }
 .question-form {
-  background: #f8f8f8;
+  background: #5d3fd3e0;
+  color: rgba(255, 255, 255, 0.945);
   border-radius: 5px;
   box-shadow: 0 2px 5px 0 #000;
   padding: 20px;
@@ -437,11 +495,13 @@
   margin-top: 30px;
   margin-bottom: 50px;
   font-size: 18px;
-  font-family: 'Arial Narrow';
+  font-family: "Arial Narrow";
 }
 
 .user-profile .card {
   border-radius: 10px;
+  background: #5d3fd3e0;
+  color: white;
 }
 
 .user-profile .card .card-header .profile_img {
@@ -451,26 +511,36 @@
   margin: 10px auto;
   border: 10px solid #ccc;
   border-radius: 50%;
+  color: white;
+}
+
+.card-header {
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 0;
+  border-color: #f0e3e3;
+  background-color: #5d3fd3e0;
+  color: white;
 }
 
 .user-profile .card h3 {
   font-size: 20px;
-  font-family: 'Arial Narrow';
+  font-family: "Arial Narrow";
   font-weight: 700;
+  color: white;
 }
 
 .user-profile .card p {
   font-size: 18px;
-  font-family: 'Arial Narrow';
-  color: #000;
+  font-family: "Arial Narrow";
+  color: white;
 }
 
 .user-profile .table th,
 .user-profile .table td {
   font-size: 18px;
-  font-family: 'Arial Narrow';
+  font-family: "Arial Narrow";
   padding: 5px 10px;
-  color: #000;
+  color: white;
 }
 .update-info {
   margin-top: 20px;
@@ -482,14 +552,45 @@
   color: white;
   margin: 16px;
 }
-
+.btnUpdate {
+  margin-top: 25px;
+}
+.update-pass-input {
+  margin-bottom: 5px;
+}
+.btn-update-password {
+  background: #fff;
+  color: #7156d8;
+  font-weight: 700;
+  border-radius: 35px;
+  box-shadow: none;
+  margin-bottom: 10px;
+  border: 0;
+  padding: 5px 20px;
+  cursor: pointer;
+}
+.update-password-inputs {
+  transition: all 1s ease-in-out;
+  transform: translateY(-130px);
+  z-index: -14;
+  opacity: 0;
+  position: relative;
+  display: none;
+}
+.update-password-inputs.show {
+  display: flex;
+  transform: translateY(10px);
+  z-index: 1;
+  opacity: 1;
+  flex-direction: column;
+}
 /* Single Question Answer */
 .questions-page {
   width: 100%;
   padding: 0 20px;
   margin-top: 25px;
   font-size: 18px;
-  font-family: 'Arial Narrow';
+  font-family: "Arial Narrow";
 }
 
 .btn-cmt {
@@ -723,18 +824,6 @@ textarea.form-control {
 }
 
 /* Admin Sidebar */
-.sidebar {
-  position: fixed;
-  display: flex;
-  left: 0;
-  height: 100%;
-  top: 65px;
-  max-width: 310px;
-  overflow-y: scroll;
-  background: #fff;
-  opacity: 1;
-  z-index: 100;
-}
 .sidebar-inner {
   width: 100%;
 }
@@ -784,9 +873,6 @@ textarea.form-control {
   height: 100%;
   padding-left: 20px;
 }
-.side-admin-padding {
-  padding-left: 255px;
-}
 .drop-icon {
   transition: all 200ms ease-in-out;
   transition-duration: 200ms;
@@ -803,22 +889,18 @@ textarea.form-control {
   padding-top: 20px;
 }
 /* Admin add topic */
-.page-content {
-  padding-left: 310px;
-}
 .topic-title {
   padding-bottom: 10px;
 }
 .topic-section {
   margin-top: 15px;
 }
-
 .topic-listwrap {
   margin-left: 10px;
   background: #eee;
   padding: 15px;
+  width: 400px;
 }
-
 ul.topic-lists {
   list-style: none;
   padding: 0px !important;
@@ -848,16 +930,23 @@ ul.topic-lists {
 .topic-name {
   cursor: pointer;
 }
-
-.sidebar-user {
-  font-size: 15px;
-  font-family: 'Courier New', Courier, monospace;
-  padding-top: 25px;
+.page-container {
+  display: flex;
+}
+.sidebar {
+  overflow-y: scroll;
   background: #fff;
+  padding-top: 20px;
+  position: sticky;
+  top: 70px;
+  padding-bottom: 10px;
+  max-height: calc(100vh);
+  min-height: 100vh;
+  width: 200px;
 }
 .sidebar-user a {
+  color: #343a40;
   text-decoration: none;
-  color: #000;
 }
 
 .MuiTab-wrapper {
@@ -866,7 +955,7 @@ ul.topic-lists {
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  font-size: 0.8rem;
+  font-size: smaller;
 }
 
 /* Search tags */
@@ -890,7 +979,7 @@ ul.topic-lists {
   display: flex;
 }
 .taginput-search {
-  width: 170px;
+  width: 300px;
 }
 .btn-tag {
   margin-left: 5px;
@@ -907,43 +996,36 @@ ul.topic-lists {
   margin-right: 7px;
 }
 
-/* Search tags */
-.view-user {
-  margin-top: 10px;
+/* User Study-Materials */
+.topic-lists .topic-name {
+  font-size: 25px;
+  font-weight: 700;
 }
-.search-user {
+.topic-lists .subtopic-name {
+  font-size: 20px;
+  color: #7d7575;
+  font-weight: 600;
+}
+.study-chapter {
+  padding: 20px 50px;
   width: 100%;
-  margin-left: 30px;
 }
-.user-heading h3 {
-  margin-top: 30px;
-}
-.user-que {
-  margin-top: 18px;
-}
-.user-ans {
-  font-size: 13px;
-}
-.usersearch-section {
+.contents {
   display: flex;
+  justify-content: center;
+  width: 100%;
 }
-.userinput-search {
-  width: 170px;
+.inner-contents > header {
+  width: 500px;
+  margin: 0 auto;
 }
-.btn-user {
-  margin-left: 5px;
+.study-chapter .subject-name h1 {
+  text-align: center;
 }
-.view-user .card p {
-  font-size: 14px;
-  margin-top: 5px;
-  margin-bottom: 0;
+.inner-contents {
+  width: 100%;
 }
-.view-user .card {
-  width: 19%;
-  margin-bottom: 10px;
-  float: left;
-  margin-right: 7px;
-}
+/*End of User Study Materials  */
 
 /* Search Posts Page */
 .search-results-page {
@@ -987,6 +1069,62 @@ ul.topic-lists {
   color: yellow;
 }
 
-.PrivateTabIndicator-colorSecondary-5 {
-    background-color: #f50057;
+/* Admin quiz page */
+.editor-page-inner {
+  display: flex;
+  justify-content: space-between;
+}
+.editor-page {
+  width: 100%;
+}
+.editor-page-inner {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 30px;
+}
+.editor-section {
+  width: 100%;
+}
+.form-quiz input.form-control {
+  margin-top: 10px;
+}
+.quiz-radiowrap span {
+  line-height: 40px;
+}
+.quiz-radiowrap label {
+  margin-bottom: 0;
+}
+/* Quiz Admin */
+.quiz-page {
+  width: 100%;
+}
+.form-quiz {
+  width: 500px;
+  margin: 0 auto;
+}
+.quiz-page .quiz-radiowrap {
+  flex-direction: column;
+}
+.btnquiz {
+  margin-top: 20px;
+}
+.form-control10 {
+  width: 450px;
+}
+
+/* User quiz  */
+.btnsubmit-quiz {
+  margin-top: 20px;
+}
+.s-label {
+  margin-top: 20px;
+}
+.fs-caption {
+  margin-top: 15px;
+}
+.quiz-question {
+  margin-bottom: 15px;
+}
+.quiz-row1 {
+  width: 100%;
 }

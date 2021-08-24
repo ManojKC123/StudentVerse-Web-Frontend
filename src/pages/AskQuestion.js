@@ -5,13 +5,6 @@ function AskQuestion() {
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
 
   return (
-    <div
-      className={
-        user.userType === "Admin"
-          ? "page-content post-form-container"
-          : "post-form-container"
-      }
-    >
       <div className="post-form-content">
         <div className="post-form-header">
           <div className="post-form-headline">
@@ -27,7 +20,6 @@ function AskQuestion() {
           </aside>
         </div>
       </div>
-    </div>
   );
 }
 
