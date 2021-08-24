@@ -291,14 +291,14 @@ form.navbar-form.resp-show {
   margin: 20px 0;
 }
 .site-footer h6 {
-  color:white;;
+  color:rgba(255, 255, 255, 0.856);;
   font-size: 16px;
   text-transform: uppercase;
   margin-top: 5px;
   letter-spacing: 2px;
 }
 .site-footer a {
-  color:white;
+  color: rgba(255, 255, 255, 0.856);;
   margin-right: 20px;
 }
 .site-footer a:hover {
@@ -313,7 +313,7 @@ form.navbar-form.resp-show {
   display: block;
 }
 .footer-links a {
-  color:white;
+  color:rgba(255, 255, 255, 0.856);;
 }
 .footer-links a:active,
 .footer-links a:focus,
@@ -371,7 +371,7 @@ form.navbar-form.resp-show {
 }
 .social-icons a {
   background-color: #eceeef;
-  color: white;
+  color:rgba(255, 255, 255, 0.856);;
   font-size: 16px;
   display: inline-block;
   line-height: 44px;
@@ -419,13 +419,20 @@ form.navbar-form.resp-show {
 }
 .post-form-content {
   padding: 0 30px;
+  width: 100%;
+  
+}
+.h1,h1 {
+  font-size: 2.5rem;
+  margin-top: 25px;
 }
 .questions-grid {
   display: flex;
   justify-content: space-between;
 }
 .question-form {
-  background: #f8f8f8;
+  background: #5d3fd3e0;
+ color: rgba(255, 255, 255, 0.945);
   border-radius: 5px;
   box-shadow: 0 2px 5px 0 #000;
   padding: 20px;
@@ -933,7 +940,7 @@ ul.topic-lists {
   padding-bottom: 10px;
   max-height: calc(100vh);
   min-height: 100vh;
-  width: 280px;
+  width: 200px;
 }
 .sidebar-user a {
   color: #343a40;

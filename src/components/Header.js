@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import userImage from "../media/user.png";
 import { getProfile } from "../data/api";
 import { div } from "prelude-ls";
+import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
 
 toast.configure();
 
@@ -140,8 +141,18 @@ const Header = (props) => {
           </div>
         </form>
         <div className="navbar-nav ml-auto action-buttons">
+          <NotificationsActiveIcon/>
+          <div className="notification-panel">
+            <ul>
+              <li>notication for quiz 1</li>
+              <li>notication for quiz 2</li>
+              <li>notication for quiz 3</li>
+
+            </ul>
+          </div>
           {!user.token ? (
             <>
+
               <a href="/login" className="nav-link">
                 <b>Login</b>
               </a>
