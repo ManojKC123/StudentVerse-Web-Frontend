@@ -1,7 +1,7 @@
 import { makeRequest } from "./request";
 
-const apiURL = "https://student-verse.herokuapp.com";
-// const apiURL = "http://localhost:5000";
+// const apiURL = "https://student-verse.herokuapp.com";
+const apiURL = "http://localhost:5000";
 const siteURI = `${window.location.origin}`;
 
 export const URL_CONFIG = {
@@ -287,17 +287,16 @@ export function fetchSearchPosts(question) {
   return makeRequest(request);
 }
 // Quiz
-export function createQuiz(quizData, token) {
+export function createQuiz(quizData, chapter) {
+  console.log("quizData", quizData);
   const request = {
     method: "post",
-    url: `${apiURL}/quiz/${quizData.chapter}`,
+    url: `${apiURL}/quiz/${chapter}`,
     body: {
       question: quizData.question,
-      option: quizData.option,
+      options: quizData.options,
       answer: quizData.answer,
-    },
-    headerParams: {
-      authorization: `Bearer ${token}`,
+      name: quizData.name,
     },
   };
   return makeRequest(request);

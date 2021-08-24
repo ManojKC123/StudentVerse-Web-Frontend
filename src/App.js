@@ -19,9 +19,9 @@ import StudyMaterials from "./pages/StudyMaterials";
 import SearchResults from "./pages/SearchResults";
 import UserSearch from "./pages/UserSearch";
 import StudyChapters from "./pages/StudyChapters";
-import AdminQuiz from "./pages/admin/AdminQuiz";
+// import AdminQuiz from "./pages/admin/AdminQuiz";
 // admin imports
-import PostStudyMaterials from "./pages/admin/PostStudyMaterials";
+// import PostStudyMaterials from "./pages/admin/PostStudyMaterials";
 import AdminDash from "./pages/admin/AdminDash";
 import UserQuiz from "./pages/UserQuiz";
 import AdminCreate from "./pages/admin/AdminCreate";
@@ -57,12 +57,12 @@ function App() {
             {/* <Route path="*" component={NotFound} /> */}
             {/* Admin Routes */}
             <Route path="/admin" component={AdminDash} exact />
-            <Route
+            {/* <Route
               path="/admin/studymaterials"
               component={PostStudyMaterials}
               exact
-            />
-            <Route path="/admin/quiz" component={AdminQuiz} exact />
+            /> */}
+            {/* <Route path="/admin/quiz" component={AdminQuiz} exact /> */}
             <Route path="/admin/:subname" component={AdminCreate} exact />
             <Route
               path="/admin/:subname/:topic/:subtopic"

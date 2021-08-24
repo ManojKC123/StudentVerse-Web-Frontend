@@ -139,10 +139,18 @@ const AdminCreate = (props) => {
     }
   };
 
-  const subTopicClick = (a, b, c) => {
+  const subTopicClick = (a, b, c, d) => {
     console.log("clicked", a, b, c);
     var url = URL_CONFIG.adminUrl + `/${a}/${b}/${c}`;
     window.location.href = url;
+    var site = {
+      subject: a,
+      topic: b,
+      subTopicID: c,
+      subTopicName: d,
+    };
+
+    localStorage.setItem("site", JSON.stringify(site));
   };
 
   return (
@@ -196,7 +204,6 @@ const AdminCreate = (props) => {
                     </TabPanel>
                     <TabPanel value={value} index={1}>
                       <AdminQuiz />
-                      Quiz panel{" "}
                     </TabPanel>
                     <TabPanel value={value} index={2}>
                       {/* <PastPapersPanel /> */}
@@ -256,7 +263,8 @@ const AdminCreate = (props) => {
                                 subTopicClick(
                                   subjectArg.name,
                                   topic.name,
-                                  subtopic._id
+                                  subtopic._id,
+                                  subtopic.name
                                 );
                               }}
                             >
@@ -334,4 +342,5 @@ const AdminCreate = (props) => {
     </div>
   );
 };
+
 export default AdminCreate;
