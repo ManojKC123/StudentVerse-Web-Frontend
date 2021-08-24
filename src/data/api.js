@@ -287,6 +287,18 @@ export function fetchSearchPosts(question) {
   return makeRequest(request);
 }
 
+// Search users
+
+export function fetchSearchUsers(name) {
+  console.log("api hit", name);
+  const request = {
+    method: "get",
+    url: `${apiURL}/searchUser?name=${name}`,
+  };
+
+  return makeRequest(request);
+}
+
 // Quiz
 export function loadQuiz(chapter) {
   const request = {
