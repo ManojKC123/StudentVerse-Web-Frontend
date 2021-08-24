@@ -27,7 +27,6 @@ import UserQuiz from "./pages/UserQuiz";
 import AdminCreate from "./pages/admin/AdminCreate";
 import TagSearch from "./pages/TagSearch";
 
-
 function App() {
   return (
     <div className="App">
@@ -46,6 +45,11 @@ function App() {
             <Route path="/study-materials" component={StudyMaterials} exact />
             <Route
               path="/study-materials/:subname"
+              component={StudyChapters}
+              exact
+            />
+            <Route
+              path="/study-materials/:subname/:topic/:chapters"
               component={StudyChapters}
               exact
             />

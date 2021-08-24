@@ -411,6 +411,9 @@ form.navbar-form.resp-show {
 }
 
 /* ----- Ask question ----- */
+.askForm {
+  width: 100%;
+}
 .post-form-container {
   width: 100%;
   margin-top: 25px;
@@ -998,10 +1001,12 @@ ul.topic-lists {
 }
 .study-chapter {
   padding: 20px 50px;
+  width: 100%;
 }
 .contents {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 .inner-contents > header {
   width: 500px;
@@ -1084,18 +1089,35 @@ ul.topic-lists {
 }
 /* Quiz Admin */
 .quiz-page {
-	width: 100%;
+  width: 100%;
 }
 .form-quiz {
-	width: 500px;
-	margin: 0 auto;
+  width: 500px;
+  margin: 0 auto;
 }
 .quiz-page .quiz-radiowrap {
-	flex-direction: column;
+  flex-direction: column;
 }
-.btnquiz{
+.btnquiz {
   margin-top: 20px;
 }
-.form-control10{
+.form-control10 {
   width: 450px;
+}
+
+/* User quiz  */
+.btnsubmit-quiz {
+  margin-top: 20px;
+}
+.s-label {
+  margin-top: 20px;
+}
+.fs-caption {
+  margin-top: 15px;
+}
+.quiz-question {
+  margin-bottom: 15px;
+}
+.quiz-row1 {
+  width: 100%;
 }

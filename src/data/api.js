@@ -286,7 +286,17 @@ export function fetchSearchPosts(question) {
 
   return makeRequest(request);
 }
+
 // Quiz
+export function loadQuiz(chapter) {
+  const request = {
+    method: "get",
+    url: `${apiURL}/quiz/${chapter}`,
+  };
+
+  return makeRequest(request);
+}
+
 export function createQuiz(quizData, chapter) {
   console.log("quizData", quizData);
   const request = {
