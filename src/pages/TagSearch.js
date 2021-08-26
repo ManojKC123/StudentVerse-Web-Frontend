@@ -31,7 +31,7 @@ function TagSearch(props) {
     <div className="search-tag">
       <div className="tag-heading">
         <h3>Tags</h3>
-        <p className="tag-que">What is tag?</p>
+        
         <p className="tag-ans">
           A tag is a keyword or label that categorizes your question with other,
           similar questions. Using the right tags <br /> makes it easier for
@@ -43,6 +43,7 @@ function TagSearch(props) {
         <input
           className="form-control me-2 taginput-search"
           type="text"
+          id="tag"
           placeholder="Enter Search Tags"
           onChange={(event) => {
             setTags({
@@ -51,6 +52,7 @@ function TagSearch(props) {
           }}
         />
         <button
+        id="tag-button"
           onClick={() => searchTags(tags)}
           className="btn btn-outline-success btn-tag"
         >

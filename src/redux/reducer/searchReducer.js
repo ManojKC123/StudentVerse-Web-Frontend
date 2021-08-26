@@ -1,6 +1,7 @@
 const initialSate = {
   searchTags: [],
   searchPosts: [],
+  searchUsers: [],
 };
 
 const searchReducer = function (state = initialSate, action) {
@@ -10,6 +11,12 @@ const searchReducer = function (state = initialSate, action) {
       searchTags: action.payload,
     };
   }
+    if (action.type === 'setSearchUsers') {
+      return {
+        ...state,
+        searchUsers: action.payload,
+      };
+    }
   if (action.type === "setSearchPosts") {
     return {
       ...state,
