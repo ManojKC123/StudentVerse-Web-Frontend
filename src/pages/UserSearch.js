@@ -41,6 +41,7 @@ function UserSearch(props) {
         <input
           className='form-control me-2 userinput-search'
           type='text'
+          id="profile-search"
           placeholder='Enter the Username'
           onChange={(event) => {
             setUsers({
@@ -51,6 +52,7 @@ function UserSearch(props) {
         <button
           onClick={() => searchUsers(users)}
           className='btn btn-outline-success btn-user'
+          id="button-search"
         >
           Search
         </button>

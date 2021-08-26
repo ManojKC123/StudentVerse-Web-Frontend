@@ -1073,6 +1073,12 @@ ul.topic-lists {
 .yellow {
   color: yellow;
 }
+.btn-outline-success {
+    color: #28a745;
+    border-color: #28a745;
+    margin-top: 10px;
+    margin-left: 10px;
+}
 
 /* Admin quiz page */
 .editor-page-inner {
