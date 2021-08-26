@@ -947,7 +947,7 @@ ul.topic-lists {
 .page-container {
   display: flex;
 }
-.sidebar {
+.sidebar-user{
   overflow-y: scroll;
   background: #fff;
   padding-top: 20px;
