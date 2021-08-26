@@ -8,6 +8,7 @@ import Radio from "@material-ui/core/Radio";
 import Paper from "@material-ui/core/Paper";
 import { createQuiz, loadQuiz } from "../../data/api";
 import { render } from "@testing-library/react";
+import CheckIcon from "@material-ui/icons/Check";
 
 function AdminQuiz(props) {
   const quizData = props.quizData;
@@ -154,12 +155,52 @@ function AdminQuiz(props) {
                   <div className="quizdata-paper">
                     Question no {index + 1}
                     <h4> {data.question}</h4>
-                    <p> Option 1: {data.options[0]}</p>
-                    {/* {({data.options[0]}==={data.answer})?("answer"):("")} */}
-                    <p> Option 2: {data.options[1]}</p>
-                    <p> Option 3: {data.options[2]}</p>
-                    <p> Option 4: {data.options[3]}</p>
-                    <b>Answer: {data.answer}</b>
+                    <p>
+                      Option 1: {data.options[0]}
+                      {data.options[0] === data.answer ? (
+                        <span className="answer-wrap">
+                          <CheckIcon className="right-answer" />
+                          Answer
+                        </span>
+                      ) : (
+                        ""
+                      )}
+                    </p>
+                    <p>
+                      Option 2: {data.options[1]}
+                      {data.options[1] === data.answer ? (
+                        <span className="answer-wrap">
+                          <CheckIcon className="right-answer" />
+                          Answer
+                        </span>
+                      ) : (
+                        ""
+                      )}
+                    </p>
+                    <p>
+                      Option 3: {data.options[2]}
+                      {data.options[2] === data.answer ? (
+                        <span className="answer-wrap">
+                          <CheckIcon className="right-answer" />
+                          Answer
+                        </span>
+                      ) : (
+                        ""
+                      )}
+                    </p>
+                    <p>
+                      Option 4: {data.options[3]}
+                      {data.options[3] === data.answer ? (
+                        <>
+                          <span className="answer-wrap">
+                            <CheckIcon className="right-answer" />
+                            Answer
+                          </span>
+                        </>
+                      ) : (
+                        ""
+                      )}
+                    </p>
                     <hr />
                   </div>
                 );

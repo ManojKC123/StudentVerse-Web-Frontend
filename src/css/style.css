@@ -1157,7 +1157,14 @@ ul.topic-lists {
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   margin-top: 10px;
 }
-
+.answer-wrap {
+  margin-left: 10px;
+  background-color: #eee;
+  color: #636363;
+  display: inline-block;
+  border-radius: 15px;
+  padding: 0 5px;
+}
 /* User quiz  */
 .btnsubmit-quiz {
   margin-top: 20px;
