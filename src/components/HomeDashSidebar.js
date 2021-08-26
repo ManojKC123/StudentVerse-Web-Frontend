@@ -6,7 +6,9 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import { Link } from "react-router-dom";
-
+import HomeIcon from "@material-ui/icons/Home";
+import TagFacesIcon from "@material-ui/icons/TagFaces";
+import GroupIcon from "@material-ui/icons/Group";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -65,17 +67,18 @@ export default function VerticalTabs() {
         className={classes.tabs}
       >
         <Link to="/">
+          < HomeIcon/>
           <Tab label="Home" />
         </Link>
         <Link to="/tag-search">
+          <TagFacesIcon />
           <Tab label="Tags" />
         </Link>
         <Link to="/user-search">
+          < GroupIcon/>
           <Tab label="Users" />
         </Link>
-        <Link to="/quiz">
-          <Tab label="Quiz" />
-        </Link>
+      
       </Tabs>
     </div>
   );
