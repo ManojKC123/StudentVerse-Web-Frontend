@@ -28,9 +28,12 @@ const AdminCreate = (props) => {
   const [subTopicPicture, setCurSubTopicFile] = useState(null);
   const [subjectArg, setSubjectArg] = useState({}); // name, id
   const [topics, setTopics] = useState([]);
+  const [quizData, setQuizData] = useState([]);
 
   const [studytopic, setStudyTopic] = useState();
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
+  const [subId] = useState(JSON.parse(localStorage.getItem("subId")) || null);
+
   const [value, setValue] = useState(0);
 
   useEffect(() => {
@@ -39,6 +42,14 @@ const AdminCreate = (props) => {
       id: location.propsParam?.id,
     });
 
+    if (subId) {
+      console.log("id loc", subId);
+      getTopicD(subId, user.token).then((response) => {
+        if (response.success === true) {
+          setTopics(response.data);
+        }
+      });
+    }
     location.propsParam?.id &&
       getTopicD(location.propsParam?.id, user.token).then((response) => {
         if (response.success === true) {
@@ -203,7 +214,7 @@ const AdminCreate = (props) => {
                       StudyMaterialsPanel
                     </TabPanel>
                     <TabPanel value={value} index={1}>
-                      <AdminQuiz />
+                      <AdminQuiz quizData={quizData} />
                     </TabPanel>
                     <TabPanel value={value} index={2}>
                       {/* <PastPapersPanel /> */}
@@ -259,13 +270,17 @@ const AdminCreate = (props) => {
                             //   </div>
                             // </Link>
                             <button
-                              onClick={() => {
+                              onClick={async () => {
                                 subTopicClick(
                                   subjectArg.name,
                                   topic.name,
                                   subtopic._id,
                                   subtopic.name
                                 );
+                                setQuizData({
+                                  chapterId: subtopic._id,
+                                  chapterName: subtopic.name,
+                                });
                               }}
                             >
                               {subtopic.name}

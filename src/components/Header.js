@@ -81,7 +81,7 @@ const Header = (props) => {
         <div className="input-group search-box">
           <input
             type="text"
-            id="search-posts"
+            id="search-posts1"
             className="form-control"
             placeholder="Search questions here..."
             onChange={(event) => {
