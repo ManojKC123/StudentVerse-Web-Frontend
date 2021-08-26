@@ -116,11 +116,9 @@ const Header = (props) => {
       >
         <div className="navbar-nav">
           <Link to="/study-materials" className="nav-item nav-link">
-            Study Materials
+            <b>Study Materials</b>
           </Link>
-          <Link to="/quiz" className="nav-item nav-link">
-            <b>Quiz</b>
-          </Link>
+         
         </div>
         <form className="navbar-form resp-hide form-inline">
           <div className="input-group search-box">
