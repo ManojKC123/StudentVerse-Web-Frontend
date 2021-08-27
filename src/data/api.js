@@ -72,6 +72,22 @@ export function updateProfile(uProfile, token) {
   return makeRequest(request);
 }
 
+export function updatePassword(updPass, token) {
+  const request = {
+    method: "put",
+    url: `${apiURL}/profile/updatePassword`,
+    body: {
+      password: updPass.upCurrentpassword,
+      newPassword: updPass.newPassword,
+    },
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+
+  return makeRequest(request);
+}
+
 export function getTopPosts() {
   const request = {
     method: "get",
@@ -227,7 +243,6 @@ export function getTopicD(subjectId, token) {
       test: "asdads",
     },
   };
-  console.log("req", request);
   return makeRequest(request);
 }
 export function createSubTopicD(subTopicArg, token) {
@@ -295,6 +310,20 @@ export function sendScore(scoreData, token) {
       authorization: `Bearer ${token}`,
     },
   };
+  return makeRequest(request);
+}
 
+export function createQuiz(quizData, chapter) {
+  console.log("quizData", quizData);
+  const request = {
+    method: "post",
+    url: `${apiURL}/quiz/${chapter}`,
+    body: {
+      question: quizData.question,
+      options: quizData.options,
+      answer: quizData.answer,
+      name: quizData.name,
+    },
+  };
   return makeRequest(request);
 }

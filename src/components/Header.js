@@ -44,7 +44,6 @@ const Header = (props) => {
   useEffect(() => {
     getProfile(user.token)
       .then((response) => {
-        console.log("userresp", response);
         if (response.success === true && response.data.userPP) {
           setUserPP();
         }
