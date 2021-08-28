@@ -309,6 +309,22 @@ export function loadQuiz(chapter) {
   return makeRequest(request);
 }
 
+export function sendScore(scoreData, token) {
+  const request = {
+    method: "post",
+    url: `${apiURL}/score`,
+    body: {
+      score: scoreData.quizScore,
+      time: scoreData.timeTms,
+      quizname: scoreData.quizName,
+    },
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+  return makeRequest(request);
+}
+
 export function createQuiz(quizData, chapter) {
   console.log("quizData", quizData);
   const request = {

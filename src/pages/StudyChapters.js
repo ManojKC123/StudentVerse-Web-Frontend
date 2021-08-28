@@ -93,12 +93,13 @@ const StudyChapters = (props) => {
     console.info("You clicked a breadcrumb.");
   }
 
-  const subTopicClick = (a, b, c) => {
+  const subTopicClick = (a, b, c, d) => {
     console.log("clicked", a, b, c);
     var url = URL_CONFIG.siteUrl + `/study-materials/${a}/${b}/${c}`;
     window.location.href = url;
     var site = {
       chapter: c,
+      chapterName: d,
     };
     localStorage.setItem("site", JSON.stringify(site));
   };
@@ -201,7 +202,8 @@ const StudyChapters = (props) => {
                                   subTopicClick(
                                     subjectArg.name,
                                     topic.name,
-                                    subtopic._id
+                                    subtopic._id,
+                                    subtopic.name
                                   );
                                 }}
                               >
