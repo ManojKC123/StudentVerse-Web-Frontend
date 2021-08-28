@@ -8,8 +8,10 @@
 .navbar-light .navbar-nav .nav-link {
   color: black;
   margin-left: 10px;
-  font-size: 18px;
-  font-family: "Arial Narrow";
+  font-size: 15px;
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
+  margin-top: 15px;
 }
 .navbar-brand {
   display: inline-block;
@@ -55,6 +57,7 @@ form.navbar-form.resp-show {
 }
 .navbar-form .search-box {
   width: 100%;
+  margin-left: -51px;
 }
 .navbar-form.resp-show .search-box input {
   width: 80%;
@@ -75,6 +78,10 @@ form.navbar-form.resp-show {
   color: #fff;
   background-color: #007bff;
   border-color: #007bff;
+  height: 40px;
+  margin-top: 15px;
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
 }
 .btn-primary1 {
   color: #fff;
@@ -82,6 +89,9 @@ form.navbar-form.resp-show {
   border-color: #007bff;
   width: max-content;
   display: flex;
+  margin-right: 10px;
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
 }
 .input-group > .form-control,
 .input-group > .form-control-plaintext {
@@ -91,13 +101,13 @@ form.navbar-form.resp-show {
   width: 350px;
   margin-top: 2px;
   margin-left: -4px;
-  font-size: 18px;
-  font-family: "Arial Narrow";
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
 }
 .navbar-nav {
   list-style: none;
-  font-size: 18px;
-  font-family: "Arial Narrow";
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
 }
 .menu-nav
   .MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded {
@@ -151,11 +161,11 @@ form.navbar-form.resp-show {
 /* Register page */
 .register {
   background: -webkit-linear-gradient(left, #1f1c4e, #1391b4);
-  margin-top: 175px;
+  margin-top: 80px;
   margin-bottom: 7%;
   padding: 3%;
-  font-size: 18px;
-  font-family: "Arial Narrow";
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
 }
 .register-left {
   text-align: center;
@@ -270,12 +280,14 @@ form.navbar-form.resp-show {
 }
 /* Footer */
 .site-footer {
-  background-color: rgba(211, 211, 211, 0.473);
+  background-color: #242729;
   padding: 30px 0 20px;
-  font-size: 18px;
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
   line-height: 24px;
-  color: black;
-  font-family: "Arial Narrow";
+  color: rgba(255, 255, 255, 0.856);
+
+  margin-top: 50px;
 }
 .site-footer hr {
   border-top-color: black;
@@ -289,14 +301,14 @@ form.navbar-form.resp-show {
   margin: 20px 0;
 }
 .site-footer h6 {
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.856);
   font-size: 16px;
   text-transform: uppercase;
   margin-top: 5px;
   letter-spacing: 2px;
 }
 .site-footer a {
-  color: black;
+  color: rgba(255, 255, 255, 0.856);
   margin-right: 20px;
 }
 .site-footer a:hover {
@@ -311,7 +323,7 @@ form.navbar-form.resp-show {
   display: block;
 }
 .footer-links a {
-  color: black;
+  color: rgba(255, 255, 255, 0.856);
 }
 .footer-links a:active,
 .footer-links a:focus,
@@ -369,7 +381,7 @@ form.navbar-form.resp-show {
 }
 .social-icons a {
   background-color: #eceeef;
-  color: white;
+  color: rgba(255, 255, 255, 0.856);
   font-size: 16px;
   display: inline-block;
   line-height: 44px;
@@ -387,8 +399,8 @@ form.navbar-form.resp-show {
 .homepage {
   width: 100%;
   margin-top: 25px;
-  font-size: 18px;
-  font-family: "Arial Narrow";
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
 }
 .questions-headline {
   display: inline-block;
@@ -397,8 +409,10 @@ form.navbar-form.resp-show {
 }
 .posts {
   display: flex;
-  border-bottom: 1px solid #d2d2d2;
+  border-bottom: 1px solid #c9c9c9;
   padding: 10px 0;
+  background-color: #e6e6e6;
+  margin-top: 10px;
 }
 .stats-container {
   min-width: 120px;
@@ -409,21 +423,31 @@ form.navbar-form.resp-show {
 }
 
 /* ----- Ask question ----- */
+.askForm {
+  width: 100%;
+}
 .post-form-container {
   width: 100%;
   margin-top: 25px;
-  font-size: 18px;
-  font-family: "Arial Narrow";
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
 }
 .post-form-content {
   padding: 0 30px;
+  width: 100%;
+}
+.h1,
+h1 {
+  font-size: 2.5rem;
+  margin-top: 25px;
 }
 .questions-grid {
   display: flex;
   justify-content: space-between;
 }
 .question-form {
-  background: #f8f8f8;
+  background: #5d3fd3e0;
+  color: rgba(255, 255, 255, 0.945);
   border-radius: 5px;
   box-shadow: 0 2px 5px 0 #000;
   padding: 20px;
@@ -482,12 +506,14 @@ form.navbar-form.resp-show {
 .user-profile {
   margin-top: 30px;
   margin-bottom: 50px;
-  font-size: 18px;
-  font-family: "Arial Narrow";
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
 }
 
 .user-profile .card {
   border-radius: 10px;
+  background: #5d3fd3e0;
+  color: white;
 }
 
 .user-profile .card .card-header .profile_img {
@@ -497,26 +523,36 @@ form.navbar-form.resp-show {
   margin: 10px auto;
   border: 10px solid #ccc;
   border-radius: 50%;
+  color: white;
+}
+
+.card-header {
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 0;
+  border-color: #f0e3e3;
+  background-color: #5d3fd3e0;
+  color: white;
 }
 
 .user-profile .card h3 {
-  font-size: 20px;
-  font-family: "Arial Narrow";
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
   font-weight: 700;
+  color: white;
 }
 
 .user-profile .card p {
-  font-size: 18px;
-  font-family: "Arial Narrow";
-  color: #000;
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
+  color: white;
 }
 
 .user-profile .table th,
 .user-profile .table td {
-  font-size: 18px;
-  font-family: "Arial Narrow";
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
   padding: 5px 10px;
-  color: #000;
+  color: white;
 }
 .update-info {
   margin-top: 20px;
@@ -528,14 +564,49 @@ form.navbar-form.resp-show {
   color: white;
   margin: 16px;
 }
-
+.btnUpdate {
+  margin-top: 25px;
+}
+.update-pass-input {
+  margin-bottom: 5px;
+}
+.btn-update-password {
+  background: #fff;
+  color: #7156d8;
+  font-weight: 700;
+  border-radius: 35px;
+  box-shadow: none;
+  margin-bottom: 10px;
+  border: 0;
+  padding: 5px 20px;
+  cursor: pointer;
+}
+.update-password-inputs {
+  transition: all 1s ease-in-out;
+  transform: translateY(-130px);
+  z-index: -14;
+  opacity: 0;
+  position: relative;
+  display: none;
+}
+.update-password-inputs.show {
+  display: flex;
+  transform: translateY(10px);
+  z-index: 1;
+  opacity: 1;
+  flex-direction: column;
+}
 /* Single Question Answer */
+.questions {
+  margin-top: 20px;
+}
+
 .questions-page {
   width: 100%;
   padding: 0 20px;
   margin-top: 25px;
-  font-size: 18px;
-  font-family: "Arial Narrow";
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
 }
 
 .btn-cmt {
@@ -840,13 +911,12 @@ textarea.form-control {
 .topic-section {
   margin-top: 15px;
 }
-
 .topic-listwrap {
   margin-left: 10px;
   background: #eee;
   padding: 15px;
+  width: 400px;
 }
-
 ul.topic-lists {
   list-style: none;
   padding: 0px !important;
@@ -879,7 +949,7 @@ ul.topic-lists {
 .page-container {
   display: flex;
 }
-.sidebar {
+.sidebar-user {
   overflow-y: scroll;
   background: #fff;
   padding-top: 20px;
@@ -888,7 +958,7 @@ ul.topic-lists {
   padding-bottom: 10px;
   max-height: calc(100vh);
   min-height: 100vh;
-  width: 280px;
+  width: 200px;
 }
 .sidebar-user a {
   color: #343a40;
@@ -911,6 +981,8 @@ ul.topic-lists {
 .search-tag {
   width: 100%;
   margin-left: 30px;
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
 }
 .tag-heading h3 {
   margin-top: 30px;
@@ -925,7 +997,7 @@ ul.topic-lists {
   display: flex;
 }
 .taginput-search {
-  width: 170px;
+  width: 300px;
 }
 .btn-tag {
   margin-left: 5px;
@@ -954,10 +1026,12 @@ ul.topic-lists {
 }
 .study-chapter {
   padding: 20px 50px;
+  width: 100%;
 }
 .contents {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 .inner-contents > header {
   width: 500px;
@@ -1011,4 +1085,166 @@ ul.topic-lists {
 }
 .yellow {
   color: yellow;
+}
+.btn-outline-success {
+  color: #28a745;
+  border-color: #28a745;
+}
+.view-user {
+  margin-top: 15px;
+}
+
+/* Admin quiz page */
+.editor-page-inner {
+  display: flex;
+  justify-content: space-between;
+}
+.editor-page {
+  width: 100%;
+}
+.editor-page-inner {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 30px;
+}
+.notification-icon-wrap {
+  position: relative;
+  top: 5px;
+  padding: 10px;
+}
+.notification-icon {
+  transition: all 1s ease-in-out;
+  position: absolute;
+  width: 300px;
+  top: 0;
+  right: 0;
+  background: #fff;
+  opacity: 0;
+  display: none;
+  opacity: 1;
+}
+.notification-icon.show {
+  display: flex;
+  position: absolute;
+  top: 55px;
+  background: #fff;
+  margin: 0;
+  width: 300px;
+  padding: 20px;
+}
+.vision-class {
+  position: absolute;
+  top: 60px;
+  left: 340px;
+}
+.editor-section {
+  width: 100%;
+}
+.form-quiz input.form-control {
+  margin-top: 10px;
+}
+.quiz-radiowrap span {
+  line-height: 40px;
+}
+.quiz-radiowrap label {
+  margin-bottom: 0;
+}
+/* Quiz Admin */
+.quiz-page {
+  width: 100%;
+}
+.form-quiz {
+  margin: 0 auto;
+}
+.form-paper {
+  padding: 15px 30px;
+  background: #f1f1f1;
+}
+.quiz-page .quiz-radiowrap {
+  flex-direction: column;
+}
+.btnquiz {
+  margin-top: 20px;
+}
+.form-control10 {
+  width: 450px;
+}
+.quizdata-paper {
+  padding: 15px 20px;
+}
+.show-quiz-data {
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  margin-top: 10px;
+}
+.answer-wrap {
+  margin-left: 10px;
+  background-color: #eee;
+  color: #636363;
+  display: inline-block;
+  border-radius: 15px;
+  padding: 0 5px;
+}
+/* User quiz  */
+.quiz-start {
+  display: flex;
+  justify-content: space-between;
+}
+.quiz-button-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+.s-label {
+  margin-top: 20px;
+}
+.fs-caption {
+  margin-top: 15px;
+}
+.quiz-question {
+  margin-bottom: 15px;
+}
+.quiz-row1 {
+  width: 100%;
+}
+.quiz-opt-wrap {
+  width: 100%;
+}
+.quiz-option {
+  margin-top: 8px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.give-quiz {
+  background: #e6e6e6;
+  border: 1px solid #e6e6e6;
+  padding: 15px 15px;
+  border-radius: 9px;
+}
+.quiz-option input:hover {
+  background: #007bff;
+  color: #fff;
+  border: 2px solid #7171ea;
+}
+.MuiTab-wrapper {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: -100px;
+  font-weight: 700;
+}
+.MuiTabs-flexContainerVertical {
+  flex-direction: column;
+  margin-left: 30px;
+}
+.search-user {
+  margin-top: 30px;
+  margin-left: 40px;
 }

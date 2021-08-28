@@ -6,7 +6,9 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import { Link } from "react-router-dom";
-
+import HomeIcon from "@material-ui/icons/Home";
+import TagFacesIcon from "@material-ui/icons/TagFaces";
+import GroupIcon from "@material-ui/icons/Group";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -33,13 +35,6 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired,
 };
 
-function a11yProps(index) {
-  return {
-    id: `vertical-tab-${index}`,
-    "aria-controls": `vertical-tabpanel-${index}`,
-  };
-}
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 0,
@@ -62,27 +57,28 @@ export default function VerticalTabs() {
   };
 
   return (
-    <div className="sidebar">
+    <div className="sidebar-user">
       <Tabs
         orientation="vertical"
         variant="scrollable"
         value={value}
         onChange={handleChange}
-        aria-label="Vertical tabs example"
+        aria-label="Vertical tabs"
         className={classes.tabs}
       >
         <Link to="/">
-          <Tab label="Home" {...a11yProps(0)} />
+          < HomeIcon/>
+          <Tab label="Home" />
         </Link>
         <Link to="/tag-search">
-          <Tab label="Tags" {...a11yProps(2)} />
+          <TagFacesIcon />
+          <Tab label="Tags" />
         </Link>
         <Link to="/user-search">
-          <Tab label="Users" {...a11yProps(3)} />
+          < GroupIcon/>
+          <Tab label="Users" />
         </Link>
-        <Link to="/user-search">
-          <Tab label="Quiz" {...a11yProps(4)} />{" "}
-        </Link>
+      
       </Tabs>
     </div>
   );

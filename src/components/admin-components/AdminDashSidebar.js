@@ -38,6 +38,9 @@ const AdminDashSidebar = () => {
       }
     });
   };
+  const setLocalSubID = (subid) => {
+    localStorage.setItem("subId", JSON.stringify(subid));
+  };
 
   useEffect(() => {
     getSubject(user.token).then((response) => {
@@ -79,7 +82,13 @@ const AdminDashSidebar = () => {
                       propsParam: { id: sub._id },
                     }}
                   >
-                    <div className="subject-name" key={index}>
+                    <div
+                      className="subject-name"
+                      onClick={(e) => {
+                        setLocalSubID(sub._id);
+                      }}
+                      key={index}
+                    >
                       {sub.name}
                     </div>
                   </Link>
