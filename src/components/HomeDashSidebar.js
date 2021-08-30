@@ -67,7 +67,7 @@ export default function VerticalTabs() {
         className={classes.tabs}
       >
         <Link to="/">
-          < HomeIcon/>
+          <HomeIcon />
           <Tab label="Home" />
         </Link>
         <Link to="/tag-search">
@@ -75,10 +75,9 @@ export default function VerticalTabs() {
           <Tab label="Tags" />
         </Link>
         <Link to="/user-search">
-          < GroupIcon/>
+          <GroupIcon />
           <Tab label="Users" />
         </Link>
-      
       </Tabs>
     </div>
   );
