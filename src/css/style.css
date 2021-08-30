@@ -9,8 +9,8 @@
   color: black;
   margin-left: 10px;
   font-size: 15px;
-     font-size: 15px;
-  font-family: Roboto,Lato,"Helvetica Neue",Arial,sans-serif;
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
   margin-top: 15px;
 }
 .navbar-brand {
@@ -80,8 +80,8 @@ form.navbar-form.resp-show {
   border-color: #007bff;
   height: 40px;
   margin-top: 15px;
- font-size: 15px;
-  font-family: Roboto,Lato,"Helvetica Neue",Arial,sans-serif;
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
 }
 .btn-primary1 {
   color: #fff;
@@ -90,8 +90,8 @@ form.navbar-form.resp-show {
   width: max-content;
   display: flex;
   margin-right: 10px;
- font-size: 15px;
-  font-family: Roboto,Lato,"Helvetica Neue",Arial,sans-serif;
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
 }
 .input-group > .form-control,
 .input-group > .form-control-plaintext {
@@ -102,12 +102,12 @@ form.navbar-form.resp-show {
   margin-top: 2px;
   margin-left: -4px;
   font-size: 15px;
-  font-family: Roboto,Lato,"Helvetica Neue",Arial,sans-serif;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
 }
 .navbar-nav {
   list-style: none;
   font-size: 15px;
-  font-family: Roboto,Lato,"Helvetica Neue",Arial,sans-serif;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
 }
 .menu-nav
   .MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded {
@@ -164,8 +164,8 @@ form.navbar-form.resp-show {
   margin-top: 80px;
   margin-bottom: 7%;
   padding: 3%;
- font-size: 15px;
-  font-family: Roboto,Lato,"Helvetica Neue",Arial,sans-serif;
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
 }
 .register-left {
   text-align: center;
@@ -282,11 +282,11 @@ form.navbar-form.resp-show {
 .site-footer {
   background-color: #242729;
   padding: 30px 0 20px;
-    font-size: 15px;
-  font-family: Roboto,Lato,"Helvetica Neue",Arial,sans-serif;
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
   line-height: 24px;
   color: rgba(255, 255, 255, 0.856);
-  
+
   margin-top: 50px;
 }
 .site-footer hr {
@@ -399,21 +399,19 @@ form.navbar-form.resp-show {
 .homepage {
   width: 100%;
   margin-top: 25px;
-   font-size: 15px;
-  font-family: Roboto,Lato,"Helvetica Neue",Arial,sans-serif;
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
 }
 .questions-headline {
   display: inline-block;
   font-weight: bolder;
   color: black;
-  
 }
 .posts {
   display: flex;
   border-bottom: 1px solid #c9c9c9;
-  padding: 11px 0;
+  padding: 10px 0;
   background-color: #e6e6e6;
-  
   margin-top: 10px;
 }
 .stats-container {
@@ -431,8 +429,8 @@ form.navbar-form.resp-show {
 .post-form-container {
   width: 100%;
   margin-top: 25px;
-   font-size: 15px;
-  font-family: Roboto,Lato,"Helvetica Neue",Arial,sans-serif;
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
 }
 .post-form-content {
   padding: 0 30px;
@@ -508,8 +506,8 @@ h1 {
 .user-profile {
   margin-top: 30px;
   margin-bottom: 50px;
-   font-size: 15px;
-  font-family: Roboto,Lato,"Helvetica Neue",Arial,sans-serif;
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
 }
 
 .user-profile .card {
@@ -537,22 +535,22 @@ h1 {
 }
 
 .user-profile .card h3 {
- font-size: 15px;
-  font-family: Roboto,Lato,"Helvetica Neue",Arial,sans-serif;
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
   font-weight: 700;
   color: white;
 }
 
 .user-profile .card p {
-   font-size: 15px;
-  font-family: Roboto,Lato,"Helvetica Neue",Arial,sans-serif;
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
   color: white;
 }
 
 .user-profile .table th,
 .user-profile .table td {
- font-size: 15px;
-  font-family: Roboto,Lato,"Helvetica Neue",Arial,sans-serif;
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
   padding: 5px 10px;
   color: white;
 }
@@ -599,12 +597,16 @@ h1 {
   flex-direction: column;
 }
 /* Single Question Answer */
+.questions {
+  margin-top: 20px;
+}
+
 .questions-page {
   width: 100%;
   padding: 0 20px;
   margin-top: 25px;
- font-size: 15px;
-  font-family: Roboto,Lato,"Helvetica Neue",Arial,sans-serif;
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
 }
 
 .btn-cmt {
@@ -947,7 +949,7 @@ ul.topic-lists {
 .page-container {
   display: flex;
 }
-.sidebar-user{
+.sidebar-user {
   overflow-y: scroll;
   background: #fff;
   padding-top: 20px;
@@ -979,8 +981,8 @@ ul.topic-lists {
 .search-tag {
   width: 100%;
   margin-left: 30px;
-   font-size: 15px;
-  font-family: Roboto,Lato,"Helvetica Neue",Arial,sans-serif;
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
 }
 .tag-heading h3 {
   margin-top: 30px;
@@ -1087,9 +1089,8 @@ ul.topic-lists {
 .btn-outline-success {
   color: #28a745;
   border-color: #28a745;
-
 }
-.view-user{
+.view-user {
   margin-top: 15px;
 }
 
@@ -1153,8 +1154,11 @@ ul.topic-lists {
   width: 100%;
 }
 .form-quiz {
-  width: 500px;
   margin: 0 auto;
+}
+.form-paper {
+  padding: 15px 30px;
+  background: #f1f1f1;
 }
 .quiz-page .quiz-radiowrap {
   flex-direction: column;
@@ -1165,9 +1169,33 @@ ul.topic-lists {
 .form-control10 {
   width: 450px;
 }
-
+.quizdata-paper {
+  padding: 15px 20px;
+}
+.show-quiz-data {
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  margin-top: 10px;
+}
+.answer-wrap {
+  margin-left: 10px;
+  background-color: #eee;
+  color: #636363;
+  display: inline-block;
+  border-radius: 15px;
+  padding: 0 5px;
+}
 /* User quiz  */
-.btnsubmit-quiz {
+.quiz-start {
+  display: flex;
+  justify-content: space-between;
+}
+.quiz-button-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
   margin-top: 20px;
 }
 .s-label {
@@ -1182,6 +1210,27 @@ ul.topic-lists {
 .quiz-row1 {
   width: 100%;
 }
+.quiz-opt-wrap {
+  width: 100%;
+}
+.quiz-option {
+  margin-top: 8px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.give-quiz {
+  background: #e6e6e6;
+  border: 1px solid #e6e6e6;
+  padding: 15px 15px;
+  border-radius: 9px;
+}
+.quiz-option input:hover {
+  background: #007bff;
+  color: #fff;
+  border: 2px solid #7171ea;
+}
 .MuiTab-wrapper {
   width: 100%;
   display: inline-flex;
@@ -1195,7 +1244,7 @@ ul.topic-lists {
   flex-direction: column;
   margin-left: 30px;
 }
-.search-user{
+.search-user {
   margin-top: 30px;
   margin-left: 40px;
 }
