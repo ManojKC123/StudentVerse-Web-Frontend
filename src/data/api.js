@@ -339,3 +339,13 @@ export function createQuiz(quizData, chapter) {
   };
   return makeRequest(request);
 }
+
+// Single User Profile
+export function loadSingleUser(user) {
+  const request = {
+    method: "get",
+    url: `${apiURL}/user/${user}`,
+  };
+
+  return makeRequest(request);
+}
