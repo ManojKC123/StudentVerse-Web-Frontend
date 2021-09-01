@@ -403,7 +403,7 @@ form.navbar-form.resp-show {
   font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
 }
 .questions-headline {
-  display: inline-block;
+  display: inline-block;  
   font-weight: bolder;
   color: black;
 }
@@ -978,6 +978,15 @@ ul.topic-lists {
 .view-tag {
   margin-top: 10px;
 }
+.view-tag .card {
+    width: 19%;
+    margin-bottom: 10px;
+    float: left;
+    margin-right: 7px;
+    background: #5d3fd3cc;
+    color: white;
+    font-weight: bolder;
+}
 .search-tag {
   width: 100%;
   margin-left: 30px;
@@ -1247,4 +1256,42 @@ ul.topic-lists {
 .search-user {
   margin-top: 30px;
   margin-left: 40px;
+}
+.about{
+  font-size: 15px;
+  font-family: Roboto,Lato,"Helvetica Neue",Arial,sans-serif;
+  margin-top: -90px;
+  margin-left: 10px;
+   text-align: justify;
+  text-justify: inter-word;
+}
+.text-muted {
+  color: black !important;
+  font-size: 15px;
+  font-family: Roboto,Lato,"Helvetica Neue",Arial,sans-serif;
+}
+.mb-0, .my-0 {
+
+    margin-bottom: 0 !important;
+    font-size: 21px;
+    font-size: 15px;
+    font-family: Roboto,Lato,"Helvetica Neue",Arial,sans-serif;
+    
+}
+.small, small {
+  font-size: 12px;
+  font-family:Roboto,Lato,"Helvetica Neue",Arial,sans-serif;
+  color: green !important;
+}
+.mb-3, .my-3 {
+  margin-bottom: 1rem !important;
+  height: 103px;
+}
+.mb-lg-3, .my-lg-3 {
+  margin-bottom: 1rem !important;
+  margin-left: -30px;
+}
+.pb-5, .py-5 {
+    padding-bottom: 3rem !important;
+    
 }
