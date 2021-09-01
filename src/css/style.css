@@ -965,6 +965,15 @@ ul.topic-lists {
 .view-tag {
   margin-top: 10px;
 }
+.view-tag .card {
+    width: 19%;
+    margin-bottom: 10px;
+    float: left;
+    margin-right: 7px;
+    background: #5d3fd3cc;
+    color: white;
+    font-weight: bolder;
+}
 .search-tag {
   width: 100%;
   margin-left: 30px;
