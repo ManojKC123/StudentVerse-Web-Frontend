@@ -142,7 +142,7 @@ function AdminQuiz(props) {
               <span> Select Right option.</span>
             </RadioGroup>
           </Paper>
-          <button type="submit" class="btn btn-primary btnquiz">
+          <button type="submit" id="quiz-admin" class="btn btn-primary btnquiz">
             Submit
           </button>
         </form>
