@@ -96,3 +96,19 @@ Given("Test users functionality", { timeout: 30000 }, async function () {
   await driver.findElement(By.id("button-search")).click();
   await driver.quit();
 });
+// Sprint 7
+Given("Test quiz functionality", { timeout: 30000 }, async function () {
+  let driver = await new Builder().forBrowser("chrome").build();
+  await driver.get(
+    "http://localhost:3000/admin/quiz/Algebra/612a5a443aa9d50004b90795"
+  );
+  await driver.findElement(By.id("question")).sendKeys("test1");
+  await driver.findElement(By.id("option1")).sendKeys("test2");
+  await driver.findElement(By.id("option2")).sendKeys("test3");
+  await driver.findElement(By.id("option3")).sendKeys("test4");
+  await driver.findElement(By.id("option4")).sendKeys("test5");
+    await driver.findElement(By.id("answer")).sendKeys("test1");
+  await driver.sleep(delay);
+  await driver.findElement(By.id("quiz-admin")).click();
+  await driver.quit();
+});
