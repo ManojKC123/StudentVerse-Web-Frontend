@@ -326,7 +326,6 @@ export function sendScore(scoreData, token) {
 }
 
 export function createQuiz(quizData, chapter) {
-  console.log("quizData", quizData);
   const request = {
     method: "post",
     url: `${apiURL}/quiz/${chapter}`,
@@ -347,5 +346,22 @@ export function loadSingleUser(user) {
     url: `${apiURL}/user/${user}`,
   };
 
+  return makeRequest(request);
+}
+
+// Admin post past paper
+
+export function AdminPastPaper(chapter, token) {
+  const request = {
+    method: "post",
+    url: `${apiURL}/paper/${chapter.id}`,
+    body: {
+      question: chapter.question,
+      year: chapter.year,
+    },
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
+  };
   return makeRequest(request);
 }
