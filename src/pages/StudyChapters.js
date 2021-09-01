@@ -154,7 +154,6 @@ const StudyChapters = (props) => {
               </TabPanel>
               <TabPanel value={value} index={2}>
                 <PastPapersPanel />
-                Past Papers panel
               </TabPanel>
             </div>
           </div>

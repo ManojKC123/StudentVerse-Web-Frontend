@@ -11,21 +11,18 @@ import { render } from "@testing-library/react";
 import CheckIcon from "@material-ui/icons/Check";
 
 function AdminQuiz(props) {
-  const quizData = props.quizData;
-  console.log(props);
   const [quizForm, setQuizForm] = useState({
     question: "",
     option1: "",
     option2: "",
     option3: "",
     option4: "",
-    answer: Number,
+    answer: "",
   });
   const [site] = useState(JSON.parse(localStorage.getItem("site")) || null);
   const [loadQuizData, setLoadQuizData] = useState([]);
 
-  const { question, option1, option2, option3, option4, answer, name } =
-    quizForm;
+  const { question, option1, option2, option3, option4, answer } = quizForm;
 
   useEffect(() => {
     loadQuiz(site.subTopicID)
@@ -46,10 +43,22 @@ function AdminQuiz(props) {
 
   function onSubmit(e) {
     e.preventDefault();
+    let ans;
     const options = [option1, option2, option3, option4];
-    const formData = { question, options, answer, name };
+    if (answer === "1") {
+      ans = option1;
+    } else if (answer === "2") {
+      ans = option2;
+    } else if (answer === "3") {
+      ans = option3;
+    } else if (answer === "4") {
+      ans = option4;
+    }
+    const chapName = site.subTopicName;
+    const chapId = site.subTopicID;
+    const formData = { question, options, ans, chapName };
 
-    createQuiz(formData, quizData.chapterId)
+    createQuiz(formData, chapId)
       .then((response) => {
         console.log("Add quiz resp", response);
         if (response.success === true && response.data) {
@@ -66,6 +75,7 @@ function AdminQuiz(props) {
       });
   }
 
+  console.log("quizdata", loadQuizData);
   return (
     <>
       <div className="AddquizPage">
@@ -74,7 +84,6 @@ function AdminQuiz(props) {
         </div>
         <form className="form-quiz" onSubmit={(e) => onSubmit(e)}>
           <Paper className="form-paper">
-            <span>Q no 1. </span>
             <input
               type="text"
               id="question"
@@ -131,7 +140,7 @@ function AdminQuiz(props) {
               row
               className="quiz-radiowrap"
             >
-              {[1, 2, 3, 4].map((value) => (
+              {["1", "2", "3", "4"].map((value) => (
                 <FormControlLabel
                   key={value}
                   value={value.toString()}

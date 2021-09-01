@@ -28,7 +28,6 @@ const AdminCreate = (props) => {
   const [subTopicPicture, setCurSubTopicFile] = useState(null);
   const [subjectArg, setSubjectArg] = useState({}); // name, id
   const [topics, setTopics] = useState([]);
-  const [quizData, setQuizData] = useState([]);
 
   const [studytopic, setStudyTopic] = useState();
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
@@ -214,7 +213,7 @@ const AdminCreate = (props) => {
                       StudyMaterialsPanel
                     </TabPanel>
                     <TabPanel value={value} index={1}>
-                      <AdminQuiz quizData={quizData} />
+                      <AdminQuiz />
                     </TabPanel>
                     <TabPanel value={value} index={2}>
                       {/* <PastPapersPanel /> */}
@@ -277,10 +276,6 @@ const AdminCreate = (props) => {
                                   subtopic._id,
                                   subtopic.name
                                 );
-                                setQuizData({
-                                  chapterId: subtopic._id,
-                                  chapterName: subtopic.name,
-                                });
                               }}
                             >
                               {subtopic.name}

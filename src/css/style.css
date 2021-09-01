@@ -1248,3 +1248,11 @@ ul.topic-lists {
   margin-top: 30px;
   margin-left: 40px;
 }
+/* Past-paper -- user */
+.question-list {
+  display: flex;
+  justify-content: space-between;
+}
+.past-paper-inner .pastPaper {
+  padding: 15px 25px;
+}
