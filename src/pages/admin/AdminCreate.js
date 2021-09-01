@@ -176,8 +176,8 @@ const AdminCreate = (props) => {
                 </div>
               </Grid>
               <Grid item md={12} className="">
-                <div className="contents">
-                  <div className="inner-contents bread-crumb-wrap">
+                <div className="contents ">
+                  <div className="inner-contents editor-tabs bread-crumb-wrap">
                     <Breadcrumbs
                       separator={<NavigateNextIcon fontSize="small" />}
                       aria-label="breadcrumb"
