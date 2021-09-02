@@ -326,28 +326,36 @@ export function sendScore(scoreData, token) {
 }
 
 export function createQuiz(quizData, chapter) {
-  console.log("quizData", quizData);
   const request = {
     method: "post",
     url: `${apiURL}/quiz/${chapter}`,
     body: {
       question: quizData.question,
       options: quizData.options,
-      answer: quizData.answer,
+      answer: quizData.ans,
       name: quizData.name,
     },
   };
   return makeRequest(request);
 }
 
-export function scorenotif(token) {
+export function getPastPaper(paperData, token) {
   const request = {
-    method: 'get',
-    url: `${apiURL}/score`,
+    method: "post",
+    url: `${apiURL}/paper/${paperData}`,
     headerParams: {
       authorization: `Bearer ${token}`,
-    }
+    },
   };
   return makeRequest(request);
 }
-
+export function scorenotif(token) {
+  const request = {
+    method: "get",
+    url: `${apiURL}/score`,
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+  return makeRequest(request);
+}
