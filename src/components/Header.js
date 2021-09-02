@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import userImage from "../media/user.png";
-import { getProfile } from "../data/api";
+import { getProfile, scorenotif } from "../data/api";
 import { div } from "prelude-ls";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
 
@@ -18,6 +18,10 @@ const Header = (props) => {
   const [userPP, setUserPP] = useState();
   const [searchText, setSearchText] = useState("");
   const [notifDrop, setNotifDrop] = useState(false);
+  const [notif, setNotif] = useState(false);
+  const [notifData, setNotifData] = useState(
+    [{ quizname: "No Notification" }] || []
+  );
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -70,8 +74,18 @@ const Header = (props) => {
 
   const dropNotification = (e) => {
     setNotifDrop(!notifDrop);
+    scorenotif(user.token)
+      .then((response) => {
+        if (response.success === true) {
+          setNotifData(response.data);
+          setNotif({ notif: true });
+        }
+      })
+      .catch((err) => {
+        console.log("Notification Error", err);
+      });
   };
-
+  // console.log('xyd', notifData);
   return (
     <nav className="navbar navbar-expand-lg navbar-light fixed-top">
       <a href="/" className="navbar-brand">
@@ -118,7 +132,6 @@ const Header = (props) => {
           <Link to="/study-materials" className="nav-item nav-link">
             <b>Study Materials</b>
           </Link>
-         
         </div>
         <form className="navbar-form resp-hide form-inline">
           <div className="input-group search-box">
@@ -154,10 +167,25 @@ const Header = (props) => {
               }
             >
               <div>
-                <span>notification 1</span>
-                <span>notification 2</span>
-                <span>notification 3</span>
-                <span>notification 4</span>
+                <h5 className="mb-3">
+                  <b>Notifications</b>
+                </h5>
+                {notifData &&
+                  notifData.map((notification, index) => {
+                    return (
+                      <>
+                        {notif ? (
+                          <li className="notifscore mb-2" key={index}>
+                            Acheived {notification.score} out of 10 in&nbsp;
+                            {notification.quizname}'s quiz. Completed in&nbsp;
+                            {notification.time}
+                          </li>
+                        ) : (
+                          <li key={index}>{notification.quizname}</li>
+                        )}
+                      </>
+                    );
+                  })}
               </div>
             </div>
           </div>

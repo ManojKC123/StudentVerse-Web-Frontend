@@ -332,7 +332,7 @@ export function createQuiz(quizData, chapter) {
     body: {
       question: quizData.question,
       options: quizData.options,
-      answer: quizData.answer,
+      answer: quizData.ans,
       name: quizData.name,
     },
   };
@@ -348,9 +348,7 @@ export function loadSingleUser(user) {
 
   return makeRequest(request);
 }
-
 // Admin post past paper
-
 export function postPastPaper(chapter, token) {
   console.log("paper api hit", chapter);
   const request = {
@@ -366,7 +364,16 @@ export function postPastPaper(chapter, token) {
   };
   return makeRequest(request);
 }
-
+export function scorenotif(token) {
+  const request = {
+    method: "get",
+    url: `${apiURL}/score`,
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+  return makeRequest(request);
+}
 export function loadPastPaper(chapterid, token) {
   console.log("apihit", chapterid);
   const request = {

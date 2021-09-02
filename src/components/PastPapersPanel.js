@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { addQuestion } from "../data/api";
+import { getPastPaper } from "../data/api";
+import { Grid, Paper } from "@material-ui/core";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -7,30 +8,28 @@ toast.configure();
 
 function PastPaperPanel() {
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
-  const [formData, setFormData] = useState({
-    title: "",
-    body: "",
-    tags: [],
-  });
+  const [paperData, setPaperData] = useState([]);
+  const [site] = useState(JSON.parse(localStorage.getItem("site")) || []);
 
-  //   useEffect(() => {}, [tags]);
+  useEffect(() => {}, []);
 
-  const onChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-  };
   return (
-    <div className="askForm">
-      <form onSubmit={(e) => onSubmit(e)}>
-        <label className="form-label s-label">
-          <b>Title</b>
-          <p className="title-desc fw-normal fs-caption">
-            Be specific and imagine you’re asking a question to another person
-          </p>
-        </label>
-      </form>
+    <div className="past-paper">
+      <label className="form-label s-label">
+        <b>Realnumber</b>
+      </label>
+      <Grid container>
+        <Grid item md={12}>
+          <div className="past-paper-inner">
+            <Paper className="pastPaper">
+              <div className="question-list">
+                <div className="question">question</div>
+                <div className="year">year</div>
+              </div>
+            </Paper>
+          </div>
+        </Grid>
+      </Grid>
     </div>
   );
 }

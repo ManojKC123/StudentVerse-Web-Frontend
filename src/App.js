@@ -8,6 +8,8 @@ import React from "react";
 import Layout from "./Layout/Layout";
 import LogIn from "./pages/Login";
 import SignUp from "./pages/Signup";
+import About from "./pages/About"
+import Contact from "./pages/Contact"
 import NotFound from "./pages/NotFound";
 // user imports
 import Home from "./pages/Home";
@@ -38,6 +40,8 @@ function App() {
             <Route path="/" component={Home} exact />
             <Route path="/login" component={LogIn} exact />
             <Route path="/signup" component={SignUp} exact />
+            <Route path="/about" component={About} exact />
+            <Route path="/contact" component={Contact} exact />
             <Route path="/profile" component={UserProfile} exact />
             <Route path="/profile/:id" component={SingleUserProfile} exact />
 

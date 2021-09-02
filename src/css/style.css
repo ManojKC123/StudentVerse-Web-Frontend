@@ -286,7 +286,6 @@ form.navbar-form.resp-show {
   font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
   line-height: 24px;
   color: rgba(255, 255, 255, 0.856);
-
   margin-top: 50px;
 }
 .site-footer hr {
@@ -406,6 +405,7 @@ form.navbar-form.resp-show {
   display: inline-block;
   font-weight: bolder;
   color: black;
+  margin-left: -15px;
 }
 .posts {
   display: flex;
@@ -975,6 +975,15 @@ ul.topic-lists {
 .view-tag {
   margin-top: 10px;
 }
+.view-tag .card {
+  width: 19%;
+  margin-bottom: 10px;
+  float: left;
+  margin-right: 7px;
+  background: #5d3fd3cc;
+  color: white;
+  font-weight: bolder;
+}
 .search-tag {
   width: 100%;
   margin-left: 30px;
@@ -1248,22 +1257,84 @@ ul.topic-lists {
   flex-direction: column;
   margin-left: 30px;
 }
+/* search user */
 .search-user {
   margin-top: 30px;
   margin-left: 40px;
 }
-
-/* search user */
-
 .btn-srchuser {
   margin-top: 10px;
 }
-
-/* Past paper -- Admin */
-
-.pastPaper {
-  padding: 10px 20px;
+/* Past-paper -- user */
+.question-list {
+  display: flex;
+  justify-content: space-between;
 }
+.past-paper-inner .pastPaper {
+  padding: 15px 25px;
+}
+.about {
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
+  margin-top: -90px;
+  margin-left: 10px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+.text-muted {
+  color: black !important;
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
+}
+.mb-0,
+.my-0 {
+  margin-bottom: 0 !important;
+  font-size: 21px;
+  font-size: 15px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
+}
+.small,
+small {
+  font-size: 12px;
+  font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
+  color: green !important;
+}
+.mb-3,
+.my-3 {
+  margin-bottom: 1rem !important;
+  height: 103px;
+}
+.mb-lg-3,
+.my-lg-3 {
+  margin-bottom: 1rem !important;
+  margin-left: -30px;
+}
+.pb-5,
+.py-5 {
+  padding-bottom: 3rem !important;
+}
+.col-md-4 {
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+  padding: 30px;
+}
+.get {
+  margin-left: 500px;
+  font-family: "Times New Roman", Times, serif;
+  margin-top: 15px;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -15px;
+}
+.notifscore {
+  color: #5d3fd3;
+  padding: 1px;
+  border-bottom: 1px solid grey;
+  list-style: none;
+}
+/* Past paper -- Admin */
 .form-pastpaper .pastPaper input {
   margin-top: 10px;
 }
