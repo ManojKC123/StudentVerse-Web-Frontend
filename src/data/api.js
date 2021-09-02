@@ -349,3 +349,13 @@ export function getPastPaper(paperData, token) {
   };
   return makeRequest(request);
 }
+export function scorenotif(token) {
+  const request = {
+    method: "get",
+    url: `${apiURL}/score`,
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+  return makeRequest(request);
+}
