@@ -351,10 +351,11 @@ export function loadSingleUser(user) {
 
 // Admin post past paper
 
-export function AdminPastPaper(chapter, token) {
+export function postPastPaper(chapter, token) {
+  console.log("paper api hit", chapter);
   const request = {
     method: "post",
-    url: `${apiURL}/paper/${chapter.id}`,
+    url: `${apiURL}/paper/${chapter.chapterid}`,
     body: {
       question: chapter.question,
       year: chapter.year,
@@ -363,5 +364,18 @@ export function AdminPastPaper(chapter, token) {
       authorization: `Bearer ${token}`,
     },
   };
+  return makeRequest(request);
+}
+
+export function loadPastPaper(chapterid, token) {
+  console.log("apihit", chapterid);
+  const request = {
+    method: "get",
+    url: `${apiURL}/paper/${chapterid}`,
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+
   return makeRequest(request);
 }
