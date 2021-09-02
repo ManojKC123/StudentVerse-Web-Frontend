@@ -107,7 +107,7 @@ function TagSearch(props) {
             <p> 1 questions asked on this tag </p>
           </div>
         </div>
-      </div>  
+      </div>
       <div className="view-tag">
         {tagsStore &&
           tagsStore.map((tagm, index) => {
