@@ -308,6 +308,9 @@ const AdminCreate = (props) => {
                             setCurSubTopicFile(e.target.files[0]);
                           }}
                         />
+                        <label for="subjecFileInput">
+                          Pictures with extension jpg, png, svg
+                        </label>
 
                         <button
                           type="button"

@@ -88,6 +88,20 @@ export function updatePassword(updPass, token) {
   return makeRequest(request);
 }
 
+export function updatePP(picture, token) {
+  const request = {
+    method: "put",
+    url: `${apiURL}/picture/update`,
+    body: picture,
+
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+
+  return makeRequest(request);
+}
+
 export function getTopPosts() {
   const request = {
     method: "get",

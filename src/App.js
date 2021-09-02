@@ -8,8 +8,8 @@ import React from "react";
 import Layout from "./Layout/Layout";
 import LogIn from "./pages/Login";
 import SignUp from "./pages/Signup";
-import About from "./pages/About"
-import Contact from "./pages/Contact"
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 // user imports
 import Home from "./pages/Home";
@@ -22,9 +22,7 @@ import StudyMaterials from "./pages/StudyMaterials";
 import SearchResults from "./pages/SearchResults";
 import UserSearch from "./pages/UserSearch";
 import StudyChapters from "./pages/StudyChapters";
-// import AdminQuiz from "./pages/admin/AdminQuiz";
 // admin imports
-// import PostStudyMaterials from "./pages/admin/PostStudyMaterials";
 import AdminDash from "./pages/admin/AdminDash";
 import UserQuiz from "./pages/UserQuiz";
 import AdminCreate from "./pages/admin/AdminCreate";
@@ -48,7 +46,7 @@ function App() {
             <Route path="/ask-question" component={AskQuestion} exact />
             <Route path="/user-search" component={UserSearch} exact />
             <Route path="/questions/:id" component={SingleQuestion} exact />
-            <Route path="/profile/update" component={UpdateProfile} exact />
+            <Route path="/profile-update" component={UpdateProfile} exact />
             <Route path="/study-materials" component={StudyMaterials} exact />
             <Route
               path="/study-materials/:subname"
@@ -69,12 +67,6 @@ function App() {
             {/* <Route path="*" component={NotFound} /> */}
             {/* Admin Routes */}
             <Route path="/admin" component={AdminDash} exact />
-            {/* <Route
-              path="/admin/studymaterials"
-              component={PostStudyMaterials}
-              exact
-            /> */}
-            {/* <Route path="/admin/quiz" component={AdminQuiz} exact /> */}
             <Route path="/admin/:subname" component={AdminCreate} exact />
             <Route
               path="/admin/:subname/:topic/:subtopic"

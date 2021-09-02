@@ -28,7 +28,7 @@ const AdminDashSidebar = () => {
     subjectArg.append("name", name);
     subjectArg.append("description", description);
     subjectArg.append("picture", picture);
-
+    // console.log("sub check", subjectArg);
     createSubjectD(subjectArg, user.token).then((response) => {
       if (response.success === true && response.data) {
         setSubject([...subject, response.data]);

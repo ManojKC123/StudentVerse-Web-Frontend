@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { KeyboardArrowDown, StarOutlineTwoTone } from "@material-ui/icons/";
+import { KeyboardArrowDown } from "@material-ui/icons/";
 import { getTopicD, URL_CONFIG } from "../data/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -16,7 +16,6 @@ import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import QuizPanel from "../components/QuizPanel";
 import StudyContentPanel from "../components/StudyContentPanel";
-
 import PastPapersPanel from "../components/PastPapersPanel";
 
 toast.configure();
@@ -47,6 +46,7 @@ const StudyChapters = (props) => {
       getTopicD(sub.subId, user.token).then((response) => {
         if (response.success === true) {
           setTopics(response.data);
+          console.log("topics data", response.data);
         }
       });
     }
@@ -135,18 +135,20 @@ const StudyChapters = (props) => {
                 {sub.subName === "" ? (
                   ""
                 ) : (
-                  <>
-                    <Link
-                      color="inherit"
-                      href="/getting-started/installation/"
-                      onClick={breadCrumbClick}
-                    >
-                      {site.topicName}
-                    </Link>
-                    <Typography color="textPrimary">
-                      {site.chapterName}
-                    </Typography>
-                  </>
+                  <Link
+                    color="inherit"
+                    href="/getting-started/installation/"
+                    onClick={breadCrumbClick}
+                  >
+                    {site.topicName}
+                  </Link>
+                )}
+                {sub.subName === "" ? (
+                  ""
+                ) : (
+                  <Typography color="textPrimary">
+                    {site.chapterName}
+                  </Typography>
                 )}
               </Breadcrumbs>
               <AppBar position="static" color="default">
@@ -166,7 +168,6 @@ const StudyChapters = (props) => {
               </AppBar>
               <TabPanel value={value} index={0}>
                 <StudyContentPanel />
-                StudyMaterialsPanel
               </TabPanel>
               <TabPanel value={value} index={1}>
                 <QuizPanel />

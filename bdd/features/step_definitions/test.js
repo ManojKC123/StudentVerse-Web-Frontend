@@ -29,7 +29,7 @@ Given("Test login functionality", { timeout: 30000 }, async function () {
 });
 Given("Test profile functionality", { timeout: 30000 }, async function () {
   let driver = await new Builder().forBrowser("chrome").build();
-  await driver.get("http://localhost:3000/profile/update");
+  await driver.get("http://localhost:3000/profile-update");
   await driver.findElement(By.id("updateFnmae")).sendKeys("test1");
   await driver.findElement(By.id("updateLname")).sendKeys("test1");
   await driver.findElement(By.id("update-email")).sendKeys("test1@gmail.com");
@@ -65,7 +65,9 @@ Given("Test PostAnswer functionality", { timeout: 30000 }, async function () {
 Given("Test Comment functionality", { timeout: 30000 }, async function () {
   let driver = await new Builder().forBrowser("chrome").build();
   await driver.get("http://localhost:3000/questions/60f681de79b0dd4808c76433");
-  await driver.findElement(By.id("exampleFormControlTextarea1")).sendKeys("wwww");
+  await driver
+    .findElement(By.id("exampleFormControlTextarea1"))
+    .sendKeys("wwww");
   await driver.sleep(delay);
   await driver.findElement(By.id("addCommentTest")).click();
   await driver.quit();
@@ -107,7 +109,7 @@ Given("Test quiz functionality", { timeout: 30000 }, async function () {
   await driver.findElement(By.id("option2")).sendKeys("test3");
   await driver.findElement(By.id("option3")).sendKeys("test4");
   await driver.findElement(By.id("option4")).sendKeys("test5");
-    await driver.findElement(By.id("answer")).sendKeys("test1");
+  await driver.findElement(By.id("answer")).sendKeys("test1");
   await driver.sleep(delay);
   await driver.findElement(By.id("quiz-admin")).click();
   await driver.quit();
