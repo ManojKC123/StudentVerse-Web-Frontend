@@ -170,14 +170,14 @@ function QuizPanel(props) {
             >
               Previous
             </button>
-            <button
+            {/* <button
               class="btn btn-primary btnsubmit-quiz"
               onClick={() =>
                 handleQuiz({ currentquiz: currentQuiz, type: "Submit" })
               }
             >
               Submit
-            </button>
+            </button> */}
             <button
               class="btn btn-primary btnnext-quiz"
               onClick={() =>

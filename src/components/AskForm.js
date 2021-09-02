@@ -65,6 +65,11 @@ function AskForm() {
           position: toast.POSITION.BOTTOM_RIGHT,
         });
       }
+      if (response.success === false) {
+        toast.error(response.error[0].msg, {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
+      }
 
       setFormData({
         title: "",
