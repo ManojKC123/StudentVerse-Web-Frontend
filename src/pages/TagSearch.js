@@ -31,14 +31,13 @@ function TagSearch(props) {
     <div className="search-tag">
       <div className="tag-heading">
         <h3>Tags</h3>
-        
+
         <p className="tag-ans">
           A tag is a keyword or label that categorizes your question with other,
           similar questions. Using the right tags <br /> makes it easier for
           others to find and answer your question.
         </p>
       </div>
-
       <div className="tagsearch-section">
         <input
           className="form-control me-2 taginput-search"
@@ -52,14 +51,63 @@ function TagSearch(props) {
           }}
         />
         <button
-        id="tag-button"
+          id="tag-button"
           onClick={() => searchTags(tags)}
           className="btn btn-outline-success btn-tag"
         >
           Search
         </button>
       </div>
-
+      <div className="view-tag">
+        <div class="card" style={{ width: "18rem;" }}>
+          <div class="card-body">
+            <a href="/" class="btn btn-primary">
+              <span class="card-title">Algebra</span>
+            </a>
+            <p> 1 questions asked on this tag </p>
+          </div>
+        </div>
+      </div>
+      <div className="view-tag">
+        <div class="card" style={{ width: "18rem;" }}>
+          <div class="card-body">
+            <a href="/" class="btn btn-primary">
+              <span class="card-title">Heridity</span>
+            </a>
+            <p> 2 questions asked on this tag </p>
+          </div>
+        </div>
+      </div>
+      <div className="view-tag">
+        <div class="card" style={{ width: "18rem;" }}>
+          <div class="card-body">
+            <a href="/" class="btn btn-primary">
+              <span class="card-title">Math</span>
+            </a>
+            <p> 3 questions asked on this tag </p>
+          </div>
+        </div>
+      </div>
+      <div className="view-tag">
+        <div class="card" style={{ width: "18rem;" }}>
+          <div class="card-body">
+            <a href="/" class="btn btn-primary">
+              <span class="card-title">Heridity</span>
+            </a>
+            <p> 1 questions asked on this tag </p>
+          </div>
+        </div>
+      </div>
+      <div className="view-tag">
+        <div class="card" style={{ width: "18rem;" }}>
+          <div class="card-body">
+            <a href="/" class="btn btn-primary">
+              <span class="card-title">GK</span>
+            </a>
+            <p> 1 questions asked on this tag </p>
+          </div>
+        </div>
+      </div>  
       <div className="view-tag">
         {tagsStore &&
           tagsStore.map((tagm, index) => {
