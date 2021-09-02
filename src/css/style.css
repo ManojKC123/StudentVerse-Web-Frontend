@@ -286,7 +286,6 @@ form.navbar-form.resp-show {
   font-family: Roboto, Lato, "Helvetica Neue", Arial, sans-serif;
   line-height: 24px;
   color: rgba(255, 255, 255, 0.856);
-
   margin-top: 50px;
 }
 .site-footer hr {
@@ -1248,3 +1247,11 @@ ul.topic-lists {
   margin-top: 30px;
   margin-left: 40px;
 }
+
+.notifscore{
+  color: #5d3fd3;
+  padding: 1px;
+  border-bottom: 1px solid grey;
+  list-style: none;
+}
+
