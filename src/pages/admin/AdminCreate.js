@@ -12,7 +12,7 @@ import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import AdminQuiz from "../../components/admin-components/AdminQuiz";
 // import StudyContentPanel from "../components/StudyContentPanel";
-// import PastPapersPanel from "../components/PastPapersPanel";
+import AdminPastPaper from "../../components/admin-components/AdminPastPaper";
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
 import Tab from "@material-ui/core/Tab";
@@ -28,7 +28,7 @@ const AdminCreate = (props) => {
   const [subTopicPicture, setCurSubTopicFile] = useState(null);
   const [subjectArg, setSubjectArg] = useState({}); // name, id
   const [topics, setTopics] = useState([]);
-  const [quizData, setQuizData] = useState([]);
+  const [chapterData, setChapterData] = useState([]);
 
   const [studytopic, setStudyTopic] = useState();
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
@@ -164,6 +164,8 @@ const AdminCreate = (props) => {
     localStorage.setItem("site", JSON.stringify(site));
   };
 
+  console.log("chp info", chapterData);
+
   return (
     <div className="editor-page">
       <div className="editor-page-inner">
@@ -214,11 +216,10 @@ const AdminCreate = (props) => {
                       StudyMaterialsPanel
                     </TabPanel>
                     <TabPanel value={value} index={1}>
-                      <AdminQuiz quizData={quizData} />
+                      <AdminQuiz chapterData={chapterData} />
                     </TabPanel>
                     <TabPanel value={value} index={2}>
-                      {/* <PastPapersPanel /> */}
-                      Past Papers panel
+                      <AdminPastPaper />
                     </TabPanel>
                   </div>
                 </div>
@@ -277,7 +278,7 @@ const AdminCreate = (props) => {
                                   subtopic._id,
                                   subtopic.name
                                 );
-                                setQuizData({
+                                setChapterData({
                                   chapterId: subtopic._id,
                                   chapterName: subtopic.name,
                                 });

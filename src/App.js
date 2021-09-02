@@ -12,6 +12,7 @@ import NotFound from "./pages/NotFound";
 // user imports
 import Home from "./pages/Home";
 import UserProfile from "./pages/Profile";
+import SingleUserProfile from "./pages/SingleUserProfile";
 import UpdateProfile from "./pages/UpdateProfile";
 import AskQuestion from "./pages/AskQuestion";
 import SingleQuestion from "./pages/SingleQuestion";
@@ -26,6 +27,7 @@ import AdminDash from "./pages/admin/AdminDash";
 import UserQuiz from "./pages/UserQuiz";
 import AdminCreate from "./pages/admin/AdminCreate";
 import TagSearch from "./pages/TagSearch";
+
 function App() {
   return (
     <div className="App">
@@ -37,6 +39,8 @@ function App() {
             <Route path="/login" component={LogIn} exact />
             <Route path="/signup" component={SignUp} exact />
             <Route path="/profile" component={UserProfile} exact />
+            <Route path="/profile/:id" component={SingleUserProfile} exact />
+
             <Route path="/ask-question" component={AskQuestion} exact />
             <Route path="/user-search" component={UserSearch} exact />
             <Route path="/questions/:id" component={SingleQuestion} exact />

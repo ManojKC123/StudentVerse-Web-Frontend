@@ -326,7 +326,6 @@ export function sendScore(scoreData, token) {
 }
 
 export function createQuiz(quizData, chapter) {
-  console.log("quizData", quizData);
   const request = {
     method: "post",
     url: `${apiURL}/quiz/${chapter}`,
@@ -337,5 +336,46 @@ export function createQuiz(quizData, chapter) {
       name: quizData.name,
     },
   };
+  return makeRequest(request);
+}
+
+// Single User Profile
+export function loadSingleUser(user) {
+  const request = {
+    method: "get",
+    url: `${apiURL}/user/${user}`,
+  };
+
+  return makeRequest(request);
+}
+
+// Admin post past paper
+
+export function postPastPaper(chapter, token) {
+  console.log("paper api hit", chapter);
+  const request = {
+    method: "post",
+    url: `${apiURL}/paper/${chapter.chapterid}`,
+    body: {
+      question: chapter.question,
+      year: chapter.year,
+    },
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+  return makeRequest(request);
+}
+
+export function loadPastPaper(chapterid, token) {
+  console.log("apihit", chapterid);
+  const request = {
+    method: "get",
+    url: `${apiURL}/paper/${chapterid}`,
+    headerParams: {
+      authorization: `Bearer ${token}`,
+    },
+  };
+
   return makeRequest(request);
 }

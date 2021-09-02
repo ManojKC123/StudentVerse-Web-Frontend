@@ -1252,3 +1252,21 @@ ul.topic-lists {
   margin-top: 30px;
   margin-left: 40px;
 }
+
+/* search user */
+
+.btn-srchuser {
+  margin-top: 10px;
+}
+
+/* Past paper -- Admin */
+
+.pastPaper {
+  padding: 10px 20px;
+}
+.form-pastpaper .pastPaper input {
+  margin-top: 10px;
+}
+.form-pastpaper .pastPaper input:last-child {
+  width: 35%;
+}
