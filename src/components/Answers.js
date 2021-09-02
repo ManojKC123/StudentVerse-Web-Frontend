@@ -174,16 +174,7 @@ function Answers(props) {
                           </Button>
                         </div>
                         <span>
-                          {loading ? (
-                            <h2>{answer.score}</h2>
-                          ) : (
-                            <Skeleton
-                              animation="wave"
-                              variant="rect"
-                              width={500}
-                              height={118}
-                            />
-                          )}
+                          <h2>{answer.score}</h2>
                         </span>
                         <div className="vote-box-inner">
                           <Button
@@ -202,9 +193,7 @@ function Answers(props) {
                         {loading ? (
                           <Skeleton variant="rect" width={210} height={118} />
                         ) : (
-                          <h2>
-                            <p>{answer.text}</p>
-                          </h2>
+                          <p>{answer.text}</p>
                         )}
                       </div>
                     </div>
@@ -228,7 +217,7 @@ function Answers(props) {
                           <img src={pp} alt="" />
                         </span>
                         <span className="answer-profile-name">
-                          {answer.author} Constant Ans Author
+                          {answer.author}
                         </span>
                       </div>
                     </div>

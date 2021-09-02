@@ -12,7 +12,7 @@ import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import AdminQuiz from "../../components/admin-components/AdminQuiz";
 // import StudyContentPanel from "../components/StudyContentPanel";
-// import PastPapersPanel from "../components/PastPapersPanel";
+import AdminPastPaper from "../../components/admin-components/AdminPastPaper";
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
 import Tab from "@material-ui/core/Tab";
@@ -28,7 +28,6 @@ const AdminCreate = (props) => {
   const [subTopicPicture, setCurSubTopicFile] = useState(null);
   const [subjectArg, setSubjectArg] = useState({}); // name, id
   const [topics, setTopics] = useState([]);
-
   const [studytopic, setStudyTopic] = useState();
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
   const [subId] = useState(JSON.parse(localStorage.getItem("subId")) || null);
@@ -175,8 +174,8 @@ const AdminCreate = (props) => {
                 </div>
               </Grid>
               <Grid item md={12} className="">
-                <div className="contents">
-                  <div className="inner-contents bread-crumb-wrap">
+                <div className="contents ">
+                  <div className="inner-contents editor-tabs bread-crumb-wrap">
                     <Breadcrumbs
                       separator={<NavigateNextIcon fontSize="small" />}
                       aria-label="breadcrumb"
@@ -216,8 +215,7 @@ const AdminCreate = (props) => {
                       <AdminQuiz />
                     </TabPanel>
                     <TabPanel value={value} index={2}>
-                      {/* <PastPapersPanel /> */}
-                      Past Papers panel
+                      <AdminPastPaper />
                     </TabPanel>
                   </div>
                 </div>

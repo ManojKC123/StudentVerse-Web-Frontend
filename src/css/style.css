@@ -666,9 +666,6 @@ textarea.form-control {
   padding-bottom: 10px;
   margin-bottom: 10px;
 }
-.answer-wrap {
-  display: flex;
-}
 .answer-time {
   margin-bottom: 5px;
 }
@@ -1052,6 +1049,9 @@ ul.topic-lists {
 .inner-contents {
   width: 100%;
 }
+.study-chapter .contents header button span {
+  margin: 0 auto;
+}
 /*End of User Study Materials  */
 
 /* Search Posts Page */
@@ -1115,6 +1115,9 @@ ul.topic-lists {
   display: flex;
   justify-content: space-between;
   padding: 20px 30px;
+}
+.editor-page .contents .editor-tabs button {
+  padding-left: 90px;
 }
 .notification-icon-wrap {
   position: relative;
@@ -1194,7 +1197,8 @@ ul.topic-lists {
   color: #636363;
   display: inline-block;
   border-radius: 15px;
-  padding: 0 5px;
+  padding: 20px 15px;
+  display: flex;
 }
 /* User quiz  */
 .quiz-start {
@@ -1253,9 +1257,13 @@ ul.topic-lists {
   flex-direction: column;
   margin-left: 30px;
 }
+/* search user */
 .search-user {
   margin-top: 30px;
   margin-left: 40px;
+}
+.btn-srchuser {
+  margin-top: 10px;
 }
 /* Past-paper -- user */
 .question-list {
@@ -1325,4 +1333,11 @@ small {
   padding: 1px;
   border-bottom: 1px solid grey;
   list-style: none;
+}
+/* Past paper -- Admin */
+.form-pastpaper .pastPaper input {
+  margin-top: 10px;
+}
+.form-pastpaper .pastPaper input:last-child {
+  width: 35%;
 }
