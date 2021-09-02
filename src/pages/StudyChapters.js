@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { KeyboardArrowDown } from "@material-ui/icons/";
+import { KeyboardArrowDown, StarOutlineTwoTone } from "@material-ui/icons/";
 import { getTopicD, URL_CONFIG } from "../data/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -28,6 +28,8 @@ const StudyChapters = (props) => {
   const [studytopic, setStudyTopic] = useState();
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
   const [value, setValue] = useState(0);
+  const [sub] = useState(JSON.parse(localStorage.getItem("sub")) || null);
+  const [site] = useState(JSON.parse(localStorage.getItem("site")) || null);
 
   useEffect(() => {
     setSubjectArg({
@@ -41,6 +43,13 @@ const StudyChapters = (props) => {
           setTopics(response.data);
         }
       });
+    if (sub.subId) {
+      getTopicD(sub.subId, user.token).then((response) => {
+        if (response.success === true) {
+          setTopics(response.data);
+        }
+      });
+    }
   }, [props]);
 
   console.log("subjectarg", topics);
@@ -98,11 +107,13 @@ const StudyChapters = (props) => {
     var url = URL_CONFIG.siteUrl + `/study-materials/${a}/${b}/${c}`;
     window.location.href = url;
     var site = {
+      topicName: b,
       chapter: c,
       chapterName: d,
     };
     localStorage.setItem("site", JSON.stringify(site));
   };
+
   return (
     <div className="study-chapter">
       <Grid container>
@@ -119,16 +130,24 @@ const StudyChapters = (props) => {
                 aria-label="breadcrumb"
               >
                 <Link color="inherit" href="/" onClick={breadCrumbClick}>
-                  Math
+                  {sub.subName}
                 </Link>
-                <Link
-                  color="inherit"
-                  href="/getting-started/installation/"
-                  onClick={breadCrumbClick}
-                >
-                  Algebra
-                </Link>
-                <Typography color="textPrimary">RealNumber</Typography>
+                {sub.subName === "" ? (
+                  ""
+                ) : (
+                  <>
+                    <Link
+                      color="inherit"
+                      href="/getting-started/installation/"
+                      onClick={breadCrumbClick}
+                    >
+                      {site.topicName}
+                    </Link>
+                    <Typography color="textPrimary">
+                      {site.chapterName}
+                    </Typography>
+                  </>
+                )}
               </Breadcrumbs>
               <AppBar position="static" color="default">
                 <Tabs

@@ -29,6 +29,20 @@ class StudyMaterials extends Component {
         console.log(err.response);
       });
   }
+  subjectClick = (subName, subId) => {
+    var sub = {
+      subName: subName,
+      subId: subId,
+    };
+    localStorage.setItem("sub", JSON.stringify(sub));
+    var site = {
+      topicName: "",
+      chapter: "",
+      chapterName: "",
+    };
+    localStorage.setItem("site", JSON.stringify(site));
+  };
+
   render() {
     return (
       <div className="subejct-materials">
@@ -43,6 +57,9 @@ class StudyMaterials extends Component {
                       propsParam: { id: sub._id },
                     }}
                     key={index}
+                    onClick={async () => {
+                      this.subjectClick(sub.name, sub._id);
+                    }}
                   >
                     <div className="card-studymaterials">
                       <div className="card_image">
