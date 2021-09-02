@@ -1,13 +1,16 @@
-import React, { Component, Container } from "react";
-import axios from "axios";
-import { updateProfile, updatePassword } from "../data/api";
+import React, { Component } from "react";
+import {
+  updateProfile,
+  updatePassword,
+  getProfile,
+  updatePP,
+} from "../data/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Alert from "@material-ui/lab/Alert";
 import Collapse from "@material-ui/core/Collapse";
 import { IconButton } from "@material-ui/core";
 import InfoIcon from "@material-ui/icons/Info";
-
 import { Close } from "@material-ui/icons/";
 
 toast.configure();
@@ -35,6 +38,8 @@ class UpdateProfile extends Component {
       headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
     },
     user: JSON.parse(localStorage.getItem("user")) || [],
+    picture: "",
+    profilename: "",
   };
 
   notify = () => {
@@ -44,21 +49,26 @@ class UpdateProfile extends Component {
   };
 
   componentDidMount() {
-    axios
-      .get("https://student-verse.herokuapp.com/profile", this.state.config)
+    console.log("response updatePassword");
+
+    getProfile(this.state.user.token)
       .then((response) => {
-        this.setState({
-          fname: response.data.data.fname,
-          lname: response.data.data.lname,
-          username: response.data.data.username,
-          email: response.data.data.email,
-          profilepic: response.data.data.profilepic,
-          mobile: response.data.data.mobile,
-          address: response.data.data.address,
-        });
+        console.log("response updatePassword", response);
+        if (response.success === true) {
+          this.setState({
+            fname: response.data.fname,
+            lname: response.data.lname,
+            username: response.data.username,
+            email: response.data.email,
+            profilepic: response.data.profilepic,
+            mobile: response.data.mobile,
+            address: response.data.address,
+            profilename: response.data.profilename,
+          });
+        }
       })
       .catch((err) => {
-        console.log("PROF ERROR", err);
+        console.log("Profile Error", err);
       });
   }
 
@@ -135,6 +145,37 @@ class UpdateProfile extends Component {
       });
   };
 
+  updateProfilePic = (e) => {
+    e.preventDefault();
+    console.log("piccheck cons", this.state.picture);
+
+    const pictureUpd = new FormData();
+    const picture = this.state.picture;
+    pictureUpd.append("picture", picture);
+    console.log("piccheck", pictureUpd);
+
+    updatePP(pictureUpd, this.state.user.token)
+      .then((response) => {
+        if (response.success === false) {
+          this.setState({ incorrectMessage: response.message });
+          toast.error(response.message, {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
+        }
+        if (response.success === true) {
+          console.log("update result", response);
+          toast.success(response.message, {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
+        }
+      })
+      .catch((err) => {
+        toast.error("Profile Update Error!", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
+      });
+  };
+
   dropUpdatePassword = (e) => {
     e.preventDefault();
     this.setState({ updateDrop: !this.state.updateDrop });
@@ -147,16 +188,43 @@ class UpdateProfile extends Component {
           <div className="col-lg-4">
             <div className="card shadow-sm">
               <div className="card-header bg-transparent text-center">
-                <img
-                  className="profile_img"
-                  src="https://source.unsplash.com/600x300/?student"
-                  alt="student dp"
-                />
+                <div>
+                  <img
+                    className="profile_img"
+                    src={`https://student-verse.herokuapp.com/userprofile/${this.state.profilename}`}
+                    alt="student dp"
+                  />
+                </div>
+                <div className="upload-PP">
+                  <label for="files" className="blue">
+                    Upload Picture
+                  </label>
+                  <input
+                    id="files"
+                    className={this.state.picture ? "" : "none"}
+                    type="file"
+                    onChange={(e) => {
+                      this.setState({ picture: e.target.files[0] });
+                      console.log("pic_onchange", e.target.files[0]);
+                    }}
+                  />
+                </div>
+                {this.state.picture ? (
+                  <button
+                    onClick={(e) => {
+                      this.updateProfilePic(e);
+                    }}
+                    className="btn
+                    btn-primary"
+                  >
+                    Update Picture
+                  </button>
+                ) : null}
                 <h2>{this.state.username}</h2>
               </div>
               <div className="card-body">
                 <p className="mb-0">
-                  <strong className="pr-1">First-Name:</strong>
+                  <strong className="pr-1">First-Names:</strong>
                   <input
                     type="text"
                     className="form-control"

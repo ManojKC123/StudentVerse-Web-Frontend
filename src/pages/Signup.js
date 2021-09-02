@@ -36,7 +36,8 @@ class SignUp extends Component {
 
     signup(data)
       .then((response) => {
-        console.log("signup resp", response);
+        console.log("signup resp", response.success);
+        console.log("signup resp2", response.error[0].msg);
 
         if (response.success === true) {
           console.log("signup resp2", response.data, response);
@@ -60,13 +61,15 @@ class SignUp extends Component {
           setTimeout(function () {
             window.location.href = "/login";
           }, 4000);
-        } else if ((response = "Error: Request failed with status code 400")) {
-          toast.warn("Try with different Email", {
-            position: toast.POSITION.BOTTOM_RIGHT,
-          });
         }
+        console.log("false check", response.success);
         if (response.success === false) {
-          toast.error("Signup ERROR!!!", {
+          console.log("false check", response);
+
+          // console.log("signupfalseerr", response.error[0].msg);
+          // console.log("signupfalseerr 2", response.error.msg);
+          this.setState({ message: response.error[0].msg });
+          toast.error(this.state.message, {
             position: toast.POSITION.BOTTOM_RIGHT,
           });
         }
@@ -76,7 +79,7 @@ class SignUp extends Component {
         this.setState({
           message: "Invalid Data Entered",
         });
-        toast.error("Signup ERROR!!!", {
+        toast.error(err.msg, {
           position: toast.POSITION.BOTTOM_RIGHT,
         });
       });
@@ -107,7 +110,7 @@ class SignUp extends Component {
                   <b>CREATE AN ACCOUNT</b>
                 </h3>
                 <div className="row justify-content-md-center register-form">
-                  <div className="col-md-9">
+                  <div className="col-md-11">
                     <form onSubmit={this.sendUserData}>
                       <div className="form-group">
                         <input
@@ -155,7 +158,7 @@ class SignUp extends Component {
                           placeholder="Address"
                         />
                       </div>
-                      <div className="form-group">
+                      <div className="form-group" style={{ marginBottom: "0" }}>
                         <input
                           type="password"
                           className="form-control"
@@ -166,6 +169,14 @@ class SignUp extends Component {
                           }}
                           placeholder="Password"
                         />
+                        <label for="passwordsignup" style={{ color: "grey" }}>
+                          6-15 characters, 1 uppercase, 1 special character, 1
+                          number
+                        </label>
+                        {/* <p>
+                          Password hint: 6-15 characters, 1 uppercase, 1 special
+                          character, 1 number
+                        </p> */}
                       </div>
                       <div className="form-group">
                         <input

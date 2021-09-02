@@ -1,37 +1,77 @@
-import React, { useState, useEffect, useRef } from "react";
-import { addQuestion } from "../data/api";
+import React, { useState, useEffect } from "react";
+import { getTopicD } from "../data/api";
 import { toast } from "react-toastify";
+import { Grid, Paper } from "@material-ui/core";
 import "react-toastify/dist/ReactToastify.css";
-import StudyChapters from "../pages/StudyChapters";
+import { Simulate } from "react-dom/test-utils";
 
 toast.configure();
 
 function StudyContentPanel() {
   const [user] = useState(JSON.parse(localStorage.getItem("user")) || []);
-  const [formData, setFormData] = useState({
-    title: "",
-    body: "",
-    tags: [],
-  });
+  const [topicData, setTopicData] = useState([]);
+  const [sub] = useState(JSON.parse(localStorage.getItem("sub")) || null);
+  const [site] = useState(JSON.parse(localStorage.getItem("site")) || []);
 
-  // useEffect(() => {}, [tags]);
+  useEffect(() => {
+    if (sub.subId) {
+      getTopicD(sub.subId, user.token).then((response) => {
+        if (response.success === true) {
+          setTopicData(response.data);
+          console.log("topics data", response.data);
+        }
+      });
+    }
+  }, []);
 
-  // const onChange = (e) =>
-  //   setFormData({ ...formData, [e.target.name]: e.target.value });
-
-  const onSubmit = async (e) => {
-    // e.preventDefault();
-  };
   return (
-    <div className="askForm">
-      <form onSubmit={(e) => onSubmit(e)}>
-        <label className="form-label s-label">
-          <b>Title</b>
-          <p className="title-desc fw-normal fs-caption">
-            Be specific and imagine you’re asking a question to another person
-          </p>
-        </label>
-      </form>
+    <div className="past-paper">
+      <Grid container>
+        <Grid item md={12}>
+          <div className="show-pastpaper-data">
+            <div className="inner">
+              <Paper className="pastPaper">
+                {topicData &&
+                  topicData.map((data, index) => {
+                    return (
+                      <div className="pastpaper-paper" key={index}>
+                        {data.chapter ? (
+                          data.chapter.map((chpt, index) => {
+                            return (
+                              <>
+                                {/* {chpt.name}
+                                {site.chapterName} */}
+                                {chpt.name === site.chapterName ? (
+                                  <>
+                                    <img
+                                      className="ds"
+                                      src={`https://student-verse.herokuapp.com/chapter/${chpt.pictureName}`}
+                                      alt="chapter content"
+                                    />
+                                    <p>{chpt.content}</p>
+                                  </>
+                                ) : (
+                                  ""
+                                )}
+                              </>
+                            );
+                          })
+                        ) : (
+                          <>
+                            <h3>
+                              Past Papers for this chapter are being added wait
+                              a while{" "}
+                            </h3>
+                          </>
+                        )}
+                      </div>
+                    );
+                  })}
+              </Paper>
+            </div>
+          </div>
+        </Grid>
+      </Grid>
     </div>
   );
 }

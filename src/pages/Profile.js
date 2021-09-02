@@ -1,6 +1,6 @@
 import React, { Component, Container } from "react";
 import { getProfile } from "../data/api";
-import InfoIcon from '@material-ui/icons/Info';
+import InfoIcon from "@material-ui/icons/Info";
 
 class UserProfile extends Component {
   state = {
@@ -47,7 +47,7 @@ class UserProfile extends Component {
                   alt="student dp"
                 />
                 <h3>{this.state.username}</h3>
-                <a href="/profile/update">
+                <a href="/profile-update">
                   <p>Update your profile</p>
                 </a>
               </div>
@@ -67,7 +67,8 @@ class UserProfile extends Component {
             <div className="card shadow-sm">
               <div className="card-header bg-transparent border-0">
                 <h3 className="mb-0">
-                  <InfoIcon/>General Information
+                  <InfoIcon />
+                  General Information
                 </h3>
               </div>
               <div className="card-body pt-0">
@@ -93,7 +94,8 @@ class UserProfile extends Component {
             <div className="card shadow-sm update-info">
               <div className="card-header bg-transparent border-0">
                 <h3 className="mb-0">
-                  <InfoIcon/>Other Information
+                  <InfoIcon />
+                  Other Information
                 </h3>
               </div>
               <div className="card-body pt-0">
