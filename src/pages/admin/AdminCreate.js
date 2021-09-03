@@ -176,7 +176,7 @@ const AdminCreate = (props) => {
               <Grid item md={12} className="">
                 <div className="contents ">
                   <div className="inner-contents editor-tabs bread-crumb-wrap">
-                    <Breadcrumbs
+                    {/* <Breadcrumbs
                       separator={<NavigateNextIcon fontSize="small" />}
                       aria-label="breadcrumb"
                     >
@@ -191,7 +191,33 @@ const AdminCreate = (props) => {
                         Algebra
                       </Link>
                       <Typography color="textPrimary">RealNumber</Typography>
-                    </Breadcrumbs>
+                    </Breadcrumbs> */}
+                    {/* <Breadcrumbs
+                      separator={<NavigateNextIcon fontSize="small" />}
+                      aria-label="breadcrumb"
+                    >
+                      <Link color="inherit" href="/" onClick={breadCrumbClick}>
+                        {sub.subName}
+                      </Link>
+                      {sub.subName === "" ? (
+                        ""
+                      ) : (
+                        <Link
+                          color="inherit"
+                          href="/getting-started/installation/"
+                          onClick={breadCrumbClick}
+                        >
+                          {site.topicName}
+                        </Link>
+                      )}
+                      {sub.subName === "" ? (
+                        ""
+                      ) : (
+                        <Typography color="textPrimary">
+                          {site.chapterName}
+                        </Typography>
+                      )}
+                    </Breadcrumbs> */}
                     <AppBar position="static" color="default">
                       <Tabs
                         value={value}

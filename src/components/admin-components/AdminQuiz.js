@@ -9,6 +9,9 @@ import Paper from "@material-ui/core/Paper";
 import { createQuiz, loadQuiz } from "../../data/api";
 import { render } from "@testing-library/react";
 import CheckIcon from "@material-ui/icons/Check";
+import { toast } from "react-toastify";
+
+toast.configure();
 
 function AdminQuiz(props) {
   const [quizForm, setQuizForm] = useState({
@@ -62,16 +65,16 @@ function AdminQuiz(props) {
       .then((response) => {
         console.log("Add quiz resp", response);
         if (response.success === true && response.data) {
-          // toast.success(response.message, {
-          //   position: toast.POSITION.BOTTOM_RIGHT,
-          // });
+          toast.success(response.message, {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
         }
       })
       .catch((err) => {
         console.log("Add quiz error", err.response);
-        //  toast.error(response.message, {
-        //    position: toast.POSITION.BOTTOM_RIGHT,
-        //  });
+        toast.error(err.message, {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
       });
   }
 

@@ -191,9 +191,7 @@ function QuizPanel(props) {
             </button>
           </div>
         </Grid>
-        <Grid item md={3}>
-          <div className="test">kjklkjhlkjh</div>
-        </Grid>
+        <Grid item md={3}></Grid>
       </Grid>
     </div>
   );

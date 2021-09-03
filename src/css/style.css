@@ -781,6 +781,9 @@ textarea.form-control {
 
 /* Admin post study materials */
 
+button#quiz-admin {
+  padding: 10px 12px;
+}
 /* Card Section for Study Materials */
 .cards-list {
   z-index: 0;
