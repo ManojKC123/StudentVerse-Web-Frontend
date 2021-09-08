@@ -89,7 +89,7 @@ function SearchResults(props) {
                       to={user.token ? "/ask-question" : "/login"}
                       className="btn btn-primary"
                     >
-                      Asking Question
+                      Ask Question
                     </Link>
                   </div>
                   <div className="not-found-img-wrap">

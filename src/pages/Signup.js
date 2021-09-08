@@ -36,16 +36,15 @@ class SignUp extends Component {
 
     signup(data)
       .then((response) => {
-        console.log("signup resp", response.success);
-        console.log("signup resp2", response.error[0].msg);
-
         if (response.success === true) {
-          console.log("signup resp2", response.data, response);
           this.setState({
             UserRegistered: true,
             message: response.data.message,
           });
+          console.log("signup resp true", response);
+
           const uNameE = data.email.substring(0, data.email.indexOf("@"));
+          console.log("Your username is " + uNameE);
           toast.info("Your username is " + uNameE, {
             position: "top-center",
             autoClose: 4000,
@@ -64,10 +63,6 @@ class SignUp extends Component {
         }
         console.log("false check", response.success);
         if (response.success === false) {
-          console.log("false check", response);
-
-          // console.log("signupfalseerr", response.error[0].msg);
-          // console.log("signupfalseerr 2", response.error.msg);
           this.setState({ message: response.error[0].msg });
           toast.error(this.state.message, {
             position: toast.POSITION.BOTTOM_RIGHT,
