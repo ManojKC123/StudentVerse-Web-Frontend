@@ -58,56 +58,7 @@ function TagSearch(props) {
           Search
         </button>
       </div>
-      <div className="view-tag">
-        <div class="card" style={{ width: "18rem;" }}>
-          <div class="card-body">
-            <a href="/" class="btn btn-primary">
-              <span class="card-title">Algebra</span>
-            </a>
-            <p> 1 questions asked on this tag </p>
-          </div>
-        </div>
-      </div>
-      <div className="view-tag">
-        <div class="card" style={{ width: "18rem;" }}>
-          <div class="card-body">
-            <a href="/" class="btn btn-primary">
-              <span class="card-title">Heridity</span>
-            </a>
-            <p> 2 questions asked on this tag </p>
-          </div>
-        </div>
-      </div>
-      <div className="view-tag">
-        <div class="card" style={{ width: "18rem;" }}>
-          <div class="card-body">
-            <a href="/" class="btn btn-primary">
-              <span class="card-title">Math</span>
-            </a>
-            <p> 3 questions asked on this tag </p>
-          </div>
-        </div>
-      </div>
-      <div className="view-tag">
-        <div class="card" style={{ width: "18rem;" }}>
-          <div class="card-body">
-            <a href="/" class="btn btn-primary">
-              <span class="card-title">Heridity</span>
-            </a>
-            <p> 1 questions asked on this tag </p>
-          </div>
-        </div>
-      </div>
-      <div className="view-tag">
-        <div class="card" style={{ width: "18rem;" }}>
-          <div class="card-body">
-            <a href="/" class="btn btn-primary">
-              <span class="card-title">GK</span>
-            </a>
-            <p> 1 questions asked on this tag </p>
-          </div>
-        </div>
-      </div>
+
       <div className="view-tag">
         {tagsStore &&
           tagsStore.map((tagm, index) => {
